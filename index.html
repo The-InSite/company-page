@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The InSite Company transforms freelancers' and professionals' online presence using advanced Artificial Intelligence — modern websites, built for results." />
+  <meta name="keywords" content="web modernization, AI website design, freelancer website, professional online presence, website redesign" />
+  <meta property="og:title" content="The InSite Company — AI-Powered Web Modernization" />
+  <meta property="og:description" content="We transform and modernize freelancers' and professionals' online presence using advanced AI technology." />
+  <meta property="og:url" content="https://theinsite.dev" />
+  <meta property="og:type" content="website" />
+  <title>The InSite Company — AI-Powered Web Modernization</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─────────────────────────────────────────
+       RESET & VARIABLES
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #08070a;
+      --surface:    #0c0b10;
+      --card:       #110f18;
+      --border:     rgba(212,175,55,0.1);
+      --border-dim: rgba(255,255,255,0.06);
+      --gold:       #d4af37;
+      --gold2:      #f0c040;
+      --gold-dim:   rgba(212,175,55,0.3);
+      --gold-glow:  rgba(212,175,55,0.15);
+      --text:       #ffffff;
+      --muted:      #a89fb8;
+      --muted2:     #7a7090;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* ─────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.375rem 6%;
+      background: rgba(8,7,10,0.82);
+      backdrop-filter: blur(20px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+
+    nav.scrolled { padding-top: 1rem; padding-bottom: 1rem; }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 600; letter-spacing: .05em;
+      color: var(--gold); text-decoration: none;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--text); font-weight: 400; font-style: italic; }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none; align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      padding: .6rem 1.6rem !important;
+      border: 1px solid var(--gold-dim) !important;
+      color: var(--gold) !important;
+      letter-spacing: .08em !important;
+      transition: background .25s, border-color .25s !important;
+    }
+    .nav-cta:hover {
+      background: rgba(212,175,55,0.08) !important;
+      border-color: var(--gold) !important;
+      color: var(--gold) !important;
+    }
+
+    /* Hamburger (mobile) */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: .25rem; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--text); transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; top: 70px; z-index: 190;
+      background: rgba(8,7,10,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none;
+      font-size: 1.5rem; font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: .05em; transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-cta {
+      padding: .75rem 2.5rem;
+      border: 1px solid var(--gold-dim); color: var(--gold) !important;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase; font-family: 'Inter', sans-serif;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 9rem 6% 5rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Gold crown glow */
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 1100px; height: 650px;
+      background: radial-gradient(ellipse at center top,
+        rgba(212,175,55,0.12) 0%,
+        rgba(212,175,55,0.04) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Faint diagonal lines */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 80px,
+        rgba(212,175,55,0.018) 80px,
+        rgba(212,175,55,0.018) 81px
+      );
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2.25rem; position: relative; z-index: 1;
+      color: var(--gold); font-size: 0.68rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 52px; height: 1px; background: var(--gold-dim);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8.5vw, 7.5rem);
+      font-weight: 600; line-height: 1.0; letter-spacing: -0.01em;
+      position: relative; z-index: 1; max-width: 950px; color: var(--text);
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      margin-top: 2rem; font-size: 1.05rem; font-weight: 500;
+      color: #ffffff; max-width: 520px; line-height: 1.85;
+      letter-spacing: .02em; position: relative; z-index: 1;
+      opacity: 1;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 1.5rem; margin-top: 3.25rem;
+      position: relative; z-index: 1;
+      flex-wrap: wrap; justify-content: center;
+    }
+
+    .btn-gold {
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #08070a; border: none;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      box-shadow: 0 4px 36px rgba(212,175,55,0.28);
+      transition: box-shadow .35s, transform .2s;
+    }
+    .btn-gold:hover { box-shadow: 0 8px 52px rgba(212,175,55,0.48); transform: translateY(-2px); }
+
+    .btn-outline {
+      padding: 1rem 2.5rem;
+      background: transparent; color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color .25s, color .25s;
+    }
+    .btn-outline:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    .ornament {
+      color: var(--gold-dim); font-size: 1.25rem;
+      margin-top: 4rem; position: relative; z-index: 1;
+      letter-spacing: .6rem;
+    }
+
+    /* ─────────────────────────────────────────
+       STAT BAR
+    ───────────────────────────────────────── */
+    .stat-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.75rem 6%;
+      position: relative; z-index: 1;
+    }
+
+    .stat-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      divide-x: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: center; padding: 0 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 600; color: var(--gold); line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-top: .6rem; font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────
+       SHARED SECTION STYLES
+    ───────────────────────────────────────── */
+    section { padding: 7.5rem 6%; position: relative; z-index: 1; }
+
+    .section-rule {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem;
+    }
+    .section-rule::before {
+      content: ''; width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
+    }
+    .section-rule span {
+      font-size: 0.63rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      font-weight: 600; line-height: 1.08; letter-spacing: -0.01em;
+      max-width: 620px; margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+
+    .section-sub {
+      color: var(--muted); max-width: 480px; line-height: 1.85;
+      font-weight: 300; margin-bottom: 3.5rem; font-size: 0.975rem;
+    }
+
+    /* ─────────────────────────────────────────
+       VISION / QUOTE
+    ───────────────────────────────────────── */
+    .vision-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center; padding: 7rem 6%;
+    }
+
+    .vision-inner { max-width: 820px; margin: 0 auto; }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7rem; line-height: .4; color: var(--gold-dim);
+      margin-bottom: 2rem; display: block;
+    }
+
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.6rem);
+      font-weight: 400; line-height: 1.48; color: var(--text);
+      font-style: italic;
+    }
+    blockquote em { color: var(--gold); font-style: normal; }
+
+    .quote-rule {
+      width: 48px; height: 1px; background: var(--gold-dim);
+      margin: 2.25rem auto;
+    }
+
+    .quote-attr {
+      font-size: 0.7rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--muted); font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────── */
+    .services-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-layout {
+      display: grid; grid-template-columns: 1fr 2fr;
+      gap: 5rem; max-width: 1200px; margin: 0 auto;
+      align-items: start;
+    }
+
+    .services-list { display: flex; flex-direction: column; }
+
+    .service-item {
+      padding: 1.875rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 36px 1fr;
+      gap: 1.5rem; align-items: start;
+      transition: opacity .2s;
+    }
+    .service-item:first-child { border-top: 1px solid var(--border); }
+    .service-item:hover { opacity: .85; }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 500;
+      color: var(--gold-dim); line-height: 1.4; padding-top: .05rem;
+    }
+
+    .service-text h3 {
+      font-size: 0.975rem; font-weight: 600;
+      margin-bottom: .45rem; color: var(--text);
+      letter-spacing: .01em;
+    }
+    .service-text p {
+      color: var(--muted); font-size: 0.85rem;
+      line-height: 1.7; font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────
+       WHO WE SERVE
+    ───────────────────────────────────────── */
+    .audience-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 3.5rem;
+    }
+
+    .audience-card {
+      background: var(--bg); padding: 2.5rem;
+      transition: background .25s;
+    }
+    .audience-card:hover { background: var(--card); }
+
+    .audience-icon {
+      font-size: 1.75rem; margin-bottom: 1.25rem; display: block;
+    }
+
+    .audience-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; margin-bottom: .6rem; color: var(--text);
+    }
+
+    .audience-card p {
+      color: var(--muted); font-size: 0.85rem; line-height: 1.7; font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────
+       PROCESS
+    ───────────────────────────────────────── */
+    .process-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem; margin-top: 3.5rem;
+    }
+
+    .proc-step {
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .proc-step::before {
+      content: '';
+      position: absolute; top: -1px; left: 0; width: 44px; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .proc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.75rem; font-weight: 600;
+      color: var(--gold-dim); line-height: 1; margin-bottom: 1.25rem;
+    }
+
+    .proc-step h3 { font-size: 0.975rem; font-weight: 600; margin-bottom: .6rem; }
+    .proc-step p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; font-weight: 300; }
+
+    /* ─────────────────────────────────────────
+       FOUNDERS
+    ───────────────────────────────────────── */
+    .founders-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .founders-inner { max-width: 1100px; margin: 0 auto; }
+
+    .founders-header { max-width: 560px; margin-bottom: 0; }
+
+    .founders-flex {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-top: 3.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .founder-panel {
+      padding: 3rem; border-right: 1px solid var(--border);
+      transition: background .25s;
+    }
+    .founder-panel:last-child { border-right: none; }
+    .founder-panel:hover { background: rgba(212,175,55,0.03); }
+
+    .founder-initial {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem; font-weight: 600; line-height: 1;
+      color: var(--gold-dim); margin-bottom: 1.75rem;
+      letter-spacing: -.03em;
+    }
+
+    .founder-panel h3 {
+      font-size: 1.1rem; font-weight: 600; margin-bottom: .3rem;
+    }
+
+    .founder-panel .founder-title {
+      color: var(--gold); font-size: 0.7rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 600; margin-bottom: 1.25rem;
+    }
+
+    .founder-rule {
+      width: 28px; height: 1px; background: var(--gold-dim); margin-bottom: 1.25rem;
+    }
+
+    .founder-panel p {
+      color: var(--muted); font-size: 0.85rem;
+      line-height: 1.75; font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────
+       CTA / CONTACT
+    ───────────────────────────────────────── */
+    .cta-section { text-align: center; }
+
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+
+    .cta-inner .section-rule { justify-content: center; }
+
+    .cta-inner h2 { max-width: 100%; margin: 0 auto 1.5rem; }
+
+    .cta-inner p {
+      color: var(--text); line-height: 1.85;
+      margin-bottom: 3rem; font-weight: 400; font-size: 0.975rem;
+    }
+
+    .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+
+    .email-columns {
+      display: flex; gap: 0; margin-top: 4rem;
+      border: 1px solid var(--border); max-width: 560px; margin-left: auto; margin-right: auto;
+    }
+
+    .email-col {
+      flex: 1; padding: 1.75rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .email-col:last-child { border-right: none; }
+
+    .email-type {
+      font-size: 0.6rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; margin-bottom: .6rem;
+    }
+
+    .email-col a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.82rem; transition: color .2s;
+      display: block; word-break: break-all;
+    }
+    .email-col a:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      padding: 3rem 6%;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 2rem;
+      position: relative; z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--gold); letter-spacing: .04em;
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--text); font-weight: 400; font-style: italic; }
+
+    .footer-links {
+      display: flex; gap: 2rem; justify-content: center;
+      list-style: none; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--muted2); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      color: var(--muted2); font-size: 0.72rem;
+      letter-spacing: .05em; text-align: right;
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 5%; }
+
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero h1 { font-size: clamp(3rem, 10vw, 5rem); }
+
+      .stat-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+      .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+      .services-layout { grid-template-columns: 1fr; gap: 3rem; }
+
+      .audience-grid { grid-template-columns: 1fr; }
+
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+      .founders-flex { grid-template-columns: 1fr; }
+      .founder-panel { border-right: none; border-bottom: 1px solid var(--border); }
+      .founder-panel:last-child { border-bottom: none; }
+
+      footer { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .footer-copy { text-align: center; }
+
+      .email-columns { flex-direction: column; }
+      .email-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .email-col:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 5rem 5%; }
+      .hero { padding: 8rem 5% 4rem; }
+
+      .process-grid { grid-template-columns: 1fr; }
+
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-gold, .btn-outline { width: 100%; max-width: 320px; text-align: center; }
+
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────────────────────────────────────────
+     NAVIGATION
+─────────────────────────────────────────────── -->
+<nav id="main-nav">
+  <a href="#" class="logo">the <span>InSite</span> Co.</a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#who-we-serve">Clients</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Begin</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#who-we-serve" class="mobile-link">Clients</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#team" class="mobile-link">Team</a>
+  <a href="#contact" class="mobile-link m-cta">Begin Your Transformation</a>
+</div>
+
+<!-- ──────────────────────────────────────────────
+     HERO
+─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-eyebrow reveal">
+    <span>AI-Powered Web Modernization</span>
+  </div>
+
+  <h1 class="reveal reveal-delay-1">
+    Transform your<br>online presence<br>with <em>intelligence.</em>
+  </h1>
+
+  <p class="hero-sub reveal reveal-delay-2">
+    We help freelancers and professionals build a digital presence worthy of their expertise — using advanced artificial intelligence to modernize, refine, and elevate every aspect of how the world sees you online.
+  </p>
+
+  <div class="hero-ctas reveal reveal-delay-3">
+    <a href="mailto:sales@theinsite.dev" class="btn-gold">Begin Your Transformation</a>
+    <a href="#services" class="btn-outline">Explore Services</a>
+  </div>
+
+  <div class="ornament reveal reveal-delay-4">· · ·</div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     STAT BAR
+─────────────────────────────────────────────── -->
+<div class="stat-bar">
+  <div class="stat-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">Driven by Advanced AI Technology</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">3×</div>
+      <div class="stat-label">Faster Load Times on Average</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Modern, Future-Proof Stack</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────────────
+     VISION QUOTE
+─────────────────────────────────────────────── -->
+<section class="vision-section">
+  <div class="vision-inner">
+    <span class="quote-mark reveal">"</span>
+    <blockquote class="reveal reveal-delay-1">
+      To transform and modernize every freelancer's and<br>
+      professional's online presence — using the power of<br>
+      <em>advanced Artificial Intelligence</em> — so that the world<br>
+      sees them as the experts they truly are.
+    </blockquote>
+    <div class="quote-rule reveal reveal-delay-2"></div>
+    <p class="quote-attr reveal reveal-delay-2">The Vision of The InSite Company</p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     SERVICES
+─────────────────────────────────────────────── -->
+<section id="services" class="services-section">
+  <div class="services-layout">
+
+    <div class="services-left reveal">
+      <div class="section-rule"><span>Our Services</span></div>
+      <h2>What we <em>craft</em> for you</h2>
+      <p class="section-sub">
+        Every service is designed to fundamentally transform how the world perceives your professional presence online — with precision, care, and the power of AI.
+      </p>
+      <a href="mailto:sales@theinsite.dev" class="btn-gold" style="margin-top:1rem;">Discuss Your Project</a>
+    </div>
+
+    <div class="services-list">
+      <div class="service-item reveal">
+        <div class="service-num">I</div>
+        <div class="service-text">
+          <h3>AI-Powered Site Audit</h3>
+          <p>A comprehensive analysis of your current online presence — covering performance, SEO, user experience, and brand alignment. Delivered as a clear, actionable transformation roadmap with prioritized recommendations.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-1">
+        <div class="service-num">II</div>
+        <div class="service-text">
+          <h3>Modern Website Redesign</h3>
+          <p>Fresh, conversion-optimized layouts designed to reflect your brand with precision and elegance. We create sites that communicate your expertise at first glance and turn visitors into clients.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-2">
+        <div class="service-num">III</div>
+        <div class="service-text">
+          <h3>AI Content Generation</h3>
+          <p>Compelling copy, imagery, and brand messaging crafted by AI and refined by human expertise — perfectly tuned to your audience, your voice, and your business goals.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-3">
+        <div class="service-num">IV</div>
+        <div class="service-text">
+          <h3>SEO & Discoverability</h3>
+          <p>Optimized so your ideal clients find you first. We build search visibility into every layer of your site so you're discovered organically — not buried beneath competitors.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-4">
+        <div class="service-num">V</div>
+        <div class="service-text">
+          <h3>Mobile-First Development</h3>
+          <p>Pixel-perfect across every device and screen size. Your site performs flawlessly whether clients encounter you on a phone, tablet, or desktop — wherever they are.</p>
+        </div>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-num">VI</div>
+        <div class="service-text">
+          <h3>Ongoing Evolution & Support</h3>
+          <p>Your online presence grows with your business. We provide continuous refinement of performance, content, and design — ensuring your site always represents you at your best.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     WHO WE SERVE
+─────────────────────────────────────────────── -->
+<section id="who-we-serve">
+  <div class="audience-inner">
+    <div class="section-rule reveal"><span>Who We Serve</span></div>
+    <h2 class="reveal">Built for <em>professionals</em><br>who deserve better</h2>
+    <p class="section-sub reveal reveal-delay-1">
+      Whether you're a solo freelancer or a growing firm, your online presence should be as impressive as your work. We serve anyone whose expertise deserves a world-class digital home.
+    </p>
+
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <span class="audience-icon">✍️</span>
+        <h3>Freelancers</h3>
+        <p>Designers, developers, writers, consultants, and creators who need a portfolio and website that wins clients — not one that loses them.</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-1">
+        <span class="audience-icon">⚕️</span>
+        <h3>Independent Professionals</h3>
+        <p>Lawyers, doctors, therapists, accountants, coaches, and specialists whose reputation deserves a digital presence that inspires trust immediately.</p>
+      </div>
+      <div class="audience-card reveal reveal-delay-2">
+        <span class="audience-icon">🏢</span>
+        <h3>Small Businesses & Studios</h3>
+        <p>Agencies, boutique firms, and small teams who want enterprise-quality web presence without the enterprise-level cost or complexity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     PROCESS
+─────────────────────────────────────────────── -->
+<section id="process" class="process-section">
+  <div class="process-inner">
+    <div class="section-rule reveal"><span>Our Process</span></div>
+    <h2 class="reveal">From first call<br>to <em>live site</em></h2>
+    <p class="section-sub reveal reveal-delay-1">
+      A streamlined, AI-accelerated four-step process that respects your time, keeps you in control, and delivers measurable results.
+    </p>
+
+    <div class="process-grid">
+      <div class="proc-step reveal">
+        <div class="proc-num">01</div>
+        <h3>Discovery</h3>
+        <p>A focused 30-minute conversation to understand your business, your clients, your goals, and what's holding your current presence back.</p>
+      </div>
+      <div class="proc-step reveal reveal-delay-1">
+        <div class="proc-num">02</div>
+        <h3>AI Analysis</h3>
+        <p>Our AI performs a deep audit of your current online presence and delivers a prioritized transformation roadmap — clear, specific, and actionable.</p>
+      </div>
+      <div class="proc-step reveal reveal-delay-2">
+        <div class="proc-num">03</div>
+        <h3>Design & Build</h3>
+        <p>We design, write, and build your modernized site at speed — with your approval at every milestone. Nothing goes live until you're satisfied.</p>
+      </div>
+      <div class="proc-step reveal reveal-delay-3">
+        <div class="proc-num">04</div>
+        <h3>Launch & Refine</h3>
+        <p>We handle launch and handle everything after it — continuously refining performance, content, and design as your business grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     FOUNDERS
+─────────────────────────────────────────────── -->
+<section id="team" class="founders-section">
+  <div class="founders-inner">
+    <div class="founders-header">
+      <div class="section-rule reveal"><span>The Founders</span></div>
+      <h2 class="reveal">The people<br>behind the <em>vision</em></h2>
+      <p class="section-sub reveal reveal-delay-1">
+        Three founders united by a shared conviction — that every professional deserves an online presence that reflects the full depth of their expertise.
+      </p>
+    </div>
+
+    <div class="founders-flex">
+      <div class="founder-panel reveal">
+        <div class="founder-initial">YS</div>
+        <h3>Dr. Yair Sahar</h3>
+        <div class="founder-title">Co-Founder</div>
+        <div class="founder-rule"></div>
+        <p>Bringing deep expertise and visionary thinking to how artificial intelligence can fundamentally transform the way professionals present themselves and their work to the world online.</p>
+      </div>
+
+      <div class="founder-panel reveal reveal-delay-1">
+        <div class="founder-initial">PZ</div>
+        <h3>Pavel Zagalsky</h3>
+        <div class="founder-title">Co-Founder</div>
+        <div class="founder-rule"></div>
+        <p>Passionate about building systems and experiences that make world-class web design accessible to every professional — not just those with the budgets of large corporations.</p>
+      </div>
+
+      <div class="founder-panel reveal reveal-delay-2">
+        <div class="founder-initial">LY</div>
+        <h3>Lior Yardeni</h3>
+        <div class="founder-title">Co-Founder</div>
+        <div class="founder-rule"></div>
+        <p>Focused on the craft of digital experience — ensuring every site we build genuinely reflects the character, expertise, and aspirations of the professionals who trust us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     CTA / CONTACT
+─────────────────────────────────────────────── -->
+<section id="contact" class="cta-section">
+  <div class="cta-inner">
+    <div class="section-rule reveal"><span>Get Started</span></div>
+    <h2 class="reveal">Ready to <em>elevate</em><br>your presence?</h2>
+    <p class="reveal reveal-delay-1">
+      Join the professionals who've chosen to invest in a digital presence that truly represents their work and expertise. We'd love to hear about what you do and how we can help the world see it clearly.
+    </p>
+    <div class="cta-buttons reveal reveal-delay-2">
+      <a href="mailto:sales@theinsite.dev" class="btn-gold">Contact Sales</a>
+      <a href="mailto:info@theinsite.dev" class="btn-outline">General Inquiry</a>
+    </div>
+
+    <div class="email-columns reveal reveal-delay-3">
+      <div class="email-col">
+        <div class="email-type">Sales</div>
+        <a href="mailto:sales@theinsite.dev">sales@theinsite.dev</a>
+      </div>
+      <div class="email-col">
+        <div class="email-type">Info</div>
+        <a href="mailto:info@theinsite.dev">info@theinsite.dev</a>
+      </div>
+      <div class="email-col">
+        <div class="email-type">Support</div>
+        <a href="mailto:support@theinsite.dev">support@theinsite.dev</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     FOOTER
+─────────────────────────────────────────────── -->
+<footer>
+  <a href="#" class="footer-logo">the <span>InSite</span> Co.</a>
+
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#who-we-serve">Clients</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="footer-copy">
+    © 2026 The InSite Company<br>theinsite.dev
+  </div>
+</footer>
+
+<!-- ──────────────────────────────────────────────
+     JAVASCRIPT
+─────────────────────────────────────────────── -->
+<script>
+  // ── Scroll reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Trigger hero items immediately ──
+  document.querySelectorAll('.hero .reveal').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+
+  // ── Nav shrink on scroll ──
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Hamburger menu ──
+  const burger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>
