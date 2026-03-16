@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back Bay Life Coaching and Counseling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & VARIABLES
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:        #FDFAF5;
+      --cream-mid:    #F5EDE6;
+      --rose:         #C47A90;
+      --rose-hover:   #AE6880;
+      --rose-light:   #EDDADF;
+      --rose-pale:    #FAF1F4;
+      --sage:         #7A9E7E;
+      --sage-light:   #C1D5C2;
+      --sage-pale:    #EFF4EF;
+      --warm-dark:    #3A2E2A;
+      --warm-mid:     #6B5A54;
+      --warm-light:   #A89089;
+      --white:        #FFFFFF;
+      --radius:       16px;
+      --radius-sm:    10px;
+      --radius-pill:  100px;
+      --font-display: 'Caveat', 'Segoe Script', 'Comic Sans MS', cursive;
+      --font-body:    'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --shadow-soft:  0 8px 32px rgba(196, 122, 144, 0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--warm-dark);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    span.opt:empty { display: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+
+    .eyebrow-sage { color: var(--sage); }
+
+    .warm-rule {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--rose-light) 30%, var(--sage-light) 70%, transparent 100%);
+      margin: 0;
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      height: 68px;
+      background: rgba(253, 250, 245, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rose-light);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    .nav-cta {
+      background: var(--rose);
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .nav-cta:hover { background: var(--rose-hover); transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--warm-dark);
+      border-radius: 2px;
+    }
+
+    .nav-drawer {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rose-light);
+      padding: 16px 48px 28px;
+      gap: 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    .nav-drawer.open { display: flex; }
+
+    .nav-drawer a {
+      padding: 12px 0;
+      font-size: 16px;
+      color: var(--warm-mid);
+      border-bottom: 1px solid var(--rose-pale);
+    }
+
+    .nav-drawer a:last-of-type { border-bottom: none; }
+
+    .drawer-cta {
+      margin-top: 12px;
+      background: var(--rose) !important;
+      color: #fff !important;
+      text-align: center;
+      padding: 14px !important;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      border-bottom: none !important;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: 640px;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    #hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    #hero-initials {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(150deg, #EDD5C0 0%, #D4A8B8 45%, #C0D4C0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 14rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.28);
+      line-height: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(30,15,10,0.04) 0%,
+        rgba(30,15,10,0.28) 40%,
+        rgba(30,15,10,0.68) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      text-align: center;
+      padding: 0 48px 84px;
+    }
+
+    .hero-eyebrow-text {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 18px;
+      min-height: 1px;
+    }
+
+    h1.hero-headline {
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      max-width: 740px;
+      margin: 0 auto 20px;
+      text-shadow: 0 2px 32px rgba(0,0,0,0.22);
+    }
+
+    .hero-subtext-p {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.76;
+      max-width: 530px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-hero-main {
+      display: inline-block;
+      background: var(--rose);
+      color: #ffffff;
+      padding: 16px 44px;
+      border-radius: var(--radius-pill);
+      font-size: 17px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.18s;
+    }
+
+    .btn-hero-main:hover { background: var(--rose-hover); transform: translateY(-2px); }
+
+    .btn-hero-text {
+      display: inline-block;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(255,255,255,0.32);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-hero-text:hover { color: #fff; border-color: rgba(255,255,255,0.8); }
+
+    /* ============================================================
+       WELCOME STRIP
+    ============================================================ */
+    .welcome {
+      padding: 80px 0 72px;
+      background: var(--cream);
+    }
+
+    .welcome-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .welcome-tagline {
+      font-family: var(--font-display);
+      font-size: 2.9rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    .welcome-flourish {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose-light), var(--rose));
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services {
+      padding: 88px 0;
+      background: var(--rose-pale);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--warm-mid);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--rose-light);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+
+    .service-photo-wrap {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--rose-pale), var(--sage-pale));
+      overflow: hidden;
+    }
+
+    .service-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-body {
+      padding: 26px 26px 32px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--warm-mid);
+      line-height: 1.72;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about {
+      padding: 100px 0;
+      background: var(--cream);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-photo-col { position: relative; }
+
+    /* Watercolor-edge border effect */
+    .about-photo-wrap { position: relative; }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -14px -10px -10px -14px;
+      background: linear-gradient(135deg, var(--rose-light) 0%, var(--sage-light) 100%);
+      border-radius: calc(var(--radius) + 14px);
+      opacity: 0.42;
+      z-index: 0;
+    }
+
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -5px -4px -4px -5px;
+      border: 1.5px solid rgba(196, 122, 144, 0.3);
+      border-radius: calc(var(--radius) + 5px);
+      z-index: 0;
+    }
+
+    .about-photo-inner {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    #about-photo {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    #about-initials {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, var(--rose-pale), var(--sage-pale));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 9rem;
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    .about-heading {
+      font-family: var(--font-display);
+      font-size: 2.9rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      line-height: 1.2;
+      margin-bottom: 22px;
+      margin-top: 6px;
+    }
+
+    .about-body {
+      font-size: 16px;
+      color: var(--warm-mid);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    .about-pull-block {
+      background: var(--rose-pale);
+      border-left: 4px solid var(--rose);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+    }
+
+    .about-pull-block p {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+      line-height: 1.4;
+    }
+
+    .about-cred-wrap {
+      margin-bottom: 28px;
+    }
+
+    .about-cred-tag {
+      display: inline-block;
+      background: var(--sage-pale);
+      border: 1px solid var(--sage-light);
+      border-radius: var(--radius-pill);
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sage);
+      letter-spacing: 0.04em;
+    }
+
+    .about-cta {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      padding: 14px 34px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .about-cta:hover { background: var(--rose-hover); transform: translateY(-1px); }
+
+    /* ============================================================
+       PROCESS — What to Expect
+    ============================================================ */
+    .process {
+      padding: 88px 0;
+      background: var(--sage-pale);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      position: relative;
+    }
+
+    .process-connector {
+      position: absolute;
+      top: 39px;
+      left: calc(100% / 6 + 20px);
+      right: calc(100% / 6 + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--sage-light), var(--rose-light));
+      pointer-events: none;
+    }
+
+    .process-step { text-align: center; }
+
+    .step-circle {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--sage-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 18px rgba(120, 158, 124, 0.15);
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--sage);
+    }
+
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      margin-bottom: 10px;
+    }
+
+    .process-step p {
+      font-size: 15px;
+      color: var(--warm-mid);
+      line-height: 1.72;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials {
+      padding: 88px 0;
+      background: var(--cream);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 34px 34px;
+      border: 1px solid var(--rose-light);
+      position: relative;
+    }
+
+    .testi-card::before {
+      content: '\201C';
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 5.5rem;
+      line-height: 1;
+      color: var(--rose-light);
+      position: absolute;
+      top: 8px;
+      left: 22px;
+      pointer-events: none;
+    }
+
+    .testi-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--rose-pale);
+      flex-shrink: 0;
+    }
+
+    .testi-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    blockquote.testi-text {
+      font-size: 16px;
+      color: var(--warm-mid);
+      line-height: 1.76;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .testi-attr {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--warm-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       PRACTICAL INFO
+    ============================================================ */
+    .practical {
+      padding: 80px 0;
+      background: var(--rose-pale);
+    }
+
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .practical-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 24px;
+      border: 1px solid var(--rose-light);
+    }
+
+    .practical-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+
+    .practical-card-content {
+      font-size: 15px;
+      color: var(--warm-mid);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact {
+      padding: 100px 0;
+      background: var(--cream);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--warm-dark);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      margin-top: 6px;
+    }
+
+    .contact-intro-p {
+      font-size: 16px;
+      color: var(--warm-mid);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .contact-phone-link {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--rose);
+      line-height: 1.1;
+      margin-bottom: 28px;
+      transition: color 0.2s;
+    }
+
+    .contact-phone-link:hover { color: var(--rose-hover); }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--warm-mid);
+      line-height: 1.5;
+    }
+
+    .detail-icon {
+      flex-shrink: 0;
+      color: var(--rose);
+      font-style: normal;
+      width: 18px;
+      margin-top: 1px;
+    }
+
+    .contact-detail a { color: var(--rose); }
+
+    .contact-form-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      border: 1px solid var(--rose-light);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--warm-mid);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid var(--rose-light);
+      border-radius: var(--radius-sm);
+      background: var(--cream);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--warm-dark);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--rose); }
+
+    .form-group textarea { min-height: 90px; resize: vertical; }
+
+    .form-btn {
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 15px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .form-btn:hover { background: var(--rose-hover); transform: translateY(-1px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--warm-dark);
+      padding: 36px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .footer-tagline-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 3px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.48);
+      text-align: right;
+    }
+
+    /* ============================================================
+       RESPONSIVE — TABLET (900px)
+    ============================================================ */
+    @media (max-width: 900px) {
+      .container { padding: 0 28px; }
+      nav { padding: 0 28px; }
+      .nav-drawer { padding: 16px 28px 24px; }
+
+      .nav-links,
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      h1.hero-headline { font-size: 3.8rem; }
+      .hero-content { padding: 0 28px 68px; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      #about-photo, #about-initials { height: 380px; }
+
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .process-connector { display: none; }
+
+      .testi-grid { grid-template-columns: 1fr; }
+
+      .practical-grid { grid-template-columns: 1fr 1fr; }
+
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-copy { text-align: center; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE (600px)
+    ============================================================ */
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      nav { padding: 0 20px; }
+      .nav-drawer { padding: 12px 20px 22px; }
+
+      h1.hero-headline { font-size: 2.9rem; }
+      .hero-subtext-p { font-size: 16px; }
+      .hero-content { padding: 0 20px 56px; }
+      .btn-hero-main { width: 100%; text-align: center; }
+
+      .welcome-tagline { font-size: 2.2rem; }
+
+      .section-title { font-size: 2.4rem; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .about-heading { font-size: 2.3rem; }
+      #about-photo, #about-initials { height: 300px; }
+
+      .practical-grid { grid-template-columns: 1fr; }
+
+      .contact-heading { font-size: 2.5rem; }
+      .contact-phone-link { font-size: 2rem; }
+      .contact-form-box { padding: 28px 22px; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Back Bay Life Coaching and Counseling</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">What to Expect</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="http://www.backbaylifecoaching.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5406979280243822341" class="nav-cta">Get Started Today</a>
+      <button class="nav-hamburger" onclick="toggleNav()" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-drawer" id="nav-drawer">
+        <a href="#services" onclick="closeNav()">Services</a>
+        <a href="#about" onclick="closeNav()">About</a>
+        <a href="#process" onclick="closeNav()">What to Expect</a>
+        <a href="#contact" onclick="closeNav()">Contact</a>
+        <a href="http://www.backbaylifecoaching.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5406979280243822341" class="drawer-cta" onclick="closeNav()">Get Started Today</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO — Full-width warm photo, handwritten headline
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-media">
+      <img id="hero-photo" src="https://static.wixstatic.com/media/35ec5d_bf69da56804f464b986f22a089be9b03~mv2.jpg/v1/fill/w_336,h_336,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/6_edited.jpg" alt="Kelly Easton">
+      <div id="hero-initials"><span class="opt">KE</span></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow-text"><span class="opt">MA, CAGS, MFA, LMHC</span></span>
+      <h1 class="hero-headline">Marriage Counseling, Couples Therapy and Personal Therapy</h1>
+      <p class="hero-subtext-p">Confidential, personalized, licensed professional therapy for anxiety, relationships and life transitions in Boston's Back Bay.</p>
+      <div class="hero-actions">
+        <a href="#process" class="btn-hero-main">Ready to see what it's like?</a>
+        <a href="#about" class="btn-hero-text">Learn More About Us</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       WELCOME STRIP — Brand tagline as landing breath
+  ============================================================ -->
+  
+  <section class="welcome" id="welcome">
+    <div class="container">
+      <div class="welcome-inner">
+        <p class="welcome-tagline">Confidential, personalized, licensed professional therapy for anxiety, relationships and life transitions in Boston's Back Bay.</p>
+        <div class="welcome-flourish"></div>
+      </div>
+    </div>
+  </section>
+  
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Services</span>
+        <h2 class="section-title">From anxiety relief to relationship healing, our licensed therapists are here to help.</h2>
+        <p class="section-subtitle">We offer evidence-based, personalized therapy for individuals and couples navigating life's challenges.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-photo-wrap">
+            <img id="svc1-img" src="https://static.wixstatic.com/media/ca9fb70eca3a44719518afef0ca2bd95.jpg/v1/fill/w_179,h_120,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ca9fb70eca3a44719518afef0ca2bd95.jpg" alt="Couples and Marriage Counseling">
+          </div>
+          <div class="service-body">
+            <h3>Couples and Marriage Counseling</h3>
+            <p>Our focus is on enhancing communication and intimacy, developing healthy avenues for conflict resolution, restoring connection and recovering the origins of intimacy and sexuality that brought you together. We use Gottman Method, Emotionally Focused Therapy (EFT), and problem-solving therapy.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-photo-wrap">
+            <img id="svc2-img" src="https://static.wixstatic.com/media/11062b_49c09fdc347e4e65950a56769454e115~mv2.jpg/v1/crop/x_0,y_297,w_4426,h_3069/fill/w_179,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Meditation%20in%20Light.jpg" alt="Anxiety and Stress Relief Therapy">
+          </div>
+          <div class="service-body">
+            <h3>Anxiety and Stress Relief Therapy</h3>
+            <p>Anxiety is one of the most common reasons individuals seek therapy. We help you learn skills with CBT treatment and mindfulness to regain inner peace, whether you experience panic attacks, difficulty concentrating, or persistent stress.</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-photo-wrap">
+            <img id="svc3-img" src="https://static.wixstatic.com/media/11062b_8bfbf8818ef2474c8a259e865a8ca7cf~mv2.jpeg/v1/fill/w_181,h_120,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8bfbf8818ef2474c8a259e865a8ca7cf~mv2.jpeg" alt="Premarital Counseling">
+          </div>
+          <div class="service-body">
+            <h3>Premarital Counseling</h3>
+            <p>Pre-marital counseling helps you plan for the next stages of your life together. Discuss finances, children, religious preferences, intimacy, communication, love languages and your new extended family prior to one of the biggest days of your life.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       ABOUT — Two-column: watercolor-border photo + personal story
+  ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-layout">
+
+        <div class="about-photo-col">
+          <div class="about-photo-wrap">
+            <div class="about-photo-inner">
+              <img id="about-photo" src="https://static.wixstatic.com/media/35ec5d_0679f6db41fb4116a3c148b8010a517d~mv2.png/v1/crop/x_0,y_0,w_512,h_501/fill/w_417,h_408,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png" alt="Kelly Easton">
+              <div id="about-initials"><span class="opt">KE</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text-col">
+          <span class="eyebrow eyebrow-sage">{{about_label}}</span>
+          <h2 class="about-heading">Find a Happier and Healthier You</h2>
+          <p class="about-body">Finding a therapist you feel compatible with can feel daunting. We are happy to offer you a complimentary 20-minute consultation so that you can better understand our approach and have your questions answered. Over 90% of our clients who take advantage of this consultation eventually choose to work with us. With decades of experience and the latest evidence-based approaches, we will help you achieve your goals and find your best self. Our Back Bay office is conveniently located at the corner of Newbury and Dartmouth St, close to Copley Square and the Prudential Center. We also offer secure online therapy.</p>
+          <div class="about-pull-block">
+            <p>Happiness is not something ready made; it comes from your own actions. — The Dalai Lama</p>
+          </div>
+          
+          <div class="about-cred-wrap">
+            <span class="about-cred-tag">MA, CAGS, MFA, LMHC</span>
+          </div>
+          
+          <a href="http://www.backbaylifecoaching.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5406979280243822341" class="about-cta">Get Started Today</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       PROCESS — What to Expect, 3-step illustrated
+  ============================================================ -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow eyebrow-sage">Our Process</span>
+        <h2 class="section-title">How We Work Together</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-connector"></div>
+        <div class="process-step">
+          <div class="step-circle"><span class="step-num">1</span></div>
+          <h3>Free 20-Minute Consultation</h3>
+          <p>Schedule a complimentary 20-minute consultation to learn about our approach, ask questions, and determine if we're the right fit for you. Over 90% of clients who take this step choose to work with us.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle"><span class="step-num">2</span></div>
+          <h3>Personalized Treatment Plan</h3>
+          <p>We collaboratively set goals and tailor your therapy using evidence-based methods including CBT, Mindfulness, Gottman Method, EFT, and Internal Family Systems — customized to your unique needs.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-circle"><span class="step-num">3</span></div>
+          <h3>Ongoing Sessions & Homework</h3>
+          <p>Most clients are seen on an alternating-week basis. Sessions are complemented by exercises, homework, and self-help reading to keep you engaged and progressing toward your goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       TESTIMONIALS (OPT)
+  ============================================================ -->
+  
+
+      </div>
+    </div>
+  </section>
+  <!-- /OPT:testimonial_text -->
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       PRACTICAL INFO — First-visit FAQ cards
+  ============================================================ -->
+  <section class="practical" id="practical">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Practical Tools for Lasting Change</h2>
+      </div>
+      <div class="practical-grid">
+
+        
+        <div class="practical-card">
+          <p class="practical-card-label">Session Options</p>
+          <p class="practical-card-content">Available in-person in Boston's Back Bay or via secure telehealth.</p>
+        </div>
+        
+
+        
+        <div class="practical-card">
+          <p class="practical-card-label">Insurance &amp; Fees</p>
+          <p class="practical-card-content">Please contact us for information about fees and accepted payment methods.</p>
+        </div>
+        
+
+        
+
+        
+        <div class="practical-card">
+          <p class="practical-card-label">Free Consultation</p>
+          <p class="practical-card-content">Start with a Free 20-Minute Consultation</p>
+        </div>
+        
+
+        
+        <div class="practical-card">
+          <p class="practical-card-label">Hours</p>
+          <p class="practical-card-content">Flexible scheduling available — contact us for current availability.</p>
+        </div>
+        
+
+        
+        <div class="practical-card">
+          <p class="practical-card-label">Location</p>
+          <p class="practical-card-content">143 Newbury St Suite 400, Boston, MA 02116</p>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="warm-rule">
+
+  <!-- ============================================================
+       CONTACT — Phone prominent, inline form
+  ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-layout">
+
+        <div class="contact-text-col">
+          <span class="eyebrow">Contact</span>
+          <h2 class="contact-heading">Get In Touch</h2>
+          <p class="contact-intro-p">Ready to take the first step? Reach out to schedule your complimentary 20-minute consultation. We look forward to speaking with you.</p>
+          
+          <a href="tel:+16176572636" class="contact-phone-link">+16176572636</a>
+          
+          <div class="contact-details">
+            
+            <div class="contact-detail">
+              <span class="detail-icon">✉</span>
+              <a href="mailto:eastonka@hotmail.com">eastonka@hotmail.com</a>
+            </div>
+            
+            
+            <div class="contact-detail">
+              <span class="detail-icon">&#x1F4CD;</span>
+              <span>Boston, MA</span>
+            </div>
+            
+            
+            <div class="contact-detail">
+              <span class="detail-icon">&#x1F550;</span>
+              <span>Flexible scheduling available — contact us for current availability.</span>
+            </div>
+            
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-form-box">
+            <form action="http://www.backbaylifecoaching.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5406979280243822341" method="GET">
+              <div class="form-group">
+                <label for="cf-name">Your Name</label>
+                <input type="text" id="cf-name" name="name" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email Address</label>
+                <input type="email" id="cf-email" name="email" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="cf-message">How can I help?</label>
+                <textarea id="cf-message" name="message"></textarea>
+              </div>
+              <button type="submit" class="form-btn">Get Started Today</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Back Bay Life Coaching and Counseling</div>
+          <div class="footer-tagline-text"><span class="opt">Confidential, personalized, licensed professional therapy for anxiety, relationships and life transitions in Boston's Back Bay.</span></div>
+        </div>
+        <div class="footer-copy">
+          &copy; 2026 Back Bay Life Coaching and Counseling. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // Nav hamburger
+    function toggleNav() {
+      document.getElementById('nav-drawer').classList.toggle('open');
+    }
+    function closeNav() {
+      document.getElementById('nav-drawer').classList.remove('open');
+    }
+    document.addEventListener('click', function(e) {
+      var nav = document.querySelector('nav');
+      if (nav && !nav.contains(e.target)) closeNav();
+    });
+
+    // Hero photo fallback
+    (function() {
+      var photo = document.getElementById('hero-photo');
+      var initials = document.getElementById('hero-initials');
+      if (!photo || !initials) return;
+      var src = photo.getAttribute('src') || '';
+      if (!src || src.indexOf('{{') > -1) { photo.style.display = 'none'; return; }
+      photo.onload = function() { initials.style.display = 'none'; };
+      photo.onerror = function() { this.style.display = 'none'; };
+    })();
+
+    // About photo fallback
+    (function() {
+      var photo = document.getElementById('about-photo');
+      var initials = document.getElementById('about-initials');
+      if (!photo || !initials) return;
+      var src = photo.getAttribute('src') || '';
+      if (!src || src.indexOf('{{') > -1) { photo.style.display = 'none'; return; }
+      photo.onload = function() { initials.style.display = 'none'; };
+      photo.onerror = function() { this.style.display = 'none'; };
+    })();
+
+    // Service photo fallbacks
+    (function() {
+      var slots = [
+        ['svc1-img', 'https://static.wixstatic.com/media/ca9fb70eca3a44719518afef0ca2bd95.jpg/v1/fill/w_179,h_120,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ca9fb70eca3a44719518afef0ca2bd95.jpg'],
+        ['svc2-img', 'https://static.wixstatic.com/media/11062b_49c09fdc347e4e65950a56769454e115~mv2.jpg/v1/crop/x_0,y_297,w_4426,h_3069/fill/w_179,h_124,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Meditation%20in%20Light.jpg'],
+        ['svc3-img', 'https://static.wixstatic.com/media/11062b_8bfbf8818ef2474c8a259e865a8ca7cf~mv2.jpeg/v1/fill/w_181,h_120,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_8bfbf8818ef2474c8a259e865a8ca7cf~mv2.jpeg']
+      ];
+      slots.forEach(function(s) {
+        var img = document.getElementById(s[0]);
+        if (!img) return;
+        var src = img.getAttribute('src') || '';
+        if (!src || src.indexOf('{{') > -1) { img.style.display = 'none'; return; }
+        img.onerror = function() { this.style.display = 'none'; };
+      });
+    })();
+
+    // Testimonial photo fallbacks
+    (function() {
+      var slots = [
+        ['testi1-img', '{{testimonial_1_photo_url}}'],
+        ['testi2-img', '{{testimonial_2_photo_url}}']
+      ];
+      slots.forEach(function(s) {
+        var img = document.getElementById(s[0]);
+        if (!img) return;
+        var src = img.getAttribute('src') || '';
+        if (!src || src.indexOf('{{') > -1) { img.style.display = 'none'; return; }
+        img.onerror = function() { this.style.display = 'none'; };
+      });
+    })();
+  </script>
+
+</body>
+</html>
