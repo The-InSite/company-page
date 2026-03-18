@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ben and Colleen | Wedding Photographers | Atlanta, GA</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #faf8f5;
+  --warm-white: #fffdfb;
+  --charcoal: #2c2c2c;
+  --soft-black: #1a1a1a;
+  --muted-gold: #c9a96e;
+  --light-gold: #e8d5b0;
+  --sage: #8a9a7b;
+  --blush: #e8d5c4;
+  --text-light: #6b6b6b;
+  --border-light: #e8e4df;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--charcoal);
+  background-color: var(--warm-white);
+  line-height: 1.7;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(255, 253, 251, 0.97);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.02em;
+  transition: color 0.4s ease;
+}
+
+nav.scrolled .nav-logo-text {
+  color: var(--charcoal);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  position: relative;
+  transition: color 0.4s ease;
+}
+
+nav.scrolled .nav-links a {
+  color: var(--charcoal);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--muted-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.5);
+  font-size: 0.7rem !important;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease !important;
+}
+
+.nav-cta::after {
+  display: none !important;
+}
+
+nav.scrolled .nav-cta {
+  border-color: var(--muted-gold);
+  color: var(--muted-gold) !important;
+}
+
+.nav-cta:hover {
+  background: var(--muted-gold);
+  border-color: var(--muted-gold);
+  color: white !important;
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.mobile-toggle span {
+  width: 25px;
+  height: 1.5px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+nav.scrolled .mobile-toggle span {
+  background: var(--charcoal);
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  min-height: 700px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://storage.googleapis.com/theinsite-scraped-images/1691/gallery_1.jpg') center center / cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.35) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.hero-content .eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero-content h1 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.hero-content .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  background: var(--muted-gold);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #b8934f;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: white;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.scroll-indicator span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  width: 1px;
+  height: 100%;
+  background: white;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* Section Styles */
+section {
+  padding: 7rem 0;
+}
+
+.section-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted-gold);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--soft-black);
+}
+
+.section-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--muted-gold);
+  margin: 0 auto 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* About Section */
+.about {
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--light-gold);
+  z-index: 0;
+}
+
+.about-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+}
+
+.about-text .highlight {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--charcoal);
+  line-height: 1.6;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  margin: 2rem 0;
+}
+
+.about-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--muted-gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* Services */
+.services {
+  background: var(--warm-white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+.service-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--cream);
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+
+.service-card:hover {
+  border-color: var(--light-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--muted-gold);
+  fill: none;
+  stroke-width: 1;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* Portfolio / Gallery */
+.portfolio {
+  background: var(--soft-black);
+  color: white;
+  padding: 7rem 0;
+}
+
+.portfolio .section-eyebrow {
+  color: var(--light-gold);
+}
+
+.portfolio .section-title {
+  color: white;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h4 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+}
+
+.gallery-overlay span {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--light-gold);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* Featured Weddings */
+.featured-weddings {
+  padding: 7rem 0;
+  background: var(--warm-white);
+}
+
+.wedding-list {
+  margin-top: 4rem;
+}
+
+.wedding-item {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.wedding-item:first-child {
+  border-top: 1px solid var(--border-light);
+}
+
+.wedding-item:hover {
+  padding-left: 1rem;
+}
+
+.wedding-item-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--muted-gold);
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.wedding-item-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  flex: 1;
+}
+
+.wedding-item-location {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* Process Section */
+.process {
+  background: var(--cream);
+  padding: 7rem 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.process-step {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  right: -1rem;
+  width: 2rem;
+  height: 1px;
+  background: var(--light-gold);
+}
+
+.process-step:last-child::after {
+  display: none;
+}
+
+.step-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--light-gold);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.process-step h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.process-step p {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* Testimonial */
+.testimonial-section {
+  background: var(--warm-white);
+  padding: 7rem 0;
+  text-align: center;
+}
+
+.testimonial-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  color: var(--light-gold);
+  line-height: 1;
+  margin-bottom: -1rem;
+}
+
+.testimonial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.testimonial-author {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted-gold);
+}
+
+/* Contact */
+.contact {
+  background: var(--cream);
+  padding: 7rem 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.contact-info h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  list-style: none;
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.contact-details li:first-child {
+  border-top: 1px solid var(--border-light);
+}
+
+.contact-details .label {
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  min-width: 70px;
+}
+
+.contact-form {
+  background: white;
+  padding: 3rem;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.04);
+}
+
+.contact-form h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form .form-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-light);
+  background: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--muted-gold);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--muted-gold);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  background: #b8934f;
+}
+
+/* Footer */
+footer {
+  background: var(--soft-black);
+  color: rgba(255,255,255,0.7);
+  padding: 4rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.footer-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--muted-gold);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,26,0.98);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: white;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: var(--muted-gold);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-step::after {
+    display: none;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .wedding-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .wedding-item-number {
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.3rem;
+  }
+
+  .about-text .highlight {
+    font-size: 1.2rem;
+  }
+}
+</style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-text">Ben & Colleen</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+    <div class="mobile-toggle" id="mobileToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#process" onclick="closeMobile()">Process</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Atlanta, Georgia &nbsp;·&nbsp; Wedding Photographers</div>
+    <h1>Ben <em>&</em> Colleen</h1>
+    <p class="subtitle">Every moment, as if it were the most important thing to ever happen</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Contact Us</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrapper fade-in-left">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1691/other_0.jpg" alt="Ben and Colleen, Wedding Photographers" class="about-image">
+      </div>
+      <div class="about-text fade-in-right">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-title">About Us</h2>
+        <p>We're Ben and Colleen, wedding photographers based in Atlanta, Georgia. We met in photography school in 2008 and have been photographing weddings together ever since.</p>
+        <div class="highlight">
+          "Our philosophy on wedding photography is to treat every moment as if it were the single most important thing to ever happen."
+        </div>
+        <p>Our cameras are constantly at our faces all day, capturing all the candid moments and real emotion. We hate the idea of putting arbitrary time limits on wedding coverage — we're there to tell your story from beginning to end.</p>
+        <p>We love everything about weddings, and we're super excited that you're considering making us a part of your wedding day!</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Years Together</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Photographers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Moments Captured</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="container text-center">
+    <div class="section-eyebrow fade-in">What We Offer</div>
+    <h2 class="section-title fade-in">Our Services</h2>
+    <div class="section-divider fade-in"></div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="36" height="28" rx="3"/>
+            <circle cx="24" cy="24" r="7"/>
+            <circle cx="24" cy="24" r="3"/>
+            <rect x="18" y="6" width="12" height="4" rx="1"/>
+          </svg>
+        </div>
+        <h3>Wedding Photography</h3>
+        <p>Full-day coverage capturing every candid moment and real emotion from beginning to end. Two photographers working together to tell your complete love story.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
+            <path d="M16 20c0 0 3 8 8 8s8-8 8-8"/>
+            <circle cx="18" cy="16" r="1.5"/>
+            <circle cx="30" cy="16" r="1.5"/>
+          </svg>
+        </div>
+        <h3>Engagement Sessions</h3>
+        <p>Intimate sessions at meaningful locations — from Inman Park neighborhoods to Sweetwater Creek sunsets. Let us help you feel natural in front of the camera.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 44l4-16L4 20h12L24 4l8 16h12l-8 8 4 16-16-8z"/>
+          </svg>
+        </div>
+        <h3>Elopements</h3>
+        <p>Whether it's Jackson Hole or your own backyard, we travel wherever love takes us. Intimate celebrations documented with the same dedication as grand affairs.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="4" width="32" height="40" rx="2"/>
+            <line x1="14" y1="14" x2="34" y2="14"/>
+            <line x1="14" y1="20" x2="34" y2="20"/>
+            <line x1="14" y1="26" x2="28" y2="26"/>
+            <rect x="14" y="32" width="8" height="6" rx="1"/>
+          </svg>
+        </div>
+        <h3>Film + Digital</h3>
+        <p>We shoot both digital and film for a rich, timeless quality. From dreamy Minolta lenses to medium format Mamiya, every image is crafted with intention.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 36l10-10 6 6 12-14 12 10"/>
+            <rect x="4" y="8" width="40" height="32" rx="2"/>
+          </svg>
+        </div>
+        <h3>Destination Weddings</h3>
+        <p>From San Francisco to Beverly Hills, we've captured love stories across the country. Available for travel to your dream destination anywhere in the world.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4l6 12h14l-10 8 4 14-14-8-14 8 4-14L4 16h14z"/>
+          </svg>
+        </div>
+        <h3>Full Story Coverage</h3>
+        <p>No arbitrary time limits. We're there from the first mimosa toast to the last dance, because your story deserves to be told completely and beautifully.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section class="portfolio" id="portfolio">
+  <div class="container text-center">
+    <div class="section-eyebrow fade-in">Recent Work</div>
+    <h2 class="section-title fade-in">Our Portfolio</h2>
+    <div class="section-divider fade-in" style="background: var(--light-gold);"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1691/gallery_0.jpg" alt="Wedding photography by Ben and Colleen">
+        <div class="gallery-overlay">
+          <div>
+            <h4>Sweet Meadow Farm</h4>
+            <span>Atlanta, Georgia</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1691/gallery_1.jpg" alt="Wedding photography by Ben and Colleen">
+        <div class="gallery-overlay">
+          <div>
+            <h4>Vinewood Stables</h4>
+            <span>Georgia</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1691/gallery_2.jpg" alt="Wedding photography by Ben and Colleen">
+        <div class="gallery-overlay">
+          <div>
+            <h4>Sugarboo Farms</h4>
+            <span>Georgia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Weddings -->
+<section class="featured-weddings">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow fade-in">Love Stories</div>
+      <h2 class="section-title fade-in">Featured Weddings</h2>
+      <div class="section-divider fade-in"></div>
+    </div>
+    <div class="wedding-list fade-in">
+      <div class="wedding-item">
+        <span class="wedding-item-number">01</span>
+        <span class="wedding-item-title">Jess & Dustin's Sweet Meadow Farm Wedding</span>
+        <span class="wedding-item-location">Atlanta, GA</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">02</span>
+        <span class="wedding-item-title">Alex & Tim's Vinewood Stables Wedding</span>
+        <span class="wedding-item-location">Georgia</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">03</span>
+        <span class="wedding-item-title">Victoria & Bryan's Sugarboo Farms Wedding</span>
+        <span class="wedding-item-location">Georgia</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">04</span>
+        <span class="wedding-item-title">Amber & Zeeshan's San Francisco Wedding</span>
+        <span class="wedding-item-location">San Francisco, CA</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">05</span>
+        <span class="wedding-item-title">Mia & Vince's Greystone Mansion Wedding</span>
+        <span class="wedding-item-location">Beverly Hills, CA</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">06</span>
+        <span class="wedding-item-title">Kathryn & Matt's Chattooga Belle Farm Wedding</span>
+        <span class="wedding-item-location">South Carolina</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">07</span>
+        <span class="wedding-item-title">Katie & Thomas's Jackson Hole Elopement</span>
+        <span class="wedding-item-location">Jackson Hole, WY</span>
+      </div>
+      <div class="wedding-item">
+        <span class="wedding-item-number">08</span>
+        <span class="wedding-item-title">Bixby & Jared's Chukkar Farm Wedding</span>
+        <span class="wedding-item-location">Georgia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process" id="process">
+  <div class="container text-center">
+    <div class="section-eyebrow fade-in">The Experience</div>
+    <h2 class="section-title fade-in">How It Works</h2>
+    <div class="section-divider fade-in"></div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-number">01</div>
+        <h3>Reach Out</h3>
+        <p>Send us a message with details about your wedding, especially your date. We'd love to hear your story and see if we're a good fit.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-number">02</div>
+        <h3>Connect</h3>
+        <p>We'll set up a time to chat — whether in person at an Atlanta coffee shop or over video call. Let's get to know each other.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-number">03</div>
+        <h3>Plan Together</h3>
+        <p>We'll work together on the timeline and details. We may suggest an engagement session to warm up in front of the camera.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-number">04</div>
+        <h3>Your Day</h3>
+        <p>We'll be there from beginning to end — no time limits. Just two photographers capturing every candid moment and real emotion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial-content fade-in">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">We love everything about weddings, and we're super excited that you're considering making us a part of your wedding day. Our cameras are constantly at our faces all day, capturing all the candid moments and real emotion.</p>
+      <p class="testimonial-author">— Ben & Colleen</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow fade-in">Let's Connect</div>
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <div class="section-divider fade-in"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in-left">
+        <h3>We'd love to hear from you</h3>
+        <p>Send us a message! Please include any relevant information about your wedding, particularly your wedding date (if you've selected one.) Thanks for getting in touch and we'll get back to you as soon as possible!</p>
+        <ul class="contact-details">
+          <li>
+            <span class="label">Email</span>
+            <a href="mailto:info@benandcolleen.us">info@benandcolleen.us</a>
+          </li>
+          <li>
+            <span class="label">Based In</span>
+            <span>Atlanta, Georgia</span>
+          </li>
+          <li>
+            <span class="label">Website</span>
+            <a href="http://www.benandcolleen.us/" target="_blank">www.benandcolleen.us</a>
+          </li>
+          <li>
+            <span class="label">Travel</span>
+            <span>Available worldwide</span>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form fade-in-right">
+        <h3>Send a Message</h3>
+        <p class="form-subtitle">We typically respond within 24 hours</p>
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="weddingDate">Wedding Date</label>
+            <input type="text" id="weddingDate" name="weddingDate" placeholder="MM/DD/YYYY or TBD">
+          </div>
+          <div class="form-group">
+            <label for="venue">Venue / Location</label>
+            <input type="text" id="venue" name="venue" placeholder="Where will the celebration be?">
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Day</label>
+            <textarea id="message" name="message" rows="5" placeholder="Share any details about your wedding plans..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Ben & Colleen</h3>
+        <p>Wedding Photographers &nbsp;·&nbsp; Atlanta, Georgia</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Ben and Colleen, Wedding Photographers. All rights reserved.</span>
+      <span>Atlanta, GA &nbsp;·&nbsp; Available for travel</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+mobileToggle.addEventListener('click', () => {
+  mobileMenu.classList.add('active');
+  document.body.style.overflow = 'hidden';
+});
+
+mobileClose.addEventListener('click', closeMobile);
+
+function closeMobile() {
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+  observer.observe(el);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 80;
+      const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: position, behavior: 'smooth' });
+    }
+  });
+});
+
+// Form submission feedback
+const form = document.querySelector('.contact-form form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#8a9a7b';
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    form.reset();
+  }, 3000);
+});
+</script>
+</body>
+</html>
