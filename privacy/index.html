@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy Policy for The InSite Company — how we collect, use, and protect your personal data." />
+  <meta property="og:title" content="Privacy Policy — The InSite Company" />
+  <meta property="og:url" content="https://theinsite.dev/privacy" />
+  <meta property="og:type" content="website" />
+  <title>Privacy Policy — The InSite Company</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #08070a;
+      --surface:    #0c0b10;
+      --card:       #110f18;
+      --border:     rgba(212,175,55,0.1);
+      --border-dim: rgba(255,255,255,0.06);
+      --gold:       #d4af37;
+      --gold2:      #f0c040;
+      --gold-dim:   rgba(212,175,55,0.3);
+      --gold-glow:  rgba(212,175,55,0.15);
+      --text:       #ffffff;
+      --muted:      #a89fb8;
+      --muted2:     #7a7090;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.375rem 6%;
+      background: rgba(8,7,10,0.82);
+      backdrop-filter: blur(20px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+    nav.scrolled { padding-top: 1rem; padding-bottom: 1rem; }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 600; letter-spacing: .05em;
+      color: var(--gold); text-decoration: none; white-space: nowrap;
+    }
+    .logo span { color: var(--text); font-weight: 400; font-style: italic; }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      padding: .6rem 1.6rem !important;
+      border: 1px solid var(--gold-dim) !important;
+      color: var(--gold) !important;
+      letter-spacing: .08em !important;
+      transition: background .25s, border-color .25s !important;
+    }
+    .nav-cta:hover {
+      background: rgba(212,175,55,0.08) !important;
+      border-color: var(--gold) !important;
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: .25rem; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--text); transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; top: 70px; z-index: 190;
+      background: rgba(8,7,10,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none;
+      font-size: 1.5rem; font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: .05em; transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-cta {
+      padding: .75rem 2.5rem;
+      border: 1px solid var(--gold-dim); color: var(--gold) !important;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase; font-family: 'Inter', sans-serif;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 12rem 6% 5rem;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 400px;
+      background: radial-gradient(ellipse at center top,
+        rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.02) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-inner { max-width: 760px; position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: .6rem;
+      color: var(--muted2); font-size: 0.75rem; letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 2rem;
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--muted2); }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600; line-height: 1.1; letter-spacing: -.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .last-updated {
+      color: var(--muted2); font-size: 0.78rem; letter-spacing: .04em;
+    }
+
+    /* ── LEGAL CONTENT ── */
+    .legal-section {
+      padding: 5rem 6%;
+      position: relative; z-index: 1;
+    }
+
+    .legal-inner { max-width: 760px; }
+
+    .legal-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      margin: 3.5rem 0 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .legal-inner h2:first-child { margin-top: 0; }
+
+    .legal-inner h3 {
+      font-size: 0.88rem; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--gold); margin: 2rem 0 .75rem;
+    }
+
+    .legal-inner p {
+      color: var(--muted); font-size: 0.88rem;
+      line-height: 1.8; font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .legal-inner ul {
+      list-style: none; margin-bottom: 1.25rem;
+    }
+    .legal-inner ul li {
+      color: var(--muted); font-size: 0.88rem;
+      line-height: 1.8; font-weight: 300;
+      padding-left: 1.25rem; position: relative;
+      margin-bottom: .4rem;
+    }
+    .legal-inner ul li::before {
+      content: '—'; color: var(--gold);
+      position: absolute; left: 0;
+    }
+
+    .legal-inner a {
+      color: var(--gold); text-decoration: none;
+    }
+    .legal-inner a:hover { text-decoration: underline; }
+
+    .contact-block {
+      margin-top: 3rem;
+      padding: 2rem 2.25rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .contact-block h4 {
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .75rem;
+    }
+
+    .contact-block p {
+      color: var(--muted); font-size: 0.85rem;
+      line-height: 1.7; font-weight: 300; margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 2rem;
+      padding: 2.5rem 6%;
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; letter-spacing: .05em;
+      color: var(--gold); text-decoration: none;
+    }
+    .footer-logo span { color: var(--text); font-weight: 400; font-style: italic; }
+
+    .footer-links {
+      display: flex; gap: 2rem; list-style: none;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--muted2); text-decoration: none;
+      font-size: 0.75rem; letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      color: var(--muted2); font-size: 0.72rem;
+      letter-spacing: .05em; text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      footer { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .footer-copy { text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .page-header { padding: 10rem 5% 4rem; }
+      .legal-section { padding: 3rem 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a href="/" class="logo">the <span>InSite</span> Co.</a>
+
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#who-we-serve">Clients</a></li>
+    <li><a href="/#process">Process</a></li>
+    <li><a href="/#team">Team</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/#contact" class="nav-cta">Begin</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#services" class="mobile-link">Services</a>
+  <a href="/#who-we-serve" class="mobile-link">Clients</a>
+  <a href="/#process" class="mobile-link">Process</a>
+  <a href="/#team" class="mobile-link">Team</a>
+  <a href="/pricing" class="mobile-link">Pricing</a>
+  <a href="/#contact" class="mobile-link m-cta">Begin Your Transformation</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>Privacy Policy</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: March 23, 2026</p>
+  </div>
+</div>
+
+<!-- LEGAL CONTENT -->
+<section class="legal-section">
+  <div class="legal-inner">
+
+    <h2>1. Overview</h2>
+    <p>The InSite Company ("Company," "we," "us," or "our") is committed to protecting your personal data. This Privacy Policy explains what information we collect, how we use it, and your rights in relation to it when you use our website at <a href="https://theinsite.dev">theinsite.dev</a> or engage our services.</p>
+    <p>Please read this policy carefully. By using our Service, you acknowledge that you have read and understood this Privacy Policy.</p>
+
+    <h2>2. Information We Collect</h2>
+    <h3>2.1 Information You Provide</h3>
+    <p>We collect information you voluntarily provide when you:</p>
+    <ul>
+      <li>Contact us via email or inquiry forms (name, email address, message content)</li>
+      <li>Subscribe to our Service (name, email address, business details)</li>
+      <li>Provide content and materials for your website (business information, images, copy)</li>
+    </ul>
+
+    <h3>2.2 Payment Information</h3>
+    <p>All payment transactions are processed by Paddle.com Market Limited ("Paddle"), our Merchant of Record. We do not collect or store your payment card details. Paddle's handling of your payment data is governed by <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">Paddle's Privacy Policy</a>.</p>
+
+    <h3>2.3 Usage Data</h3>
+    <p>When you visit our website, we may automatically collect limited technical data such as your IP address, browser type, pages visited, and the date and time of your visit. This data is used solely for security monitoring and improving site performance.</p>
+
+    <h2>3. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Provide, operate, and improve the Service</li>
+      <li>Communicate with you about your subscription, updates, and support</li>
+      <li>Process transactions via our payment processor (Paddle)</li>
+      <li>Comply with legal obligations</li>
+      <li>Prevent fraud and ensure security</li>
+    </ul>
+    <p>We do not sell, rent, or trade your personal data to third parties for marketing purposes.</p>
+
+    <h2>4. Legal Basis for Processing</h2>
+    <p>Where applicable under data protection law (including the GDPR), we process your personal data on the following legal bases:</p>
+    <ul>
+      <li><strong>Contract performance</strong> — to deliver the Service you have subscribed to</li>
+      <li><strong>Legitimate interests</strong> — to operate and improve our business, provided these interests do not override your rights</li>
+      <li><strong>Legal obligation</strong> — to comply with applicable laws and regulations</li>
+      <li><strong>Consent</strong> — where you have provided explicit consent (e.g., marketing communications)</li>
+    </ul>
+
+    <h2>5. Data Sharing</h2>
+    <p>We share your data only with trusted third parties necessary to provide the Service:</p>
+    <ul>
+      <li><strong>Paddle</strong> — payment processing and billing (Merchant of Record)</li>
+      <li><strong>Vercel</strong> — website hosting and deployment infrastructure</li>
+      <li><strong>Google Fonts</strong> — font delivery (may log your IP address)</li>
+    </ul>
+    <p>Each third party is required to handle your data in accordance with applicable privacy laws. We do not share your data with advertising networks or data brokers.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your personal data for as long as your account is active or as needed to provide the Service. Upon cancellation of your subscription, we may retain your data for up to 12 months for legal and accounting purposes, after which it is securely deleted.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+      <li><strong>Rectification</strong> — request correction of inaccurate data</li>
+      <li><strong>Erasure</strong> — request deletion of your data ("right to be forgotten")</li>
+      <li><strong>Portability</strong> — request your data in a structured, machine-readable format</li>
+      <li><strong>Objection</strong> — object to processing based on legitimate interests</li>
+      <li><strong>Restriction</strong> — request that we limit processing of your data</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:support@theinsite.dev">support@theinsite.dev</a>. We will respond within 30 days.</p>
+
+    <h2>8. Cookies</h2>
+    <p>Our website uses minimal cookies strictly necessary for the site to function (e.g., session management). We do not use tracking cookies, advertising cookies, or third-party analytics cookies without your consent.</p>
+
+    <h2>9. Security</h2>
+    <p>We implement industry-standard security measures including HTTPS encryption, secure headers, and access controls to protect your data. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>Our Service is not directed to individuals under the age of 18. We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us and we will promptly delete it.</p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by email or by posting a notice on our website. The "Last updated" date at the top of this page reflects when the policy was last revised.</p>
+
+    <h2>12. Contact</h2>
+    <p>For privacy-related questions or to exercise your rights, please contact:</p>
+    <div class="contact-block">
+      <h4>The InSite Company — Privacy</h4>
+      <p>
+        Email: <a href="mailto:support@theinsite.dev">support@theinsite.dev</a><br>
+        Website: <a href="https://theinsite.dev">theinsite.dev</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">the <span>InSite</span> Co.</a>
+
+  <ul class="footer-links">
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/terms">Terms of Service</a></li>
+    <li><a href="/privacy">Privacy Policy</a></li>
+    <li><a href="/refund">Refund Policy</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="footer-copy">
+    © 2026 The InSite Company<br>theinsite.dev
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const burger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>
