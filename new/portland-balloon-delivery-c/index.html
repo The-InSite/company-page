@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Portland Balloon Delivery — balloon decorator | WA</title>
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Pro:wght@300;400&display=fallback">
+  
+  
+  
+  <style>
+    :root {
+  --color-primary: #3D1C0F;
+  --color-accent: #C4622D;
+  --color-background: #FAF7F2;
+  --color-surface: #F0E8DC;
+  --color-text-primary: #3D1C0F;
+  --color-text-secondary: #6B4C3B;
+  --color-cta-bg: #C4622D;
+  --color-cta-text: #FFFFFF;
+  --color-cta-hover: #A8521F;
+  --color-border: #E8D8C8;
+  --font-display: "Playfair Display";
+  --font-body: "Crimson Pro";
+  --base-size: 17px;
+  --type-scale-ratio: 1.5;
+  --h1-size: 5.0625rem;
+  --h2-size: 3.3750rem;
+  --h3-size: 2.2500rem;
+  --h4-size: 1.5000rem;
+  --h1-weight: 700;
+  --h2-weight: 400;
+  --body-weight: 300;
+  --letter-spacing-display: 0.01em;
+  --letter-spacing-body: 0.02em;
+  --line-height-display: 1.2;
+  --line-height-body: 1.8;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --section-padding-mobile: 4rem 1.5rem;
+  --section-padding-desktop: 8rem 4rem;
+  --card-gap: 2rem;
+  --heading-margin-bottom: 1.5rem;
+  --paragraph-margin-bottom: 2rem;
+  --border-radius-sm: 12px;
+  --border-radius-md: 20px;
+  --border-radius-lg: 32px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 700ms;
+  --animation-stagger: 200ms;
+  --animation-type: slide_up;
+}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body), system-ui, sans-serif;
+      color: var(--color-text-primary);
+      background-color: var(--color-background);
+      line-height: var(--line-height-body, 1.6);
+      overflow-x: hidden;
+      width: 100%;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    button, a { min-height: 44px; }
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-primary);
+      color: var(--color-background);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-nav:focus { top: 0; }
+    :focus-visible {
+      outline: 3px solid var(--color-primary, #000);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: slideUp 700ms ease-out forwards;
+}
+    .section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.08));
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.nav-logo {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  line-height: 1.2;
+}
+.nav-logo img {
+  max-height: 2.5rem;
+  width: auto;
+}
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3125rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 0.1875rem;
+  background: var(--color-text-primary);
+  border-radius: 0.125rem;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.1));
+  padding: 1rem;
+}
+.nav-menu[aria-expanded="true"] {
+  display: block;
+}
+.nav-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.nav-cta-desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .nav-inner {
+    padding: 1rem 2rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav-menu a {
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+  .nav-cta-desktop {
+    display: inline-flex;
+  }
+  .nav-cta-mobile {
+    display: none;
+  }
+}
+.section-hero-fullbleed {
+  position: relative;
+  min-height: 80svh;
+  min-height: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  overflow: hidden;
+  text-align: center;
+}
+.hero-fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-fullbleed-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.hero-fullbleed-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  padding: 1rem;
+}
+.hero-fullbleed-headline {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h1-size, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.hero-fullbleed-subheadline {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-lg, 1.125rem);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-fullbleed-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-lg, 1.125rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
+  transition: background 0.2s;
+}
+.hero-fullbleed-cta:hover {
+  background: var(--color-cta-hover, var(--color-accent));
+}
+.hero-fullbleed-fallback-bg {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
+}
+@media (min-width: 768px) {
+  .section-hero-fullbleed {
+    padding: var(--section-padding-desktop, 5rem 2rem);
+  }
+  .hero-fullbleed-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
+  }
+  .hero-fullbleed-subheadline {
+    font-size: var(--text-xl, 1.25rem);
+  }
+}
+.section-gallery-masonry {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.gallery-masonry-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.gallery-masonry-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.gallery-masonry-items {
+  columns: 2;
+  column-gap: var(--card-gap, 0.75rem);
+}
+.gallery-masonry-item {
+  break-inside: avoid;
+  margin-bottom: var(--card-gap, 0.75rem);
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.gallery-masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  .section-gallery-masonry {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .gallery-masonry-items {
+    columns: 3;
+    column-gap: var(--card-gap, 1rem);
+  }
+}
+.section-about {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.about-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-image-wrap {
+  border-radius: var(--border-radius-lg, 1rem);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+.about-text {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.about-meta-item:has(.about-meta-value:empty) {
+  display: none;
+}
+.about-meta-item {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+}
+.about-meta-item strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .section-about {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .about-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+  .about-image-wrap {
+    flex: 0 0 40%;
+    aspect-ratio: 3 / 4;
+  }
+  .about-content {
+    flex: 1;
+  }
+}
+.section-shop-cards {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.shop-cards-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.shop-cards-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.shop-cards-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
+}
+.product-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.product-card:hover {
+  box-shadow: var(--shadow, 0 4px 16px rgba(0,0,0,0.1));
+}
+.product-card-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card-body {
+  padding: 1.25rem;
+}
+.product-card-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+.product-card-price {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.375rem;
+}
+.product-card-desc {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.shop-cta {
+  display: block;
+  text-align: center;
+  margin: 2rem auto 0;
+  max-width: 20rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--border-radius-md, 0.5rem);
+}
+@media (min-width: 768px) {
+  .section-shop-cards {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .shop-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+}
+.section-process {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-surface);
+}
+.process-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.process-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.process-steps {
+  display: grid;
+  gap: 2rem;
+  position: relative;
+}
+.process-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.process-step-number {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-lg, 1.125rem);
+  font-weight: 700;
+  border-radius: 50%;
+}
+.process-step-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h3-size, 1.125rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.375rem;
+}
+.process-step-desc {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 0.9375rem);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .section-process {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+}
+.section-testimonials-cards {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.testimonials-cards-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.testimonials-cards-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.testimonials-cards-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
+}
+.testimonial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.testimonial-card-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.testimonial-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testimonial-card-text {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 0.9375rem);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.testimonial-card-author {
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.testimonial-card-location {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+}
+@media (min-width: 768px) {
+  .section-testimonials-cards {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .testimonials-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+}
+.section-contact {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-surface);
+}
+.contact-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.contact-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.contact-item {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: 1.25rem;
+}
+.contact-item-label {
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+.contact-item-value {
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+.contact-item-value a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-cta {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-lg, 1.125rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+}
+@media (min-width: 768px) {
+  .section-contact {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.section-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 2.5rem 1rem 1.5rem;
+}
+.footer-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+}
+.footer-brand {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.footer-heading {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+}
+.footer-contact-list li {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.footer-contact-list a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footer-copyright {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+}
+.footer-legal {
+  display: flex;
+  gap: 1.25rem;
+}
+.footer-legal a {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.footer-legal a:hover {
+  color: var(--color-primary);
+}
+.footer-legal-hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .section-footer {
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<main id="main-content">
+<nav class="section-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Portland Balloon Delivery — Home">Portland Balloon Delivery</a>
+    <a href="tel:15032850000" class="nav-cta nav-cta-desktop">Contact Us</a>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-menu" data-nav-menu aria-expanded="false">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:15032850000" class="nav-cta nav-cta-mobile">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-hero-fullbleed">
+  <div class="hero-fullbleed-bg">
+    <img
+      src="https://storage.googleapis.com/theinsite-scraped-images/1991/hero_0.png"
+      srcset="https://storage.googleapis.com/theinsite-scraped-images/1991/hero_0.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1991/hero_0.png 1024w"
+      sizes="100vw"
+      width="1200"
+      height="675"
+      alt="Hero Image"
+      loading="eager"
+    >
+    <div class="hero-fullbleed-overlay"></div>
+  </div>
+  <div class="hero-fullbleed-content">
+    <h1 class="hero-fullbleed-headline">Portland Balloon Delivery</h1>
+    <p class="hero-fullbleed-subheadline"></p>
+    <a href="tel:15032850000" class="hero-fullbleed-cta">Contact Us</a>
+  </div>
+</section>
+
+<section class="section-gallery-masonry" id="gallery">
+  <div class="gallery-masonry-inner">
+    <h2 class="gallery-masonry-title"></h2>
+    <div class="gallery-masonry-items">
+      <div class="gallery-masonry-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1991/other_0.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1991/other_0.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1991/other_0.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Gallery Image 1" loading="lazy">
+      </div>
+      <div class="gallery-masonry-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1991/other_1.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1991/other_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1991/other_1.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Gallery Image 2" loading="lazy">
+      </div>
+      <div class="gallery-masonry-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1991/other_2.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1991/other_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1991/other_2.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="400" alt="Gallery Image 3" loading="lazy">
+      </div>
+      <div class="gallery-masonry-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/1991/other_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1991/other_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1991/other_3.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="540" alt="Gallery Image 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-about" id="about">
+  <div class="about-inner">
+    <div class="about-image-wrap">
+      <div role="img" aria-label="Portland Balloon Delivery" style="background:linear-gradient(135deg, hsl(87, 30%, 80%) 0%, hsl(127, 25%, 70%) 100%);width:100%;aspect-ratio:600/800;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Portland Balloon Delivery]]</div>
+    </div>
+    <div class="about-content">
+      <h2 class="about-title">About Portland Balloon Delivery</h2>
+      <p class="about-text">Clarence Walker for Flowers has been in the florist business in North Portland since 1948.  First on North Killingsworth Street and now on North Mississippi Ave.We have been selling balloons for as long as we can remember.  On our traditional florist web site there was no way to show all the balloons we have to offer, afterall it is a florist site not a balloon site.</p>
+      <div class="about-meta">
+        <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value"></span></span>
+        <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-shop-cards" id="shop">
+  <div class="shop-cards-inner">
+    <h2 class="shop-cards-title"></h2>
+    <div class="shop-cards-grid">
+      <article class="product-card">
+        <div class="product-card-image">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(75, 30%, 80%) 0%, hsl(115, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-name"></h3>
+          <div class="product-card-price"></div>
+          <p class="product-card-desc"></p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-card-image">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(342, 30%, 80%) 0%, hsl(22, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-name"></h3>
+          <div class="product-card-price"></div>
+          <p class="product-card-desc"></p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-card-image">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(217, 30%, 80%) 0%, hsl(257, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-name"></h3>
+          <div class="product-card-price"></div>
+          <p class="product-card-desc"></p>
+        </div>
+      </article>
+    </div>
+    <a href="" class="shop-cta"></a>
+  </div>
+</section>
+
+<section class="section-process" id="process">
+  <div class="process-inner">
+    <h2 class="process-title"></h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="process-step-number">1</span>
+        <div>
+          <h3 class="process-step-title"></h3>
+          <p class="process-step-desc"></p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-number">2</span>
+        <div>
+          <h3 class="process-step-title"></h3>
+          <p class="process-step-desc"></p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-step-number">3</span>
+        <div>
+          <h3 class="process-step-title"></h3>
+          <p class="process-step-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-testimonials-cards" id="testimonials">
+  <div class="testimonials-cards-inner">
+    <h2 class="testimonials-cards-title">What Clients Say</h2>
+    <div class="testimonials-cards-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(37, 30%, 80%) 0%, hsl(77, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(162, 30%, 80%) 0%, hsl(202, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(255, 30%, 80%) 0%, hsl(295, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-contact" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Get in Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-item-label">Phone</div>
+        <div class="contact-item-value"><a href="tel:+15032850000">+15032850000</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a href="mailto:sales@portlandballoondelivery.com">sales@portlandballoondelivery.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Service Area</div>
+        <div class="contact-item-value">4058 N Mississippi Ave, Portland, OR 97227</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Hours</div>
+        <div class="contact-item-value"></div>
+      </div>
+    </div>
+    <a href="tel:+15032850000" class="contact-cta">Contact Us</a>
+  </div>
+</section>
+
+<footer class="section-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Portland Balloon Delivery</div>
+        <p class="footer-tagline">Illustration That Tells Your Story</p>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-contact-list">
+          <li><a href="tel:+15032850000">+15032850000</a></li>
+          <li><a href="mailto:sales@portlandballoondelivery.com">sales@portlandballoondelivery.com</a></li>
+          <li>4058 N Mississippi Ave, Portland, OR 97227</li>
+          <li>4058 N Mississippi Ave, Portland, OR 97227</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Hours</div>
+        <p class="footer-tagline"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy;  Portland Balloon Delivery. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="">Privacy Policy</a>
+        <a href="" class="">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script>
+  // Hamburger menu — vanilla JS, no dependencies
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var menu = document.querySelector('[data-nav-menu]');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        var open = menu.getAttribute('aria-expanded') === 'true';
+        menu.setAttribute('aria-expanded', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  });
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 200) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
