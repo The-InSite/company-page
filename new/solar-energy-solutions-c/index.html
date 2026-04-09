@@ -14,16 +14,16 @@
   
   <style>
     :root {
-  --color-primary: #1F2937;
-  --color-accent: #374151;
-  --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text-primary: #1F2937;
-  --color-text-secondary: #6B7280;
-  --color-cta-bg: #1F2937;
+  --color-primary: #2C1810;
+  --color-accent: #C17F24;
+  --color-background: #FAFAF8;
+  --color-surface: #F2EDE4;
+  --color-text-primary: #2C1810;
+  --color-text-secondary: #5C4A3A;
+  --color-cta-bg: #C17F24;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #111827;
-  --color-border: #E5E7EB;
+  --color-cta-hover: #A66B1A;
+  --color-border: #E8DDD0;
   --font-display: Montserrat;
   --font-body: "Open Sans";
   --base-size: 16px;
@@ -46,19 +46,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 2.5rem 1rem;
-  --section-padding-desktop: 4rem 2rem;
-  --card-gap: 0.5rem;
-  --heading-margin-bottom: 0.75rem;
-  --paragraph-margin-bottom: 1rem;
-  --border-radius-sm: 8px;
-  --border-radius-md: 16px;
-  --border-radius-lg: 24px;
-  --button-radius: 100px;
-  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
-  --animation-duration: 400ms;
-  --animation-stagger: 100ms;
-  --animation-type: fade_in;
+  --section-padding-mobile: 4rem 1.5rem;
+  --section-padding-desktop: 8rem 4rem;
+  --card-gap: 1.5rem;
+  --heading-margin-bottom: 1.25rem;
+  --paragraph-margin-bottom: 1.5rem;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --button-radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
+  --animation-duration: 600ms;
+  --animation-stagger: 150ms;
+  --animation-type: slide_up;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,13 +95,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: fadeIn 400ms ease-out forwards;
+  animation: slideUp 600ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -424,6 +424,29 @@
   font-size: 0.9375rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
+}
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.875rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.service-card-link:empty,
+.service-card-link[href=""],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/index.htm"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/leasing.htm"] {
+  display: none;
+}
+.service-card-link:hover {
+  text-decoration: underline;
 }
 @media (min-width: 768px) {
   .section-services-cards {
@@ -917,6 +940,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
           <p class="service-card-desc">Tour our photo galleries of recent solar electric / photovoltaic installations, including dual photovoltaic / solar hot water systems and racked systems.</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/index.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -934,6 +958,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">Providing Solar Electric, Solar Hot Water and Solar Pool Installation,</h3>
           <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -950,7 +975,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar PhotovoltaicsSolar Electric / Photovoltaics</h3>
-          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
+          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -967,7 +993,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Pool HeatingSolar Pool Heating</h3>
-          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
+          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -984,7 +1011,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Hot WaterSolar Hot Water</h3>
-          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
+          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -1002,6 +1030,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">We honestly don't know whether leasing would be a good or bad idea for you.</h3>
           <p class="service-card-desc"></p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/leasing.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
     </div>
@@ -1153,7 +1182,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 100) + "ms";
+        entry.target.style.animationDelay = (i * 150) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }

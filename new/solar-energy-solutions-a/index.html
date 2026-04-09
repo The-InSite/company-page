@@ -14,16 +14,16 @@
   
   <style>
     :root {
-  --color-primary: #1F2937;
-  --color-accent: #374151;
+  --color-primary: #1A3C40;
+  --color-accent: #2D8653;
   --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text-primary: #1F2937;
-  --color-text-secondary: #6B7280;
-  --color-cta-bg: #1F2937;
+  --color-surface: #F0FAF4;
+  --color-text-primary: #1A3C40;
+  --color-text-secondary: #4A5568;
+  --color-cta-bg: #2D8653;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #111827;
-  --color-border: #E5E7EB;
+  --color-cta-hover: #236B42;
+  --color-border: #C6E8D4;
   --font-display: "Libre Baskerville";
   --font-body: Lato;
   --base-size: 17px;
@@ -417,6 +417,29 @@
   font-size: 0.9375rem;
   color: var(--color-text-secondary);
   line-height: 1.5;
+}
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.875rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.service-card-link:empty,
+.service-card-link[href=""],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/index.htm"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/leasing.htm"] {
+  display: none;
+}
+.service-card-link:hover {
+  text-decoration: underline;
 }
 @media (min-width: 768px) {
   .section-services-cards {
@@ -905,6 +928,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
           <p class="service-card-desc">Tour our photo galleries of recent solar electric / photovoltaic installations, including dual photovoltaic / solar hot water systems and racked systems.</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/index.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -922,6 +946,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">Providing Solar Electric, Solar Hot Water and Solar Pool Installation,</h3>
           <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -938,7 +963,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar PhotovoltaicsSolar Electric / Photovoltaics</h3>
-          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
+          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -955,7 +981,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Pool HeatingSolar Pool Heating</h3>
-          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
+          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -972,7 +999,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Hot WaterSolar Hot Water</h3>
-          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
+          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -990,6 +1018,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">We honestly don't know whether leasing would be a good or bad idea for you.</h3>
           <p class="service-card-desc"></p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/leasing.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
     </div>

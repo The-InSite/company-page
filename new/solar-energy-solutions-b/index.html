@@ -8,37 +8,37 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lato:wght@300;400&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #2C1810;
-  --color-accent: #C17F24;
-  --color-background: #FAFAF8;
-  --color-surface: #F2EDE4;
-  --color-text-primary: #2C1810;
-  --color-text-secondary: #5C4A3A;
-  --color-cta-bg: #C17F24;
+  --color-primary: #1F2937;
+  --color-accent: #374151;
+  --color-background: #FFFFFF;
+  --color-surface: #F9FAFB;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-cta-bg: #1F2937;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #A66B1A;
-  --color-border: #E8DDD0;
-  --font-display: Montserrat;
-  --font-body: "Open Sans";
-  --base-size: 16px;
-  --type-scale-ratio: 1.333;
-  --h1-size: 3.1573rem;
-  --h2-size: 2.3686rem;
-  --h3-size: 1.7769rem;
-  --h4-size: 1.3330rem;
+  --color-cta-hover: #111827;
+  --color-border: #E5E7EB;
+  --font-display: "Libre Baskerville";
+  --font-body: Lato;
+  --base-size: 17px;
+  --type-scale-ratio: 1.5;
+  --h1-size: 5.0625rem;
+  --h2-size: 3.3750rem;
+  --h3-size: 2.2500rem;
+  --h4-size: 1.5000rem;
   --h1-weight: 700;
-  --h2-weight: 600;
-  --body-weight: 400;
-  --letter-spacing-display: 0.04em;
-  --letter-spacing-body: 0.01em;
-  --line-height-display: 1.15;
-  --line-height-body: 1.6;
+  --h2-weight: 400;
+  --body-weight: 300;
+  --letter-spacing-display: 0.01em;
+  --letter-spacing-body: 0.02em;
+  --line-height-display: 1.25;
+  --line-height-body: 1.7;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -51,14 +51,14 @@
   --card-gap: 0.5rem;
   --heading-margin-bottom: 0.75rem;
   --paragraph-margin-bottom: 1rem;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px;
-  --button-radius: 8px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 0ms;
-  --animation-stagger: 0ms;
-  --animation-type: none;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 600ms;
+  --animation-stagger: 150ms;
+  --animation-type: slide_up;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,7 +95,14 @@
         transition-duration: 0.01ms !important;
       }
     }
-    
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: slideUp 600ms ease-out forwards;
+}
     .section-nav {
   position: sticky;
   top: 0;
@@ -418,6 +425,29 @@
   color: var(--color-text-secondary);
   line-height: 1.5;
 }
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.875rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.service-card-link:empty,
+.service-card-link[href=""],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/index.htm"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/"],
+.service-card-link[href="http://www.solarenergyoregon.com/solarelectric/leasing.htm"] {
+  display: none;
+}
+.service-card-link:hover {
+  text-decoration: underline;
+}
 @media (min-width: 768px) {
   .section-services-cards {
     padding: var(--section-padding-desktop, 4rem 2rem);
@@ -539,15 +569,15 @@
     flex: 1;
   }
 }
-.section-testimonials-rating {
+.section-testimonials-cards {
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-surface);
+  background: var(--color-background);
 }
-.testimonials-rating-inner {
+.testimonials-cards-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-rating-title {
+.testimonials-cards-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -555,49 +585,59 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-rating-grid {
+.testimonials-cards-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-rating-card {
-  background: var(--color-background);
+.testimonial-card {
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
-.section-testimonials-rating:not(:has(.testimonial-rating-text:not(:empty))) {
+.section-testimonials-cards:not(:has(.testimonial-card-text:not(:empty))) {
   display: none;
 }
-.testimonial-rating-card:has(.testimonial-rating-text:empty) {
+.testimonial-card:has(.testimonial-card-text:empty) {
   display: none;
 }
-.testimonial-stars {
-  color: var(--color-accent, #f59e0b);
-  font-size: 1.125rem;
-  letter-spacing: 0.125rem;
-  margin-bottom: 0.75rem;
+.testimonial-card-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
 }
-.testimonial-rating-text {
+.testimonial-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testimonial-card-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.9375rem;
+  font-size: var(--text-base, 0.9375rem);
   color: var(--color-text-primary);
   line-height: 1.6;
   margin-bottom: 0.75rem;
 }
-.testimonial-rating-author {
-  font-size: 0.875rem;
+.testimonial-card-author {
+  font-size: var(--text-sm, 0.875rem);
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-rating-location {
-  font-size: 0.8125rem;
+.testimonial-card-location {
+  font-size: var(--text-xs, 0.8125rem);
   color: var(--color-text-secondary);
 }
 @media (min-width: 768px) {
-  .section-testimonials-rating {
+  .section-testimonials-cards {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-rating-grid {
+  .testimonials-cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -900,6 +940,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
           <p class="service-card-desc">Tour our photo galleries of recent solar electric / photovoltaic installations, including dual photovoltaic / solar hot water systems and racked systems.</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/index.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -917,6 +958,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">Providing Solar Electric, Solar Hot Water and Solar Pool Installation,</h3>
           <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -933,7 +975,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar PhotovoltaicsSolar Electric / Photovoltaics</h3>
-          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
+          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -950,7 +993,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Pool HeatingSolar Pool Heating</h3>
-          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
+          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -967,7 +1011,8 @@
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">Solar Hot WaterSolar Hot Water</h3>
-          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
+          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems</p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
       <article class="service-card">
@@ -985,6 +1030,7 @@
         <div class="service-card-body">
           <h3 class="service-card-name">We honestly don't know whether leasing would be a good or bad idea for you.</h3>
           <p class="service-card-desc"></p>
+          <a class="service-card-link" href="http://www.solarenergyoregon.com/solarelectric/leasing.htm" target="_blank" rel="noopener noreferrer">Learn more</a>
         </div>
       </article>
     </div>
@@ -1019,26 +1065,38 @@
   </div>
 </section>
 
-<section class="section-testimonials-rating" id="testimonials">
-  <div class="testimonials-rating-inner">
-    <h2 class="testimonials-rating-title">What Clients Say</h2>
-    <div class="testimonials-rating-grid">
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
-        <div class="testimonial-rating-location"></div>
+<section class="section-testimonials-cards" id="testimonials">
+  <div class="testimonials-cards-inner">
+    <h2 class="testimonials-cards-title">What Clients Say</h2>
+    <div class="testimonials-cards-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(37, 30%, 80%) 0%, hsl(77, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
       </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
-        <div class="testimonial-rating-location"></div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(162, 30%, 80%) 0%, hsl(202, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
       </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(255, 30%, 80%) 0%, hsl(295, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1117,7 +1175,21 @@
       });
     }
   });
-  
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 150) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
 </script>
 </body>
 </html>
