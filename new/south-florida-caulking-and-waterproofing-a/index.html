@@ -8,7 +8,7 @@
   <meta name="description" content="Transforming Homes, One Room at a Time. Kitchen Remodel, Bathroom Renovation, and more. Call (617) 555-0508.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lato:wght@300;400&display=fallback">
   
   
   
@@ -24,21 +24,21 @@
   --color-cta-text: #FFFFFF;
   --color-cta-hover: #A66B1A;
   --color-border: #E8DDD0;
-  --font-display: "Playfair Display";
-  --font-body: "Source Sans 3";
-  --base-size: 16px;
-  --type-scale-ratio: 1.414;
-  --h1-size: 3.9976rem;
-  --h2-size: 2.8271rem;
-  --h3-size: 1.9994rem;
-  --h4-size: 1.4140rem;
+  --font-display: "Libre Baskerville";
+  --font-body: Lato;
+  --base-size: 17px;
+  --type-scale-ratio: 1.5;
+  --h1-size: 5.0625rem;
+  --h2-size: 3.3750rem;
+  --h3-size: 2.2500rem;
+  --h4-size: 1.5000rem;
   --h1-weight: 700;
-  --h2-weight: 600;
-  --body-weight: 400;
-  --letter-spacing-display: 0.02em;
-  --letter-spacing-body: 0.01em;
-  --line-height-display: 1.2;
-  --line-height-body: 1.65;
+  --h2-weight: 400;
+  --body-weight: 300;
+  --letter-spacing-display: 0.01em;
+  --letter-spacing-body: 0.02em;
+  --line-height-display: 1.25;
+  --line-height-body: 1.7;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -51,11 +51,11 @@
   --card-gap: 0.5rem;
   --heading-margin-bottom: 0.75rem;
   --paragraph-margin-bottom: 1rem;
-  --border-radius-sm: 2px;
-  --border-radius-md: 4px;
-  --border-radius-lg: 6px;
-  --button-radius: 4px;
-  --shadow: none;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --button-radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
   --animation-duration: 600ms;
   --animation-stagger: 150ms;
   --animation-type: slide_up;
@@ -499,15 +499,15 @@
     flex: 1;
   }
 }
-.section-testimonials-rating {
+.section-testimonials-quotes {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-surface);
 }
-.testimonials-rating-inner {
+.testimonials-quotes-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-rating-title {
+.testimonials-quotes-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -515,43 +515,48 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-rating-grid {
+.testimonials-quotes-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-rating-card {
+.testimonial-quote {
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
 }
-.testimonial-stars {
-  color: var(--color-accent, #f59e0b);
-  font-size: 1.125rem;
-  letter-spacing: 0.125rem;
-  margin-bottom: 0.75rem;
-}
-.testimonial-rating-text {
+.testimonial-quote-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-text-primary);
   line-height: 1.6;
-  margin-bottom: 0.75rem;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
-.testimonial-rating-author {
+.testimonial-quote-text::before {
+  content: "\201C";
+  font-size: 2rem;
+  color: var(--color-primary);
+  line-height: 0;
+  vertical-align: -0.5rem;
+  margin-right: 0.125rem;
+}
+.testimonial-quote-author {
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-rating-location {
+.testimonial-quote-meta {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
+  margin-top: 0.125rem;
 }
 @media (min-width: 768px) {
-  .section-testimonials-rating {
+  .section-testimonials-quotes {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-rating-grid {
+  .testimonials-quotes-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -783,7 +788,15 @@
 
 <section class="section-hero-fullbleed">
   <div class="hero-fullbleed-bg">
-    <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(22, 30%, 80%) 0%, hsl(62, 25%, 70%) 100%);width:100%;aspect-ratio:1200/675;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+    <img
+      src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2024/01/phil-desforges-ow1mML1sOi0-unsplash-1.jpg?resize=731%2C1024&amp;ssl=1"
+      srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2024/01/phil-desforges-ow1mML1sOi0-unsplash-1.jpg?resize=731%2C1024&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2024/01/phil-desforges-ow1mML1sOi0-unsplash-1.jpg?resize=731%2C1024&amp;ssl=1 1024w"
+      sizes="100vw"
+      width="1200"
+      height="675"
+      alt="Hero Image"
+      loading="eager"
+    >
     <div class="hero-fullbleed-overlay"></div>
   </div>
   <div class="hero-fullbleed-content">
@@ -801,11 +814,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <div role="img" aria-label="Before — " style="background:linear-gradient(135deg, hsl(246, 30%, 80%) 0%, hsl(286, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Before — ]]</div>
+            <img src="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563" srcset="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 480w, https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <div role="img" aria-label="After — " style="background:linear-gradient(135deg, hsl(297, 30%, 80%) 0%, hsl(337, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: After — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -814,11 +827,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <div role="img" aria-label="Before — " style="background:linear-gradient(135deg, hsl(7, 30%, 80%) 0%, hsl(47, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Before — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <div role="img" aria-label="After — " style="background:linear-gradient(135deg, hsl(58, 30%, 80%) 0%, hsl(98, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: After — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -833,7 +846,15 @@
     <div class="services-cards-grid">
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="**It’s not just a logo, it’s what we represent**." style="background:linear-gradient(135deg, hsl(205, 30%, 80%) 0%, hsl(245, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: **It’s not just a logo, it’s what we represent**.]]</div>
+          <img
+            src="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563"
+            srcset="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 480w, https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="**It’s not just a logo, it’s what we represent**."
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">**It’s not just a logo, it’s what we represent**.</h3>
@@ -842,7 +863,15 @@
       </article>
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="**2004**" style="background:linear-gradient(135deg, hsl(212, 30%, 80%) 0%, hsl(252, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: **2004**]]</div>
+          <img
+            src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1"
+            srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="**2004**"
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">**2004**</h3>
@@ -851,7 +880,15 @@
       </article>
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="500+" style="background:linear-gradient(135deg, hsl(347, 30%, 80%) 0%, hsl(27, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: 500+]]</div>
+          <img
+            src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1"
+            srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="500+"
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">500+</h3>
@@ -878,27 +915,30 @@
   </div>
 </section>
 
-<section class="section-testimonials-rating" id="testimonials">
-  <div class="testimonials-rating-inner">
-    <h2 class="testimonials-rating-title">What Clients Say</h2>
-    <div class="testimonials-rating-grid">
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text">Wilberto, the owner is extremely knowledgeable and professional. He kept his word on the days he promised to work and completed the job with great results. I had leaks for years – they are gone now!!!! Thanks Wilberto !  Big T</p>
-        <div class="testimonial-rating-author">Laura G.</div>
-        <div class="testimonial-rating-location">Boston</div>
-      </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text">Excellent company with great work ethics. Communicates very well with his clients. Calls to let you know when they will be there and hauls away any debris that occurs during the job. Asks before leaving, if you are satisfied and is very proud of the work they do. I would recommend this professional group to anyone. Thank you again Wilberto!  B Rayne</p>
-        <div class="testimonial-rating-author">Brian F.</div>
-        <div class="testimonial-rating-location">Boston</div>
-      </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text">The dining table Dan made for us is the most beautiful piece of furniture we own. Solid, handmade, and exactly what we described.</p>
-        <div class="testimonial-rating-author">Nancy E.</div>
-      </div>
+<section class="section-testimonials-quotes" id="testimonials">
+  <div class="testimonials-quotes-inner">
+    <h2 class="testimonials-quotes-title">What Clients Say</h2>
+    <div class="testimonials-quotes-grid">
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text">Wilberto, the owner is extremely knowledgeable and professional. He kept his word on the days he promised to work and completed the job with great results. I had leaks for years – they are gone now!!!! Thanks Wilberto !  Big T</p>
+        <footer>
+          <cite class="testimonial-quote-author">Laura G.</cite>
+          <div class="testimonial-quote-meta">Boston &middot; </div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text">Excellent company with great work ethics. Communicates very well with his clients. Calls to let you know when they will be there and hauls away any debris that occurs during the job. Asks before leaving, if you are satisfied and is very proud of the work they do. I would recommend this professional group to anyone. Thank you again Wilberto!  B Rayne</p>
+        <footer>
+          <cite class="testimonial-quote-author">Brian F.</cite>
+          <div class="testimonial-quote-meta">Boston</div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text">The dining table Dan made for us is the most beautiful piece of furniture we own. Solid, handmade, and exactly what we described.</p>
+        <footer>
+          <cite class="testimonial-quote-author">Nancy E.</cite>
+        </footer>
+      </blockquote>
     </div>
   </div>
 </section>

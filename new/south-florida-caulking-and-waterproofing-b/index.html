@@ -8,37 +8,37 @@
   <meta name="description" content="Transforming Homes, One Room at a Time. Kitchen Remodel, Bathroom Renovation, and more. Call (617) 555-0508.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #1F2937;
-  --color-accent: #374151;
+  --color-primary: #1A3C40;
+  --color-accent: #2D8653;
   --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text-primary: #1F2937;
-  --color-text-secondary: #6B7280;
-  --color-cta-bg: #1F2937;
+  --color-surface: #F0FAF4;
+  --color-text-primary: #1A3C40;
+  --color-text-secondary: #4A5568;
+  --color-cta-bg: #2D8653;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #111827;
-  --color-border: #E5E7EB;
-  --font-display: "Playfair Display";
-  --font-body: "Source Sans 3";
+  --color-cta-hover: #236B42;
+  --color-border: #C6E8D4;
+  --font-display: Montserrat;
+  --font-body: "Open Sans";
   --base-size: 16px;
-  --type-scale-ratio: 1.414;
-  --h1-size: 3.9976rem;
-  --h2-size: 2.8271rem;
-  --h3-size: 1.9994rem;
-  --h4-size: 1.4140rem;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.02em;
+  --letter-spacing-display: 0.04em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.2;
-  --line-height-body: 1.65;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -46,19 +46,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 2.5rem 1rem;
-  --section-padding-desktop: 4rem 2rem;
-  --card-gap: 0.5rem;
-  --heading-margin-bottom: 0.75rem;
-  --paragraph-margin-bottom: 1rem;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px;
-  --button-radius: 8px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 400ms;
-  --animation-stagger: 100ms;
-  --animation-type: fade_in;
+  --section-padding-mobile: 3.5rem 1.25rem;
+  --section-padding-desktop: 6rem 3rem;
+  --card-gap: 1rem;
+  --heading-margin-bottom: 1rem;
+  --paragraph-margin-bottom: 1.25rem;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 600ms;
+  --animation-stagger: 150ms;
+  --animation-type: slide_up;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,13 +95,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: fadeIn 400ms ease-out forwards;
+  animation: slideUp 600ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -214,84 +214,68 @@
     display: none;
   }
 }
-.section-hero-split {
+.section-hero-typography {
   display: flex;
-  flex-direction: column;
-  min-height: 28rem;
-}
-.hero-split-media {
-  position: relative;
-  min-height: 16rem;
-  overflow: hidden;
-}
-.hero-split-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-}
-.hero-split-media-fallback {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
-}
-.hero-split-content {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: var(--section-padding-mobile, 2.5rem 1rem);
+  text-align: center;
+  min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-background);
 }
-.hero-split-headline {
+.hero-typography-content {
+  max-width: 52rem;
+}
+.hero-typography-headline {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h1-size, 2.25rem);
-  font-weight: 700;
+  font-size: var(--h1-size, 2.5rem);
+  font-weight: 800;
   color: var(--color-text-primary);
-  line-height: 1.15;
-  margin-bottom: 0.75rem;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--letter-spacing-display, -0.02em);
 }
-.hero-split-subheadline {
+.hero-typography-accent {
+  color: var(--color-primary);
+}
+.hero-typography-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.hero-split-cta {
+.hero-typography-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.75rem;
+  padding: 1rem 2.25rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
   box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
   transition: background 0.2s;
-  align-self: flex-start;
 }
-.hero-split-cta:hover {
+.hero-typography-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
 @media (min-width: 768px) {
-  .section-hero-split {
-    flex-direction: row;
-    min-height: 32rem;
+  .section-hero-typography {
+    padding: var(--section-padding-desktop, 6rem 2rem);
+    min-height: 36rem;
   }
-  /* Default: image left */
-  .hero-split-media { flex: 1 1 50%; }
-  .hero-split-content { flex: 1 1 50%; padding: var(--section-padding-desktop, 4rem 3rem); }
-  /* Ratio sub-variants */
-  .hero--60-40 .hero-split-media { flex-basis: 60%; }
-  .hero--60-40 .hero-split-content { flex-basis: 40%; }
-  .hero--40-60 .hero-split-media { flex-basis: 40%; }
-  .hero--40-60 .hero-split-content { flex-basis: 60%; }
-  /* Image right sub-variant: reverse order */
-  .hero--image-right { flex-direction: row-reverse; }
-  .hero-split-headline {
-    font-size: calc(var(--h1-size, 2.25rem) * 1.2);
+  .hero-typography-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
+  }
+  .hero-typography-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-gallery-beforeafter {
@@ -783,14 +767,11 @@
   </div>
 </nav>
 
-<section class="section-hero-split hero--image-right hero--40-60">
-  <div class="hero-split-media">
-    <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(22, 30%, 80%) 0%, hsl(62, 25%, 70%) 100%);width:100%;aspect-ratio:800/600;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-  </div>
-  <div class="hero-split-content">
-    <h1 class="hero-split-headline">South Florida Caulking and Waterproofing</h1>
-    <p class="hero-split-subheadline">Full home renovations in the Greater Boston area</p>
-    <a href="tel:17869557771" class="hero-split-cta">Contact Us</a>
+<section class="section-hero-typography">
+  <div class="hero-typography-content">
+    <h1 class="hero-typography-headline">South Florida Caulking and Waterproofing</h1>
+    <p class="hero-typography-subheadline">Full home renovations in the Greater Boston area</p>
+    <a href="tel:17869557771" class="hero-typography-cta">Contact Us</a>
   </div>
 </section>
 
@@ -802,11 +783,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <div role="img" aria-label="Before — " style="background:linear-gradient(135deg, hsl(246, 30%, 80%) 0%, hsl(286, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Before — ]]</div>
+            <img src="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563" srcset="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 480w, https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <div role="img" aria-label="After — " style="background:linear-gradient(135deg, hsl(297, 30%, 80%) 0%, hsl(337, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: After — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -815,11 +796,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <div role="img" aria-label="Before — " style="background:linear-gradient(135deg, hsl(7, 30%, 80%) 0%, hsl(47, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Before — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <div role="img" aria-label="After — " style="background:linear-gradient(135deg, hsl(58, 30%, 80%) 0%, hsl(98, 25%, 70%) 100%);width:100%;aspect-ratio:640/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: After — ]]</div>
+            <img src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1" srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/img_1291-2.jpg?resize=750%2C563&amp;ssl=1 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -834,7 +815,15 @@
     <div class="services-cards-grid">
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="**It’s not just a logo, it’s what we represent**." style="background:linear-gradient(135deg, hsl(205, 30%, 80%) 0%, hsl(245, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: **It’s not just a logo, it’s what we represent**.]]</div>
+          <img
+            src="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563"
+            srcset="https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 480w, https://southfloridacaulkingandwaterproofing.files.wordpress.com/2021/08/img_5784.jpg?resize=750%2C563 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="**It’s not just a logo, it’s what we represent**."
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">**It’s not just a logo, it’s what we represent**.</h3>
@@ -843,7 +832,15 @@
       </article>
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="**2004**" style="background:linear-gradient(135deg, hsl(212, 30%, 80%) 0%, hsl(252, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: **2004**]]</div>
+          <img
+            src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1"
+            srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2025/01/PHOTO-2025-01-21-10-29-48-12-1.jpg?resize=750%2C1000&amp;ssl=1 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="**2004**"
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">**2004**</h3>
@@ -852,7 +849,15 @@
       </article>
       <article class="service-card">
         <div class="service-card-image">
-          <div role="img" aria-label="500+" style="background:linear-gradient(135deg, hsl(347, 30%, 80%) 0%, hsl(27, 25%, 70%) 100%);width:100%;aspect-ratio:640/400;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: 500+]]</div>
+          <img
+            src="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1"
+            srcset="https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 480w, https://i0.wp.com/southfloridacaulkingandwaterproofing.com/wp-content/uploads/2021/08/sika-624-bc.-1.jpg?resize=750%2C563&amp;ssl=1 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="500+"
+            loading="lazy"
+          >
         </div>
         <div class="service-card-body">
           <h3 class="service-card-name">500+</h3>
@@ -991,7 +996,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 100) + "ms";
+        entry.target.style.animationDelay = (i * 150) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
