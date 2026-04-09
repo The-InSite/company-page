@@ -8,37 +8,37 @@
   <meta name="description" content="Transforming Homes, One Room at a Time. Kitchen Remodel, Bathroom Renovation, and more. Call (617) 555-0508.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lato:wght@300;400&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #1F2937;
-  --color-accent: #374151;
+  --color-primary: #1A3C40;
+  --color-accent: #2D8653;
   --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text-primary: #1F2937;
-  --color-text-secondary: #6B7280;
-  --color-cta-bg: #1F2937;
+  --color-surface: #F0FAF4;
+  --color-text-primary: #1A3C40;
+  --color-text-secondary: #4A5568;
+  --color-cta-bg: #2D8653;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #111827;
-  --color-border: #E5E7EB;
-  --font-display: "Libre Baskerville";
-  --font-body: Lato;
-  --base-size: 17px;
-  --type-scale-ratio: 1.5;
-  --h1-size: 5.0625rem;
-  --h2-size: 3.3750rem;
-  --h3-size: 2.2500rem;
-  --h4-size: 1.5000rem;
+  --color-cta-hover: #236B42;
+  --color-border: #C6E8D4;
+  --font-display: "Playfair Display";
+  --font-body: "Source Sans 3";
+  --base-size: 16px;
+  --type-scale-ratio: 1.414;
+  --h1-size: 3.9976rem;
+  --h2-size: 2.8271rem;
+  --h3-size: 1.9994rem;
+  --h4-size: 1.4140rem;
   --h1-weight: 700;
-  --h2-weight: 400;
-  --body-weight: 300;
-  --letter-spacing-display: 0.01em;
-  --letter-spacing-body: 0.02em;
-  --line-height-display: 1.25;
-  --line-height-body: 1.7;
+  --h2-weight: 600;
+  --body-weight: 400;
+  --letter-spacing-display: 0.02em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.2;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -56,9 +56,9 @@
   --border-radius-lg: 16px;
   --button-radius: 8px;
   --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 600ms;
-  --animation-stagger: 150ms;
-  --animation-type: slide_up;
+  --animation-duration: 400ms;
+  --animation-stagger: 100ms;
+  --animation-type: fade_in;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,13 +95,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes slideUp {
-  from { opacity: 0; transform: translateY(1.5rem); }
-  to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: slideUp 600ms ease-out forwards;
+  animation: fadeIn 400ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -214,84 +214,65 @@
     display: none;
   }
 }
-.section-hero-split {
+.section-hero-colorblock {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-primary);
 }
-.hero-split-media {
-  position: relative;
-  min-height: 16rem;
-  overflow: hidden;
+.hero-colorblock-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
 }
-.hero-split-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-}
-.hero-split-media-fallback {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
-}
-.hero-split-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--section-padding-mobile, 2.5rem 1rem);
-  background: var(--color-background);
-}
-.hero-split-headline {
+.hero-colorblock-headline {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h1-size, 2.25rem);
+  font-size: var(--h1-size, 2.5rem);
   font-weight: 700;
-  color: var(--color-text-primary);
-  line-height: 1.15;
-  margin-bottom: 0.75rem;
+  color: var(--color-background);
+  line-height: 1.1;
+  margin-bottom: 1rem;
 }
-.hero-split-subheadline {
+.hero-colorblock-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.0625rem;
-  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  color: var(--color-background);
+  opacity: 0.9;
   line-height: 1.5;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.hero-split-cta {
+.hero-colorblock-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.75rem;
-  background: var(--color-cta-bg);
-  color: var(--color-cta-text);
+  padding: 1rem 2rem;
+  background: var(--color-background);
+  color: var(--color-primary);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  transition: background 0.2s;
-  align-self: flex-start;
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.2s;
 }
-.hero-split-cta:hover {
-  background: var(--color-cta-hover, var(--color-accent));
+.hero-colorblock-cta:hover {
+  transform: translateY(-2px);
 }
 @media (min-width: 768px) {
-  .section-hero-split {
-    flex-direction: row;
+  .section-hero-colorblock {
+    padding: var(--section-padding-desktop, 5rem 2rem);
     min-height: 32rem;
   }
-  /* Default: image left */
-  .hero-split-media { flex: 1 1 50%; }
-  .hero-split-content { flex: 1 1 50%; padding: var(--section-padding-desktop, 4rem 3rem); }
-  /* Ratio sub-variants */
-  .hero--60-40 .hero-split-media { flex-basis: 60%; }
-  .hero--60-40 .hero-split-content { flex-basis: 40%; }
-  .hero--40-60 .hero-split-media { flex-basis: 40%; }
-  .hero--40-60 .hero-split-content { flex-basis: 60%; }
-  /* Image right sub-variant: reverse order */
-  .hero--image-right { flex-direction: row-reverse; }
-  .hero-split-headline {
-    font-size: calc(var(--h1-size, 2.25rem) * 1.2);
+  .hero-colorblock-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.4);
+  }
+  .hero-colorblock-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-gallery-beforeafter {
@@ -496,15 +477,15 @@
     flex: 1;
   }
 }
-.section-testimonials-quotes {
+.section-testimonials-rating {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-surface);
 }
-.testimonials-quotes-inner {
+.testimonials-rating-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-quotes-title {
+.testimonials-rating-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -512,48 +493,43 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-quotes-grid {
+.testimonials-rating-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-quote {
+.testimonial-rating-card {
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
 }
-.testimonial-quote-text {
+.testimonial-stars {
+  color: var(--color-accent, #f59e0b);
+  font-size: 1.125rem;
+  letter-spacing: 0.125rem;
+  margin-bottom: 0.75rem;
+}
+.testimonial-rating-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--color-text-primary);
   line-height: 1.6;
-  font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
-.testimonial-quote-text::before {
-  content: "\201C";
-  font-size: 2rem;
-  color: var(--color-primary);
-  line-height: 0;
-  vertical-align: -0.5rem;
-  margin-right: 0.125rem;
-}
-.testimonial-quote-author {
-  font-family: var(--font-body), system-ui, sans-serif;
+.testimonial-rating-author {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-quote-meta {
+.testimonial-rating-location {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
-  margin-top: 0.125rem;
 }
 @media (min-width: 768px) {
-  .section-testimonials-quotes {
+  .section-testimonials-rating {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-quotes-grid {
+  .testimonials-rating-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -783,22 +759,11 @@
   </div>
 </nav>
 
-<section class="section-hero-split hero--image-left hero--50-50">
-  <div class="hero-split-media">
-    <img
-      src="https://ausconcrete.com/wp-content/uploads/2012/11/house-240x240.jpg"
-      srcset="https://ausconcrete.com/wp-content/uploads/2012/11/house-240x240.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/house-240x240.jpg 1024w"
-      sizes="(min-width: 768px) 50vw, 100vw"
-      width="800"
-      height="600"
-      alt="Hero Image"
-      loading="eager"
-    >
-  </div>
-  <div class="hero-split-content">
-    <h1 class="hero-split-headline">Austin Concrete Development LLC</h1>
-    <p class="hero-split-subheadline">Full home renovations in the Greater Boston area</p>
-    <a href="tel:15123011385" class="hero-split-cta">Contact Us</a>
+<section class="section-hero-colorblock">
+  <div class="hero-colorblock-content">
+    <h1 class="hero-colorblock-headline">Austin Concrete Development LLC</h1>
+    <p class="hero-colorblock-subheadline">Full home renovations in the Greater Boston area</p>
+    <a href="tel:15123011385" class="hero-colorblock-cta">Contact Us</a>
   </div>
 </section>
 
@@ -810,11 +775,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <img src="https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg" srcset="https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <img src="https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg" srcset="https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -823,11 +788,11 @@
         <div class="gallery-ba-pair-title"></div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <img src="https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg" srcset="https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <img src="https://ausconcrete.com/wp-content/uploads/2012/11/Commercial-002-240x240.jpg" srcset="https://ausconcrete.com/wp-content/uploads/2012/11/Commercial-002-240x240.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/Commercial-002-240x240.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_3.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -843,52 +808,52 @@
       <article class="service-card">
         <div class="service-card-image">
           <img
-            src="https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg"
-            srcset="https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/Mount-Larson-001-240x240.jpg 1024w"
+            src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_0.jpg 1024w"
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="Kitchen Remodel"
+            alt="Pre-Construction Assistance"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">Kitchen Remodel</h3>
-          <p class="service-card-desc">Complete kitchen transformations — design through build.</p>
+          <h3 class="service-card-name">Pre-Construction Assistance</h3>
+          <p class="service-card-desc">Because of the large number of projects that we have done, we are often called on to consult with the general contractor, developer or home builder, and provide critical early input in the construction process. Our pre-construction consultations are given without any obligation, so feel free to let our talented team of project managers and estimators put our knowledge and experience to work for you.</p>
         </div>
       </article>
       <article class="service-card">
         <div class="service-card-image">
           <img
-            src="https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg"
-            srcset="https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/6-Backyard-Terrace.jpg 1024w"
+            src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_1.jpg 1024w"
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="Bathroom Renovation"
+            alt="Estimating"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">Bathroom Renovation</h3>
-          <p class="service-card-desc">Modern, functional bathrooms built to last.</p>
+          <h3 class="service-card-name">Estimating</h3>
+          <p class="service-card-desc">Our estimators are highly skilled in the preparation of both hard bid and conceptual budget estimates.  Our use of digital take-off technology ensures absolute accuracy presented in an on-screen format, which allows us to guarantee there will be no gaps in our scope of work.</p>
         </div>
       </article>
       <article class="service-card">
         <div class="service-card-image">
           <img
-            src="https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg"
-            srcset="https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg 480w, https://ausconcrete.com/wp-content/uploads/2012/11/5-Finished-Project.jpg 1024w"
+            src="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1094/gallery_2.jpg 1024w"
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="Basement Finishing"
+            alt="Site Preparation"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">Basement Finishing</h3>
-          <p class="service-card-desc">Turn wasted space into your favorite room in the house.</p>
+          <h3 class="service-card-name">Site Preparation</h3>
+          <p class="service-card-desc">-   Structural Excavation</p>
         </div>
       </article>
     </div>
@@ -902,7 +867,7 @@
     </div>
     <div class="about-content">
       <h2 class="about-title">About Austin Concrete Development LLC</h2>
-      <p class="about-text">We have helped many of Austin’s finest builders and most talented architects construct homes on sites that would make a mountain goat proud.  Hill side projects pose serious constructability challenges, and every site is unique. That’s why formulating a build strategy with means and methods that are cost effective and executable is critical upfront.  Whether your project is hill-side or lake-front, the geology of the home site – hydrology, soil type and proximity to veins of DelRio clay – are all factors that impact its constructability and engineering.</p>
+      <p class="about-text">With 1,660 projects under our belt, our experience and resources enable us to take on projects of any size and scope.  From site-cast concrete structures, to civil flat work, curb and drainage features, to custom foundations for many of Austin’s finest homes and country ranches, project diversity is a fundamental component of our business. Whatever the challenge is, we thrive on the projects that other companies shy away from.</p>
       <div class="about-meta">
         <span class="about-meta-item"><strong>Founded:</strong> 2012</span>
         <span class="about-meta-item"><strong>License:</strong> IL-GC-4421098</span>
@@ -911,30 +876,27 @@
   </div>
 </section>
 
-<section class="section-testimonials-quotes" id="testimonials">
-  <div class="testimonials-quotes-inner">
-    <h2 class="testimonials-quotes-title">What Clients Say</h2>
-    <div class="testimonials-quotes-grid">
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text">Dan rebuilt our entire kitchen. The craftsmanship is incredible — every cabinet fits perfectly and the finish is flawless. Our neighbors ask about it constantly.</p>
-        <footer>
-          <cite class="testimonial-quote-author">Laura G.</cite>
-          <div class="testimonial-quote-meta">Boston &middot; </div>
-        </footer>
-      </blockquote>
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text">Built custom built-ins for our home office. Came in exactly on budget, finished ahead of schedule. Exactly what we asked for.</p>
-        <footer>
-          <cite class="testimonial-quote-author">Brian F.</cite>
-          <div class="testimonial-quote-meta">Boston</div>
-        </footer>
-      </blockquote>
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text">The dining table Dan made for us is the most beautiful piece of furniture we own. Solid, handmade, and exactly what we described.</p>
-        <footer>
-          <cite class="testimonial-quote-author">Nancy E.</cite>
-        </footer>
-      </blockquote>
+<section class="section-testimonials-rating" id="testimonials">
+  <div class="testimonials-rating-inner">
+    <h2 class="testimonials-rating-title">What Clients Say</h2>
+    <div class="testimonials-rating-grid">
+      <div class="testimonial-rating-card">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-rating-text">Dan rebuilt our entire kitchen. The craftsmanship is incredible — every cabinet fits perfectly and the finish is flawless. Our neighbors ask about it constantly.</p>
+        <div class="testimonial-rating-author">Laura G.</div>
+        <div class="testimonial-rating-location">Boston</div>
+      </div>
+      <div class="testimonial-rating-card">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-rating-text">Built custom built-ins for our home office. Came in exactly on budget, finished ahead of schedule. Exactly what we asked for.</p>
+        <div class="testimonial-rating-author">Brian F.</div>
+        <div class="testimonial-rating-location">Boston</div>
+      </div>
+      <div class="testimonial-rating-card">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-rating-text">The dining table Dan made for us is the most beautiful piece of furniture we own. Solid, handmade, and exactly what we described.</p>
+        <div class="testimonial-rating-author">Nancy E.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1019,7 +981,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 150) + "ms";
+        entry.target.style.animationDelay = (i * 100) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
