@@ -8,37 +8,37 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=DM+Sans:wght@300;400&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #0D1117;
-  --color-accent: #2563EB;
-  --color-background: #FAFAFA;
-  --color-surface: #F4F4F5;
-  --color-text-primary: #0D1117;
-  --color-text-secondary: #71717A;
-  --color-cta-bg: #0D1117;
-  --color-cta-text: #FAFAFA;
-  --color-cta-hover: #1A1A2E;
-  --color-border: #E4E4E7;
-  --font-display: Unbounded;
-  --font-body: "DM Sans";
-  --base-size: 15px;
+  --color-primary: #1F2937;
+  --color-accent: #374151;
+  --color-background: #FFFFFF;
+  --color-surface: #F9FAFB;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-cta-bg: #1F2937;
+  --color-cta-text: #FFFFFF;
+  --color-cta-hover: #111827;
+  --color-border: #E5E7EB;
+  --font-display: Montserrat;
+  --font-body: "Open Sans";
+  --base-size: 16px;
   --type-scale-ratio: 1.333;
   --h1-size: 3.1573rem;
   --h2-size: 2.3686rem;
   --h3-size: 1.7769rem;
   --h4-size: 1.3330rem;
   --h1-weight: 700;
-  --h2-weight: 400;
-  --body-weight: 300;
-  --letter-spacing-display: 0.02em;
-  --letter-spacing-body: 0.03em;
-  --line-height-display: 1.1;
-  --line-height-body: 1.7;
+  --h2-weight: 600;
+  --body-weight: 400;
+  --letter-spacing-display: 0.04em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -46,19 +46,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 3rem 1.25rem;
-  --section-padding-desktop: 6rem 3rem;
+  --section-padding-mobile: 4rem 1.5rem;
+  --section-padding-desktop: 8rem 4rem;
   --card-gap: 1.5rem;
   --heading-margin-bottom: 1.25rem;
   --paragraph-margin-bottom: 1.5rem;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --button-radius: 6px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 0ms;
-  --animation-stagger: 0ms;
-  --animation-type: none;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 6px;
+  --button-radius: 4px;
+  --shadow: none;
+  --animation-duration: 600ms;
+  --animation-stagger: 150ms;
+  --animation-type: slide_up;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,7 +95,14 @@
         transition-duration: 0.01ms !important;
       }
     }
-    
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: slideUp 600ms ease-out forwards;
+}
     .section-nav {
   position: sticky;
   top: 0;
@@ -290,15 +297,15 @@
     font-size: var(--text-xl, 1.25rem);
   }
 }
-.section-gallery-masonry {
+.section-gallery-beforeafter {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-background);
 }
-.gallery-masonry-inner {
+.gallery-ba-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.gallery-masonry-title {
+.gallery-ba-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -306,29 +313,168 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.gallery-masonry-items {
-  columns: 2;
-  column-gap: var(--card-gap, 0.75rem);
+.gallery-ba-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
 }
-.gallery-masonry-item {
-  break-inside: avoid;
-  margin-bottom: var(--card-gap, 0.75rem);
+.gallery-ba-pair {
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.gallery-ba-pair-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+.gallery-ba-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.gallery-ba-side {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.gallery-ba-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-ba-label {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  padding: 0.1875rem 0.5rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.1875rem;
+}
+@media (min-width: 768px) {
+  .section-gallery-beforeafter {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .gallery-ba-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  }
+}
+.section-markets {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.markets-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.markets-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+.markets-grid {
+  display: grid;
+  gap: 1rem;
+}
+.market-card {
+  border-top: 3px solid var(--color-accent);
+  padding: 1rem 0;
+}
+.market-card:has(.market-name:empty) {
+  display: none;
+}
+.market-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+.market-desc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .markets-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+}
+.section-services-cards {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.services-cards-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.services-cards-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.services-cards-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
+}
+.service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.service-card:has(.service-card-name:empty) {
+  display: none;
+}
+.service-card:hover {
+  box-shadow: var(--shadow, 0 4px 16px rgba(0,0,0,0.1));
+}
+.service-card-image {
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
 }
-.gallery-masonry-item img {
+.service-card-image img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+.service-card-body {
+  padding: 1.25rem;
+}
+.service-card-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.service-card-desc {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
 }
 @media (min-width: 768px) {
-  .section-gallery-masonry {
+  .section-services-cards {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .gallery-masonry-items {
-    columns: 3;
-    column-gap: var(--card-gap, 1rem);
+  .services-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+  .services-cards-title {
+    font-size: calc(var(--h2-size, 1.75rem) * 1.15);
   }
 }
 .section-about {
@@ -398,212 +544,6 @@
   }
   .about-content {
     flex: 1;
-  }
-}
-.section-shop-cards {
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
-}
-.shop-cards-inner {
-  max-width: 75rem;
-  margin: 0 auto;
-}
-.shop-cards-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h2-size, 1.75rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.shop-cards-grid {
-  display: grid;
-  gap: var(--card-gap, 1.5rem);
-}
-.product-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md, 0.5rem);
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.product-card:hover {
-  box-shadow: var(--shadow, 0 4px 16px rgba(0,0,0,0.1));
-}
-.product-card-image {
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
-}
-.product-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.product-card-body {
-  padding: 1.25rem;
-}
-.product-card-name {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--text-base, 1rem);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
-}
-.product-card-price {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-lg, 1.125rem);
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.375rem;
-}
-.product-card-desc {
-  font-size: var(--text-xs, 0.8125rem);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-}
-.shop-cta {
-  display: block;
-  text-align: center;
-  margin: 2rem auto 0;
-  max-width: 20rem;
-  padding: 0.875rem 1.5rem;
-  background: var(--color-cta-bg);
-  color: var(--color-cta-text);
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: var(--border-radius-md, 0.5rem);
-}
-@media (min-width: 768px) {
-  .section-shop-cards {
-    padding: var(--section-padding-desktop, 4rem 2rem);
-  }
-  .shop-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-  }
-}
-.section-process {
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-surface);
-}
-.process-inner {
-  max-width: 48rem;
-  margin: 0 auto;
-}
-.process-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h2-size, 1.75rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-.process-steps {
-  display: grid;
-  gap: 2rem;
-  position: relative;
-}
-.process-step {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-}
-.process-step-number {
-  flex-shrink: 0;
-  width: 2.75rem;
-  height: 2.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-primary);
-  color: var(--color-background);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--text-lg, 1.125rem);
-  font-weight: 700;
-  border-radius: 50%;
-}
-.process-step-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h3-size, 1.125rem);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: 0.375rem;
-}
-.process-step-desc {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-base, 0.9375rem);
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-}
-@media (min-width: 768px) {
-  .section-process {
-    padding: var(--section-padding-desktop, 4rem 2rem);
-  }
-}
-.section-testimonials-cards {
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
-}
-.testimonials-cards-inner {
-  max-width: 75rem;
-  margin: 0 auto;
-}
-.testimonials-cards-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h2-size, 1.75rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.testimonials-cards-grid {
-  display: grid;
-  gap: var(--card-gap, 1.5rem);
-}
-.testimonial-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md, 0.5rem);
-  padding: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-.testimonial-card-avatar {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
-}
-.testimonial-card-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.testimonial-card-text {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-base, 0.9375rem);
-  color: var(--color-text-primary);
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
-}
-.testimonial-card-author {
-  font-size: var(--text-sm, 0.875rem);
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-.testimonial-card-location {
-  font-size: var(--text-xs, 0.8125rem);
-  color: var(--color-text-secondary);
-}
-@media (min-width: 768px) {
-  .section-testimonials-cards {
-    padding: var(--section-padding-desktop, 4rem 2rem);
-  }
-  .testimonials-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
 .section-contact {
@@ -756,6 +696,58 @@
     grid-template-columns: 2fr 1fr 1fr;
   }
 }
+.section-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  padding: 0.625rem 1rem;
+  padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  gap: 0.625rem;
+  justify-content: center;
+}
+.sticky-cta-btn {
+  flex: 1;
+  max-width: 20rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.sticky-cta-secondary {
+  flex: 0 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .section-sticky-cta {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -764,7 +756,7 @@
 <nav class="section-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Oregon Aerial Photography — Home">Oregon Aerial Photography</a>
-    <a href="tel:15037391332" class="nav-cta nav-cta-desktop">Contact Us</a>
+    <a href="tel:15037391332" class="nav-cta nav-cta-desktop">Request Quote</a>
     <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
       <span></span>
       <span></span>
@@ -775,7 +767,7 @@
       <a href="#about">About</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
-      <a href="tel:15037391332" class="nav-cta nav-cta-mobile">Contact Us</a>
+      <a href="tel:15037391332" class="nav-cta nav-cta-mobile">Request Quote</a>
     </div>
   </div>
 </nav>
@@ -796,26 +788,162 @@
   <div class="hero-fullbleed-content">
     <h1 class="hero-fullbleed-headline">Oregon Aerial Photography</h1>
     <p class="hero-fullbleed-subheadline"></p>
-    <a href="tel:15037391332" class="hero-fullbleed-cta">Contact Us</a>
+    <a href="tel:15037391332" class="hero-fullbleed-cta">Request Quote</a>
   </div>
 </section>
 
-<section class="section-gallery-masonry" id="gallery">
-  <div class="gallery-masonry-inner">
-    <h2 class="gallery-masonry-title"></h2>
-    <div class="gallery-masonry-items">
-      <div class="gallery-masonry-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Gallery Image 1" loading="lazy">
+<section class="section-gallery-beforeafter" id="gallery">
+  <div class="gallery-ba-inner">
+    <h2 class="gallery-ba-title"></h2>
+    <div class="gallery-ba-grid">
+      <div class="gallery-ba-pair">
+        <div class="gallery-ba-pair-title"></div>
+        <div class="gallery-ba-images">
+          <div class="gallery-ba-side">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
+            <span class="gallery-ba-label">Before</span>
+          </div>
+          <div class="gallery-ba-side">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
+            <span class="gallery-ba-label">After</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-masonry-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Gallery Image 2" loading="lazy">
+      <div class="gallery-ba-pair">
+        <div class="gallery-ba-pair-title"></div>
+        <div class="gallery-ba-images">
+          <div class="gallery-ba-side">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — " loading="lazy">
+            <span class="gallery-ba-label">Before</span>
+          </div>
+          <div class="gallery-ba-side">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — " loading="lazy">
+            <span class="gallery-ba-label">After</span>
+          </div>
+        </div>
       </div>
-      <div class="gallery-masonry-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="400" alt="Gallery Image 3" loading="lazy">
-      </div>
-      <div class="gallery-masonry-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="540" alt="Gallery Image 4" loading="lazy">
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-markets" id="markets">
+  <div class="markets-inner">
+    <h2 class="markets-title">Who Benefits From Aerial Photography</h2>
+    <div class="markets-grid">
+      <article class="market-card"><h3 class="market-name">Agricultural studies</h3><p class="market-desc">Aerial imagery and documentation tailored for agricultural studies.</p></article>
+      <article class="market-card"><h3 class="market-name">Construction progress reports</h3><p class="market-desc">Aerial imagery and documentation tailored for construction progress reports.</p></article>
+      <article class="market-card"><h3 class="market-name">Developers / land and building</h3><p class="market-desc">Aerial imagery and documentation tailored for developers / land and building.</p></article>
+      <article class="market-card"><h3 class="market-name">Government Agencies / Forestry</h3><p class="market-desc">Aerial imagery and documentation tailored for government agencies / forestry.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section-services-cards" id="services">
+  <div class="services-cards-inner">
+    <h2 class="services-cards-title">Capabilities</h2>
+    <div class="services-cards-grid">
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_1.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="Oblique Aerial Photographs"
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name">Oblique Aerial Photographs</h3>
+          <p class="service-card-desc">shot at an angle to encompass the horizon and surrounding area of the site. This view is very useful in showing the building site relationship to the surrounding vicinity. This birds eye view allows visual reference to surrounding properties, roadways, shopping centers, and other main areas of interest pertaining to the site. Obliques are identified two ways. 'High or Low' obliques.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_2.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="Vertical Aerial Photography"
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name">Vertical Aerial Photography</h3>
+          <p class="service-card-desc">We can shoot a near vertical image where the aerial views are shot over the top of the site rather from an oblique angle. We do not have a port in our plane at this time therefore the verticals are done by putting the plane in a steep bank. These overhead views are useful in designing layouts of large land development projects. These are especially useful in preliminary presentations for potential clients.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_3.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt="On-Site Photography"
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name">On-Site Photography</h3>
+          <p class="service-card-desc">available. This offers photography at the on-site location for ground level views.</p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_4.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt=""
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name"></h3>
+          <p class="service-card-desc"></p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_5.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_5.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_5.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt=""
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name"></h3>
+          <p class="service-card-desc"></p>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card-image">
+          <img
+            src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_6.jpg"
+            srcset="https://storage.googleapis.com/theinsite-scraped-images/1948/other_6.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1948/other_6.jpg 1024w"
+            sizes="(min-width: 768px) 33vw, 100vw"
+            width="640"
+            height="400"
+            alt=""
+            loading="lazy"
+          >
+        </div>
+        <div class="service-card-body">
+          <h3 class="service-card-name"></h3>
+          <p class="service-card-desc"></p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -826,8 +954,8 @@
       <div role="img" aria-label="Oregon Aerial Photography" style="background:linear-gradient(135deg, hsl(87, 30%, 80%) 0%, hsl(127, 25%, 70%) 100%);width:100%;aspect-ratio:600/800;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: Oregon Aerial Photography]]</div>
     </div>
     <div class="about-content">
-      <h2 class="about-title">About Oregon Aerial Photography</h2>
-      <p class="about-text">Oregon Aerial Photography is a Portland based commercial aerial photography company working throughout the Northwest region to bring you the best in aerial photography.</p>
+      <h2 class="about-title">About the Team</h2>
+      <p class="about-text">Oregon is owned and operated by Deborah & Brian Cruikshank. We are both pilots, and we started the business to combine our two passions, the love of flying, and the love of photography. It doesn't get any better than this!! Brian has a Masters degree in electrical engineering from Virginia Tech. He currently works as a computer engineer for Intel. Deb has a Masters in Architecture from the University of Colorado at Denver. She has worked among the top architecture companies throughout the Denver Metro area. Deb has also worked in aviation over 3 years as a customer service representative, so she is dedicated to giving the best customer service possible. She has been delivering Aerial Photography to many happy customers for over 5 years now. She has won numerous awards over the years including Best in Show at the 2010 PAPA Conference for her Picture of Long's Peak . Oregon Aerial Photography is a Professional Aerial Photographers Association certified aerial photographer in Oregon.</p>
       <div class="about-meta">
         <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value"></span></span>
         <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value"></span></span>
@@ -836,114 +964,9 @@
   </div>
 </section>
 
-<section class="section-shop-cards" id="shop">
-  <div class="shop-cards-inner">
-    <h2 class="shop-cards-title"></h2>
-    <div class="shop-cards-grid">
-      <article class="product-card">
-        <div class="product-card-image">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(75, 30%, 80%) 0%, hsl(115, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div class="product-card-body">
-          <h3 class="product-card-name"></h3>
-          <div class="product-card-price"></div>
-          <p class="product-card-desc"></p>
-        </div>
-      </article>
-      <article class="product-card">
-        <div class="product-card-image">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(342, 30%, 80%) 0%, hsl(22, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div class="product-card-body">
-          <h3 class="product-card-name"></h3>
-          <div class="product-card-price"></div>
-          <p class="product-card-desc"></p>
-        </div>
-      </article>
-      <article class="product-card">
-        <div class="product-card-image">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(217, 30%, 80%) 0%, hsl(257, 25%, 70%) 100%);width:100%;aspect-ratio:480/480;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div class="product-card-body">
-          <h3 class="product-card-name"></h3>
-          <div class="product-card-price"></div>
-          <p class="product-card-desc"></p>
-        </div>
-      </article>
-    </div>
-    <a href="" class="shop-cta"></a>
-  </div>
-</section>
-
-<section class="section-process" id="process">
-  <div class="process-inner">
-    <h2 class="process-title"></h2>
-    <div class="process-steps">
-      <div class="process-step">
-        <span class="process-step-number">1</span>
-        <div>
-          <h3 class="process-step-title"></h3>
-          <p class="process-step-desc"></p>
-        </div>
-      </div>
-      <div class="process-step">
-        <span class="process-step-number">2</span>
-        <div>
-          <h3 class="process-step-title"></h3>
-          <p class="process-step-desc"></p>
-        </div>
-      </div>
-      <div class="process-step">
-        <span class="process-step-number">3</span>
-        <div>
-          <h3 class="process-step-title"></h3>
-          <p class="process-step-desc"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-testimonials-cards" id="testimonials">
-  <div class="testimonials-cards-inner">
-    <h2 class="testimonials-cards-title">What Clients Say</h2>
-    <div class="testimonials-cards-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(37, 30%, 80%) 0%, hsl(77, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-          <div class="testimonial-card-location"></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(162, 30%, 80%) 0%, hsl(202, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-          <div class="testimonial-card-location"></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(255, 30%, 80%) 0%, hsl(295, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section-contact" id="contact">
   <div class="contact-inner">
-    <h2 class="contact-title">Get in Touch</h2>
+    <h2 class="contact-title">Start Your Project</h2>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-item-label">Phone</div>
@@ -962,7 +985,7 @@
         <div class="contact-item-value"></div>
       </div>
     </div>
-    <a href="tel:+15037391332" class="contact-cta">Contact Us</a>
+    <a href="tel:+15037391332" class="contact-cta">Request Quote</a>
   </div>
 </section>
 
@@ -971,7 +994,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Oregon Aerial Photography</div>
-        <p class="footer-tagline">Illustration That Tells Your Story</p>
+        <p class="footer-tagline">Handcrafted in Chicago since 2012</p>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
@@ -997,7 +1020,10 @@
   </div>
 </footer>
 </main>
-
+<div class="section-sticky-cta" role="complementary" aria-label="Quick actions">
+  <a href="tel:15037391332" class="sticky-cta-btn">Request Quote</a>
+  <a href="" class="sticky-cta-secondary"></a>
+</div>
 <script>
   // Hamburger menu — vanilla JS, no dependencies
   document.addEventListener('DOMContentLoaded', function() {
@@ -1011,7 +1037,21 @@
       });
     }
   });
-  
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 150) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
 </script>
 </body>
 </html>
