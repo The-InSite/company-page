@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Lato:wght@300;400&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=fallback">
   
   
   
@@ -24,21 +24,21 @@
   --color-cta-text: #FFFFFF;
   --color-cta-hover: #111827;
   --color-border: #E5E7EB;
-  --font-display: "Libre Baskerville";
-  --font-body: Lato;
-  --base-size: 17px;
-  --type-scale-ratio: 1.5;
-  --h1-size: 5.0625rem;
-  --h2-size: 3.3750rem;
-  --h3-size: 2.2500rem;
-  --h4-size: 1.5000rem;
+  --font-display: Montserrat;
+  --font-body: "Open Sans";
+  --base-size: 16px;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
   --h1-weight: 700;
-  --h2-weight: 400;
-  --body-weight: 300;
-  --letter-spacing-display: 0.01em;
-  --letter-spacing-body: 0.02em;
-  --line-height-display: 1.25;
-  --line-height-body: 1.7;
+  --h2-weight: 600;
+  --body-weight: 400;
+  --letter-spacing-display: 0.04em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -46,11 +46,11 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 3.5rem 1.25rem;
-  --section-padding-desktop: 6rem 3rem;
-  --card-gap: 1rem;
-  --heading-margin-bottom: 1rem;
-  --paragraph-margin-bottom: 1.25rem;
+  --section-padding-mobile: 2.5rem 1rem;
+  --section-padding-desktop: 4rem 2rem;
+  --card-gap: 0.5rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
@@ -436,6 +436,47 @@
     font-size: calc(var(--h2-size, 1.75rem) * 1.15);
   }
 }
+.section-markets {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.markets-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.markets-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+.markets-grid {
+  display: grid;
+  gap: 1rem;
+}
+.market-card {
+  border-top: 3px solid var(--color-accent);
+  padding: 1rem 0;
+}
+.market-card:has(.market-name:empty) {
+  display: none;
+}
+.market-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+.market-desc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .markets-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+}
 .section-about {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-background);
@@ -505,15 +546,15 @@
     flex: 1;
   }
 }
-.section-testimonials-quotes {
+.section-testimonials-cards {
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-surface);
+  background: var(--color-background);
 }
-.testimonials-quotes-inner {
+.testimonials-cards-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-quotes-title {
+.testimonials-cards-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -521,54 +562,59 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-quotes-grid {
+.testimonials-cards-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-quote {
-  background: var(--color-background);
+.testimonial-card {
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
-.section-testimonials-quotes:not(:has(.testimonial-quote-text:not(:empty))) {
+.section-testimonials-cards:not(:has(.testimonial-card-text:not(:empty))) {
   display: none;
 }
-.testimonial-quote:has(.testimonial-quote-text:empty) {
+.testimonial-card:has(.testimonial-card-text:empty) {
   display: none;
 }
-.testimonial-quote-text {
+.testimonial-card-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.testimonial-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testimonial-card-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: var(--text-base, 0.9375rem);
   color: var(--color-text-primary);
   line-height: 1.6;
-  font-style: italic;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
-.testimonial-quote-text::before {
-  content: "\201C";
-  font-size: 2rem;
-  color: var(--color-primary);
-  line-height: 0;
-  vertical-align: -0.5rem;
-  margin-right: 0.125rem;
-}
-.testimonial-quote-author {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.875rem;
+.testimonial-card-author {
+  font-size: var(--text-sm, 0.875rem);
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-quote-meta {
-  font-size: 0.8125rem;
+.testimonial-card-location {
+  font-size: var(--text-xs, 0.8125rem);
   color: var(--color-text-secondary);
-  margin-top: 0.125rem;
 }
 @media (min-width: 768px) {
-  .section-testimonials-quotes {
+  .section-testimonials-cards {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-quotes-grid {
+  .testimonials-cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -864,13 +910,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="Providing [Solar Electric](solarelectric/index.htm), [Solar Hot Water](solarhotwater/index.htm) and [Solar Pool](solarpool/index.htm) Installation,"
+            alt="SOLAR ENERGY SOLUTIONS, INC."
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">Providing [Solar Electric](solarelectric/index.htm), [Solar Hot Water](solarhotwater/index.htm) and [Solar Pool](solarpool/index.htm) Installation,</h3>
-          <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
+          <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
+          <p class="service-card-desc">Tour our photo galleries of recent solar electric / photovoltaic installations, including dual photovoltaic / solar hot water systems and racked systems.</p>
         </div>
       </article>
       <article class="service-card">
@@ -881,13 +927,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="**[![Solar Photovoltaics](solarelectric/images/032_m.jpg)Solar Electric / Photovoltaics](solarelectric/index.htm)**"
+            alt="Providing Solar Electric, Solar Hot Water and Solar Pool Installation,"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">**[![Solar Photovoltaics](solarelectric/images/032_m.jpg)Solar Electric / Photovoltaics](solarelectric/index.htm)**</h3>
-          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
+          <h3 class="service-card-name">Providing Solar Electric, Solar Hot Water and Solar Pool Installation,</h3>
+          <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
         </div>
       </article>
       <article class="service-card">
@@ -898,13 +944,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="[![Solar Pool Heating](solarpool/images/029_mm.jpg)](solarpool/index.htm)**[Solar Pool Heating](solarpool/index.htm)**"
+            alt="Solar PhotovoltaicsSolar Electric / Photovoltaics"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">[![Solar Pool Heating](solarpool/images/029_mm.jpg)](solarpool/index.htm)**[Solar Pool Heating](solarpool/index.htm)**</h3>
-          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
+          <h3 class="service-card-name">Solar PhotovoltaicsSolar Electric / Photovoltaics</h3>
+          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -915,13 +961,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="[![Solar Hot Water](solarhotwater/images/005_mm.jpg)](solarhotwater/index.htm)**[Solar Hot Water](solarhotwater/index.htm)**"
+            alt="Solar Pool HeatingSolar Pool Heating"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">[![Solar Hot Water](solarhotwater/images/005_mm.jpg)](solarhotwater/index.htm)**[Solar Hot Water](solarhotwater/index.htm)**</h3>
-          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
+          <h3 class="service-card-name">Solar Pool HeatingSolar Pool Heating</h3>
+          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -932,13 +978,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="SOLAR ENERGY SOLUTIONS, INC."
+            alt="Solar Hot WaterSolar Hot Water"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
-          <p class="service-card-desc">![PHOTOS](photospv.html)</p>
+          <h3 class="service-card-name">Solar Hot WaterSolar Hot Water</h3>
+          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -949,15 +995,27 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt=""
+            alt="We honestly don't know whether leasing would be a good or bad idea for you."
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name"></h3>
+          <h3 class="service-card-name">We honestly don't know whether leasing would be a good or bad idea for you.</h3>
           <p class="service-card-desc"></p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-markets" id="markets">
+  <div class="markets-inner">
+    <h2 class="markets-title">Markets Served</h2>
+    <div class="markets-grid">
+      <article class="market-card"><h3 class="market-name">Residential</h3><p class="market-desc">Custom foundations, slab-on-grade, retaining walls, and specialty concrete for homes and ranch properties.</p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
     </div>
   </div>
 </section>
@@ -978,37 +1036,46 @@
   </div>
 </section>
 
-<section class="section-testimonials-quotes" id="testimonials">
-  <div class="testimonials-quotes-inner">
-    <h2 class="testimonials-quotes-title">What Clients Say</h2>
-    <div class="testimonials-quotes-grid">
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text"></p>
-        <footer>
-          <cite class="testimonial-quote-author"></cite>
-          <div class="testimonial-quote-meta"> &middot; </div>
-        </footer>
-      </blockquote>
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text"></p>
-        <footer>
-          <cite class="testimonial-quote-author"></cite>
-          <div class="testimonial-quote-meta"></div>
-        </footer>
-      </blockquote>
-      <blockquote class="testimonial-quote">
-        <p class="testimonial-quote-text"></p>
-        <footer>
-          <cite class="testimonial-quote-author"></cite>
-        </footer>
-      </blockquote>
+<section class="section-testimonials-cards" id="testimonials">
+  <div class="testimonials-cards-inner">
+    <h2 class="testimonials-cards-title">What Clients Say</h2>
+    <div class="testimonials-cards-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(37, 30%, 80%) 0%, hsl(77, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(162, 30%, 80%) 0%, hsl(202, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+          <div class="testimonial-card-location"></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card-avatar">
+          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(255, 30%, 80%) 0%, hsl(295, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+        </div>
+        <div>
+          <p class="testimonial-card-text"></p>
+          <div class="testimonial-card-author"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section-contact" id="contact">
   <div class="contact-inner">
-    <h2 class="contact-title">Get in Touch</h2>
+    <h2 class="contact-title">Start Your Project</h2>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-item-label">Phone</div>
@@ -1036,7 +1103,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Solar Energy Solutions</div>
-        <p class="footer-tagline">Transforming Homes, One Room at a Time</p>
+        <p class="footer-tagline">Handcrafted in Chicago since 2012</p>
       </div>
       <div>
         <div class="footer-heading">Contact</div>

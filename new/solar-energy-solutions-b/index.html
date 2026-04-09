@@ -8,37 +8,37 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #1A3C40;
-  --color-accent: #2D8653;
-  --color-background: #FFFFFF;
-  --color-surface: #F0FAF4;
-  --color-text-primary: #1A3C40;
-  --color-text-secondary: #4A5568;
-  --color-cta-bg: #2D8653;
+  --color-primary: #2C1810;
+  --color-accent: #C17F24;
+  --color-background: #FAFAF8;
+  --color-surface: #F2EDE4;
+  --color-text-primary: #2C1810;
+  --color-text-secondary: #5C4A3A;
+  --color-cta-bg: #C17F24;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #236B42;
-  --color-border: #C6E8D4;
-  --font-display: "Playfair Display";
-  --font-body: "Source Sans 3";
+  --color-cta-hover: #A66B1A;
+  --color-border: #E8DDD0;
+  --font-display: Montserrat;
+  --font-body: "Open Sans";
   --base-size: 16px;
-  --type-scale-ratio: 1.414;
-  --h1-size: 3.9976rem;
-  --h2-size: 2.8271rem;
-  --h3-size: 1.9994rem;
-  --h4-size: 1.4140rem;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.02em;
+  --letter-spacing-display: 0.04em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.2;
-  --line-height-body: 1.65;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -46,19 +46,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 4rem 1.5rem;
-  --section-padding-desktop: 8rem 4rem;
-  --card-gap: 1.5rem;
-  --heading-margin-bottom: 1.25rem;
-  --paragraph-margin-bottom: 1.5rem;
+  --section-padding-mobile: 2.5rem 1rem;
+  --section-padding-desktop: 4rem 2rem;
+  --card-gap: 0.5rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 16px;
   --button-radius: 8px;
   --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 400ms;
-  --animation-stagger: 100ms;
-  --animation-type: fade_in;
+  --animation-duration: 0ms;
+  --animation-stagger: 0ms;
+  --animation-type: none;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,14 +95,7 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-on-scroll {
-  opacity: 0;
-  animation: fadeIn 400ms ease-out forwards;
-}
+    
     .section-nav {
   position: sticky;
   top: 0;
@@ -434,6 +427,47 @@
   }
   .services-cards-title {
     font-size: calc(var(--h2-size, 1.75rem) * 1.15);
+  }
+}
+.section-markets {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.markets-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.markets-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+.markets-grid {
+  display: grid;
+  gap: 1rem;
+}
+.market-card {
+  border-top: 3px solid var(--color-accent);
+  padding: 1rem 0;
+}
+.market-card:has(.market-name:empty) {
+  display: none;
+}
+.market-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+.market-desc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .markets-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
   }
 }
 .section-about {
@@ -859,13 +893,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="Providing [Solar Electric](solarelectric/index.htm), [Solar Hot Water](solarhotwater/index.htm) and [Solar Pool](solarpool/index.htm) Installation,"
+            alt="SOLAR ENERGY SOLUTIONS, INC."
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">Providing [Solar Electric](solarelectric/index.htm), [Solar Hot Water](solarhotwater/index.htm) and [Solar Pool](solarpool/index.htm) Installation,</h3>
-          <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
+          <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
+          <p class="service-card-desc">Tour our photo galleries of recent solar electric / photovoltaic installations, including dual photovoltaic / solar hot water systems and racked systems.</p>
         </div>
       </article>
       <article class="service-card">
@@ -876,13 +910,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="**[![Solar Photovoltaics](solarelectric/images/032_m.jpg)Solar Electric / Photovoltaics](solarelectric/index.htm)**"
+            alt="Providing Solar Electric, Solar Hot Water and Solar Pool Installation,"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">**[![Solar Photovoltaics](solarelectric/images/032_m.jpg)Solar Electric / Photovoltaics](solarelectric/index.htm)**</h3>
-          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
+          <h3 class="service-card-name">Providing Solar Electric, Solar Hot Water and Solar Pool Installation,</h3>
+          <p class="service-card-desc">Sales and Service for the Portland Oregon Metro Area since 1987</p>
         </div>
       </article>
       <article class="service-card">
@@ -893,13 +927,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="[![Solar Pool Heating](solarpool/images/029_mm.jpg)](solarpool/index.htm)**[Solar Pool Heating](solarpool/index.htm)**"
+            alt="Solar PhotovoltaicsSolar Electric / Photovoltaics"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">[![Solar Pool Heating](solarpool/images/029_mm.jpg)](solarpool/index.htm)**[Solar Pool Heating](solarpool/index.htm)**</h3>
-          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
+          <h3 class="service-card-name">Solar PhotovoltaicsSolar Electric / Photovoltaics</h3>
+          <p class="service-card-desc">Solar electric, what’s now called photovoltaics, is probably the most romantic and coveted way of using solar energy. With these systems you can actually slow how fast your electric meter spins or even spin it backwards ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -910,13 +944,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="[![Solar Hot Water](solarhotwater/images/005_mm.jpg)](solarhotwater/index.htm)**[Solar Hot Water](solarhotwater/index.htm)**"
+            alt="Solar Pool HeatingSolar Pool Heating"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">[![Solar Hot Water](solarhotwater/images/005_mm.jpg)](solarhotwater/index.htm)**[Solar Hot Water](solarhotwater/index.htm)**</h3>
-          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
+          <h3 class="service-card-name">Solar Pool HeatingSolar Pool Heating</h3>
+          <p class="service-card-desc">Using solar energy to heat your swimming pool is the very best energy saving way of using solar here in the Great Northwest. You can heat your pool to 80+ degrees from May through September for FREE ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -927,13 +961,13 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt="SOLAR ENERGY SOLUTIONS, INC."
+            alt="Solar Hot WaterSolar Hot Water"
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name">SOLAR ENERGY SOLUTIONS, INC.</h3>
-          <p class="service-card-desc">![PHOTOS](photospv.html)</p>
+          <h3 class="service-card-name">Solar Hot WaterSolar Hot Water</h3>
+          <p class="service-card-desc">Solar hot water heating is the most common and popular way to use solar energy. You can reduce the amount of energy you use to heat hot water by 60% by installing these solar systems ... more</p>
         </div>
       </article>
       <article class="service-card">
@@ -944,15 +978,27 @@
             sizes="(min-width: 768px) 33vw, 100vw"
             width="640"
             height="400"
-            alt=""
+            alt="We honestly don't know whether leasing would be a good or bad idea for you."
             loading="lazy"
           >
         </div>
         <div class="service-card-body">
-          <h3 class="service-card-name"></h3>
+          <h3 class="service-card-name">We honestly don't know whether leasing would be a good or bad idea for you.</h3>
           <p class="service-card-desc"></p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-markets" id="markets">
+  <div class="markets-inner">
+    <h2 class="markets-title">Markets Served</h2>
+    <div class="markets-grid">
+      <article class="market-card"><h3 class="market-name">Residential</h3><p class="market-desc">Custom foundations, slab-on-grade, retaining walls, and specialty concrete for homes and ranch properties.</p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
+      <article class="market-card"><h3 class="market-name"></h3><p class="market-desc"></p></article>
     </div>
   </div>
 </section>
@@ -1000,7 +1046,7 @@
 
 <section class="section-contact" id="contact">
   <div class="contact-inner">
-    <h2 class="contact-title">Get in Touch</h2>
+    <h2 class="contact-title">Start Your Project</h2>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-item-label">Phone</div>
@@ -1028,7 +1074,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Solar Energy Solutions</div>
-        <p class="footer-tagline">Transforming Homes, One Room at a Time</p>
+        <p class="footer-tagline">Handcrafted in Chicago since 2012</p>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
@@ -1071,21 +1117,7 @@
       });
     }
   });
-  // Scroll-triggered animation
-(function() {
-  var els = document.querySelectorAll(".animate-on-scroll");
-  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 100) + "ms";
-        entry.target.classList.add("animate-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(function(el) { observer.observe(el); });
-})();
+  
 </script>
 </body>
 </html>
