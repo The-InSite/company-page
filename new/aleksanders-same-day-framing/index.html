@@ -6,1247 +6,1224 @@
   <title>Aleksander's Same Day Framing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Variables ── */
     :root {
-      --navy: #0d1b2a;
-      --navy-dark: #070f18;
-      --orange: #f47b20;
-      --orange-dark: #d96b10;
-      --white: #ffffff;
-      --gray-light: #f4f4f4;
-      --gray-mid: #d8d8d8;
-      --gray-text: #555555;
-      --font-display: 'Oswald', Impact, 'Arial Narrow', Arial, sans-serif;
-      --font-body: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      --green:       #2d6a4f;
+      --green-hover: #40916c;
+      --green-dark:  #1b4332;
+      --charcoal:    #1c1c1e;
+      --charcoal-2:  #3a3a3c;
+      --gray:        #6e6e73;
+      --gray-lt:     #aeaeb2;
+      --border:      #d1d1d6;
+      --bg:          #ffffff;
+      --bg-off:      #f5f5f4;
+      --font:        'DM Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--font-body);
-      color: #222;
-      background: var(--white);
+      font-family: var(--font);
+      color: var(--charcoal);
+      background: var(--bg);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-
+    img   { display: block; max-width: 100%; }
+    a     { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
     span.opt:empty { display: none; }
-    a { color: inherit; }
 
-    /* ===================== NAV ===================== */
+    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--navy-dark);
-      border-bottom: 3px solid var(--orange);
-      height: 58px;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 32px;
+      padding: 20px 40px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, transparent 100%);
     }
-
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      white-space: nowrap;
-      flex-shrink: 0;
+      letter-spacing: 0.01em;
+      color: #fff;
     }
-
-    .nav-center {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-phone-link {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--orange);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    }
-
-    .nav-phone-link svg {
-      width: 16px;
-      height: 16px;
-      fill: var(--orange);
-      flex-shrink: 0;
-    }
-
     .nav-links {
       display: flex;
-      gap: 24px;
       list-style: none;
+      gap: 28px;
     }
-
     .nav-links a {
-      color: rgba(255,255,255,0.72);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
     }
-
-    .nav-links a:hover { color: var(--orange); }
-
+    .nav-links a:hover { color: #fff; }
     .nav-cta {
-      background: var(--orange);
-      color: var(--white);
-      padding: 8px 20px;
-      font-family: var(--font-display);
-      font-size: 0.84rem;
+      display: inline-block;
+      padding: 9px 18px;
+      background: var(--green);
+      color: #fff;
+      font-size: 14px;
       font-weight: 600;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      white-space: nowrap;
-      flex-shrink: 0;
+      border-radius: 3px;
+      letter-spacing: 0.01em;
     }
-
     .nav-hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
+      padding: 4px;
     }
-
     .nav-hamburger span {
       display: block;
       width: 22px;
       height: 2px;
-      background: var(--white);
+      background: #fff;
+      border-radius: 2px;
     }
-
     .nav-drawer {
       display: none;
-      flex-direction: column;
       position: absolute;
-      top: 58px;
-      left: 0;
-      right: 0;
-      background: var(--navy-dark);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 6px 0 20px;
-      z-index: 99;
-    }
-
-    .nav-drawer.open { display: flex; }
-
-    .nav-drawer a {
-      color: rgba(255,255,255,0.78);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      font-family: var(--font-display);
-      padding: 12px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav-drawer .drawer-cta {
-      background: var(--orange);
-      color: var(--white);
-      text-align: center;
-      margin: 14px 24px 0;
-      border-bottom: none;
-      padding: 12px 24px;
-    }
-
-    /* ===================== HERO ===================== */
-    .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 76px 32px 68px;
-      text-align: center;
-      border-bottom: 4px solid var(--orange);
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-display);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 18px;
-      display: block;
-      min-height: 0;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: 3.6rem;
-      font-weight: 700;
-      line-height: 1.04;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      max-width: 840px;
-      margin: 0 auto 22px;
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.75);
-      max-width: 540px;
-      margin: 0 auto 38px;
-      line-height: 1.72;
-    }
-
-    .hero-phone-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 32px;
-    }
-
-    .hero-phone-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--orange);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: pulse-phone 2.4s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    .hero-phone-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--white);
-    }
-
-    @keyframes pulse-phone {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(244, 123, 32, 0.55);
-      }
-      50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 16px rgba(244, 123, 32, 0);
-      }
-    }
-
-    .hero-phone-number {
-      font-family: var(--font-display);
-      font-size: 2.7rem;
-      font-weight: 700;
-      color: var(--orange);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 14px 34px;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .btn-ghost {
-      display: inline-block;
-      background: transparent;
-      color: rgba(255,255,255,0.68);
-      padding: 14px 26px;
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border: 1px solid rgba(255,255,255,0.22);
-    }
-
-    /* ===================== EMERGENCY BANNER ===================== */
-    .emergency-banner {
-      background: var(--orange);
-      color: var(--white);
-      padding: 14px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .em-label {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .em-divider {
-      width: 1px;
-      height: 18px;
-      background: rgba(255,255,255,0.38);
-      flex-shrink: 0;
-    }
-
-    .em-phone {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-    }
-
-    .em-sub {
-      font-size: 0.84rem;
-      color: rgba(255,255,255,0.88);
-    }
-
-    .btn-em {
-      background: var(--white);
-      color: var(--orange);
-      padding: 8px 20px;
-      font-family: var(--font-display);
-      font-size: 0.86rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* ===================== SHARED SECTION STYLES ===================== */
-    .eyebrow {
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: var(--navy);
-      line-height: 1.08;
-      margin-bottom: 10px;
-    }
-
-    .section-intro {
-      font-size: 0.95rem;
-      color: var(--gray-text);
-      max-width: 520px;
-      margin-bottom: 36px;
-      line-height: 1.65;
-    }
-
-    /* ===================== SERVICES ===================== */
-    .services {
-      background: var(--gray-light);
-      padding: 64px 32px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 2px solid var(--gray-mid);
-      border-right: none;
-      border-bottom: none;
-    }
-
-    .service-card {
-      padding: 28px 24px 32px;
-      border-right: 2px solid var(--gray-mid);
-      border-bottom: 2px solid var(--gray-mid);
-      background: var(--white);
-    }
-
-    .svc-num {
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      color: var(--orange);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .service-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      font-size: 0.87rem;
-      color: var(--gray-text);
-      line-height: 1.66;
-    }
-
-    /* ===================== STATS BAR ===================== */
-    .stats-bar {
-      background: var(--navy);
-      padding: 0 32px;
-    }
-
-    .stats-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-left: 1px solid rgba(255,255,255,0.1);
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .stat-item {
-      padding: 36px 20px;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.1);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 7px;
-      display: block;
-    }
-
-    .stat-lbl {
-      font-size: 0.74rem;
-      color: rgba(255,255,255,0.58);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .stat-badge {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.3;
-      margin-bottom: 7px;
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    /* ===================== TESTIMONIALS ===================== */
-    .testimonials {
-      background: var(--white);
-      padding: 64px 32px;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: var(--gray-light);
-      padding: 28px;
-      border: 2px solid var(--gray-mid);
-      border-top: 4px solid var(--navy);
-    }
-
-    .t-stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 14px;
-    }
-
-    .t-stars span {
-      color: var(--orange);
-      font-size: 1.05rem;
-    }
-
-    .testimonial-card blockquote {
-      font-size: 0.92rem;
-      line-height: 1.72;
-      color: #333;
-      margin-bottom: 18px;
-      font-style: italic;
-    }
-
-    .testimonial-card cite {
-      font-family: var(--font-display);
-      font-size: 0.77rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      font-style: normal;
-    }
-
-    /* ===================== PROCESS ===================== */
-    .process {
-      background: var(--gray-light);
-      padding: 64px 32px;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 2px solid var(--gray-mid);
-      border-right: none;
-      border-bottom: none;
-    }
-
-    .process-step {
-      padding: 32px 26px;
-      border-right: 2px solid var(--gray-mid);
-      border-bottom: 2px solid var(--gray-mid);
-      background: var(--white);
-    }
-
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 3.4rem;
-      font-weight: 700;
-      color: rgba(13, 27, 42, 0.07);
-      line-height: 1;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .process-step h3 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-
-    .process-step p {
-      font-size: 0.87rem;
-      color: var(--gray-text);
-      line-height: 1.66;
-    }
-
-    /* ===================== SERVICE AREA ===================== */
-    .service-area {
-      background: var(--navy);
-      color: var(--white);
-      padding: 56px 32px;
-    }
-
-    .service-area .section-title { color: var(--white); }
-
-    .area-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 52px;
-      align-items: start;
-      margin-top: 32px;
-    }
-
-    .area-city-display {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--orange);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 14px;
-    }
-
-    .area-detail {
-      font-size: 0.94rem;
-      color: rgba(255,255,255,0.68);
-      line-height: 1.72;
-      margin-bottom: 24px;
-    }
-
-    .area-cta-btn {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 12px 28px;
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .area-info-table {
-      display: flex;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(18,18,18,0.97);
+      padding: 20px 24px 28px;
       flex-direction: column;
+      gap: 4px;
     }
-
-    .area-info-row {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .area-info-row:last-child { border-bottom: none; }
-
-    .area-info-label {
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--orange);
-      min-width: 76px;
-      padding-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .area-info-value {
-      font-size: 0.91rem;
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 15px;
+      font-weight: 500;
       color: rgba(255,255,255,0.78);
-      line-height: 1.55;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .drawer-cta {
+      display: block;
+      padding: 13px 20px !important;
+      background: var(--green);
+      color: #fff !important;
+      font-weight: 600 !important;
+      text-align: center;
+      border-radius: 3px;
+      margin-top: 12px;
+      border-bottom: none !important;
     }
 
-    .area-info-value a {
-      color: rgba(255,255,255,0.78);
-      text-decoration: none;
-    }
-
-    /* ===================== CONTACT ===================== */
-    .contact {
-      background: var(--white);
-      padding: 64px 32px;
-    }
-
-    .contact-layout {
+    /* ── HERO GALLERY ── */
+    .hero-gallery {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 520px;
+      max-height: 880px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 52px;
-      max-width: 1000px;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      background: var(--charcoal);
     }
-
-    .contact-bio {
-      font-size: 0.92rem;
-      color: var(--gray-text);
-      line-height: 1.7;
-      margin-bottom: 28px;
-      border-left: 3px solid var(--orange);
-      padding-left: 16px;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .contact-icon {
-      font-size: 0.95rem;
-      color: var(--orange);
-      margin-top: 3px;
-      min-width: 20px;
-      flex-shrink: 0;
-    }
-
-    .contact-detail strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 2px;
-    }
-
-    .contact-detail a,
-    .contact-detail span {
-      font-size: 0.92rem;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .contact-detail a:hover { color: var(--orange); }
-
-    .contact-phone-big {
-      font-family: var(--font-display) !important;
-      font-size: 1.75rem !important;
-      font-weight: 700 !important;
-      color: var(--orange) !important;
-    }
-
-    .contact-cta-box {
-      background: var(--navy);
-      padding: 36px;
-      color: var(--white);
-    }
-
-    .free-tag {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      font-family: var(--font-display);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      margin-bottom: 16px;
-    }
-
-    .contact-cta-box h3 {
-      font-family: var(--font-display);
-      font-size: 1.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: var(--white);
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-
-    .contact-cta-box .cta-intro {
-      font-size: 0.89rem;
-      color: rgba(255,255,255,0.68);
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
-
-    .btn-cta-full {
-      display: block;
-      background: var(--orange);
-      color: var(--white);
-      padding: 15px 28px;
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .cta-phone-alt {
-      display: block;
-      text-align: center;
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--orange);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-    }
-
-    /* ===================== PACKAGES (OPT) ===================== */
-    .packages {
-      background: var(--gray-light);
-      padding: 64px 32px;
-    }
-
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 2px solid var(--gray-mid);
-      border-right: none;
-      border-bottom: none;
-    }
-
-    .pkg-card {
-      padding: 28px 24px 32px;
-      border-right: 2px solid var(--gray-mid);
-      border-bottom: 2px solid var(--gray-mid);
-      background: var(--white);
+    .gallery-panel {
       position: relative;
+      overflow: hidden;
+      background: var(--charcoal-2);
     }
+    .gallery-panel.g-hidden { display: none; }
 
-    .pkg-card.featured {
-      background: var(--navy);
+    /* ── Before/After Slider ── */
+    .ba-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: ew-resize;
+      user-select: none;
+      -webkit-user-select: none;
     }
-
-    .pkg-badge {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      font-family: var(--font-display);
-      font-size: 0.68rem;
+    .ba-before,
+    .ba-after {
+      position: absolute;
+      inset: 0;
+    }
+    .ba-before img,
+    .ba-after img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .ba-before img {
+      filter: grayscale(1) brightness(0.56) contrast(1.08);
+    }
+    .ba-lbl {
+      position: absolute;
+      top: 10px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 3px 10px;
+      color: #fff;
+      padding: 3px 8px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .ba-lbl-b { left: 10px; }
+    .ba-lbl-a { right: 10px; }
+    .ba-handle {
       position: absolute;
       top: 0;
-      right: 0;
+      bottom: 0;
+      width: 48px;
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 30;
+      touch-action: none;
     }
-
-    .pkg-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
+    .ba-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255,255,255,0.88);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .ba-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+      height: 38px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.28);
+      font-size: 15px;
+      color: var(--charcoal);
+      pointer-events: none;
+      line-height: 1;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--navy);
-      margin-bottom: 6px;
-      margin-top: 20px;
     }
 
-    .pkg-card.featured .pkg-name { color: var(--white); }
-
-    .pkg-price {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--orange);
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .pkg-desc {
-      font-size: 0.87rem;
-      color: var(--gray-text);
-      line-height: 1.65;
-    }
-
-    .pkg-card.featured .pkg-desc { color: rgba(255,255,255,0.68); }
-
-    /* ===================== FOOTER ===================== */
-    footer {
-      background: var(--navy-dark);
-      padding: 28px 32px;
-      border-top: 3px solid var(--orange);
+    /* ── IDENTITY STRIP ── */
+    .identity-strip {
+      background: var(--bg);
+      padding: 26px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
     }
-
-    .footer-biz {
-      font-family: var(--font-display);
-      font-size: 1rem;
+    .strip-left {}
+    .strip-name {
+      font-size: 20px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--charcoal);
+      letter-spacing: -0.01em;
+    }
+    .strip-meta {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .strip-meta .sdot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      background: var(--gray-lt);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .strip-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .strip-phone {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+    }
+    .strip-cta {
+      display: inline-block;
+      padding: 11px 22px;
+      background: var(--green);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 3px;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .strip-cta:hover { background: var(--green-hover); }
+
+    /* ── HERO STATEMENT ── */
+    .hero-statement {
+      background: var(--bg);
+      padding: 60px 40px 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-statement-inner { max-width: 780px; }
+    .hs-headline {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .hs-subtext {
+      font-size: 18px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 28px;
+    }
+    .hs-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 1px;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--charcoal);
+      padding: 0 40px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.75);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 18px 28px;
+      border-right: 1px solid rgba(255,255,255,0.09);
+      white-space: nowrap;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--green-hover);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS: General ── */
+    .section { padding: 80px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .section-heading {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.14;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .section-intro {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--charcoal-2);
+      margin-top: 20px;
+    }
+    .cred-badge {
+      display: inline-block;
+      margin-top: 22px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray);
       letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 3px;
+    }
+    .about-photo-col {}
+    .about-photo-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 115%;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-off);
+    }
+    .about-photo-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    #about-initials {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--gray-lt);
     }
 
-    .footer-cred {
-      display: block;
-      font-size: 0.77rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 3px;
-      font-family: var(--font-body);
+    /* ── SERVICES ── */
+    .services-section { background: var(--bg-off); }
+    .services-header { margin-bottom: 44px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .svc-photo-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 62%;
+      background: var(--bg-off);
+      overflow: hidden;
+    }
+    .svc-photo-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .svc-photo-ph {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-off);
+    }
+    .svc-num {
+      padding: 18px 20px 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gray-lt);
+    }
+    .svc-body { padding: 12px 20px 24px; }
+    .svc-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .svc-desc { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+    /* ── STATS ── */
+    .stats-row {
+      background: var(--bg);
+      padding: 48px 40px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; min-width: 120px; }
+    .stat-val {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .stat-lbl {
+      margin-top: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
     }
 
-    .footer-mid {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
+    /* ─�� PROCESS ── */
+    .process-section { background: var(--bg-off); }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .process-step {
+      border-top: 2px solid var(--green);
+      padding-top: 28px;
+    }
+    .step-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .step-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green);
+      padding: 56px 40px;
       text-align: center;
     }
-
-    .footer-right {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
-      text-align: right;
+    .cta-band h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .cta-band p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-band-btn {
+      display: inline-block;
+      padding: 15px 36px;
+      background: #fff;
+      color: var(--green-dark);
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 3px;
+      letter-spacing: 0.01em;
     }
 
-    /* ===================== RESPONSIVE 900px ===================== */
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--bg); }
+    .testi-header { margin-bottom: 44px; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .testi-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .testi-stars {
+      color: #f4a21e;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .testi-quote {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--charcoal-2);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .testi-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bg-off);
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .testi-avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .testi-avatar-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--gray-lt);
+    }
+    .testi-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    /* ── PRACTICAL ── */
+    .practical-section { background: var(--bg-off); }
+    .practical-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 40px;
+    }
+    .prac-item { margin-bottom: 28px; }
+    .prac-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 5px;
+    }
+    .prac-val { font-size: 15px; color: var(--charcoal-2); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--charcoal); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-left .eyebrow { color: var(--green-hover); }
+    .contact-left .section-heading { color: #fff; }
+    .contact-intro-p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+    .contact-cta {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 3px;
+      margin-top: 28px;
+      letter-spacing: 0.01em;
+    }
+    .contact-cta:hover { background: var(--green-hover); }
+    .contact-deets {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 8px;
+    }
+    .cd-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-bottom: 3px;
+    }
+    .cd-val { font-size: 15px; color: rgba(255,255,255,0.78); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      padding: 22px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.42);
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
+
+    /* ── RESPONSIVE: TABLET 900px ── */
     @media (max-width: 900px) {
-      .nav-links,
-      .nav-cta,
-      .nav-phone-link { display: none; }
+      nav { padding: 18px 24px; }
+      .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero h1 { font-size: 2.5rem; }
-      .hero-phone-number { font-size: 2rem; }
-      .hero-phone-icon { width: 42px; height: 42px; }
+      .hero-gallery { height: 65vh; max-height: 600px; }
 
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: 1fr; }
+      .section { padding: 56px 24px; }
+      .hero-statement { padding: 44px 24px 36px; }
+      .hs-headline { font-size: 30px; }
 
-      .process-steps {
-        grid-template-columns: 1fr;
-        border-right: 2px solid var(--gray-mid);
+      .identity-strip { padding: 22px 24px; flex-direction: column; align-items: flex-start; }
+      .strip-right { width: 100%; justify-content: space-between; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-photo-col { display: none; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      .process-grid { grid-template-columns: 1fr; gap: 28px; }
+
+      .testi-grid { grid-template-columns: 1fr; }
+
+      .practical-cols { grid-template-columns: 1fr; gap: 0; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+
+      .trust-bar { padding: 0 24px; flex-wrap: wrap; justify-content: flex-start; }
+      .trust-item {
+        padding: 14px 18px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        width: 100%;
       }
-      .process-step { border-right: none; }
 
-      .area-grid { grid-template-columns: 1fr; gap: 32px; }
-      .contact-layout { grid-template-columns: 1fr; gap: 32px; }
-      .packages-grid { grid-template-columns: 1fr; }
-      .pkg-card { border-right: 2px solid var(--gray-mid); }
+      .stats-row { padding: 40px 24px; }
+      .cta-band { padding: 44px 24px; }
+      footer { padding: 18px 24px; }
     }
 
-    /* ===================== RESPONSIVE 600px ===================== */
+    /* ── RESPONSIVE: MOBILE 600px ── */
     @media (max-width: 600px) {
-      nav { padding: 0 16px; height: 54px; }
-      .nav-drawer { top: 54px; }
-      .nav-logo { font-size: 0.88rem; }
+      .hero-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 75vh;
+        max-height: 560px;
+      }
+      .gallery-panel:nth-child(3),
+      .gallery-panel:nth-child(4) { display: none !important; }
 
-      .hero { padding: 48px 16px 52px; }
-      .hero h1 { font-size: 1.9rem; }
-      .hero-phone-number { font-size: 1.6rem; }
-      .hero-phone-icon { width: 38px; height: 38px; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .btn-primary, .btn-ghost { text-align: center; }
+      .hero-statement { padding: 36px 20px 30px; }
+      .hs-headline { font-size: 26px; }
+      .hs-subtext { font-size: 15px; }
 
-      .emergency-banner { padding: 12px 16px; gap: 10px; flex-direction: column; text-align: center; }
-      .em-divider { display: none; }
-
-      .services { padding: 48px 16px; }
+      .section-heading { font-size: 26px; }
       .services-grid { grid-template-columns: 1fr; }
 
-      .stats-bar { padding: 0 16px; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat-num { font-size: 2rem; }
+      .strip-right { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .strip-cta { display: block; text-align: center; }
 
-      .testimonials { padding: 48px 16px; }
-      .process { padding: 48px 16px; }
-      .service-area { padding: 48px 16px; }
-      .area-city-display { font-size: 1.7rem; }
-      .packages { padding: 48px 16px; }
-      .contact { padding: 48px 16px; }
+      .stats-inner { flex-direction: column; align-items: center; gap: 28px; }
+      .stat-val { font-size: 36px; }
 
-      .section-title { font-size: 1.8rem; }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 22px 16px;
-        gap: 8px;
-      }
-      .footer-right, .footer-mid { text-align: left; }
+      .cta-band h2 { font-size: 24px; }
+      footer { flex-direction: column; gap: 6px; }
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#home" class="nav-logo">Aleksander's Same Day Framing</a>
-    <div class="nav-center">
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="tel:+15124785146" class="nav-phone-link">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.58.11.35.03.74-.24 1.02L6.6 10.8z"/></svg>
-        +15124785146
-      </a>
-    </div>
-    <a href="http://www.aleksandersframing.com/" class="nav-cta">Get a Free Quote</a>
-    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-drawer" id="nav-drawer">
-      <a href="#services" onclick="closeNav()">Services</a>
-      <a href="#reviews" onclick="closeNav()">Reviews</a>
-      <a href="#contact" onclick="closeNav()">Contact</a>
-      <a href="http://www.aleksandersframing.com/" class="drawer-cta" onclick="closeNav()">Get a Free Quote</a>
-    </div>
-  </nav>
-
-  <!-- HERO — no image, phone as hero element -->
-  <section id="home" class="hero">
-    <span class="hero-eyebrow"><span class="opt">30+ Years Custom Framing Experience</span></span>
-    <h1>Custom Framing Done Right — Same Day Service Available</h1>
-    <p class="hero-sub">Thousands of frame styles, museum-quality materials, and expert craftsmanship. Free pickup and installation with no extra charge for rush orders.</p>
-    <div class="hero-phone-row">
-      <div class="hero-phone-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.2 2.47.57 3.58.11.35.03.74-.24 1.02L6.6 10.8z"/></svg>
-      </div>
-      <a href="tel:+15124785146" class="hero-phone-number">+15124785146</a>
-    </div>
-    <div class="hero-actions">
-      <a href="http://www.aleksandersframing.com/" class="btn-primary">Get a Free Quote</a>
-      <a href="#services" class="btn-ghost">Our Story</a>
-    </div>
-  </section>
-
-  <!-- EMERGENCY BANNER -->
-  <div class="emergency-banner">
-    <span class="em-label">24/7 Emergency Line</span>
-    <span class="em-divider" aria-hidden="true"></span>
-    <a href="tel:+15124785146" class="em-phone">+15124785146</a>
-    <span class="em-divider" aria-hidden="true"></span>
-    <span class="em-sub"><span class="opt">In-Shop or Pickup & Delivery</span></span>
-    <a href="http://www.aleksandersframing.com/" class="btn-em">Get a Free Quote</a>
+<!-- ── NAV ── -->
+<nav>
+  <a href="#home" class="nav-logo">Aleksander's Same Day Framing</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="http://www.aleksandersframing.com/" class="nav-cta">Request a Quote</a>
+  <button class="nav-hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#about"    onclick="closeNav()">About</a>
+    <a href="#services" onclick="closeNav()">Services</a>
+    <a href="#process"  onclick="closeNav()">Process</a>
+    <a href="#contact"  onclick="closeNav()">Contact</a>
+    <a href="http://www.aleksandersframing.com/" class="drawer-cta" onclick="closeNav()">Request a Quote</a>
   </div>
+</nav>
 
-  <!-- SERVICES GRID -->
-  <section id="services" class="services">
-    <span class="eyebrow">Our Framing Services</span>
-    <h2 class="section-title">Custom solutions for every framing need</h2>
-    <p class="section-intro">From museum-quality conservation framing to same-day rush orders, we deliver expert craftsmanship for every project.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="svc-num">SERVICE 01</span>
-        <h3>Custom Frame Design</h3>
-        <p>We create custom frames to protect and enhance art objects for display, working with customers to design the exact frame they desire. Costs for design services are included in the frame price.</p>
-      </div>
-      <div class="service-card">
-        <span class="svc-num">SERVICE 02</span>
-        <h3>Museum & Conservation Framing</h3>
-        <p>Conservation and museum mounting using premium materials including museum glass, UV filtering glass, and cotton rag matboards to preserve your artwork for generations.</p>
-      </div>
-      <div class="service-card">
-        <span class="svc-num">SERVICE 03</span>
-        <h3>Shadow Box Framing</h3>
-        <p>Custom shadow box frames for three-dimensional objects, memorabilia, and keepsakes — beautifully displayed and protected.</p>
-      </div>
-    </div>
-  </section>
+<!-- ── HERO GALLERY (before/after sliders) ── -->
+<div class="hero-gallery" id="home">
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <span class="stat-num"><span class="opt">30+</span></span>
-        <span class="stat-lbl">Years Experience</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num"><span class="opt"></span></span>
-        <span class="stat-lbl">Satisfied Clients</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-badge"><span class="opt">Free Quote on All Projects</span></span>
-        <span class="stat-lbl">Free Quotes</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-badge"><span class="opt">Fast Turnaround. Finest Craftsmanship. Every Frame, Every Time.</span></span>
-        <span class="stat-lbl"><span class="opt">Austin, TX</span></span>
+  <div class="gallery-panel" id="gp1">
+    <div class="ba-slider" id="ba1">
+      <div class="ba-before"><img src="" alt=""></div>
+      <div class="ba-after" id="ba1-after"><img src="" alt=""></div>
+      <span class="ba-lbl ba-lbl-b">Before</span>
+      <span class="ba-lbl ba-lbl-a">After</span>
+      <div class="ba-handle" id="ba1-handle">
+        <div class="ba-line"></div>
+        <div class="ba-circle">&#8596;</div>
       </div>
     </div>
   </div>
 
-  <!-- TESTIMONIALS -->
-  
-  <section id="reviews" class="testimonials">
-    <span class="eyebrow">What Our Clients Say</span>
-    <h2 class="section-title">Trusted by artists, athletes, universities, and businesses across Austin.</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="t-stars">
-          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+  <div class="gallery-panel" id="gp2">
+    <div class="ba-slider" id="ba2">
+      <div class="ba-before"><img src="" alt=""></div>
+      <div class="ba-after" id="ba2-after"><img src="" alt=""></div>
+      <span class="ba-lbl ba-lbl-b">Before</span>
+      <span class="ba-lbl ba-lbl-a">After</span>
+      <div class="ba-handle" id="ba2-handle">
+        <div class="ba-line"></div>
+        <div class="ba-circle">&#8596;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-panel" id="gp3">
+    <div class="ba-slider" id="ba3">
+      <div class="ba-before"><img src="http://www.aleksandersframing.com/photogallery/shadwowbox.jpg" alt=""></div>
+      <div class="ba-after" id="ba3-after"><img src="http://www.aleksandersframing.com/photogallery/shadwowbox.jpg" alt=""></div>
+      <span class="ba-lbl ba-lbl-b">Before</span>
+      <span class="ba-lbl ba-lbl-a">After</span>
+      <div class="ba-handle" id="ba3-handle">
+        <div class="ba-line"></div>
+        <div class="ba-circle">&#8596;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-panel" id="gp4">
+    <div class="ba-slider" id="ba4">
+      <div class="ba-before"><img src="" alt=""></div>
+      <div class="ba-after" id="ba4-after"><img src="" alt=""></div>
+      <span class="ba-lbl ba-lbl-b">Before</span>
+      <span class="ba-lbl ba-lbl-a">After</span>
+      <div class="ba-handle" id="ba4-handle">
+        <div class="ba-line"></div>
+        <div class="ba-circle">&#8596;</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── IDENTITY STRIP ── -->
+<div class="identity-strip">
+  <div class="strip-left">
+    <div class="strip-name">Aleksander's Same Day Framing</div>
+    <div class="strip-meta">
+      <span class="opt">30+ yrs</span>
+      <span class="sdot"></span>
+      <span class="opt">Austin, TX</span>
+      <span class="sdot"></span>
+      <span class="opt">Fast Turnaround. Exceptional Craftsmanship. Every Frame.</span>
+    </div>
+  </div>
+  <div class="strip-right">
+    <a href="tel:+15124785146" class="strip-phone">+15124785146</a>
+    <a href="http://www.aleksandersframing.com/" class="strip-cta">Request a Quote</a>
+  </div>
+</div>
+
+<!-- ── HERO STATEMENT (required headline slots) ── -->
+<div class="hero-statement">
+  <div class="hero-statement-inner">
+    <h1 class="hs-headline">Custom Framing with Same-Day Turnaround</h1>
+    <p class="hs-subtext">Thousands of frame styles, museum-quality craftsmanship, free pickup and installation — no extra charge for rush orders.</p>
+    <a href="#about" class="hs-link">Learn More About Us</a>
+  </div>
+</div>
+
+<!-- ── TRUST BAR ── -->
+
+
+<!-- ── ABOUT ── -->
+<section class="about-section section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="eyebrow">About</span>
+        <h2 class="section-heading">About Aleksander Gallery</h2>
+        <p class="about-body">Family-owned and operated since 1974, Aleksander Gallery brings over 30 years of custom framing expertise to every project. From our fully equipped Austin workshop, we offer traditional and modern frame-making techniques, museum-quality framing, object framing, canvas stretching, tapestry framing, and restoration services. We design and produce unique presentation pieces for corporate, sports, and military facilities, and we can find or match virtually any existing frame.</p>
+        <span class="opt cred-badge">30+ Years Custom Framing Experience</span>
+      </div>
+      <div class="about-photo-col">
+        <div class="about-photo-frame">
+          <img id="about-photo" src="http://www.aleksandersframing.com/shop%20photos/aleksanderframing%20002.jpg" alt="Richard Aleksander">
+          <div id="about-initials"><span class="opt">RA</span></div>
         </div>
-        <blockquote>Richard Aleksander has been handling our photo framing needs for the past twelve years. He is always professional and timely with his work. We have many action shots of our athletes and I trust Richard to handle every step in the process. He won't stop until it is done right.</blockquote>
-        <cite>Michael Center</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section section" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <span class="eyebrow">Our Framing Services</span>
+      <h2 class="section-heading">Custom framing solutions for every need — art, memorabilia, corporate displays, and more.</h2>
+      <p class="section-intro">From single artwork to large institutional installations, we handle every framing project with precision and care.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-photo-wrap">
+          <img id="svc-img-1" src="" alt="">
+          <div class="svc-photo-ph" id="svc-ph-1"></div>
+        </div>
+        <div class="svc-num">SERVICE 01</div>
+        <div class="svc-body">
+          <div class="svc-title">Custom Frame Design</div>
+          <p class="svc-desc">We create custom frames to protect and enhance art objects for display, working with customers to design the exact frame they desire. Design service costs are included in the frame price.</p>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo-wrap">
+          <img id="svc-img-2" src="" alt="">
+          <div class="svc-photo-ph" id="svc-ph-2"></div>
+        </div>
+        <div class="svc-num">SERVICE 02</div>
+        <div class="svc-body">
+          <div class="svc-title">Museum Quality Framing</div>
+          <p class="svc-desc">Conservation and museum mounting using cotton rag matboards, UV-filtering glass, and museum glass to preserve and protect valuable artwork for generations.</p>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo-wrap">
+          <img id="svc-img-3" src="http://www.aleksandersframing.com/photogallery/shadwowbox.jpg" alt="">
+          <div class="svc-photo-ph" id="svc-ph-3"></div>
+        </div>
+        <div class="svc-num">SERVICE 03</div>
+        <div class="svc-body">
+          <div class="svc-title">Shadow Box Framing</div>
+          <p class="svc-desc">Custom shadow boxes for three-dimensional objects, memorabilia, diplomas, certificates, military items, and sports collectibles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ROW ── -->
+
+
+<!-- ── PROCESS ── -->
+<section class="process-section section" id="process">
+  <div class="section-inner">
+    <span class="eyebrow">Our Process</span>
+    <h2 class="section-heading">How It Works</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-title">Consultation & Design</div>
+        <p class="step-desc">Discuss your framing needs with our experts. We help you select from thousands of frame styles, mat options, and glass types to achieve the perfect look.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-title">Free Pickup</div>
+        <p class="step-desc">We offer complimentary pickup of your artwork or items so you don't have to worry about transport.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-title">Crafting Your Frame</div>
+        <p class="step-desc">Our fully equipped workshop uses pneumatic under-pinners, precision mat cutters, and premium materials to build your custom frame with tight, strong corners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND (repeat) ── -->
+<div class="cta-band">
+  <h2>Get In Touch</h2>
+  <p>Ready to frame something special? Contact us for a free quote or to schedule a pickup. We're available Monday through Sunday.</p>
+  <a href="http://www.aleksandersframing.com/" class="cta-band-btn">Request a Quote</a>
+</div>
+
+<!-- ── TESTIMONIALS ── -->
+
+<section class="testimonials-section section" id="reviews">
+  <div class="section-inner">
+    <div class="testi-header">
+      <span class="eyebrow">What Our Clients Say</span>
+      <h2 class="section-heading">Trusted by artists, coaches, and institutions across Austin for over 30 years.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-quote">&#8220;Richard Aleksander has been handling our photo framing needs for the past twelve years. He is always professional and timely with his work. We have many action shots of our athletes and I trust Richard to handle every step in the process. He won't stop until it is done right.&#8221;</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">
+            <img id="t1-img" src="" alt="">
+            <div class="testi-avatar-ph" id="t1-ph">&#9733;</div>
+          </div>
+          <span class="testi-name">Michael Center</span>
+        </div>
       </div>
       <!-- OPT:testimonial_2_text -->
-      <div class="testimonial-card">
-        <div class="t-stars">
-          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+      <div class="testi-card">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testi-quote">&#8220;&#8221;</p>
+        <div class="testi-footer">
+          <div class="testi-avatar">
+            <img id="t2-img" src="" alt="">
+            <div class="testi-avatar-ph" id="t2-ph">&#9733;</div>
+          </div>
+          <span class="testi-name"></span>
         </div>
-        <blockquote>{{testimonial_2_text}}</blockquote>
-        <cite>{{testimonial_2_attribution}}</cite>
       </div>
       
     </div>
-  </section>
-  <!-- /OPT:testimonial_text -->
+  </div>
+</section>
+<!-- /OPT:testimonial_text -->
 
-  <!-- HOW IT WORKS -->
-  <section class="process">
-    <span class="eyebrow">Our Process</span>
-    <h2 class="section-title">How It Works</h2>
-    <div class="process-steps">
-      <div class="process-step">
-        <span class="step-num">01</span>
-        <h3>Consultation & Design</h3>
-        <p>We work with you to select the perfect frame style, matboard, and glass from thousands of options. Design services are included in the frame price.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-num">02</span>
-        <h3>Expert Crafting</h3>
-        <p>Your frame is assembled in our fully equipped workshop using premium materials and pneumatic under-pinning for tight, strong, unmarred corners.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-num">03</span>
-        <h3>Free Pickup & Installation</h3>
-        <p>We offer free pickup of your artwork and professional installation — with no extra charge for rush orders.</p>
-      </div>
-    </div>
-  </section>
+<!-- ── PRACTICAL INFO ── -->
 
-  <!-- SERVICE AREA -->
-  <div class="service-area">
-    <span class="eyebrow">Service Area</span>
-    <h2 class="section-title">Why Choose Aleksander Gallery</h2>
-    <div class="area-grid">
-      <div class="area-left">
-        <div class="area-city-display">Austin, TX</div>
-        <p class="area-detail">In-Shop or Pickup & Delivery</p>
-        <a href="http://www.aleksandersframing.com/" class="area-cta-btn">Get a Free Quote</a>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-heading">Get In Touch</h2>
+        <p class="contact-intro-p">Ready to frame something special? Contact us for a free quote or to schedule a pickup. We're available Monday through Sunday.</p>
+        <a href="http://www.aleksandersframing.com/" class="contact-cta">Request a Quote</a>
       </div>
-      <div class="area-info-table">
-        
-        <div class="area-info-row">
-          <span class="area-info-label">Hours</span>
-          <span class="area-info-value">Open Monday–Sunday, 10:00am–6:00pm</span>
+      <div class="contact-deets">
+        <div>
+          <div class="cd-label">Phone</div>
+          <div class="cd-val"><span class="opt">+15124785146</span></div>
         </div>
-        
-        
-        <div class="area-info-row">
-          <span class="area-info-label">Phone</span>
-          <span class="area-info-value"><a href="tel:+15124785146">+15124785146</a></span>
+        <div>
+          <div class="cd-label">Email</div>
+          <div class="cd-val"><span class="opt">richard@aleksandersframing.com</span></div>
         </div>
-        
-        
-        <div class="area-info-row">
-          <span class="area-info-label">Licensed</span>
-          <span class="area-info-value">All artwork handled with professional care and precision.</span>
+        <div>
+          <div class="cd-label">Address</div>
+          <div class="cd-val"><span class="opt">1803 Northridge Dr, Austin, TX 78723</span></div>
         </div>
-        
-        
+        <div>
+          <div class="cd-label">Hours</div>
+          <div class="cd-val"><span class="opt">Open Monday–Sunday, 10:00 AM – 6:00 PM</span></div>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- PACKAGES (OPT) -->
-  
-  <section class="packages">
-    <span class="eyebrow">Standard Framing Pricing</span>
-    <h2 class="section-title">Transparent pricing based on frame size. Custom options and quantity discounts available.</h2>
-    <div class="packages-grid">
-      <div class="pkg-card">
-        <div class="pkg-name">8x10 inches</div>
-        <span class="pkg-price">$80.00</span>
-        <p class="pkg-desc">Frame footage 4.3 ft — 1.5" wood molding, premium clear glass, dry mount, single mat</p>
-      </div>
-      <div class="pkg-card featured">
-        <span class="pkg-badge">Most Popular</span>
-        <div class="pkg-name">11x14 inches</div>
-        <span class="pkg-price">$105.00</span>
-        <p class="pkg-desc">Frame footage 5.5 ft</p>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-name">16x20 inches</div>
-        <span class="pkg-price">$150.00</span>
-        <p class="pkg-desc">Frame footage 7.3 ft</p>
-      </div>
-    </div>
-  </section>
-  
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">Aleksander's Same Day Framing</div>
+  <div class="footer-copy">&#169; 2026 Aleksander's Same Day Framing. All rights reserved.</div>
+</footer>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <span class="eyebrow">Contact Us</span>
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-layout">
-      <div class="contact-info">
-        <p class="contact-bio">Family-owned and operated since 1974, Aleksander Gallery is Austin's trusted custom framing destination. From our fully equipped workshop, we offer both traditional and modern frame-making approaches and can find or match virtually any existing frame. We specialize in museum quality framing, object framing, fabric and canvas stretching, framing of tapestries, and the design and production of unique presentation pieces for corporate, sports, and military facilities. We also provide restoration, repairs, and cleaning of artworks and frames.</p>
-        <div class="contact-row">
-          <span class="contact-icon">&#9742;</span>
-          <div class="contact-detail">
-            <strong>Phone</strong>
-            <a href="tel:+15124785146" class="contact-phone-big">+15124785146</a>
-          </div>
-        </div>
-        
-        <div class="contact-row">
-          <span class="contact-icon">&#9993;</span>
-          <div class="contact-detail">
-            <strong>Email</strong>
-            <a href="mailto:richard@aleksandersframing.com">richard@aleksandersframing.com</a>
-          </div>
-        </div>
-        
-        
-        <div class="contact-row">
-          <span class="contact-icon">&#9679;</span>
-          <div class="contact-detail">
-            <strong>Address</strong>
-            <span>1803 Northridge Dr, Austin, TX 78723</span>
-          </div>
-        </div>
-        
-        
-        <div class="contact-row">
-          <span class="contact-icon">&#9711;</span>
-          <div class="contact-detail">
-            <strong>Hours</strong>
-            <span>Open Monday–Sunday, 10:00am–6:00pm</span>
-          </div>
-        </div>
-        
-      </div>
-      <div class="contact-cta-box">
-        
-        <span class="free-tag">Free Quote on All Projects</span>
-        
-        <h3>Get In Touch</h3>
-        <p class="cta-intro">Ready to frame something special? Reach out for a free quote or to discuss your project. We'd love to help.</p>
-        <a href="http://www.aleksandersframing.com/" class="btn-cta-full">Get a Free Quote</a>
-        <a href="tel:+15124785146" class="cta-phone-alt">+15124785146</a>
-      </div>
-    </div>
-  </section>
+<script>
+// ── Nav ──
+function toggleNav() {
+  document.getElementById('nav-drawer').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('nav-drawer').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.querySelector('nav').contains(e.target)) closeNav();
+});
 
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <div class="footer-biz">Aleksander's Same Day Framing</div>
-      <span class="footer-cred"><span class="opt">30+ Years Custom Framing Experience</span></span>
-    </div>
-    <div class="footer-mid">
-      <span class="opt">Austin, TX</span>
-    </div>
-    <div class="footer-right">
-      &copy; 2026 Aleksander's Same Day Framing. All rights reserved.
-    </div>
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script>
-  function toggleNav() { document.getElementById('nav-drawer').classList.toggle('open'); }
-  function closeNav()  { document.getElementById('nav-drawer').classList.remove('open'); }
-  document.addEventListener('click', function(e) {
-    var nav = document.querySelector('nav');
-    if (nav && !nav.contains(e.target)) closeNav();
+// ── Gallery: hide panels with empty/unfilled photo slots, adjust grid ──
+(function() {
+  var panels = [
+    { id: 'gp1' },
+    { id: 'gp2' },
+    { id: 'gp3' },
+    { id: 'gp4' }
+  ];
+  var visible = 0;
+  panels.forEach(function(p) {
+    var el = document.getElementById(p.id);
+    if (!el) return;
+    var img = el.querySelector('.ba-before img');
+    var src = img ? (img.getAttribute('src') || '') : '';
+    if (!src || src.indexOf('{{') !== -1) {
+      el.classList.add('g-hidden');
+    } else {
+      visible++;
+    }
   });
-  </script>
+  var gallery = document.querySelector('.hero-gallery');
+  if (!gallery) return;
+  if (visible === 0) {
+    gallery.style.display = 'none';
+  } else if (visible === 1) {
+    gallery.style.gridTemplateColumns = '1fr';
+    gallery.style.gridTemplateRows = '1fr';
+  } else if (visible === 2) {
+    gallery.style.gridTemplateColumns = '1fr 1fr';
+    gallery.style.gridTemplateRows = '1fr';
+  } else if (visible === 3) {
+    gallery.style.gridTemplateColumns = '1fr 1fr';
+    gallery.style.gridTemplateRows = '1fr 1fr';
+  }
+})();
 
+// ── About photo fallback ──
+(function() {
+  var photo    = document.getElementById('about-photo');
+  var initials = document.getElementById('about-initials');
+  if (!photo || !initials) return;
+  var src = photo.getAttribute('src') || '';
+  if (!src || src.indexOf('{{') !== -1) { photo.style.display = 'none'; return; }
+  photo.onload  = function() { initials.style.display = 'none'; };
+  photo.onerror = function() { this.style.display = 'none'; };
+})();
+
+// ── Service photo fallbacks ──
+(function() {
+  [1, 2, 3].forEach(function(n) {
+    var img = document.getElementById('svc-img-' + n);
+    var ph  = document.getElementById('svc-ph-' + n);
+    if (!img) return;
+    var src = img.getAttribute('src') || '';
+    if (!src || src.indexOf('{{') !== -1) {
+      img.style.display = 'none';
+      return;
+    }
+    img.onload  = function() { if (ph) ph.style.display = 'none'; };
+    img.onerror = function() { this.style.display = 'none'; };
+  });
+})();
+
+// ── Testimonial photo fallbacks ──
+(function() {
+  [['t1-img', 't1-ph'], ['t2-img', 't2-ph']].forEach(function(pair) {
+    var img = document.getElementById(pair[0]);
+    var ph  = document.getElementById(pair[1]);
+    if (!img) return;
+    var src = img.getAttribute('src') || '';
+    if (!src || src.indexOf('{{') !== -1) { img.style.display = 'none'; return; }
+    img.onload  = function() { if (ph) ph.style.display = 'none'; };
+    img.onerror = function() { this.style.display = 'none'; };
+  });
+})();
+
+// ── Before/After Sliders ──
+(function() {
+  var configs = [
+    { slider: 'ba1', handle: 'ba1-handle', after: 'ba1-after' },
+    { slider: 'ba2', handle: 'ba2-handle', after: 'ba2-after' },
+    { slider: 'ba3', handle: 'ba3-handle', after: 'ba3-after' },
+    { slider: 'ba4', handle: 'ba4-handle', after: 'ba4-after' }
+  ];
+
+  configs.forEach(function(cfg) {
+    var sliderEl = document.getElementById(cfg.slider);
+    var handleEl = document.getElementById(cfg.handle);
+    var afterEl  = document.getElementById(cfg.after);
+    if (!sliderEl || !handleEl || !afterEl) return;
+
+    // Initial position: 50%
+    afterEl.style.clipPath = 'inset(0 50% 0 0)';
+    handleEl.style.left = '50%';
+
+    var dragging = false;
+
+    function moveTo(clientX) {
+      var rect = sliderEl.getBoundingClientRect();
+      var pct  = Math.max(2, Math.min(98, (clientX - rect.left) / rect.width * 100));
+      afterEl.style.clipPath  = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
+      handleEl.style.left     = pct.toFixed(2) + '%';
+    }
+
+    handleEl.addEventListener('mousedown', function(e) {
+      dragging = true;
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (dragging) moveTo(e.clientX);
+    });
+    document.addEventListener('mouseup', function() { dragging = false; });
+
+    handleEl.addEventListener('touchstart', function(e) {
+      dragging = true;
+      e.preventDefault();
+    }, { passive: false });
+    document.addEventListener('touchmove', function(e) {
+      if (dragging && e.touches[0]) {
+        moveTo(e.touches[0].clientX);
+        e.preventDefault();
+      }
+    }, { passive: false });
+    document.addEventListener('touchend', function() { dragging = false; });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var MAX_SCALE = 1;
+  function guard(img) {
+    if (!img.naturalWidth) return;
+    // img.offsetWidth is the actual rendered width after all CSS is applied.
+    // Only intervene if CSS is already stretching the image beyond MAX_SCALE.
+    if (img.offsetWidth > img.naturalWidth * MAX_SCALE) {
+      img.style.maxWidth = (img.naturalWidth * MAX_SCALE) + 'px';
+      img.style.height = 'auto';
+    }
+  }
+  function run() {
+    document.querySelectorAll('img').forEach(function(img) {
+      if (img.complete && img.naturalWidth) { guard(img); }
+      else { img.addEventListener('load', function(){ guard(img); }); }
+    });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); }
+  else { run(); }
+})();
+</script>
 </body>
 </html>
