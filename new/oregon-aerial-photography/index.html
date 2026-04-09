@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oregon Aerial Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:  #FFFFFF;
+      --bg:     #FAFAF8;
+      --surf:   #F2EFEC;
+      --border: #E4DED8;
+      --text:   #1A1A1A;
+      --sub:    #6A6869;
+      --accent: #C46A4A;
+      --alite:  #EDE0D9;
+      --dark:   #111111;
+      --fnt: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --nav-h: 72px;
+      --mxw: 1240px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fnt);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; }
+    a   { text-decoration: none; color: inherit; }
+    span.opt:empty { display: none; }
+
+    /* TYPE */
+    .ey {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h1 { font-family: var(--fnt); font-weight: 700; font-size: clamp(2.2rem, 4.2vw, 3.7rem); line-height: 1.08; letter-spacing: -0.026em; }
+    h2 { font-family: var(--fnt); font-weight: 700; font-size: clamp(1.5rem, 2.7vw, 2.3rem); line-height: 1.12; letter-spacing: -0.018em; }
+    h3 { font-family: var(--fnt); font-weight: 600; font-size: 1rem; letter-spacing: -0.005em; }
+    p  { font-weight: 300; line-height: 1.82; color: var(--sub); }
+
+    /* LAYOUT */
+    .wrap  { max-width: var(--mxw); margin: 0 auto; padding: 0 48px; }
+    .sec   { padding: 96px 0; }
+    .sec-hd { text-align: center; margin-bottom: 64px; }
+    .sec-hd p { max-width: 480px; margin: 14px auto 0; font-size: 0.94rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 38px;
+      font-family: var(--fnt);
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      transition: background 0.22s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { background: #A85739; }
+
+    /* ── NAV ── */
+    .site-hd {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+    }
+    .site-hd.scrolled {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+    }
+    .site-hd.scrolled .nav-logo          { color: var(--text); }
+    .site-hd.scrolled .nav-links a       { color: var(--sub); }
+    .site-hd.scrolled .nav-links a:hover { color: var(--text); }
+    .site-hd.scrolled .nav-cta           { border-color: var(--accent); color: var(--accent); }
+    .site-hd.scrolled .nav-cta:hover     { background: var(--accent); color: #fff; }
+    .site-hd.scrolled .nav-ham span      { background: var(--text); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      padding: 0 48px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-links { list-style: none; display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.9);
+      padding: 9px 22px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: all 0.22s;
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { color: #fff; background: rgba(255,255,255,0.1); border-color: #fff; }
+    .nav-ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .nav-ham span { display: block; width: 22px; height: 1.5px; background: #fff; }
+    .nav-drawer {
+      display: none;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(255,255,255,0.98);
+      flex-direction: column;
+      padding: 20px 32px 32px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.1);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .drawer-cta {
+      margin-top: 16px !important;
+      background: var(--accent) !important;
+      color: #fff !important;
+      text-align: center !important;
+      padding: 15px 0 !important;
+      border: none !important;
+      font-weight: 700 !important;
+      font-size: 0.69rem !important;
+      letter-spacing: 0.17em !important;
+    }
+
+    /* ── HERO: MASONRY GALLERY ── */
+    #home {
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      max-height: 920px;
+      background: #151515;
+      overflow: hidden;
+    }
+
+    /* 3-col, 2-row grid; tile-1 spans both rows on the left */
+    .g-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1.42fr 1fr 0.84fr;
+      grid-template-rows: 62% 38%;
+      gap: 4px;
+    }
+    .g-tile {
+      position: relative;
+      overflow: hidden;
+    }
+    /* Images pre-scaled to allow parallax translation without edge bleed */
+    .g-tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.14);
+      transform-origin: center center;
+      will-change: transform;
+    }
+    .g-tile:hover img { transform: scale(1.17); transition: transform 0.7s ease; }
+    .g-ph {
+      position: absolute;
+      inset: 0;
+      background: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.07);
+      letter-spacing: 0.1em;
+    }
+    /* Grid positions */
+    .g-t1 { grid-column: 1; grid-row: 1 / 3; }
+    .g-t2 { grid-column: 2; grid-row: 1; }
+    .g-t3 { grid-column: 3; grid-row: 1; }
+    .g-t4 { grid-column: 2 / 4; grid-row: 2; }
+
+    /* Overlay gradient */
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        155deg,
+        rgba(0,0,0,0.65) 0%,
+        rgba(0,0,0,0.14) 52%,
+        rgba(0,0,0,0.46) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Hero copy — bottom left */
+    .hero-body {
+      position: absolute;
+      bottom: 76px;
+      left: 60px;
+      z-index: 3;
+      max-width: 530px;
+    }
+    .h-ey {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.48);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .hero-body h1 {
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .hero-body .h-sub {
+      color: rgba(255,255,255,0.72);
+      font-weight: 300;
+      font-size: 0.97rem;
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 400px;
+    }
+    .h-ctas { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .h-link {
+      font-size: 0.69rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.28);
+      padding-bottom: 2px;
+      transition: all 0.2s;
+    }
+    .h-link:hover { color: #fff; border-color: rgba(255,255,255,0.55); }
+
+    /* Vertical scroll nudge — bottom right */
+    .scroll-ind {
+      position: absolute;
+      bottom: 30px;
+      right: 52px;
+      z-index: 3;
+      writing-mode: vertical-rl;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .scroll-ind::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 44px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      padding: 54px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .is-biz {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .intro-strip p {
+      font-size: clamp(0.9rem, 1.4vw, 1.08rem);
+      font-weight: 300;
+      color: var(--sub);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.72;
+    }
+
+    /* ── PORTFOLIO GRID ── */
+    /* No section header — images speak first */
+    #portfolio { padding: 0; }
+
+    .pf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 440px 300px;
+      gap: 4px;
+    }
+    .pf-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--surf);
+    }
+    .pf-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .pf-item:hover img { transform: scale(1.06); }
+
+    /* Placeholder shown when no image */
+    .pf-ph {
+      position: absolute;
+      inset: 0;
+      background: var(--surf);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      z-index: 0;
+    }
+    .pf-ph-n {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+    }
+    .pf-ph-l {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sub);
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* Hover overlay with service info */
+    .pf-over {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px 30px;
+      z-index: 2;
+    }
+    .pf-item:hover .pf-over { background: rgba(0,0,0,0.44); }
+    .pf-info { opacity: 0; transform: translateY(8px); transition: all 0.28s; }
+    .pf-item:hover .pf-info { opacity: 1; transform: translateY(0); }
+    .pf-info h3 { color: #fff; font-size: 0.95rem; margin-bottom: 5px; }
+    .pf-info p  { color: rgba(255,255,255,0.72); font-size: 0.78rem; line-height: 1.44; }
+
+    /* Grid positions */
+    .pf-1 { grid-column: 1 / 3; grid-row: 1; }
+    .pf-2 { grid-column: 3;     grid-row: 1; }
+    .pf-3 { grid-column: 1;     grid-row: 2; }
+    .pf-4 { grid-column: 2;     grid-row: 2; }
+    .pf-5 { grid-column: 3;     grid-row: 2; }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 64px;
+    }
+    .svc-card {
+      background: var(--bg);
+      padding: 52px 40px;
+      transition: background 0.22s;
+    }
+    .svc-card:hover { background: var(--white); }
+    .svc-n {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(196,106,74,0.42);
+      margin-bottom: 18px;
+    }
+    .svc-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .svc-card p { font-size: 0.875rem; }
+
+    /* ── ABOUT ── */
+    #about { padding: 96px 0; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Photo frame — portrait ratio */
+    .ab-img { position: relative; }
+    .ab-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 130%;
+      overflow: hidden;
+    }
+    .ab-frame img,
+    .ab-frame .ab-init {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .ab-frame img { object-fit: cover; }
+    .ab-init {
+      background: var(--surf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--border);
+    }
+    /* Terracotta accent block behind photo */
+    .ab-deco {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      width: 88px;
+      height: 88px;
+      background: var(--alite);
+      z-index: -1;
+    }
+
+    .ab-txt h2 { margin-bottom: 20px; }
+    .ab-txt .bio {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      color: var(--sub);
+      margin-bottom: 20px;
+    }
+    .pull-q {
+      font-size: 1.07rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1.6;
+      border-left: 2px solid var(--accent);
+      padding-left: 22px;
+      margin: 26px 0;
+    }
+    .ab-cred {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sub);
+      margin-top: 6px;
+    }
+
+    /* Stats row — opt block */
+    .ab-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .ab-stat .sv {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .ab-stat .sl {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sub);
+    }
+
+    /* ── PROCESS (OPT) ── */
+    #process {
+      padding: 96px 0;
+      background: var(--surf);
+    }
+    .proc-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 64px;
+    }
+    .proc-step {
+      background: var(--surf);
+      padding: 52px 40px;
+    }
+    .proc-num {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--alite);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+    .proc-step h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .proc-step p  { font-size: 0.875rem; }
+
+    /* ── TESTIMONIALS (OPT) ── */
+    #testimonials { padding: 96px 0; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 64px;
+    }
+    /* Single testimonial spans full width */
+    .testi-card:only-child { grid-column: 1 / 3; }
+
+    .testi-card {
+      background: var(--white);
+      padding: 56px 52px;
+    }
+    .t-mark {
+      display: block;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 5.5rem;
+      line-height: 0.75;
+      color: var(--alite);
+      margin-bottom: 18px;
+    }
+    .t-text {
+      font-size: 0.97rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .t-by { display: flex; align-items: center; gap: 14px; }
+    .t-av {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--surf);
+    }
+    .t-av img { width: 100%; height: 100%; object-fit: cover; }
+    .t-av-init {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--surf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--sub);
+      flex-shrink: 0;
+    }
+    .t-attr { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 96px 0;
+      background: var(--bg);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 64px;
+    }
+    .ct-left h2 { margin-bottom: 16px; }
+    .ct-intro { font-size: 0.97rem; line-height: 1.85; color: var(--sub); margin-bottom: 40px; }
+
+    .ct-list { list-style: none; margin-bottom: 36px; }
+    .ct-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .ct-list li:first-child { border-top: 1px solid var(--border); }
+    .ct-ico {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--alite);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .ct-ico svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ct-lbl { font-size: 0.61rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sub); margin-bottom: 2px; }
+    .ct-val { font-size: 0.9rem; color: var(--text); font-weight: 400; }
+    .ct-consult { font-size: 0.82rem; color: var(--accent); font-weight: 500; letter-spacing: 0.02em; }
+
+    .form-box {
+      background: var(--white);
+      padding: 52px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    }
+    .form-box h3 {
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .f-grp { margin-bottom: 12px; }
+    .f-grp label {
+      display: block;
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sub);
+      margin-bottom: 5px;
+    }
+    .f-grp input,
+    .f-grp textarea,
+    .f-grp select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-family: var(--fnt);
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .f-grp input:focus,
+    .f-grp textarea:focus { border-color: var(--accent); background: var(--white); }
+    .f-grp textarea { resize: vertical; min-height: 100px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 44px 48px;
+    }
+    .foot {
+      max-width: var(--mxw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .foot-brand { font-weight: 700; font-size: 0.76rem; letter-spacing: 0.17em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+    .foot-sub   { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 4px; }
+    .foot-copy  { font-size: 0.67rem; color: rgba(255,255,255,0.28); }
+
+    /* ── RESPONSIVE: 900px ── */
+    @media (max-width: 900px) {
+      :root { --nav-h: 64px; }
+      .wrap { padding: 0 32px; }
+      nav   { padding: 0 32px; }
+      .sec  { padding: 72px 0; }
+      .intro-strip { padding: 44px 32px; }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-ham { display: flex; }
+
+      /* Hero: collapse to 2-col */
+      .g-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 58% 42%;
+      }
+      .g-t1 { grid-column: 1; grid-row: 1; }
+      .g-t2 { grid-column: 2; grid-row: 1; }
+      .g-t3 { display: none; }
+      .g-t4 { grid-column: 1 / 3; grid-row: 2; }
+      .hero-body { left: 32px; bottom: 52px; max-width: 84%; }
+      .scroll-ind { display: none; }
+
+      /* Portfolio: 2-col, 3 rows */
+      .pf-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 340px 280px 280px;
+      }
+      .pf-1 { grid-column: 1 / 3; grid-row: 1; }
+      .pf-2 { grid-column: 1;     grid-row: 2; }
+      .pf-3 { grid-column: 2;     grid-row: 2; }
+      .pf-4 { grid-column: 1;     grid-row: 3; }
+      .pf-5 { grid-column: 2;     grid-row: 3; }
+
+      .svc-grid    { grid-template-columns: 1fr; }
+      .about-grid  { grid-template-columns: 1fr; gap: 48px; }
+      .ab-img      { max-width: 380px; margin: 0 auto; }
+      .proc-steps  { grid-template-columns: 1fr; }
+      .testi-grid  { grid-template-columns: 1fr; }
+      .testi-card:only-child { grid-column: 1; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; margin-top: 48px; }
+      .f-row        { grid-template-columns: 1fr; }
+    }
+
+    /* ── RESPONSIVE: 600px ── */
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      nav   { padding: 0 20px; }
+      footer { padding: 36px 20px; }
+      .sec  { padding: 56px 0; }
+      .intro-strip { padding: 36px 20px; }
+
+      #home { height: 88vh; }
+      .g-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50% 25% 25%;
+      }
+      .g-t1 { grid-column: 1; grid-row: 1; }
+      .g-t2 { grid-column: 1; grid-row: 2; }
+      .g-t3 { display: none; }
+      .g-t4 { grid-column: 1; grid-row: 3; }
+      .hero-body { left: 20px; right: 20px; bottom: 36px; max-width: 100%; }
+      .hero-body h1 { font-size: 2rem; }
+      .h-ctas { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+      .pf-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 260px);
+      }
+      .pf-1 { grid-column: 1; grid-row: 1; }
+      .pf-2 { grid-column: 1; grid-row: 2; }
+      .pf-3 { grid-column: 1; grid-row: 3; }
+      .pf-4 { grid-column: 1; grid-row: 4; }
+      .pf-5 { grid-column: 1; grid-row: 5; }
+
+      .svc-card  { padding: 36px 24px; }
+      .ab-stats  { gap: 20px; }
+      .testi-card { padding: 40px 28px; }
+      .form-box  { padding: 32px 24px; }
+      .foot      { flex-direction: column; align-items: flex-start; }
+      .nav-drawer { padding: 16px 20px 28px; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<header class="site-hd" id="site-hd">
+  <nav>
+    <a href="#home" class="nav-logo">Oregon Aerial Photography</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="http://oregonaerialphoto.com/index.html" class="nav-cta">Schedule Your Shoot</a>
+    <button class="nav-ham" onclick="toggleNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-drawer" id="nav-drawer">
+      <a href="#portfolio" onclick="closeNav()">Portfolio</a>
+      <a href="#services"  onclick="closeNav()">Services</a>
+      <a href="#about"     onclick="closeNav()">About</a>
+      <a href="#contact"   onclick="closeNav()">Contact</a>
+      <a href="http://oregonaerialphoto.com/index.html" class="drawer-cta" onclick="closeNav()">Schedule Your Shoot</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════════
+     HERO — MASONRY GALLERY
+══════════════════════════════════════════ -->
+<section id="home">
+  <!-- 4-tile masonry grid -->
+  <div class="g-grid">
+    <!-- Tile 1: hero photo — large left, parallax foreground -->
+    <div class="g-tile g-t1">
+      <div class="g-ph" id="g-ph-1"><span class="opt">DC</span></div>
+      <img id="g-img-1" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_0.jpg" alt="Oregon Aerial Photography">
+    </div>
+    <!-- Tile 2: service 1 — top right -->
+    <div class="g-tile g-t2">
+      <div class="g-ph" id="g-ph-2"></div>
+      <img id="g-img-2" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_0.jpg" alt="Low Oblique Aerial Photography">
+    </div>
+    <!-- Tile 3: service 2 — mid right -->
+    <div class="g-tile g-t3">
+      <div class="g-ph" id="g-ph-3"></div>
+      <img id="g-img-3" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_16.jpg" alt="High Oblique Aerial Photography">
+    </div>
+    <!-- Tile 4: service 3 — bottom span, parallax background -->
+    <div class="g-tile g-t4">
+      <div class="g-ph" id="g-ph-4"></div>
+      <img id="g-img-4" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_30.jpg" alt="Vertical Aerial Photography">
+    </div>
+  </div>
+
+  <!-- Dark veil -->
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <!-- Hero copy -->
+  <div class="hero-body">
+    <span class="h-ey">Oregon Aerial Photography</span>
+    <h1>See the World from Above</h1>
+    <p class="h-sub">Award-winning commercial aerial photography serving Portland, Oregon and the entire Northwest region. From real estate to construction progress, we capture the perfect shot.</p>
+    <div class="h-ctas">
+      <a href="http://oregonaerialphoto.com/index.html" class="btn">Schedule Your Shoot</a>
+      <a href="#about" class="h-link">Meet Our Team</a>
+    </div>
+  </div>
+
+  <!-- Scroll nudge -->
+  <div class="scroll-ind" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INTRO STRIP
+══════════════════════════════════════════ -->
+<div class="intro-strip">
+  <div class="is-biz">Oregon Aerial Photography</div>
+  <p>Award-Winning Aerial Photography Across the Northwest</p>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PORTFOLIO GRID — images speak first, no header
+══════════════════════════════════════════ -->
+<section id="portfolio">
+  <div class="pf-grid">
+    <!-- Tile 1: featured — service 1, 2-col wide -->
+    <div class="pf-item pf-1">
+      <div class="pf-ph" id="pf-ph-1">
+        <div class="pf-ph-n">01</div>
+        <div class="pf-ph-l">Low Oblique Aerial Photography</div>
+      </div>
+      <img id="pf-img-1" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_0.jpg" alt="Low Oblique Aerial Photography">
+      <div class="pf-over">
+        <div class="pf-info">
+          <h3>Low Oblique Aerial Photography</h3>
+          <p>Taken from 1,000–4,000 feet above ground level, low oblique images capture the building site in relation to its immediate surroundings, including roadways, neighboring properties, and points of interest.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 2: service 2 -->
+    <div class="pf-item pf-2">
+      <div class="pf-ph" id="pf-ph-2">
+        <div class="pf-ph-n">02</div>
+        <div class="pf-ph-l">High Oblique Aerial Photography</div>
+      </div>
+      <img id="pf-img-2" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_16.jpg" alt="High Oblique Aerial Photography">
+      <div class="pf-over">
+        <div class="pf-info">
+          <h3>High Oblique Aerial Photography</h3>
+          <p>Shot from 4,000–10,000 feet above ground level, high oblique images provide a sweeping birds-eye view encompassing the horizon and a wide surrounding area — ideal for large-scale site context.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 3: service 3 -->
+    <div class="pf-item pf-3">
+      <div class="pf-ph" id="pf-ph-3">
+        <div class="pf-ph-n">03</div>
+        <div class="pf-ph-l">Vertical Aerial Photography</div>
+      </div>
+      <img id="pf-img-3" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_30.jpg" alt="Vertical Aerial Photography">
+      <div class="pf-over">
+        <div class="pf-info">
+          <h3>Vertical Aerial Photography</h3>
+          <p>Near-vertical overhead images captured by banking the aircraft steeply over the site. Ideal for land development layout design and preliminary client presentations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile 4: service 4 — photo tile -->
+    <div class="pf-item pf-4">
+      <div class="pf-ph" id="pf-ph-4"><div class="pf-ph-n">04</div></div>
+      <img id="pf-img-4" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_17.jpg" alt="">
+      <div class="pf-over"></div>
+    </div>
+
+    <!-- Tile 5: service 5 — photo tile -->
+    <div class="pf-item pf-5">
+      <div class="pf-ph" id="pf-ph-5"><div class="pf-ph-n">05</div></div>
+      <img id="pf-img-5" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_11.jpg" alt="">
+      <div class="pf-over"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICES — what I offer
+══════════════════════════════════════════ -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="ey">Our Aerial Photography Services</span>
+      <h2>Professional aerial solutions for real estate, construction, agriculture, government, and more.</h2>
+      <p>From construction progress documentation to real estate marketing, our aerial photography services deliver a powerful perspective for every industry.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-n">SERVICE 01</div>
+        <h3>Low Oblique Aerial Photography</h3>
+        <p>Taken from 1,000–4,000 feet above ground level, low oblique images capture the building site in relation to its immediate surroundings, including roadways, neighboring properties, and points of interest.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-n">SERVICE 02</div>
+        <h3>High Oblique Aerial Photography</h3>
+        <p>Shot from 4,000–10,000 feet above ground level, high oblique images provide a sweeping birds-eye view encompassing the horizon and a wide surrounding area — ideal for large-scale site context.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-n">SERVICE 03</div>
+        <h3>Vertical Aerial Photography</h3>
+        <p>Near-vertical overhead images captured by banking the aircraft steeply over the site. Ideal for land development layout design and preliminary client presentations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT — first-person, passion-forward
+══════════════════════════════════════════ -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Photo column -->
+      <div class="ab-img">
+        <div class="ab-frame">
+          <div class="ab-init" id="ab-init"><span class="opt">DC</span></div>
+          <img id="ab-photo" src="https://storage.googleapis.com/theinsite-scraped-images/1948/other_0.jpg" alt="Deborah Cruikshank">
+        </div>
+        <div class="ab-deco" aria-hidden="true"></div>
+      </div>
+
+      <!-- Text column -->
+      <div class="ab-txt">
+        <span class="ey">About</span>
+        <h2>About Oregon Aerial Photography</h2>
+        <p class="bio">Oregon Aerial Photography is owned and operated by Deborah and Brian Cruikshank, both licensed pilots who combined their passions for flying and photography. Deb holds a Master's in Architecture and has worked with top firms throughout the Denver Metro area, while Brian holds a Master's in Electrical Engineering from Virginia Tech. Together, they bring technical precision and artistic vision to every aerial shoot. The company is PAPA certified and fully insured, operating in compliance with all FAA regulations.</p>
+        <blockquote class="pull-q">We have what it takes to get the job done and give you the very best photographic result.</blockquote>
+        <div class="ab-cred"><span class="opt">M.Arch, PAPA Certified Aerial Photographer, Licensed Pilot</span></div>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROCESS (OPT)
+══════════════════════════════════════════ -->
+
+<section id="process" class="sec" style="background:var(--surf); padding-top:96px; padding-bottom:96px;">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="ey">Our Process</span>
+      <h2>How It Works</h2>
+    </div>
+    <div class="proc-steps">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <h3>Request a Quote</h3>
+        <p>Contact us by phone or email with your project details. We'll discuss your site, timeline, and budget, then provide a detailed written quote promptly.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <h3>Schedule Your Flight</h3>
+        <p>Once we receive your written request, we schedule your aerial shoot as soon as possible, coordinating around optimal weather and lighting conditions.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <h3>Capture the Shoot</h3>
+        <p>Our pilot and photographer fly your site using a GPS-equipped Cessna-182, capturing oblique, vertical, or specialized images per your specifications. Helicopter flights are arranged when lower altitudes are required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS (OPT)
+══════════════════════════════════════════ -->
+
+
+    </div>
+  </div>
+</section>
+<!-- /OPT:testimonial_text -->
+
+<!-- ════��═════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="sec" style="background:var(--bg); padding-top:96px; padding-bottom:96px;">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="ey">Contact</span>
+      <h2>Get In Touch</h2>
+    </div>
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="ct-left">
+        <p class="ct-intro">Ready to elevate your project? Call or email us today to schedule your aerial shoot or request a detailed quote. We'd love to hear from you.</p>
+        <ul class="ct-list">
+          <li>
+            <div class="ct-ico">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="ct-lbl">Phone</div>
+              <div class="ct-val"><span class="opt">+15037391332</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="ct-ico">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="ct-lbl">Email</div>
+              <div class="ct-val"><span class="opt">debbie@oregonaerialphoto.com</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="ct-ico">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="ct-lbl">Location</div>
+              <div class="ct-val"><span class="opt">Portland, OR</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="ct-ico">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="ct-lbl">Hours</div>
+              <div class="ct-val"><span class="opt">Available by appointment — flights scheduled based on weather and optimal lighting conditions.</span></div>
+            </div>
+          </li>
+        </ul>
+        <div class="ct-consult"><span class="opt">Request a Free Quote</span></div>
+        <a href="http://oregonaerialphoto.com/index.html" class="btn" style="margin-top:28px; display:inline-block;">Schedule Your Shoot</a>
+      </div>
+
+      <!-- Right: inquiry form -->
+      <div class="form-box">
+        <h3>Start a Conversation</h3>
+        <form action="http://oregonaerialphoto.com/index.html" method="GET">
+          <div class="f-row">
+            <div class="f-grp">
+              <label for="f-name">Name</label>
+              <input type="text" id="f-name" name="name" placeholder="Your name">
+            </div>
+            <div class="f-grp">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" name="email" placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="f-grp">
+            <label for="f-project">Project Type</label>
+            <input type="text" id="f-project" name="project" placeholder="e.g. Wedding, Portrait, Event…">
+          </div>
+          <div class="f-grp">
+            <label for="f-msg">Tell Me About Your Vision</label>
+            <textarea id="f-msg" name="message" placeholder="Share the details…"></textarea>
+          </div>
+          <button type="submit" class="btn" style="width:100%;">Schedule Your Shoot</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="foot-brand">Oregon Aerial Photography</div>
+      <div class="foot-sub"><span class="opt">Portland, OR</span></div>
+    </div>
+    <div class="foot-copy">© 2026 Oregon Aerial Photography. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script>
+/* ── Hamburger nav ── */
+function toggleNav() { document.getElementById('nav-drawer').classList.toggle('open'); }
+function closeNav()  { document.getElementById('nav-drawer').classList.remove('open'); }
+document.addEventListener('click', function(e) {
+  var hd = document.querySelector('.site-hd');
+  if (hd && !hd.contains(e.target)) closeNav();
+});
+
+/* ── Nav: transparent → white on scroll ── */
+(function() {
+  var hd = document.getElementById('site-hd');
+  if (!hd) return;
+  function tick() {
+    if (window.scrollY > 80) { hd.classList.add('scrolled'); }
+    else                      { hd.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', tick, { passive: true });
+  tick();
+})();
+
+/* ── Shared photo-fallback helper ── */
+function applyPhotoFallback(imgId, phId) {
+  var img = document.getElementById(imgId);
+  var ph  = phId ? document.getElementById(phId) : null;
+  if (!img) return;
+  var src = img.getAttribute('src') || '';
+  /* Hide if slot unfilled (starts with '{') or empty */
+  if (!src || src.charAt(0) === '{') {
+    img.style.display = 'none';
+    return;
+  }
+  if (ph) {
+    img.onload  = function() { ph.style.display = 'none'; };
+    img.onerror = function() { this.style.display = 'none'; };
+  } else {
+    img.onerror = function() { this.style.display = 'none'; };
+  }
+}
+
+/* Gallery tiles */
+applyPhotoFallback('g-img-1', 'g-ph-1');
+applyPhotoFallback('g-img-2', 'g-ph-2');
+applyPhotoFallback('g-img-3', 'g-ph-3');
+applyPhotoFallback('g-img-4', 'g-ph-4');
+
+/* Portfolio tiles */
+applyPhotoFallback('pf-img-1', 'pf-ph-1');
+applyPhotoFallback('pf-img-2', 'pf-ph-2');
+applyPhotoFallback('pf-img-3', 'pf-ph-3');
+applyPhotoFallback('pf-img-4', 'pf-ph-4');
+applyPhotoFallback('pf-img-5', 'pf-ph-5');
+
+/* About photo */
+applyPhotoFallback('ab-photo', 'ab-init');
+
+/* Testimonial avatars */
+applyPhotoFallback('t1-photo', null);
+applyPhotoFallback('t2-photo', null);
+
+/* ── Parallax depth on hero gallery tiles ──
+   Tile 1 (foreground): translates up faster as hero scrolls out
+   Tile 4 (background): translates up slower → creates depth layering */
+(function() {
+  var hero = document.getElementById('home');
+  if (!hero) return;
+
+  function onScroll() {
+    var sy = window.scrollY;
+    if (sy > hero.offsetHeight) return;
+
+    var img1 = document.getElementById('g-img-1');
+    if (img1) {
+      var s1 = img1.getAttribute('src') || '';
+      if (s1 && s1.charAt(0) !== '{') {
+        img1.style.transform = 'scale(1.14) translateY(' + (-sy * 0.12) + 'px)';
+      }
+    }
+
+    var img4 = document.getElementById('g-img-4');
+    if (img4) {
+      var s4 = img4.getAttribute('src') || '';
+      if (s4 && s4.charAt(0) !== '{') {
+        img4.style.transform = 'scale(1.14) translateY(' + (-sy * 0.05) + 'px)';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+<script>
+(function(){
+  var MAX_SCALE = 1;
+  function guard(img) {
+    if (!img.naturalWidth) return;
+    // img.offsetWidth is the actual rendered width after all CSS is applied.
+    // Only intervene if CSS is already stretching the image beyond MAX_SCALE.
+    if (img.offsetWidth > img.naturalWidth * MAX_SCALE) {
+      img.style.maxWidth = (img.naturalWidth * MAX_SCALE) + 'px';
+      img.style.height = 'auto';
+    }
+  }
+  function run() {
+    document.querySelectorAll('img').forEach(function(img) {
+      if (img.complete && img.naturalWidth) { guard(img); }
+      else { img.addEventListener('load', function(){ guard(img); }); }
+    });
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); }
+  else { run(); }
+})();
+</script>
+</body>
+</html>
