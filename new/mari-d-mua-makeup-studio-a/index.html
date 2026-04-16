@@ -8,37 +8,37 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=DM+Sans:wght@300;400&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #0D2B1F;
-  --color-accent: #B8860B;
-  --color-background: #0D2B1F;
-  --color-surface: #143726;
-  --color-text-primary: #F5F0E8;
-  --color-text-secondary: #A8C5B5;
-  --color-cta-bg: #B8860B;
-  --color-cta-text: #0D2B1F;
-  --color-cta-hover: #9A7009;
-  --color-border: #1F4A35;
-  --font-display: "Cormorant Garamond";
-  --font-body: Jost;
-  --base-size: 16px;
-  --type-scale-ratio: 1.618;
-  --h1-size: 6.8535rem;
-  --h2-size: 4.2358rem;
-  --h3-size: 2.6179rem;
-  --h4-size: 1.6180rem;
-  --h1-weight: 300;
+  --color-primary: #0D1117;
+  --color-accent: #2563EB;
+  --color-background: #FAFAFA;
+  --color-surface: #F4F4F5;
+  --color-text-primary: #0D1117;
+  --color-text-secondary: #71717A;
+  --color-cta-bg: #0D1117;
+  --color-cta-text: #FAFAFA;
+  --color-cta-hover: #1A1A2E;
+  --color-border: #E4E4E7;
+  --font-display: Unbounded;
+  --font-body: "DM Sans";
+  --base-size: 15px;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
+  --h1-weight: 700;
   --h2-weight: 400;
   --body-weight: 300;
-  --letter-spacing-display: 0.08em;
+  --letter-spacing-display: 0.02em;
   --letter-spacing-body: 0.03em;
-  --line-height-display: 1.15;
-  --line-height-body: 1.75;
+  --line-height-display: 1.1;
+  --line-height-body: 1.7;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -46,11 +46,11 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 2rem 0.75rem;
-  --section-padding-desktop: 3rem 1.5rem;
-  --card-gap: 0.5rem;
-  --heading-margin-bottom: 0.75rem;
-  --paragraph-margin-bottom: 1rem;
+  --section-padding-mobile: 3rem 1.25rem;
+  --section-padding-desktop: 6rem 3rem;
+  --card-gap: 1.5rem;
+  --heading-margin-bottom: 1.25rem;
+  --paragraph-margin-bottom: 1.5rem;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
@@ -525,15 +525,15 @@
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
 }
-.section-testimonials-cards {
+.section-testimonials-quotes {
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
+  background: var(--color-surface);
 }
-.testimonials-cards-inner {
+.testimonials-quotes-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-cards-title {
+.testimonials-quotes-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -541,59 +541,54 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-cards-grid {
+.testimonials-quotes-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-card {
-  background: var(--color-surface);
+.testimonial-quote {
+  background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
 }
-.section-testimonials-cards:not(:has(.testimonial-card-text:not(:empty))) {
+.section-testimonials-quotes:not(:has(.testimonial-quote-text:not(:empty))) {
   display: none;
 }
-.testimonial-card:has(.testimonial-card-text:empty) {
+.testimonial-quote:has(.testimonial-quote-text:empty) {
   display: none;
 }
-.testimonial-card-avatar {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
-}
-.testimonial-card-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.testimonial-card-text {
+.testimonial-quote-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-base, 0.9375rem);
+  font-size: 1rem;
   color: var(--color-text-primary);
   line-height: 1.6;
-  margin-bottom: 0.75rem;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
-.testimonial-card-author {
-  font-size: var(--text-sm, 0.875rem);
+.testimonial-quote-text::before {
+  content: "\201C";
+  font-size: 2rem;
+  color: var(--color-primary);
+  line-height: 0;
+  vertical-align: -0.5rem;
+  margin-right: 0.125rem;
+}
+.testimonial-quote-author {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-card-location {
-  font-size: var(--text-xs, 0.8125rem);
+.testimonial-quote-meta {
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
+  margin-top: 0.125rem;
 }
 @media (min-width: 768px) {
-  .section-testimonials-cards {
+  .section-testimonials-quotes {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-cards-grid {
+  .testimonials-quotes-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -755,7 +750,7 @@
 <nav class="section-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="MARI D MUA MAKEUP STUDIO — Home">MARI D MUA MAKEUP STUDIO</a>
-    <a href="tel:17864184036" class="nav-cta nav-cta-desktop">Get Started</a>
+    <a href="tel:17864184036" class="nav-cta nav-cta-desktop">Contact Us</a>
     <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
       <span></span>
       <span></span>
@@ -766,7 +761,7 @@
       <a href="#about">About</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
-      <a href="tel:17864184036" class="nav-cta nav-cta-mobile">Get Started</a>
+      <a href="tel:17864184036" class="nav-cta nav-cta-mobile">Contact Us</a>
     </div>
   </div>
 </nav>
@@ -775,7 +770,7 @@
   <div class="hero-colorblock-content">
     <h1 class="hero-colorblock-headline">MARI D MUA MAKEUP STUDIO</h1>
     <p class="hero-colorblock-subheadline"></p>
-    <a href="tel:17864184036" class="hero-colorblock-cta">Get Started</a>
+    <a href="tel:17864184036" class="hero-colorblock-cta">Contact Us</a>
   </div>
 </section>
 
@@ -802,11 +797,11 @@
 <section class="section-about" id="about">
   <div class="about-inner">
     <div class="about-image-wrap">
-      <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(87, 30%, 80%) 0%, hsl(127, 25%, 70%) 100%);width:100%;aspect-ratio:600/800;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
+      <div role="img" aria-label="MARI D MUA MAKEUP STUDIO" style="background:linear-gradient(135deg, hsl(87, 30%, 80%) 0%, hsl(127, 25%, 70%) 100%);width:100%;aspect-ratio:600/800;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: MARI D MUA MAKEUP STUDIO]]</div>
     </div>
     <div class="about-content">
-      <h2 class="about-title">About Ink</h2>
-      <p class="about-text"></p>
+      <h2 class="about-title">About MARI D MUA MAKEUP STUDIO</h2>
+      <p class="about-text">Mariana is a luxury bridal makeup artist, beauty educator, and founder of Mari DMUA Beauty Studio in Miami, FL. With a background in business and sales, Mariana combined her entrepreneurial spirit with her passion for artistry to create a premier bridal beauty destination. She believes makeup is more than just a service—it’s an empowering experience that enhances natural beauty and elevates confidence.</p>
       <div class="about-meta">
         <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value"></span></span>
         <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value"></span></span>
@@ -883,39 +878,30 @@
   </div>
 </section>
 
-<section class="section-testimonials-cards" id="testimonials">
-  <div class="testimonials-cards-inner">
-    <h2 class="testimonials-cards-title">What People Say</h2>
-    <div class="testimonials-cards-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(37, 30%, 80%) 0%, hsl(77, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-          <div class="testimonial-card-location"></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(162, 30%, 80%) 0%, hsl(202, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-          <div class="testimonial-card-location"></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card-avatar">
-          <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(255, 30%, 80%) 0%, hsl(295, 25%, 70%) 100%);width:100%;aspect-ratio:56/56;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-        </div>
-        <div>
-          <p class="testimonial-card-text"></p>
-          <div class="testimonial-card-author"></div>
-        </div>
-      </div>
+<section class="section-testimonials-quotes" id="testimonials">
+  <div class="testimonials-quotes-inner">
+    <h2 class="testimonials-quotes-title">What Clients Say</h2>
+    <div class="testimonials-quotes-grid">
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+          <div class="testimonial-quote-meta"> &middot; </div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+          <div class="testimonial-quote-meta"></div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+        </footer>
+      </blockquote>
     </div>
   </div>
 </section>
@@ -941,7 +927,7 @@
         <div class="contact-item-value"></div>
       </div>
     </div>
-    <a href="tel:+17864184036" class="contact-cta">Get Started</a>
+    <a href="tel:+17864184036" class="contact-cta">Contact Us</a>
   </div>
 </section>
 
