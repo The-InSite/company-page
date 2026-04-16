@@ -166,16 +166,22 @@ function findPreview(url: URL) {
   return best && best.score > 2 ? best.preview : null;
 }
 
-function mailtoFor(url: URL, requestId: string, email?: string, name?: string) {
+function safeText(value: unknown) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function mailtoFor(url: URL, requestId: string, email?: unknown, name?: unknown) {
   const subject = encodeURIComponent(`Preview request for ${url.hostname.replace(/^www\./, '')}`);
+  const requesterEmail = safeText(email);
+  const requesterName = safeText(name);
   const lines = [
     'Please generate a renovated InSite preview for this website:',
     '',
     url.href,
     '',
     `Request ID: ${requestId}`,
-    email ? `Requester email: ${email}` : '',
-    name ? `Requester name: ${name}` : '',
+    requesterEmail ? `Requester email: ${requesterEmail}` : '',
+    requesterName ? `Requester name: ${requesterName}` : '',
   ].filter(Boolean);
 
   return `mailto:sales@theinsite.dev?subject=${subject}&body=${encodeURIComponent(lines.join('\n'))}`;
@@ -488,7 +494,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const generationQueued = Array.isArray(pipeline?.generation)
         ? pipeline.generation.some((item) => item.ok)
         : false;
-      const email = await sendPreviewRequestEmail(payload, {
+      const notification = await sendPreviewRequestEmail(payload, {
         leadId: lead.leadId ?? null,
         leadCreated: lead.ok,
         crawlQueued: pipeline?.crawl.ok ?? false,
@@ -510,9 +516,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         crawlWorkflowUrl: pipeline?.crawl.workflowUrl ?? null,
         generationQueued,
         generationDeferred: process.env.PREVIEW_AUTO_GENERATE !== 'true',
-        notificationConfigured: email.configured,
-        notificationSent: email.ok,
-        notificationError: email.error ?? null,
+        notificationConfigured: notification.configured,
+        notificationSent: notification.ok,
+        notificationError: notification.error ?? null,
         webhookConfigured: webhook.configured,
         webhookStatus: webhook.status ?? null,
         requestUrl: mailtoFor(url, preview.requestId, email, name),
