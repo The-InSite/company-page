@@ -8,37 +8,37 @@
   <meta name="description" content="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
   
   
   
   <style>
     :root {
-  --color-primary: #1C3144;
-  --color-accent: #F4741B;
+  --color-primary: #003566;
+  --color-accent: #0077B6;
   --color-background: #FFFFFF;
-  --color-surface: #FFF8F4;
-  --color-text-primary: #1C3144;
+  --color-surface: #F0F7FF;
+  --color-text-primary: #003566;
   --color-text-secondary: #4A4A4A;
-  --color-cta-bg: #F4741B;
+  --color-cta-bg: #0077B6;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #D4611A;
-  --color-border: #FFE0CC;
-  --font-display: "Barlow Condensed";
-  --font-body: Barlow;
-  --base-size: 16px;
-  --type-scale-ratio: 1.618;
-  --h1-size: 6.8535rem;
-  --h2-size: 4.2358rem;
-  --h3-size: 2.6179rem;
-  --h4-size: 1.6180rem;
-  --h1-weight: 800;
-  --h2-weight: 700;
+  --color-cta-hover: #005F8E;
+  --color-border: #CCE5FF;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
+  --h1-weight: 700;
+  --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.08em;
-  --letter-spacing-body: 0.02em;
-  --line-height-display: 1.05;
-  --line-height-body: 1.55;
+  --letter-spacing-display: 0.02em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -51,14 +51,14 @@
   --card-gap: 1.25rem;
   --heading-margin-bottom: 1rem;
   --paragraph-margin-bottom: 1.25rem;
-  --border-radius-sm: 8px;
-  --border-radius-md: 16px;
-  --border-radius-lg: 24px;
-  --button-radius: 100px;
-  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
-  --animation-duration: 0ms;
-  --animation-stagger: 0ms;
-  --animation-type: none;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --button-radius: 6px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
+  --animation-duration: 300ms;
+  --animation-stagger: 80ms;
+  --animation-type: fade_in;
 }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
@@ -95,7 +95,14 @@
         transition-duration: 0.01ms !important;
       }
     }
-    
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeIn 300ms ease-out forwards;
+}
     .section-nav {
   position: sticky;
   top: 0;
@@ -407,15 +414,15 @@
     font-size: calc(var(--h2-size, 1.75rem) * 1.15);
   }
 }
-.section-testimonials-rating {
+.section-testimonials-quotes {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-surface);
 }
-.testimonials-rating-inner {
+.testimonials-quotes-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.testimonials-rating-title {
+.testimonials-quotes-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -423,49 +430,54 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.testimonials-rating-grid {
+.testimonials-quotes-grid {
   display: grid;
   gap: var(--card-gap, 1.5rem);
 }
-.testimonial-rating-card {
+.testimonial-quote {
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md, 0.5rem);
   padding: 1.5rem;
 }
-.section-testimonials-rating:not(:has(.testimonial-rating-text:not(:empty))) {
+.section-testimonials-quotes:not(:has(.testimonial-quote-text:not(:empty))) {
   display: none;
 }
-.testimonial-rating-card:has(.testimonial-rating-text:empty) {
+.testimonial-quote:has(.testimonial-quote-text:empty) {
   display: none;
 }
-.testimonial-stars {
-  color: var(--color-accent, #f59e0b);
-  font-size: 1.125rem;
-  letter-spacing: 0.125rem;
-  margin-bottom: 0.75rem;
-}
-.testimonial-rating-text {
+.testimonial-quote-text {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-text-primary);
   line-height: 1.6;
-  margin-bottom: 0.75rem;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
-.testimonial-rating-author {
+.testimonial-quote-text::before {
+  content: "\201C";
+  font-size: 2rem;
+  color: var(--color-primary);
+  line-height: 0;
+  vertical-align: -0.5rem;
+  margin-right: 0.125rem;
+}
+.testimonial-quote-author {
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
-.testimonial-rating-location {
+.testimonial-quote-meta {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
+  margin-top: 0.125rem;
 }
 @media (min-width: 768px) {
-  .section-testimonials-rating {
+  .section-testimonials-quotes {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .testimonials-rating-grid {
+  .testimonials-quotes-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   }
 }
@@ -831,27 +843,30 @@
   </div>
 </section>
 
-<section class="section-testimonials-rating" id="testimonials">
-  <div class="testimonials-rating-inner">
-    <h2 class="testimonials-rating-title">What Our Customers Say</h2>
-    <div class="testimonials-rating-grid">
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
-        <div class="testimonial-rating-location"></div>
-      </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
-        <div class="testimonial-rating-location"></div>
-      </div>
-      <div class="testimonial-rating-card">
-        <div class="testimonial-stars" aria-label=" out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-rating-text"></p>
-        <div class="testimonial-rating-author"></div>
-      </div>
+<section class="section-testimonials-quotes" id="testimonials">
+  <div class="testimonials-quotes-inner">
+    <h2 class="testimonials-quotes-title">What Our Customers Say</h2>
+    <div class="testimonials-quotes-grid">
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+          <div class="testimonial-quote-meta"> &middot; </div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+          <div class="testimonial-quote-meta"></div>
+        </footer>
+      </blockquote>
+      <blockquote class="testimonial-quote">
+        <p class="testimonial-quote-text"></p>
+        <footer>
+          <cite class="testimonial-quote-author"></cite>
+        </footer>
+      </blockquote>
     </div>
   </div>
 </section>
@@ -945,7 +960,21 @@
       });
     }
   });
-  
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 80) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
 </script>
 </body>
 </html>
