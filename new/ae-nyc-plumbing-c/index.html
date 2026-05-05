@@ -8,38 +8,38 @@
   <meta name="description" content="Fill out the form below, or give us a call today at (646) 392-7164 …">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
   
   
   
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #1C3144;
-  --color-accent: #F4741B;
+  --color-primary: #1A1A2E;
+  --color-accent: #E63946;
   --color-background: #FFFFFF;
-  --color-surface: #FFF8F4;
-  --color-text-primary: #1C3144;
-  --color-text-secondary: #4A4A4A;
-  --color-cta-bg: #F4741B;
+  --color-surface: #F5F5F5;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #555555;
+  --color-cta-bg: #E63946;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #D4611A;
-  --color-border: #FFE0CC;
-  --font-display: Oswald;
-  --font-body: "Source Sans 3";
-  --base-size: 16px;
-  --type-scale-ratio: 1.333;
-  --h1-size: 3.1573rem;
-  --h2-size: 2.3686rem;
-  --h3-size: 1.7769rem;
-  --h4-size: 1.3330rem;
+  --color-cta-hover: #CC2936;
+  --color-border: #E0E0E0;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.05em;
+  --letter-spacing-display: 0.02em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.15;
-  --line-height-body: 1.6;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -52,14 +52,14 @@
   --card-gap: 1.25rem;
   --heading-margin-bottom: 1rem;
   --paragraph-margin-bottom: 1.25rem;
-  --border-radius-sm: 2px;
-  --border-radius-md: 4px;
-  --border-radius-lg: 6px;
-  --button-radius: 4px;
-  --shadow: none;
-  --animation-duration: 500ms;
-  --animation-stagger: 120ms;
-  --animation-type: slide_up;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 300ms;
+  --animation-stagger: 80ms;
+  --animation-type: fade_in;
 }
 /* DESIGN_TOKENS_END */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,13 +103,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes slideUp {
-  from { opacity: 0; transform: translateY(1.5rem); }
-  to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: slideUp 500ms ease-out forwards;
+  animation: fadeIn 300ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -998,7 +998,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 120) + "ms";
+        entry.target.style.animationDelay = (i * 80) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
