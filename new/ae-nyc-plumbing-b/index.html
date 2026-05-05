@@ -4,42 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
-  <title>A&E NYC Plumbing — plumber | New York, NY</title>
+  <title>A&amp;E NYC Plumbing — New York, NY</title>
   <meta name="description" content="Fill out the form below, or give us a call today at (646) 392-7164 …">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=fallback">
   
   
   
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #1A1A2E;
-  --color-accent: #E63946;
+  --color-primary: #003566;
+  --color-accent: #0077B6;
   --color-background: #FFFFFF;
-  --color-surface: #F5F5F5;
-  --color-text-primary: #1A1A2E;
-  --color-text-secondary: #555555;
-  --color-cta-bg: #E63946;
+  --color-surface: #F0F7FF;
+  --color-text-primary: #003566;
+  --color-text-secondary: #4A4A4A;
+  --color-cta-bg: #0077B6;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #CC2936;
-  --color-border: #E0E0E0;
-  --font-display: "Barlow Condensed";
-  --font-body: Barlow;
+  --color-cta-hover: #005F8E;
+  --color-border: #CCE5FF;
+  --font-display: Oswald;
+  --font-body: "Source Sans 3";
   --base-size: 16px;
-  --type-scale-ratio: 1.618;
-  --h1-size: 6.8535rem;
-  --h2-size: 4.2358rem;
-  --h3-size: 2.6179rem;
-  --h4-size: 1.6180rem;
-  --h1-weight: 800;
-  --h2-weight: 700;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
+  --h1-weight: 700;
+  --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.08em;
-  --letter-spacing-body: 0.02em;
-  --line-height-display: 1.05;
-  --line-height-body: 1.55;
+  --letter-spacing-display: 0.05em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -47,16 +47,16 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 3rem 1.25rem;
-  --section-padding-desktop: 5rem 3rem;
-  --card-gap: 1.25rem;
-  --heading-margin-bottom: 1rem;
-  --paragraph-margin-bottom: 1.25rem;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --button-radius: 6px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
+  --section-padding-mobile: 2rem 1rem;
+  --section-padding-desktop: 3rem 2rem;
+  --card-gap: 0.75rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 6px;
+  --button-radius: 4px;
+  --shadow: none;
   --animation-duration: 300ms;
   --animation-stagger: 80ms;
   --animation-type: fade_in;
@@ -75,6 +75,12 @@
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; }
     button, a { min-height: 44px; }
+    a[href^="tel:"] { cursor: pointer; text-decoration: underline; }
+    a[href^="tel:"]:hover { opacity: 0.75; }
+    a.email-link { cursor: pointer; text-decoration: underline; }
+    a.email-link:hover { opacity: 0.75; }
+    a.email-link[data-e=""] { display: none; }
+    .contact-item:has(a.email-link[data-e=""]) { display: none; }
     .skip-nav {
       position: absolute;
       top: -100%;
@@ -216,84 +222,68 @@
     display: none;
   }
 }
-.section-hero-split {
+.section-hero-typography {
   display: flex;
-  flex-direction: column;
-  min-height: 28rem;
-}
-.hero-split-media {
-  position: relative;
-  min-height: 16rem;
-  overflow: hidden;
-}
-.hero-split-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
-}
-.hero-split-media-fallback {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
-}
-.hero-split-content {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: var(--section-padding-mobile, 2.5rem 1rem);
+  text-align: center;
+  min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-background);
 }
-.hero-split-headline {
+.hero-typography-content {
+  max-width: 52rem;
+}
+.hero-typography-headline {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h1-size, 2.25rem);
-  font-weight: 700;
+  font-size: var(--h1-size, 2.5rem);
+  font-weight: 800;
   color: var(--color-text-primary);
-  line-height: 1.15;
-  margin-bottom: 0.75rem;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--letter-spacing-display, -0.02em);
 }
-.hero-split-subheadline {
+.hero-typography-accent {
+  color: var(--color-primary);
+}
+.hero-typography-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.hero-split-cta {
+.hero-typography-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.75rem;
+  padding: 1rem 2.25rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
   box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
   transition: background 0.2s;
-  align-self: flex-start;
 }
-.hero-split-cta:hover {
+.hero-typography-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
 @media (min-width: 768px) {
-  .section-hero-split {
-    flex-direction: row;
-    min-height: 32rem;
+  .section-hero-typography {
+    padding: var(--section-padding-desktop, 6rem 2rem);
+    min-height: 36rem;
   }
-  /* Default: image left */
-  .hero-split-media { flex: 1 1 50%; }
-  .hero-split-content { flex: 1 1 50%; padding: var(--section-padding-desktop, 4rem 3rem); }
-  /* Ratio sub-variants */
-  .hero--60-40 .hero-split-media { flex-basis: 60%; }
-  .hero--60-40 .hero-split-content { flex-basis: 40%; }
-  .hero--40-60 .hero-split-media { flex-basis: 40%; }
-  .hero--40-60 .hero-split-content { flex-basis: 60%; }
-  /* Image right sub-variant: reverse order */
-  .hero--image-right { flex-direction: row-reverse; }
-  .hero-split-headline {
-    font-size: calc(var(--h1-size, 2.25rem) * 1.2);
+  .hero-typography-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
+  }
+  .hero-typography-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-services-list {
@@ -350,12 +340,12 @@
 }
 .services-list-link:empty,
 .services-list-link[href=""],
-.services-list-link[href=""],
-.services-list-link[href=""],
-.services-list-link[href=""],
-.services-list-link[href=""],
-.services-list-link[href=""],
-.services-list-link[href=""] {
+.services-list-link[href="https://www.topplumbernyc.com/dishwashers/"],
+.services-list-link[href="https://www.topplumbernyc.com/drain-repair/"],
+.services-list-link[href="https://www.topplumbernyc.com/faucets-sinks/"],
+.services-list-link[href="https://www.topplumbernyc.com/gas-line-installation-repair/"],
+.services-list-link[href="https://www.topplumbernyc.com/hot-water-heaters/"],
+.services-list-link[href="https://www.topplumbernyc.com/kitchens-baths/"] {
   display: none;
 }
 .services-list-link:hover {
@@ -367,75 +357,6 @@
   }
   .services-list-title {
     font-size: calc(var(--h2-size, 1.75rem) * 1.15);
-  }
-}
-.section-about {
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
-}
-.about-inner {
-  max-width: 60rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.about-image-wrap {
-  border-radius: var(--border-radius-lg, 1rem);
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
-}
-.about-image-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.about-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: var(--h2-size, 1.75rem);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 0.75rem;
-}
-.about-text {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-base, 1rem);
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-.about-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-}
-.about-meta-item:has(.about-meta-value:empty) {
-  display: none;
-}
-.about-meta-item {
-  font-size: var(--text-sm, 0.875rem);
-  color: var(--color-text-secondary);
-}
-.about-meta-item strong {
-  color: var(--color-text-primary);
-  font-weight: 600;
-}
-@media (min-width: 768px) {
-  .section-about {
-    padding: var(--section-padding-desktop, 4rem 2rem);
-  }
-  .about-inner {
-    flex-direction: row;
-    align-items: center;
-  }
-  .about-image-wrap {
-    flex: 0 0 40%;
-    aspect-ratio: 3 / 4;
-  }
-  .about-content {
-    flex: 1;
   }
 }
 .section-contact {
@@ -588,6 +509,69 @@
     grid-template-columns: 2fr 1fr 1fr;
   }
 }
+.section-trust-bar {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 1rem;
+}
+.trust-bar-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+.trust-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 6rem;
+}
+.trust-bar-value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+.trust-bar-label {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.125rem;
+}
+.trust-bar-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.trust-bar-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-accent, var(--color-primary));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .section-trust-bar {
+    padding: 1.5rem 2rem;
+  }
+  .trust-bar-inner {
+    gap: 3rem;
+  }
+  .trust-bar-value {
+    font-size: 1.75rem;
+  }
+}
 .section-sticky-cta {
   position: fixed;
   bottom: 0;
@@ -640,6 +624,120 @@
     display: none;
   }
 }
+.section-gallery-beforeafter {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.gallery-ba-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.gallery-ba-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.gallery-ba-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
+}
+.gallery-ba-pair {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.gallery-ba-pair-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+.gallery-ba-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.gallery-ba-side {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.gallery-ba-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-ba-label {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  padding: 0.1875rem 0.5rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.1875rem;
+}
+@media (min-width: 768px) {
+  .section-gallery-beforeafter {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .gallery-ba-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  }
+}
+.section-faq {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.faq-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.faq-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.faq-list {
+  display: grid;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 0;
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+.faq-question {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.faq-answer {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .section-faq {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+}
   </style>
 </head>
 <body>
@@ -647,8 +745,8 @@
 <main id="main-content">
 <nav class="section-nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="A&E NYC Plumbing — Home">A&E NYC Plumbing</a>
-    <a href="#services" class="nav-cta nav-cta-desktop">plumbing, heating, and water damage restoration services</a>
+    <a href="#" class="nav-logo" aria-label="A&amp;E NYC Plumbing — Home">A&amp;E NYC Plumbing</a>
+    <a href="tel:+16463927164" class="nav-cta nav-cta-desktop">Call Now</a>
     <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
       <span></span>
       <span></span>
@@ -659,19 +757,16 @@
       <a href="#about">About</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
-      <a href="#services" class="nav-cta nav-cta-mobile">plumbing, heating, and water damage restoration services</a>
+      <a href="tel:+16463927164" class="nav-cta nav-cta-mobile">Call Now</a>
     </div>
   </div>
 </nav>
 
-<section class="section-hero-split hero--image-right hero--50-50">
-  <div class="hero-split-media">
-    <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(22, 30%, 80%) 0%, hsl(62, 25%, 70%) 100%);width:100%;aspect-ratio:800/600;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-  </div>
-  <div class="hero-split-content">
-    <h1 class="hero-split-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-split-subheadline">Fill out the form below, or give us a call today at (646) 392-7164 …</p>
-    <a href="#services" class="hero-split-cta">plumbing, heating, and water damage restoration services</a>
+<section class="section-hero-typography">
+  <div class="hero-typography-content">
+    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-typography-subheadline">Fill out the form below, or give us a call today at (646) 392-7164 …</p>
+    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
   </div>
 </section>
 
@@ -682,75 +777,59 @@
       <li class="services-list-item">
         <h3 class="services-list-name">Dishwasher Repair</h3>
         <p class="services-list-desc">Yes, we also provide this service in the Manhattan area—because your dishwasher may be affected by a universe of plumbing situations that only experienced technicians like ours can effectively resolve.</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/dishwashers/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
       <li class="services-list-item">
         <h3 class="services-list-name">Drain Repair</h3>
         <p class="services-list-desc">The sewer line repair service is an essential intervention that we undertake whenever we’re handling any plumbing drain issues.</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/drain-repair/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
       <li class="services-list-item">
         <h3 class="services-list-name">Faucet Repair and Installation</h3>
         <p class="services-list-desc">A damaged or malfunctioning faucet can translate into extremely high water bills. Call us to have your faucets repaired, or to have new faucets properly installed.</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/faucets-sinks/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
       <li class="services-list-item">
         <h3 class="services-list-name">Gas Line Repair or Installation</h3>
         <p class="services-list-desc">You know that your home’s gas infrastructure is extremely important and must be kept running perfectly and safely at any time. That’s why you’ll want Manhattan’s top experts offering the most safety-oriented gas line maintenance, repair, and installation services.</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/gas-line-installation-repair/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
       <li class="services-list-item">
         <h3 class="services-list-name">Hot Water Heaters Installation</h3>
         <p class="services-list-desc">How well is your water heater working? Is it keeping your water hot and your power bill within the expected range? Or are you seeing the bills going up and the water temperature going down? If you need water heater repair services, or a new water heater installation, we can help you in the Manhattan</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/hot-water-heaters/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
       <li class="services-list-item">
         <h3 class="services-list-name">Kitchen Bath Installation</h3>
         <p class="services-list-desc">Your kitchen and your bathroom are spaces where a lot of plumbing work has been done when your house was built. Over time, the plumbing infrastructure will start giving in and you’ll need to upgrade multiple elements that require excellent equipment, materials, and plumbers that know how to perfectl</p>
-        <a class="services-list-link" href="" target="_blank" rel="noopener noreferrer"></a>
+        <a class="services-list-link" href="https://www.topplumbernyc.com/kitchens-baths/" target="_blank" rel="noopener noreferrer">Learn More</a>
       </li>
     </ul>
   </div>
 </section>
 
-<section class="section-about" id="about">
-  <div class="about-inner">
-    <div class="about-image-wrap">
-      <div role="img" aria-label="" style="background:linear-gradient(135deg, hsl(87, 30%, 80%) 0%, hsl(127, 25%, 70%) 100%);width:100%;aspect-ratio:600/800;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,0.3);font-size:0.875rem;">[[Image: ]]</div>
-    </div>
-    <div class="about-content">
-      <h2 class="about-title">About Metro</h2>
-      <p class="about-text">Fill out the form below, or give us a call today at (646) 392-7164 …</p>
-      <div class="about-meta">
-        <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value"></span></span>
-        <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value"></span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section-contact" id="contact">
   <div class="contact-inner">
-    <h2 class="contact-title">Get in Touch</h2>
+    <h2 class="contact-title">Contact Us</h2>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-item-label">Phone</div>
-        <div class="contact-item-value"><a href="">+16463927164</a></div>
+        <div class="contact-item-value"><a href="tel:+16463927164">(646) 392-7164</a></div>
       </div>
       <div class="contact-item">
         <div class="contact-item-label">Email</div>
-        <div class="contact-item-value"><a href="mailto:support@topplumbernyc.com">support@topplumbernyc.com</a></div>
+        <div class="contact-item-value"><a class="email-link" data-e="c3VwcG9ydEB0b3BwbHVtYmVybnljLmNvbQ==" aria-label="Email us"><span class="email-display"></span></a></div>
       </div>
       <div class="contact-item">
         <div class="contact-item-label">Service Area</div>
-        <div class="contact-item-value">New York, NY</div>
+        <div class="contact-item-value">Serving New York, NY</div>
       </div>
       <div class="contact-item">
         <div class="contact-item-label">Hours</div>
         <div class="contact-item-value"></div>
       </div>
     </div>
-    <a href="" class="contact-cta">plumbing, heating, and water damage restoration services</a>
+    <a href="tel:+16463927164" class="contact-cta">Call Now</a>
   </div>
 </section>
 
@@ -758,16 +837,16 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">A&E NYC Plumbing</div>
-        <p class="footer-tagline">Fast, Honest Service — Day or Night</p>
+        <div class="footer-brand">A&amp;E NYC Plumbing</div>
+        <p class="footer-tagline"></p>
       </div>
       <div>
         <div class="footer-heading">Contact</div>
         <ul class="footer-contact-list">
-          <li><a href="">+16463927164</a></li>
-          <li><a href="mailto:support@topplumbernyc.com">support@topplumbernyc.com</a></li>
+          <li><a href="tel:+16463927164">(646) 392-7164</a></li>
+          <li><a class="email-link" data-e="c3VwcG9ydEB0b3BwbHVtYmVybnljLmNvbQ==" aria-label="Email us"><span class="email-display"></span></a></li>
           <li>40 Fulton St, New York, NY 10038</li>
-          <li>New York, NY</li>
+          <li>Serving New York, NY</li>
         </ul>
       </div>
       <div>
@@ -776,18 +855,97 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copyright">&copy;  A&E NYC Plumbing. All rights reserved.</span>
+      <span class="footer-copyright">&copy; 2026 A&amp;E NYC Plumbing. All rights reserved.</span>
       <div class="footer-legal">
-        <a href="">Privacy Policy</a>
-        <a href="" class="">Cookie Policy</a>
+        <a href="[[OPTIONAL_MISSING]]">Privacy Policy</a>
+        <a href="[[OPTIONAL_MISSING]]" class="hidden">Cookie Policy</a>
       </div>
     </div>
   </div>
 </footer>
+
+<section class="section-trust-bar" aria-label="Business credentials">
+  <div class="trust-bar-inner">
+    <div class="trust-bar-item">
+      <span class="trust-bar-value">✓</span>
+      <span class="trust-bar-label">licensed and insured</span>
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-value"></span>
+      <span class="trust-bar-label"></span>
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-value"></span>
+      <span class="trust-bar-label"></span>
+    </div>
+    <div class="trust-bar-availability">
+      <span class="trust-bar-dot" aria-hidden="true"></span>
+      
+    </div>
+  </div>
+</section>
+
+<section class="section-gallery-beforeafter" id="gallery">
+  <div class="gallery-ba-inner">
+    <h2 class="gallery-ba-title">{{GALLERY_SECTION_TITLE}}</h2>
+    <div class="gallery-ba-grid">
+      <div class="gallery-ba-pair">
+        <div class="gallery-ba-pair-title">{{GALLERY_PROJECT_1_TITLE}}</div>
+        <div class="gallery-ba-images">
+          <div class="gallery-ba-side">
+            <img src="{{GALLERY_BEFORE_1_URL}}" srcset="{{GALLERY_BEFORE_1_URL_SM}} 480w, {{GALLERY_BEFORE_1_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — {{GALLERY_PROJECT_1_TITLE}}" loading="lazy">
+            <span class="gallery-ba-label">Before</span>
+          </div>
+          <div class="gallery-ba-side">
+            <img src="{{GALLERY_AFTER_1_URL}}" srcset="{{GALLERY_AFTER_1_URL_SM}} 480w, {{GALLERY_AFTER_1_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — {{GALLERY_PROJECT_1_TITLE}}" loading="lazy">
+            <span class="gallery-ba-label">After</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-ba-pair">
+        <div class="gallery-ba-pair-title">{{GALLERY_PROJECT_2_TITLE}}</div>
+        <div class="gallery-ba-images">
+          <div class="gallery-ba-side">
+            <img src="{{GALLERY_BEFORE_2_URL}}" srcset="{{GALLERY_BEFORE_2_URL_SM}} 480w, {{GALLERY_BEFORE_2_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — {{GALLERY_PROJECT_2_TITLE}}" loading="lazy">
+            <span class="gallery-ba-label">Before</span>
+          </div>
+          <div class="gallery-ba-side">
+            <img src="{{GALLERY_AFTER_2_URL}}" srcset="{{GALLERY_AFTER_2_URL_SM}} 480w, {{GALLERY_AFTER_2_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — {{GALLERY_PROJECT_2_TITLE}}" loading="lazy">
+            <span class="gallery-ba-label">After</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-faq" id="faq">
+  <div class="faq-inner">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3 class="faq-question">When A Drain Needs To Be Repaired</h3>
+        <p class="faq-answer">As was previously stated, most leaky drain jobs need nothing more than a minor cleaning and resealing of the leaky joint. While this is not always the case, you can count on our teams to always accurately identify the root cause. With years of experience in the New York City plumbing industry, our plumbers and technicians have seen all kinds of adverse scenarios that ultimately lead to drain leaks. Some of these scenarios may include any one of the following and are all things modern homeowners </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How To Drain A Water Heater</h3>
+        <p class="faq-answer">- February 13, 2023 Water heaters have not only grown into an essential component of the modern household. The appliance also advanced to the point where its capabilities are truly astonishing. There is no better definitive proof than the modern advancement of technology. A&amp;E NYC Plumbing Tankless water heaters are just one of the many prime examples. Although these appliances are well past the trial-and-error stages of production, installation, and marketing, they are still rather expensive. Th</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How To Fix A Leaking Toilet</h3>
+        <p class="faq-answer">A leaking toilet can quickly cause your water bill to increase. Before you know it, your bill will double and possibly even triple. Suffice to Read More »</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How To Install A Dishwasher The Definitive Guide</h3>
+        <p class="faq-answer">Having a dishwasher will make your life so much easier since you won’t have to wash your dishes by hand. However, it can be difficult Read More »</p>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 <div class="section-sticky-cta" role="complementary" aria-label="Quick actions">
-  <a href="#services" class="sticky-cta-btn">plumbing, heating, and water damage restoration services</a>
-  <a href="" class="sticky-cta-secondary"></a>
+  <a href="tel:+16463927164" class="sticky-cta-btn">Call Now</a>
+  <a href="tel:+16463927164" class="sticky-cta-secondary">(646) 392-7164</a>
 </div>
 <script>
   // Hamburger menu — vanilla JS, no dependencies
@@ -817,6 +975,49 @@
   }, { threshold: 0.1 });
   els.forEach(function(el) { observer.observe(el); });
 })();
+
+  // Phone + email — progressive enhancement
+  // Mobile: tel: opens dialer, mailto: opens mail app — browser handles it.
+  // Desktop: copies value to clipboard and shows brief "Copied!" feedback.
+  // Email address is assembled from Base64 at runtime — never in plain HTML source.
+  document.addEventListener('DOMContentLoaded', function() {
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    function addCopyFallback(el, value, displayEl) {
+      if (isMobile || !navigator.clipboard) return;
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(value).then(function() {
+          var orig = displayEl ? displayEl.textContent : el.textContent;
+          if (displayEl) displayEl.textContent = 'Copied!';
+          else el.textContent = 'Copied!';
+          setTimeout(function() {
+            if (displayEl) displayEl.textContent = orig;
+            else el.textContent = orig;
+          }, 1500);
+        });
+      });
+    }
+
+    // Phone links
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+      var value = el.getAttribute('data-phone') || el.textContent.trim();
+      addCopyFallback(el, value, null);
+    });
+
+    // Email links — decode Base64, write href + display text, add copy fallback
+    document.querySelectorAll('a.email-link[data-e]').forEach(function(el) {
+      var encoded = el.getAttribute('data-e');
+      if (!encoded) return;
+      try {
+        var email = atob(encoded);
+        el.href = 'mailto:' + email;
+        var display = el.querySelector('.email-display');
+        if (display) display.textContent = email;
+        addCopyFallback(el, email, display);
+      } catch (err) {}
+    });
+  });
 </script>
 </body>
 </html>
