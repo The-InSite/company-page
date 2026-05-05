@@ -5,41 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
   <title>A&amp;E NYC Plumbing — New York, NY</title>
-  <meta name="description" content="Fill out the form below, or give us a call today at (646) 392-7164 …">
+  <meta name="description" content="Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=fallback">
   
   
   
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #1A1A2E;
-  --color-accent: #E63946;
+  --color-primary: #003566;
+  --color-accent: #0077B6;
   --color-background: #FFFFFF;
-  --color-surface: #F5F5F5;
-  --color-text-primary: #1A1A2E;
-  --color-text-secondary: #555555;
-  --color-cta-bg: #E63946;
+  --color-surface: #F0F7FF;
+  --color-text-primary: #003566;
+  --color-text-secondary: #4A4A4A;
+  --color-cta-bg: #0077B6;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #CC2936;
-  --color-border: #E0E0E0;
-  --font-display: "DM Sans";
-  --font-body: "DM Sans";
-  --base-size: 17px;
-  --type-scale-ratio: 1.25;
-  --h1-size: 2.4414rem;
-  --h2-size: 1.9531rem;
-  --h3-size: 1.5625rem;
-  --h4-size: 1.2500rem;
+  --color-cta-hover: #005F8E;
+  --color-border: #CCE5FF;
+  --font-display: Oswald;
+  --font-body: "Source Sans 3";
+  --base-size: 16px;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.02em;
+  --letter-spacing-display: 0.05em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.25;
-  --line-height-body: 1.65;
+  --line-height-display: 1.15;
+  --line-height-body: 1.6;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -47,16 +47,16 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 3rem 1.25rem;
-  --section-padding-desktop: 5rem 3rem;
-  --card-gap: 1.25rem;
-  --heading-margin-bottom: 1rem;
-  --paragraph-margin-bottom: 1.25rem;
-  --border-radius-sm: 8px;
-  --border-radius-md: 16px;
-  --border-radius-lg: 24px;
-  --button-radius: 100px;
-  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --section-padding-mobile: 2rem 1rem;
+  --section-padding-desktop: 3rem 2rem;
+  --card-gap: 0.75rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 6px;
+  --button-radius: 4px;
+  --shadow: none;
   --animation-duration: 300ms;
   --animation-stagger: 80ms;
   --animation-type: fade_in;
@@ -222,87 +222,69 @@
     display: none;
   }
 }
-.section-hero-fullbleed {
-  position: relative;
-  min-height: 80svh;
-  min-height: 28rem;
+.nav-link-hidden { display: none; }
+.section-hero-typography {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  overflow: hidden;
   text-align: center;
+  min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
 }
-.hero-fullbleed-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.hero-typography-content {
+  max-width: 52rem;
 }
-.hero-fullbleed-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-fullbleed-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
-  z-index: 1;
-}
-.hero-fullbleed-content {
-  position: relative;
-  z-index: 2;
-  max-width: 48rem;
-  padding: 1rem;
-}
-.hero-fullbleed-headline {
+.hero-typography-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--letter-spacing-display, -0.02em);
 }
-.hero-fullbleed-subheadline {
+.hero-typography-accent {
+  color: var(--color-primary);
+}
+.hero-typography-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-lg, 1.125rem);
-  color: rgba(255,255,255,0.9);
-  line-height: 1.5;
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-fullbleed-cta {
+.hero-typography-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: 1rem 2.25rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: var(--text-lg, 1.125rem);
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
   transition: background 0.2s;
 }
-.hero-fullbleed-cta:hover {
+.hero-typography-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
-.hero-fullbleed-fallback-bg {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
-}
 @media (min-width: 768px) {
-  .section-hero-fullbleed {
-    padding: var(--section-padding-desktop, 5rem 2rem);
+  .section-hero-typography {
+    padding: var(--section-padding-desktop, 6rem 2rem);
+    min-height: 36rem;
   }
-  .hero-fullbleed-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
+  .hero-typography-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
   }
-  .hero-fullbleed-subheadline {
-    font-size: var(--text-xl, 1.25rem);
+  .hero-typography-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-services-list {
@@ -773,31 +755,19 @@
     </button>
     <div class="nav-menu" data-nav-menu aria-expanded="false">
       <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Reviews</a>
+      <a href="#about" class="nav-link-hidden">About</a>
+      <a href="#testimonials" class="nav-link-hidden">Reviews</a>
       <a href="#contact">Contact</a>
       <a href="tel:+16463927164" class="nav-cta nav-cta-mobile">Call Now</a>
     </div>
   </div>
 </nav>
 
-<section class="section-hero-fullbleed">
-  <div class="hero-fullbleed-bg">
-    <img
-      src=""
-      srcset=" 480w,  1024w"
-      sizes="100vw"
-      width="1200"
-      height="675"
-      alt=""
-      loading="eager"
-    >
-    <div class="hero-fullbleed-overlay"></div>
-  </div>
-  <div class="hero-fullbleed-content">
-    <h1 class="hero-fullbleed-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-fullbleed-subheadline">Fill out the form below, or give us a call today at (646) 392-7164 …</p>
-    <a href="tel:+16463927164" class="hero-fullbleed-cta">Call Now</a>
+<section class="section-hero-typography">
+  <div class="hero-typography-content">
+    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-typography-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
   </div>
 </section>
 
@@ -918,30 +888,30 @@
 
 <section class="section-gallery-beforeafter" id="gallery">
   <div class="gallery-ba-inner">
-    <h2 class="gallery-ba-title">{{GALLERY_SECTION_TITLE}}</h2>
+    <h2 class="gallery-ba-title">Our Work</h2>
     <div class="gallery-ba-grid">
       <div class="gallery-ba-pair">
-        <div class="gallery-ba-pair-title">{{GALLERY_PROJECT_1_TITLE}}</div>
+        <div class="gallery-ba-pair-title">A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges.</div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <img src="{{GALLERY_BEFORE_1_URL}}" srcset="{{GALLERY_BEFORE_1_URL_SM}} 480w, {{GALLERY_BEFORE_1_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — {{GALLERY_PROJECT_1_TITLE}}" loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <img src="{{GALLERY_AFTER_1_URL}}" srcset="{{GALLERY_AFTER_1_URL_SM}} 480w, {{GALLERY_AFTER_1_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — {{GALLERY_PROJECT_1_TITLE}}" loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
       </div>
       <div class="gallery-ba-pair">
-        <div class="gallery-ba-pair-title">{{GALLERY_PROJECT_2_TITLE}}</div>
+        <div class="gallery-ba-pair-title">Plumber in Queens</div>
         <div class="gallery-ba-images">
           <div class="gallery-ba-side">
-            <img src="{{GALLERY_BEFORE_2_URL}}" srcset="{{GALLERY_BEFORE_2_URL_SM}} 480w, {{GALLERY_BEFORE_2_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — {{GALLERY_PROJECT_2_TITLE}}" loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — Plumber in Queens" loading="lazy">
             <span class="gallery-ba-label">Before</span>
           </div>
           <div class="gallery-ba-side">
-            <img src="{{GALLERY_AFTER_2_URL}}" srcset="{{GALLERY_AFTER_2_URL_SM}} 480w, {{GALLERY_AFTER_2_URL_LG}} 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — {{GALLERY_PROJECT_2_TITLE}}" loading="lazy">
+            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — Plumber in Queens" loading="lazy">
             <span class="gallery-ba-label">After</span>
           </div>
         </div>
@@ -963,12 +933,12 @@
         <p class="faq-answer">- February 13, 2023 Water heaters have not only grown into an essential component of the modern household. The appliance also advanced to the point where its capabilities are truly astonishing. There is no better definitive proof than the modern advancement of technology. A&amp;E NYC Plumbing Tankless water heaters are just one of the many prime examples. Although these appliances are well past the trial-and-error stages of production, installation, and marketing, they are still rather expensive. Th</p>
       </div>
       <div class="faq-item">
-        <h3 class="faq-question">How To Fix A Leaking Toilet</h3>
-        <p class="faq-answer">A leaking toilet can quickly cause your water bill to increase. Before you know it, your bill will double and possibly even triple. Suffice to Read More »</p>
-      </div>
-      <div class="faq-item">
         <h3 class="faq-question">How To Install A Dishwasher The Definitive Guide</h3>
         <p class="faq-answer">Having a dishwasher will make your life so much easier since you won’t have to wash your dishes by hand. However, it can be difficult Read More »</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How To Fix A Leaking Toilet</h3>
+        <p class="faq-answer">A leaking toilet can quickly cause your water bill to increase. Before you know it, your bill will double and possibly even triple. Suffice to Read More »</p>
       </div>
     </div>
   </div>
