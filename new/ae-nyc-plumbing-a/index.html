@@ -8,38 +8,38 @@
   <meta name="description" content="Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
   
   
   
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #1A1A2E;
-  --color-accent: #E63946;
+  --color-primary: #1C3144;
+  --color-accent: #F4741B;
   --color-background: #FFFFFF;
-  --color-surface: #F5F5F5;
-  --color-text-primary: #1A1A2E;
-  --color-text-secondary: #555555;
-  --color-cta-bg: #E63946;
+  --color-surface: #FFF8F4;
+  --color-text-primary: #1C3144;
+  --color-text-secondary: #4A4A4A;
+  --color-cta-bg: #F4741B;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #CC2936;
-  --color-border: #E0E0E0;
-  --font-display: "Barlow Condensed";
-  --font-body: Barlow;
-  --base-size: 16px;
-  --type-scale-ratio: 1.618;
-  --h1-size: 6.8535rem;
-  --h2-size: 4.2358rem;
-  --h3-size: 2.6179rem;
-  --h4-size: 1.6180rem;
-  --h1-weight: 800;
-  --h2-weight: 700;
+  --color-cta-hover: #D4611A;
+  --color-border: #FFE0CC;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
+  --h1-weight: 700;
+  --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.08em;
-  --letter-spacing-body: 0.02em;
-  --line-height-display: 1.05;
-  --line-height-body: 1.55;
+  --letter-spacing-display: 0.02em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -47,19 +47,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 2rem 1rem;
-  --section-padding-desktop: 3rem 2rem;
-  --card-gap: 0.75rem;
-  --heading-margin-bottom: 0.75rem;
-  --paragraph-margin-bottom: 1rem;
+  --section-padding-mobile: 3rem 1.25rem;
+  --section-padding-desktop: 5rem 3rem;
+  --card-gap: 1.25rem;
+  --heading-margin-bottom: 1rem;
+  --paragraph-margin-bottom: 1.25rem;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --button-radius: 6px;
   --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 300ms;
-  --animation-stagger: 80ms;
-  --animation-type: fade_in;
+  --animation-duration: 500ms;
+  --animation-stagger: 120ms;
+  --animation-type: slide_up;
 }
 /* DESIGN_TOKENS_END */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,13 +103,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: fadeIn 300ms ease-out forwards;
+  animation: slideUp 500ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -223,68 +223,87 @@
   }
 }
 .nav-link-hidden { display: none; }
-.section-hero-typography {
+.section-hero-fullbleed {
+  position: relative;
+  min-height: 80svh;
+  min-height: 28rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 28rem;
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
+  overflow: hidden;
+  text-align: center;
 }
-.hero-typography-content {
-  max-width: 52rem;
+.hero-fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-.hero-typography-headline {
+.hero-fullbleed-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.hero-fullbleed-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  padding: 1rem;
+}
+.hero-fullbleed-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text-primary);
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
-  letter-spacing: var(--letter-spacing-display, -0.02em);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
 }
-.hero-typography-accent {
-  color: var(--color-primary);
-}
-.hero-typography-subheadline {
+.hero-fullbleed-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.125rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+  font-size: var(--text-lg, 1.125rem);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-typography-cta {
+.hero-fullbleed-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2.25rem;
+  padding: 1rem 2rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: var(--text-lg, 1.125rem);
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
   transition: background 0.2s;
 }
-.hero-typography-cta:hover {
+.hero-fullbleed-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
+.hero-fullbleed-fallback-bg {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
+}
 @media (min-width: 768px) {
-  .section-hero-typography {
-    padding: var(--section-padding-desktop, 6rem 2rem);
-    min-height: 36rem;
+  .section-hero-fullbleed {
+    padding: var(--section-padding-desktop, 5rem 2rem);
   }
-  .hero-typography-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
+  .hero-fullbleed-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
   }
-  .hero-typography-subheadline {
-    font-size: 1.25rem;
+  .hero-fullbleed-subheadline {
+    font-size: var(--text-xl, 1.25rem);
   }
 }
 .section-services-list {
@@ -625,15 +644,15 @@
     display: none;
   }
 }
-.section-gallery-beforeafter {
+.section-gallery-grid {
   padding: var(--section-padding-mobile, 3rem 1rem);
   background: var(--color-background);
 }
-.gallery-ba-inner {
+.gallery-grid-inner {
   max-width: 75rem;
   margin: 0 auto;
 }
-.gallery-ba-title {
+.gallery-grid-title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h2-size, 1.75rem);
   font-weight: 700;
@@ -641,57 +660,33 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.gallery-ba-grid {
+.gallery-grid-items {
   display: grid;
-  gap: var(--card-gap, 1.5rem);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap, 0.75rem);
 }
-.gallery-ba-pair {
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md, 0.5rem);
-  overflow: hidden;
-  background: var(--color-surface);
-}
-.gallery-ba-pair-title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  padding: 0.75rem 1rem;
-  text-align: center;
-}
-.gallery-ba-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.gallery-ba-side {
-  position: relative;
+.gallery-grid-item {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  border-radius: var(--border-radius-md, 0.5rem);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
 }
-.gallery-ba-side img {
+.gallery-grid-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s;
 }
-.gallery-ba-label {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
-  padding: 0.1875rem 0.5rem;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: 0.1875rem;
+.gallery-grid-item:hover img {
+  transform: scale(1.03);
 }
 @media (min-width: 768px) {
-  .section-gallery-beforeafter {
+  .section-gallery-grid {
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
-  .gallery-ba-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  .gallery-grid-items {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--card-gap, 1rem);
   }
 }
 .section-faq {
@@ -763,11 +758,23 @@
   </div>
 </nav>
 
-<section class="section-hero-typography">
-  <div class="hero-typography-content">
-    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-typography-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
-    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
+<section class="section-hero-fullbleed">
+  <div class="hero-fullbleed-bg">
+    <img
+      src="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg"
+      srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 1024w"
+      sizes="100vw"
+      width="1200"
+      height="675"
+      alt="A&amp;E NYC Plumbing"
+      loading="eager"
+    >
+    <div class="hero-fullbleed-overlay"></div>
+  </div>
+  <div class="hero-fullbleed-content">
+    <h1 class="hero-fullbleed-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-fullbleed-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-fullbleed-cta">Call Now</a>
   </div>
 </section>
 
@@ -827,7 +834,7 @@
       </div>
       <div class="contact-item">
         <div class="contact-item-label">Hours</div>
-        <div class="contact-item-value"></div>
+        <div class="contact-item-value">Mon - Sun 9am-9pm</div>
       </div>
     </div>
     <a href="tel:+16463927164" class="contact-cta">Call Now</a>
@@ -852,7 +859,7 @@
       </div>
       <div>
         <div class="footer-heading">Hours</div>
-        <p class="footer-tagline"></p>
+        <p class="footer-tagline">Mon - Sun 9am-9pm</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -881,40 +888,26 @@
     </div>
     <div class="trust-bar-availability">
       <span class="trust-bar-dot" aria-hidden="true"></span>
-      
+      Mon - Sun 9am-9pm
     </div>
   </div>
 </section>
 
-<section class="section-gallery-beforeafter" id="gallery">
-  <div class="gallery-ba-inner">
-    <h2 class="gallery-ba-title">Our Work</h2>
-    <div class="gallery-ba-grid">
-      <div class="gallery-ba-pair">
-        <div class="gallery-ba-pair-title">A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges.</div>
-        <div class="gallery-ba-images">
-          <div class="gallery-ba-side">
-            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
-            <span class="gallery-ba-label">Before</span>
-          </div>
-          <div class="gallery-ba-side">
-            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
-            <span class="gallery-ba-label">After</span>
-          </div>
-        </div>
+<section class="section-gallery-grid" id="gallery">
+  <div class="gallery-grid-inner">
+    <h2 class="gallery-grid-title">Our Work</h2>
+    <div class="gallery-grid-items">
+      <div class="gallery-grid-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
       </div>
-      <div class="gallery-ba-pair">
-        <div class="gallery-ba-pair-title">Plumber in Queens</div>
-        <div class="gallery-ba-images">
-          <div class="gallery-ba-side">
-            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Before — Plumber in Queens" loading="lazy">
-            <span class="gallery-ba-label">Before</span>
-          </div>
-          <div class="gallery-ba-side">
-            <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="After — Plumber in Queens" loading="lazy">
-            <span class="gallery-ba-label">After</span>
-          </div>
-        </div>
+      <div class="gallery-grid-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="google my business" loading="lazy">
+      </div>
+      <div class="gallery-grid-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="A&amp;E NYC Plumbing — work photo 3" loading="lazy">
+      </div>
+      <div class="gallery-grid-item">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Plumber in Queens" loading="lazy">
       </div>
     </div>
   </div>
@@ -925,20 +918,20 @@
     <h2 class="faq-title">Frequently Asked Questions</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <h3 class="faq-question">When A Drain Needs To Be Repaired</h3>
-        <p class="faq-answer">As was previously stated, most leaky drain jobs need nothing more than a minor cleaning and resealing of the leaky joint. While this is not always the case, you can count on our teams to always accurately identify the root cause. With years of experience in the New York City plumbing industry, our plumbers and technicians have seen all kinds of adverse scenarios that ultimately lead to drain leaks. Some of these scenarios may include any one of the following and are all things modern homeowners </p>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-question">How To Drain A Water Heater</h3>
-        <p class="faq-answer">- February 13, 2023 Water heaters have not only grown into an essential component of the modern household. The appliance also advanced to the point where its capabilities are truly astonishing. There is no better definitive proof than the modern advancement of technology. A&amp;E NYC Plumbing Tankless water heaters are just one of the many prime examples. Although these appliances are well past the trial-and-error stages of production, installation, and marketing, they are still rather expensive. Th</p>
+        <h3 class="faq-question">How To Fix A Leaking Toilet</h3>
+        <p class="faq-answer">A leaking toilet can quickly cause your water bill to increase. Before you know it, your bill will double and possibly even triple. Suffice to say, this is something you’ll need to address promptly to avoid overspending. You also have to worry about water damaging your bathroom. Depending on the issue, you may be able … Read more</p>
       </div>
       <div class="faq-item">
         <h3 class="faq-question">How To Install A Dishwasher The Definitive Guide</h3>
-        <p class="faq-answer">Having a dishwasher will make your life so much easier since you won’t have to wash your dishes by hand. However, it can be difficult Read More »</p>
+        <p class="faq-answer">Having a dishwasher will make your life so much easier since you won’t have to wash your dishes by hand. However, it can be difficult to install a new dishwasher. Many people will buy a dishwasher and hire a professional to install the new appliance. Although this is one option, you can save money by … Read more</p>
       </div>
       <div class="faq-item">
-        <h3 class="faq-question">How To Fix A Leaking Toilet</h3>
-        <p class="faq-answer">A leaking toilet can quickly cause your water bill to increase. Before you know it, your bill will double and possibly even triple. Suffice to Read More »</p>
+        <h3 class="faq-question">How To Drain A Water Heater</h3>
+        <p class="faq-answer">Water heaters have not only grown into an essential component of the modern household. The appliance also advanced to the point where its capabilities are truly astonishing. There is no better definitive proof than the modern advancement of technology. A&amp;E NYC Plumbing Tankless water heaters are just one of the many prime examples. Although these … Read more</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">When A Drain Needs To Be Repaired</h3>
+        <p class="faq-answer">As was previously stated, most leaky drain jobs need nothing more than a minor cleaning and resealing of the leaky joint. While this is not always the case, you can count on our teams to always accurately identify the root cause. With years of experience in the New York City plumbing industry, our plumbers and technicians have seen all kinds of adverse scenarios that ultimately lead to drain leaks. Some of these scenarios may include any one of the following and are all things modern homeowners </p>
       </div>
     </div>
   </div>
@@ -968,7 +961,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 80) + "ms";
+        entry.target.style.animationDelay = (i * 120) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
