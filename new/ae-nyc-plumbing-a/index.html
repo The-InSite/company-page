@@ -8,7 +8,7 @@
   <meta name="description" content="Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
   
   
   
@@ -25,21 +25,21 @@
   --color-cta-text: #FFFFFF;
   --color-cta-hover: #D4611A;
   --color-border: #FFE0CC;
-  --font-display: Oswald;
-  --font-body: "Source Sans 3";
-  --base-size: 16px;
-  --type-scale-ratio: 1.333;
-  --h1-size: 3.1573rem;
-  --h2-size: 2.3686rem;
-  --h3-size: 1.7769rem;
-  --h4-size: 1.3330rem;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.05em;
+  --letter-spacing-display: 0.02em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.15;
-  --line-height-body: 1.6;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -224,87 +224,65 @@
 }
 /* Higher specificity than .nav-menu a so the hidden class actually wins */
 .nav-menu a.nav-link-hidden, .nav-link-hidden { display: none !important; }
-.section-hero-fullbleed {
-  position: relative;
-  min-height: 80svh;
-  min-height: 28rem;
+.section-hero-colorblock {
   display: flex;
   align-items: center;
-  justify-content: center;
+  min-height: 28rem;
   padding: var(--section-padding-mobile, 3rem 1rem);
-  overflow: hidden;
+  background: var(--color-primary);
+}
+.hero-colorblock-content {
+  max-width: 48rem;
+  margin: 0 auto;
   text-align: center;
 }
-.hero-fullbleed-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.hero-fullbleed-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-fullbleed-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
-  z-index: 1;
-}
-.hero-fullbleed-content {
-  position: relative;
-  z-index: 2;
-  max-width: 48rem;
-  padding: 1rem;
-}
-.hero-fullbleed-headline {
+.hero-colorblock-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
   font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
+  color: var(--color-background);
+  line-height: 1.1;
   margin-bottom: 1rem;
 }
-.hero-fullbleed-subheadline {
+.hero-colorblock-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-lg, 1.125rem);
-  color: rgba(255,255,255,0.9);
+  font-size: 1.125rem;
+  color: var(--color-background);
+  opacity: 0.9;
   line-height: 1.5;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-fullbleed-cta {
+.hero-colorblock-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 1rem 2rem;
-  background: var(--color-cta-bg);
-  color: var(--color-cta-text);
+  background: var(--color-background);
+  color: var(--color-primary);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: var(--text-lg, 1.125rem);
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
-  transition: background 0.2s;
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.2s;
 }
-.hero-fullbleed-cta:hover {
-  background: var(--color-cta-hover, var(--color-accent));
-}
-.hero-fullbleed-fallback-bg {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
+.hero-colorblock-cta:hover {
+  transform: translateY(-2px);
 }
 @media (min-width: 768px) {
-  .section-hero-fullbleed {
+  .section-hero-colorblock {
     padding: var(--section-padding-desktop, 5rem 2rem);
+    min-height: 32rem;
   }
-  .hero-fullbleed-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
+  .hero-colorblock-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.4);
   }
-  .hero-fullbleed-subheadline {
-    font-size: var(--text-xl, 1.25rem);
+  .hero-colorblock-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-services-list {
@@ -795,6 +773,73 @@
     padding: var(--section-padding-desktop, 4rem 2rem);
   }
 }
+.section-blog {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.blog-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.blog-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.blog-grid {
+  display: grid;
+  gap: var(--card-gap, 1.5rem);
+}
+.blog-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: 1.5rem;
+}
+.blog-card-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h3-size, 1.25rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.625rem;
+}
+.blog-card-excerpt {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.blog-expand { margin-top: 0.875rem; }
+.blog-expand-toggle {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none;
+}
+.blog-expand-toggle::-webkit-details-marker { display: none; }
+.blog-expand-body {
+  margin-top: 0.75rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .section-blog {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .blog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+  .blog-title {
+    font-size: calc(var(--h2-size, 1.75rem) * 1.15);
+  }
+}
   </style>
 </head>
 <body>
@@ -819,23 +864,11 @@
   </div>
 </nav>
 
-<section class="section-hero-fullbleed">
-  <div class="hero-fullbleed-bg">
-    <img
-      src="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg"
-      srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 1024w"
-      sizes="100vw"
-      width="1200"
-      height="675"
-      alt="A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges."
-      loading="eager"
-    >
-    <div class="hero-fullbleed-overlay"></div>
-  </div>
-  <div class="hero-fullbleed-content">
-    <h1 class="hero-fullbleed-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-fullbleed-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
-    <a href="tel:+16463927164" class="hero-fullbleed-cta">Call Now</a>
+<section class="section-hero-colorblock">
+  <div class="hero-colorblock-content">
+    <h1 class="hero-colorblock-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-colorblock-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-colorblock-cta">Call Now</a>
   </div>
 </section>
 
@@ -847,8 +880,8 @@
 <li class="services-list-item"><h3 class="services-list-name">Drain Repair</h3><p class="services-list-desc">The sewer line repair service is an essential intervention that we undertake whenever we’re handling any plumbing drain issues.</p></li>
 <li class="services-list-item"><h3 class="services-list-name">Faucet Repair and Installation</h3><p class="services-list-desc">A damaged or malfunctioning faucet can translate into extremely high water bills. Call us to have your faucets repaired, or to have new faucets properly installed.</p></li>
 <li class="services-list-item"><h3 class="services-list-name">Gas Line Repair or Installation</h3><p class="services-list-desc">You know that your home’s gas infrastructure is extremely important and must be kept running perfectly and safely at any time. That’s why you’ll want Manhattan’s top experts offering the most safety-oriented gas line maintenance, repair, and installation services.</p></li>
-<li class="services-list-item"><h3 class="services-list-name">Hot Water Heaters Installation</h3><p class="services-list-desc">How well is your water heater working? Is it keeping your water hot and your power bill within the expected range? Or are you seeing the bills going up and the water temperature going down? If you need water heater repair services, or a new water heater installation, we can help you in the Manhattan</p><details class="service-expand"><summary class="service-expand-toggle">Read More</summary><div class="service-expand-body"><p>area.</p></div></details></li>
-<li class="services-list-item"><h3 class="services-list-name">Kitchen Bath Installation</h3><p class="services-list-desc">Your kitchen and your bathroom are spaces where a lot of plumbing work has been done when your house was built. Over time, the plumbing infrastructure will start giving in and you’ll need to upgrade multiple elements that require excellent equipment, materials, and plumbers that know how to</p><details class="service-expand"><summary class="service-expand-toggle">Read More</summary><div class="service-expand-body"><p>perfectly install them—that’s us!</p></div></details></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heaters Installation</h3><p class="services-list-desc">How well is your water heater working? Is it keeping your water hot and your power bill within the expected range? Or are you seeing the bills going up and the water temperature going down? If you need water heater repair services, or a new water heater installation, we can help you in the Manhattan area.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Kitchen Bath Installation</h3><p class="services-list-desc">Your kitchen and your bathroom are spaces where a lot of plumbing work has been done when your house was built. Over time, the plumbing infrastructure will start giving in and you’ll need to upgrade multiple elements that require excellent equipment, materials, and plumbers that know how to perfectly install them—that’s us!</p></li>
 <li class="services-list-item"><h3 class="services-list-name">Garbage Disposal</h3><p class="services-list-desc">Plumbing interventions can leave a big mess behind—but not ours. We make sure we correctly dispose of any garbage and debris that our work would otherwise leave behind. Alternatively, if you’re dealing with a situation that is already messy and that requires the intervention of plumbers, we can also</p><details class="service-expand"><summary class="service-expand-toggle">Read More</summary><div class="service-expand-body"><p>clean up the place along with providing the plumbing assistance that you require.</p></div></details></li>
 <li class="services-list-item"><h3 class="services-list-name">Leak Detection’s</h3><p class="services-list-desc">A water cleanup will definitely be necessary if you have a leak, but detecting it is the first and most essential step to fixing it—which is what you want us to do so that you can go back to enjoying your home in comfort.</p></li>
 <li class="services-list-item"><h3 class="services-list-name">Piping and Re-piping</h3><p class="services-list-desc">Does your home require improvements, maintenance work, or just new pipes? We’re the right team for the job in the Manhattan area!</p></li>
@@ -1023,6 +1056,23 @@
         <h3 class="faq-question">When A Drain Needs To Be Repaired</h3>
         <p class="faq-answer">As was previously stated, most leaky drain jobs need nothing more than a minor cleaning and resealing of the leaky joint. While this is not always the case, you can count on our teams to always accurately identify the root cause. With years of experience in the New York City plumbing industry, our plumbers and technicians have seen all kinds of adverse scenarios that ultimately lead to drain leaks. Some of these scenarios may include any one of the following and are all things modern homeowners </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-blog" id="blog">
+  <div class="blog-inner">
+    <h2 class="blog-title">From Our Blog</h2>
+    <div class="blog-grid">
+      <article class="blog-card"><h3 class="blog-card-title">2 - 2023 - A&amp;E NYC Plumbing</h3><p class="blog-card-excerpt">Skip to content
+
+Water heaters have not only grown into an essential component of the modern household. The appliance also advanced to the point where</p><details class="blog-expand"><summary class="blog-expand-toggle">Read Full Post</summary><div class="blog-expand-body"><p>its capabilities are truly astonishing. There is no better definitive proof than the modern advancement of technology. A&amp;E NYC Plumbing Tankless water heaters are just one of the many prime examples. Although these … Read more</p></div></details></article>
+<article class="blog-card"><h3 class="blog-card-title">2 - 2025 - A&amp;E NYC Plumbing</h3><p class="blog-card-excerpt">Skip to content
+
+Residential water heaters have evolved significantly over the last decade. Modern water heaters feature state-of-the-art technology,</p><details class="blog-expand"><summary class="blog-expand-toggle">Read Full Post</summary><div class="blog-expand-body"><p>delivering a cost-efficient operation. Older models were oftentimes referred to as “energy-hogging appliances.” Fortunately, this is no longer the case with the soaring cost of residential electricity. A&amp;E NYC Plumbing The right water heater will offer maximum energy efficiency, … Read more</p></div></details></article>
+<article class="blog-card"><h3 class="blog-card-title">6 - 2025 - A&amp;E NYC Plumbing</h3><p class="blog-card-excerpt">Skip to content
+
+Having a dishwasher will make your life so much easier since you won’t have to wash your dishes by hand. However, it can be difficult</p><details class="blog-expand"><summary class="blog-expand-toggle">Read Full Post</summary><div class="blog-expand-body"><p>to install a new dishwasher. Many people will buy a dishwasher and hire a professional to install the new appliance. Although this is one option, you can save money by … Read more</p></div></details></article>
     </div>
   </div>
 </section>
