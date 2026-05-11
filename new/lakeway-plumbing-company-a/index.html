@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Lakeway Plumbing Company — Austin, TX</title>
+  <meta name="description" content="A residential and commercial plumbing company. Serving the greater Austin area including Lakeway, Bee Cave, Westlake, Leander &amp; Spicewood">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
+  
+  
+  
+  <style>
+    /* DESIGN_TOKENS_START */
+:root {
+  --color-primary: #003566;
+  --color-accent: #0077B6;
+  --color-background: #FFFFFF;
+  --color-surface: #F0F7FF;
+  --color-text-primary: #003566;
+  --color-text-secondary: #4A4A4A;
+  --color-cta-bg: #0077B6;
+  --color-cta-text: #FFFFFF;
+  --color-cta-hover: #005F8E;
+  --color-border: #CCE5FF;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
+  --h1-weight: 700;
+  --h2-weight: 600;
+  --body-weight: 400;
+  --letter-spacing-display: 0.02em;
+  --letter-spacing-body: 0.01em;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --section-padding-mobile: 2rem 1rem;
+  --section-padding-desktop: 3rem 2rem;
+  --card-gap: 0.75rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --button-radius: 6px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
+  --animation-duration: 300ms;
+  --animation-stagger: 80ms;
+  --animation-type: fade_in;
+}
+/* DESIGN_TOKENS_END */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body), system-ui, sans-serif;
+      color: var(--color-text-primary);
+      background-color: var(--color-background);
+      line-height: var(--line-height-body, 1.6);
+      overflow-x: hidden;
+      width: 100%;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    button, a { min-height: 44px; }
+    a[href^="tel:"] { cursor: pointer; text-decoration: underline; }
+    a[href^="tel:"]:hover { opacity: 0.75; }
+    a.email-link { cursor: pointer; text-decoration: underline; }
+    a.email-link:hover { opacity: 0.75; }
+    a.email-link[data-e=""] { display: none; }
+    .contact-item:has(a.email-link[data-e=""]) { display: none; }
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-primary);
+      color: var(--color-background);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-nav:focus { top: 0; }
+    :focus-visible {
+      outline: 3px solid var(--color-primary, #000);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeIn 300ms ease-out forwards;
+}
+    .section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.08));
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.nav-logo {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  line-height: 1.2;
+}
+.nav-logo img {
+  max-height: 2.5rem;
+  width: auto;
+}
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3125rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 0.1875rem;
+  background: var(--color-text-primary);
+  border-radius: 0.125rem;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.1));
+  padding: 1rem;
+}
+.nav-menu[aria-expanded="true"] {
+  display: block;
+}
+.nav-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.nav-cta-desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .nav-inner {
+    padding: 1rem 2rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav-menu a {
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+  .nav-cta-desktop {
+    display: inline-flex;
+  }
+  .nav-cta-mobile {
+    display: none;
+  }
+}
+.section-hero-fullbleed {
+  position: relative;
+  min-height: 80svh;
+  min-height: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  overflow: hidden;
+  text-align: center;
+}
+.hero-fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-fullbleed-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.hero-fullbleed-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  padding: 1rem;
+}
+.hero-fullbleed-headline {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h1-size, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.hero-fullbleed-subheadline {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-lg, 1.125rem);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-fullbleed-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-lg, 1.125rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
+  transition: background 0.2s;
+}
+.hero-fullbleed-cta:hover {
+  background: var(--color-cta-hover, var(--color-accent));
+}
+.hero-fullbleed-fallback-bg {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
+}
+@media (min-width: 768px) {
+  .section-hero-fullbleed {
+    padding: var(--section-padding-desktop, 5rem 2rem);
+  }
+  .hero-fullbleed-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
+  }
+  .hero-fullbleed-subheadline {
+    font-size: var(--text-xl, 1.25rem);
+  }
+}
+.section-services-list {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.services-list-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.services-list-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.services-list-items {
+  list-style: none;
+  padding: 0;
+}
+.services-list-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.services-list-item:last-child {
+  border-bottom: none;
+}
+.services-list-name {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h3-size, 1.25rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.375rem;
+}
+.services-list-desc {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.service-expand { margin-top: 0.75rem; }
+.service-sub-item { margin-top: 1rem; }
+.service-sub-item:first-child { margin-top: 0; }
+.service-sub-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.375rem;
+}
+.service-sub-content {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.service-expand-toggle {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  list-style: none;
+}
+.service-expand-toggle::-webkit-details-marker { display: none; }
+.service-expand-body {
+  margin-top: 0.75rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .section-services-list {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .services-list-title {
+    font-size: calc(var(--h2-size, 1.75rem) * 1.15);
+  }
+}
+.section-contact {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-surface);
+}
+.contact-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.contact-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.contact-item {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: 1.25rem;
+}
+.contact-item-label {
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+.contact-item-value {
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+.contact-item-value a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-cta {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-lg, 1.125rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+}
+@media (min-width: 768px) {
+  .section-contact {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.section-about {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.about-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-image-wrap {
+  border-radius: var(--border-radius-lg, 1rem);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+.about-text {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.about-meta-item:has(.about-meta-value:empty) {
+  display: none;
+}
+.about-meta-item {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+}
+.about-meta-item strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .section-about {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .about-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+  .about-image-wrap {
+    flex: 0 0 40%;
+    aspect-ratio: 3 / 4;
+  }
+  .about-content {
+    flex: 1;
+  }
+}
+.section-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  padding: 0.625rem 1rem;
+  padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  gap: 0.625rem;
+  justify-content: center;
+}
+.sticky-cta-btn {
+  flex: 1;
+  max-width: 20rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.sticky-cta-secondary {
+  flex: 0 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .section-sticky-cta {
+    display: none;
+  }
+}
+.section-gallery-grid {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.gallery-grid-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.gallery-grid-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.gallery-grid-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap, 0.75rem);
+}
+.gallery-grid-item {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--border-radius-md, 0.5rem);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.gallery-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.gallery-grid-item:hover img {
+  transform: scale(1.03);
+}
+@media (min-width: 768px) {
+  .section-gallery-grid {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .gallery-grid-items {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--card-gap, 1rem);
+  }
+}
+.section-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 2.5rem 1rem 1.5rem;
+}
+.footer-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+}
+.footer-brand {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.footer-heading {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+}
+.footer-contact-list li {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.footer-contact-list a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footer-copyright {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+}
+.footer-legal {
+  display: flex;
+  gap: 1.25rem;
+}
+.footer-legal a {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.footer-legal a:hover {
+  color: var(--color-primary);
+}
+.footer-legal-hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .section-footer {
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<main id="main-content">
+<nav class="section-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Lakeway Plumbing Company — Home">Lakeway Plumbing Company</a>
+    <a href="tel:+15128008025" class="nav-cta nav-cta-desktop">Call Now</a>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-menu" data-nav-menu aria-expanded="false">
+      <a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+      <a href="tel:+15128008025" class="nav-cta nav-cta-mobile">Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-hero-fullbleed">
+  <div class="hero-fullbleed-bg">
+    <img
+      src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg"
+      srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg 1024w"
+      sizes="100vw"
+      width="1200"
+      height="675"
+      alt="Lakeway Plumbing Company"
+      loading="eager"
+    >
+    <div class="hero-fullbleed-overlay"></div>
+  </div>
+  <div class="hero-fullbleed-content">
+    <h1 class="hero-fullbleed-headline">Lakeway Plumbing Company</h1>
+    <p class="hero-fullbleed-subheadline">A residential and commercial plumbing company. Serving the greater Austin area including Lakeway, Bee Cave, Westlake, Leander &amp; Spicewood</p>
+    <a href="tel:+15128008025" class="hero-fullbleed-cta">Call Now</a>
+  </div>
+</section>
+
+<section class="section-services-list" id="services">
+  <div class="services-list-inner">
+    <h2 class="services-list-title">Our Services</h2>
+    <ul class="services-list-items">
+      <li class="services-list-item"><h3 class="services-list-name">Contact Lakeway Plumbing Company</h3><p class="services-list-desc"> Connect with us on Facebook! [](https://www.facebook.com/LakewayPlumbingCompany/)[](mailto:biggiekuehn@gmail.com) - Home - About - Services - Contact</p><details class="service-expand"><summary class="service-expand-toggle">Read More</summary><div class="service-expand-body"><div class="service-sub-item"><h4 class="service-sub-title">Contact Lakeway Plumbing Company</h4><p class="service-sub-content">\ Indicates required field We are happy to help! Office: 512.800.8025 Cell: 469.835.4800 Email: biggiekuehn@gmail.com Physical Address 15701 La Hacienda ​Austin, TX 78734 Site powered by Weebly. Managed by Bluehost</p></div></div></details></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-contact" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-item-label">Phone</div>
+        <div class="contact-item-value"><a href="tel:+15128008025">(512) 800-8025</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a class="email-link" data-e="YmlnZ2lla3VlaG5AZ21haWwuY29t" aria-label="Email us"><span class="email-display"></span></a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Service Area</div>
+        <div class="contact-item-value">serving businesses and homeowners with construction and plumbing needs in Texas for over</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Hours</div>
+        <div class="contact-item-value"></div>
+      </div>
+    </div>
+    <a href="tel:+15128008025" class="contact-cta">Call Now</a>
+  </div>
+</section>
+
+<section class="section-about" id="about">
+  <div class="about-inner">
+    <div class="about-image-wrap">
+      <img src="" srcset=" 480w,  1024w" sizes="(min-width: 768px) 40vw, 100vw" width="600" height="800" alt="" loading="lazy">
+    </div>
+    <div class="about-content">
+      <h2 class="about-title">About Us</h2>
+      <p class="about-text">A residential and commercial plumbing company. Serving the greater Austin area including Lakeway, Bee Cave, Westlake, Leander &amp; Spicewood</p>
+      <div class="about-meta">
+        <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value"></span></span>
+        <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-gallery-grid" id="gallery">
+  <div class="gallery-grid-inner">
+    <h2 class="gallery-grid-title">Our Work</h2>
+    <div class="gallery-grid-items">
+      <div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1939200.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Lakeway Plumbing Company" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/8980703.jpg?197" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/8980703.jpg?197 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/8980703.jpg?197 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4797545.jpg?196" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4797545.jpg?196 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4797545.jpg?196 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/6649774.jpg?196" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/6649774.jpg?196 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/6649774.jpg?196 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/2006271.png?186" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/2006271.png?186 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/2006271.png?186 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1011367.jpg?178" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1011367.jpg?178 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/1011367.jpg?178 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+<div class="gallery-grid-item"><img src="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4682287.png?181" srcset="http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4682287.png?181 480w, http://www.lakewayplumbingcompany.com/uploads/3/6/2/8/36287428/4682287.png?181 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Picture" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="section-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Lakeway Plumbing Company</div>
+        <p class="footer-tagline">Site powered by Weebly. Managed by Bluehost</p>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-contact-list">
+          <li><a href="tel:+15128008025">(512) 800-8025</a></li>
+          <li><a class="email-link" data-e="YmlnZ2lla3VlaG5AZ21haWwuY29t" aria-label="Email us"><span class="email-display"></span></a></li>
+          <li>15701 La Hacienda Dr, Austin, TX 78734</li>
+          <li>serving businesses and homeowners with construction and plumbing needs in Texas for over</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Hours</div>
+        <p class="footer-tagline"></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; 2026 Lakeway Plumbing Company. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="[[OPTIONAL_MISSING]]">Privacy Policy</a>
+        <a href="[[OPTIONAL_MISSING]]" class="hidden">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+<div class="section-sticky-cta" role="complementary" aria-label="Quick actions">
+  <a href="tel:+15128008025" class="sticky-cta-btn">Call Now</a>
+  <a href="tel:+15128008025" class="sticky-cta-secondary">(512) 800-8025</a>
+</div>
+<script>
+  // Hamburger menu — vanilla JS, no dependencies
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var menu = document.querySelector('[data-nav-menu]');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        var open = menu.getAttribute('aria-expanded') === 'true';
+        menu.setAttribute('aria-expanded', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  });
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 80) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+
+  // Phone + email — progressive enhancement
+  // Mobile: tel: opens dialer, mailto: opens mail app — browser handles it.
+  // Desktop: copies value to clipboard and shows brief "Copied!" feedback.
+  // Email address is assembled from Base64 at runtime — never in plain HTML source.
+  document.addEventListener('DOMContentLoaded', function() {
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    function addCopyFallback(el, value, displayEl) {
+      if (isMobile || !navigator.clipboard) return;
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(value).then(function() {
+          var orig = displayEl ? displayEl.textContent : el.textContent;
+          if (displayEl) displayEl.textContent = 'Copied!';
+          else el.textContent = 'Copied!';
+          setTimeout(function() {
+            if (displayEl) displayEl.textContent = orig;
+            else el.textContent = orig;
+          }, 1500);
+        });
+      });
+    }
+
+    // Phone links
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+      var value = el.getAttribute('data-phone') || el.textContent.trim();
+      addCopyFallback(el, value, null);
+    });
+
+    // Email links — decode Base64, write href + display text, add copy fallback
+    document.querySelectorAll('a.email-link[data-e]').forEach(function(el) {
+      var encoded = el.getAttribute('data-e');
+      if (!encoded) return;
+      try {
+        var email = atob(encoded);
+        el.href = 'mailto:' + email;
+        var display = el.querySelector('.email-display');
+        if (display) display.textContent = email;
+        addCopyFallback(el, email, display);
+      } catch (err) {}
+    });
+  });
+</script>
+</body>
+</html>
