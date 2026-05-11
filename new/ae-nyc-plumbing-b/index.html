@@ -47,19 +47,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 3rem 1.25rem;
-  --section-padding-desktop: 5rem 3rem;
-  --card-gap: 1.25rem;
-  --heading-margin-bottom: 1rem;
-  --paragraph-margin-bottom: 1.25rem;
+  --section-padding-mobile: 2rem 1rem;
+  --section-padding-desktop: 3rem 2rem;
+  --card-gap: 0.75rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --button-radius: 6px;
   --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 300ms;
-  --animation-stagger: 80ms;
-  --animation-type: fade_in;
+  --animation-duration: 0ms;
+  --animation-stagger: 0ms;
+  --animation-type: none;
 }
 /* DESIGN_TOKENS_END */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,14 +103,7 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-on-scroll {
-  opacity: 0;
-  animation: fadeIn 300ms ease-out forwards;
-}
+    
     .section-nav {
   position: sticky;
   top: 0;
@@ -222,88 +215,70 @@
     display: none;
   }
 }
-.nav-link-hidden { display: none; }
-.section-hero-fullbleed {
-  position: relative;
-  min-height: 80svh;
-  min-height: 28rem;
+/* Higher specificity than .nav-menu a so the hidden class actually wins */
+.nav-menu a.nav-link-hidden, .nav-link-hidden { display: none !important; }
+.section-hero-typography {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--section-padding-mobile, 3rem 1rem);
-  overflow: hidden;
   text-align: center;
+  min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
 }
-.hero-fullbleed-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.hero-typography-content {
+  max-width: 52rem;
 }
-.hero-fullbleed-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-fullbleed-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
-  z-index: 1;
-}
-.hero-fullbleed-content {
-  position: relative;
-  z-index: 2;
-  max-width: 48rem;
-  padding: 1rem;
-}
-.hero-fullbleed-headline {
+.hero-typography-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--letter-spacing-display, -0.02em);
 }
-.hero-fullbleed-subheadline {
+.hero-typography-accent {
+  color: var(--color-primary);
+}
+.hero-typography-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-lg, 1.125rem);
-  color: rgba(255,255,255,0.9);
-  line-height: 1.5;
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-fullbleed-cta {
+.hero-typography-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: 1rem 2.25rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: var(--text-lg, 1.125rem);
+  font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
   transition: background 0.2s;
 }
-.hero-fullbleed-cta:hover {
+.hero-typography-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
-.hero-fullbleed-fallback-bg {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
-}
 @media (min-width: 768px) {
-  .section-hero-fullbleed {
-    padding: var(--section-padding-desktop, 5rem 2rem);
+  .section-hero-typography {
+    padding: var(--section-padding-desktop, 6rem 2rem);
+    min-height: 36rem;
   }
-  .hero-fullbleed-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
+  .hero-typography-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
   }
-  .hero-fullbleed-subheadline {
-    font-size: var(--text-xl, 1.25rem);
+  .hero-typography-subheadline {
+    font-size: 1.25rem;
   }
 }
 .section-services-list {
@@ -328,9 +303,6 @@
 .services-list-item {
   padding: 1.25rem 0;
   border-bottom: 1px solid var(--color-border);
-}
-.services-list-item:has(.services-list-name:empty) {
-  display: none;
 }
 .services-list-item:last-child {
   border-bottom: none;
@@ -359,13 +331,7 @@
   text-decoration: none;
 }
 .services-list-link:empty,
-.services-list-link[href=""],
-.services-list-link[href="https://www.topplumbernyc.com/dishwashers/"],
-.services-list-link[href="https://www.topplumbernyc.com/drain-repair/"],
-.services-list-link[href="https://www.topplumbernyc.com/faucets-sinks/"],
-.services-list-link[href="https://www.topplumbernyc.com/gas-line-installation-repair/"],
-.services-list-link[href="https://www.topplumbernyc.com/hot-water-heaters/"],
-.services-list-link[href="https://www.topplumbernyc.com/kitchens-baths/"] {
+.services-list-link[href=""] {
   display: none;
 }
 .services-list-link:hover {
@@ -592,6 +558,75 @@
     font-size: 1.75rem;
   }
 }
+.section-about {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.about-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-image-wrap {
+  border-radius: var(--border-radius-lg, 1rem);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+.about-text {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.about-meta-item:has(.about-meta-value:empty) {
+  display: none;
+}
+.about-meta-item {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+}
+.about-meta-item strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .section-about {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .about-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+  .about-image-wrap {
+    flex: 0 0 40%;
+    aspect-ratio: 3 / 4;
+  }
+  .about-content {
+    flex: 1;
+  }
+}
 .section-sticky-cta {
   position: fixed;
   bottom: 0;
@@ -750,7 +785,7 @@
     </button>
     <div class="nav-menu" data-nav-menu aria-expanded="false">
       <a href="#services">Services</a>
-      <a href="#about" class="nav-link-hidden">About</a>
+      <a href="#about" class="">About</a>
       <a href="#testimonials" class="nav-link-hidden">Reviews</a>
       <a href="#contact">Contact</a>
       <a href="tel:+16463927164" class="nav-cta nav-cta-mobile">Call Now</a>
@@ -758,23 +793,11 @@
   </div>
 </nav>
 
-<section class="section-hero-fullbleed">
-  <div class="hero-fullbleed-bg">
-    <img
-      src="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg"
-      srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 1024w"
-      sizes="100vw"
-      width="1200"
-      height="675"
-      alt="A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges."
-      loading="eager"
-    >
-    <div class="hero-fullbleed-overlay"></div>
-  </div>
-  <div class="hero-fullbleed-content">
-    <h1 class="hero-fullbleed-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-fullbleed-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
-    <a href="tel:+16463927164" class="hero-fullbleed-cta">Call Now</a>
+<section class="section-hero-typography">
+  <div class="hero-typography-content">
+    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-typography-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
   </div>
 </section>
 
@@ -782,36 +805,136 @@
   <div class="services-list-inner">
     <h2 class="services-list-title">Our Services</h2>
     <ul class="services-list-items">
-      <li class="services-list-item">
-        <h3 class="services-list-name">Dishwasher Repair</h3>
-        <p class="services-list-desc">Yes, we also provide this service in the Manhattan area—because your dishwasher may be affected by a universe of plumbing situations that only experienced technicians like ours can effectively resolve.</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/dishwashers/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
-      <li class="services-list-item">
-        <h3 class="services-list-name">Drain Repair</h3>
-        <p class="services-list-desc">The sewer line repair service is an essential intervention that we undertake whenever we’re handling any plumbing drain issues.</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/drain-repair/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
-      <li class="services-list-item">
-        <h3 class="services-list-name">Faucet Repair and Installation</h3>
-        <p class="services-list-desc">A damaged or malfunctioning faucet can translate into extremely high water bills. Call us to have your faucets repaired, or to have new faucets properly installed.</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/faucets-sinks/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
-      <li class="services-list-item">
-        <h3 class="services-list-name">Gas Line Repair or Installation</h3>
-        <p class="services-list-desc">You know that your home’s gas infrastructure is extremely important and must be kept running perfectly and safely at any time. That’s why you’ll want Manhattan’s top experts offering the most safety-oriented gas line maintenance, repair, and installation services.</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/gas-line-installation-repair/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
-      <li class="services-list-item">
-        <h3 class="services-list-name">Hot Water Heaters Installation</h3>
-        <p class="services-list-desc">How well is your water heater working? Is it keeping your water hot and your power bill within the expected range? Or are you seeing the bills going up and the water temperature going down? If you need water heater repair services, or a new water heater installation, we can help you in the Manhattan</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/hot-water-heaters/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
-      <li class="services-list-item">
-        <h3 class="services-list-name">Kitchen Bath Installation</h3>
-        <p class="services-list-desc">Your kitchen and your bathroom are spaces where a lot of plumbing work has been done when your house was built. Over time, the plumbing infrastructure will start giving in and you’ll need to upgrade multiple elements that require excellent equipment, materials, and plumbers that know how to perfectl</p>
-        <a class="services-list-link" href="https://www.topplumbernyc.com/kitchens-baths/" target="_blank" rel="noopener noreferrer">Learn More</a>
-      </li>
+      <li class="services-list-item"><h3 class="services-list-name">Dishwasher Repair</h3><p class="services-list-desc">Yes, we also provide this service in the Manhattan area—because your dishwasher may be affected by a universe of plumbing situations that only experienced technicians like ours can effectively resolve.</p><a class="services-list-link" href="https://www.topplumbernyc.com/dishwashers/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Drain Repair</h3><p class="services-list-desc">The sewer line repair service is an essential intervention that we undertake whenever we’re handling any plumbing drain issues.</p><a class="services-list-link" href="https://www.topplumbernyc.com/drain-repair/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Faucet Repair and Installation</h3><p class="services-list-desc">A damaged or malfunctioning faucet can translate into extremely high water bills. Call us to have your faucets repaired, or to have new faucets properly installed.</p><a class="services-list-link" href="https://www.topplumbernyc.com/faucets-sinks/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Gas Line Repair or Installation</h3><p class="services-list-desc">You know that your home’s gas infrastructure is extremely important and must be kept running perfectly and safely at any time. That’s why you’ll want Manhattan’s top experts offering the most safety-oriented gas line maintenance, repair, and installation services.</p><a class="services-list-link" href="https://www.topplumbernyc.com/gas-line-installation-repair/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heaters Installation</h3><p class="services-list-desc">How well is your water heater working? Is it keeping your water hot and your power bill within the expected range? Or are you seeing the bills going up and the water temperature going down? If you need water heater repair services, or a new water heater installation, we can help you in the Manhattan</p><a class="services-list-link" href="https://www.topplumbernyc.com/hot-water-heaters/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Kitchen Bath Installation</h3><p class="services-list-desc">Your kitchen and your bathroom are spaces where a lot of plumbing work has been done when your house was built. Over time, the plumbing infrastructure will start giving in and you’ll need to upgrade multiple elements that require excellent equipment, materials, and plumbers that know how to perfectl</p><a class="services-list-link" href="https://www.topplumbernyc.com/kitchens-baths/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Garbage Disposal</h3><p class="services-list-desc">Plumbing interventions can leave a big mess behind—but not ours. We make sure we correctly dispose of any garbage and debris that our work would otherwise leave behind. Alternatively, if you’re dealing with a situation that is already messy and that requires the intervention of plumbers, we can also</p><a class="services-list-link" href="https://www.topplumbernyc.com/garbage-disposers/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Leak Detection’s</h3><p class="services-list-desc">A water cleanup will definitely be necessary if you have a leak, but detecting it is the first and most essential step to fixing it—which is what you want us to do so that you can go back to enjoying your home in comfort.</p><a class="services-list-link" href="https://www.topplumbernyc.com/leak-detection/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Fixtures</h3><p class="services-list-desc">We have a unique history of providing plumbing fixture work of all types that is sure to always make our customers happy. We can repair water pipes, handle drain cleaning, and perform a plethora of interventions that will make sure that your place’s plumbing fixtures are left in the best and most fu</p><a class="services-list-link" href="https://www.topplumbernyc.com/fixture-plumbing/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Piping and Re-piping</h3><p class="services-list-desc">Does your home require improvements, maintenance work, or just new pipes? We’re the right team for the job in the Manhattan area!</p><a class="services-list-link" href="https://www.topplumbernyc.com/piping-repiping/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Residential Plumbing</h3><p class="services-list-desc">We may be talking about cleaning up clogged drains, covering faucet installation or faucet repair requirements, fixing a frozen pipe, setting up or replacing a grease trap, performing leak repairs, or handling any other type of plumbing installation or plumbing repair services. If you need residenti</p><a class="services-list-link" href="https://www.topplumbernyc.com/residential-plumbing/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Shower and Tub Installation &amp; Repair</h3><p class="services-list-desc">Getting top-quality and very reliable shower repair services in Manhattan is now easier than ever: just call us and we’ll step in and handle that for you. This is one of the most common plumbing issues that we cover, so you can rely on us for excellent results.</p><a class="services-list-link" href="https://www.topplumbernyc.com/shower-tubs/" target="_blank" rel="noopener noreferrer">Learn More</a></li>
+<li class="services-list-item"><h3 class="services-list-name">Area Served</h3><p class="services-list-desc">We Serve All Area in NYC Plumbing</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Astoria</h3><p class="services-list-desc">Astoria is one of the neighborhoods in the western region of Queens, New York City, New York. The East River borders Astoria and is adjacent to three other Queens neighborhoods: Long Island City to the southwest, Sunnyside to the southeast, and Woodside towards the East. In 2019, Astoria was estimat</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Restaurants Nearby</h3><p class="services-list-desc">- El Mero Mero is located at 35-57 38th St, Queens, New York City, NY - Wahey has its address at 4005 Broadway, Queens, NY - Beebe’s in the Boro Hotel can be found at 38-28 27th St, Long Island City, NY - Mc Loughlin Astoria Bar is located at 3106 Broadway, Queens, NY Find other neighborhoods simila</p></li>
+<li class="services-list-item"><h3 class="services-list-name">ATTENTION All Residential Folks &amp; Businesses Seeking Plumbers in NYC…</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Not All Plumbing Services Are The Same!</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">By Paul Kam</h3><p class="services-list-desc">Over the last 10 years that we’ve been providing Plumbing Services to the local community we’ve come across numerous jobs where previous plumbers just didn’t do the job right… ..In fact it looked like they had taken the cheapest and quickest way to fix the problem rather than trying to deliver a qua</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Need a Plumber? Here’s What One Of Our Customers Had To Say…</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Don’t Over Pay For Leaky Taps, Blocked Drains Or Broken Fixtures!</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Commercial Or Residential Plumbing Problems… …H &amp; A Can Help!</h3><p class="services-list-desc">Whether you are seeking commercial or residential plumbing services H &amp; A Plumbing can help you with all of your needs. We’re experienced in: - residential plumbing and heating - commercial plumbing and heating - water and sewer main repairs - gas emergencies and gas repairs - ﬁxture replacements - </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Archie A</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Chinatown</h3><p class="services-list-desc">Manhattan’s Chinatown is a neighborhood in Lower Manhattan, New York City, New York, bordering the Lower East Side to its east, Little Italy to its north, Civic Center to its south, and Tribeca to its west. With an estimated population of 90,000 to 100,000 people, Chinatown is home to the highest co</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Little Fuzhou</h3><p class="services-list-desc">From the late 1980s through the 1990s, when a large influx of immigrants from Fuzhou, who broadly also spoke Mandarin and their native Fuzhou dialect, began moving into New York City, they were the only exceptional group of Chinese non-Cantonese to primarily settle into Manhattan’s Chinatown. Becaus</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Dishwashers</h3><p class="services-list-desc">Whether a homeowner has decided to trade in their dishwasher for a more advanced model or trying to plumb in a new unit, we are here to help! Maybe your dishwasher is simply making an unusual hissing noise. Our licensed plumbers and certified technicians are always on standby to assist New York City</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Just Ask Around</h3><p class="services-list-desc">For decades we have been assisting local New Yorker City residents with their plumbing issues. Well-diverse in the residential area, our technicians have worked with many of the locals. If your neighbors haven’t utilized our services, they likely know someone that has. At the very least, they’ve see</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Equipped For It All</h3><p class="services-list-desc">You’ll hear a lot of companies say it, but there is a difference when we say it. We absolutely mean it! There is no job too great or too small for our qualified staff. That being said, we are always of the mind that individualized service is not only more effective but much more personal. That’s why</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Common Dishwasher Symptoms And Problems</h3><p class="services-list-desc">With state-of-the-art equipment, skills, and continuous training, our technicians can get right down to diagnosing and repairing. A malfunctioning dishwasher can be a huge inconvenience and an ever bigger safety threat if it’s leaking or electrically grounded or shorted. There is perhaps no greater </p></li>
+<li class="services-list-item"><h3 class="services-list-name">When A Drain Needs To Be Repaired</h3><p class="services-list-desc">As was previously stated, most leaky drain jobs need nothing more than a minor cleaning and resealing of the leaky joint. While this is not always the case, you can count on our teams to always accurately identify the root cause. With years of experience in the New York City plumbing industry, our p</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Knowing When Drain Repairs Are Necessary</h3><p class="services-list-desc">Although it would be nice if all our customers knew if their system needed a minor cleaning or were dealing with more adverse circumstances, it’s not something we require. It’s not even something we expect, as it is our job to uncover these truths. And uncovering these truths oftentimes requires a m</p></li>
+<li class="services-list-item"><h3 class="services-list-name">East Village</h3><p class="services-list-desc">The East Village is a neighborhood located on the East Side of Lower Manhattan in New York City, New York. This is generally defined as the East of Bowery and Third Avenue, between 14th Street on the north and Houston Street on the south. It is divided into three parts: East Village contains three s</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Upscale Neighborhood</h3><p class="services-list-desc">The Commissioners’ Plan and the resultant street grid were the catalysts behind the city’s northern expansion. In a brief time that included what is today the Lower East Side, today known as the East Village, was one of the most prosperous residential areas of the city. Bond Street, between the Bowe</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Faucets &amp; Sinks</h3><p class="services-list-desc">Anyone that has previously suffered or is currently suffering from plumbing problems doesn’t need any reminders as to how disgusting these problems can be. Even the simplest of faucet and sink problems can seem overwhelming. Some common problems include foul smells, the presence of stagnated water, </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Quick And Effective Diagnosis</h3><p class="services-list-desc">It isn’t just a matter of getting your plumbing problems quickly diagnosed. It is pertinent to get them accurately diagnosed. Having the problem repaired is an entirely different matter altogether. That’s why we only rely on the most capable and versatile plumbers in your area. Whether it is coming </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Avoid Future Complications And Rising Costs</h3><p class="services-list-desc">While we can’t always promise the lowest prices, we can guarantee our work along with the reduced chance of future expenses. A clogged main seeping with human waste is not only a messy job but one that could lead to hundreds in extra cleanup costs. We likely don’t need to mention the costs that one </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Fixture Plumbing</h3><p class="services-list-desc">Kitchen and bathroom fixtures are an essential part of the residential plumbing system. A bathtub spout, kitchen faucet, bathroom vanity faucet, sprayer nozzle, handheld showerhead, and soap dispenser make showering, bathing, and washing dishes possible. Toilet, dishwasher, garbage disposal, and wat</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Fixture Installation</h3><p class="services-list-desc">Plumbing fixtures are generally installed in new homes after the main sewer and water lines are installed. The fixtures attach directly to the plumbing system to deliver water inside the home and remove wastewater. Elbows and adapters are utilized to make the connection. Plumbing fixture installatio</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Fixture Repair</h3><p class="services-list-desc">Most plumbing fixtures are cheaper to replace than to repair. Each fixture is embedded with special technology and components that wear out over time. Replacing one component would call for replacing them all because when one malfunction, the rest are sure to follow. Besides, standard plumbing fixtu</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Fixture Replacement</h3><p class="services-list-desc">Our licensed plumbers and certified plumbing technicians keep their work vans loaded with quality plumbing fixture replacement parts. The customer may want a more sophisticated design that can be purchased separately at a local big-box store, hardware store, or home &amp; garden shop. We recommend a rep</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Flushing</h3><p class="services-list-desc">Flushing is one of the neighborhoods in the north-central region in the New York City, New York borough of Queens. The neighborhood is the fourth-largest Central Business District located in New York City. Downtown Flushing is a major commercial and retail zone located on Main Street. Roosevelt Aven</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Cultural Enclaves</h3><p class="services-list-desc">In the 1970s and 1970s, the Chinese community was established in the Flushing area, with predominantly non-Hispanic white demographics. Taiwanese started the surge in immigrants, followed by different communities of Chinese. An estimate from 1986 by The Flushing Chinese Business Association was 60 0</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Garbage Disposers</h3><p class="services-list-desc">A garbage disposer is an intricate part of the modern kitchen. It plays a major role in the safe disposal of food, making life much simpler for homemakers. Like all kitchen appliances, the garbage disposal is bound to malfunction at some point. Fortunately for New York City residents, our repair ser</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Garbage Disposal Installation</h3><p class="services-list-desc">A new home would not offer the comforts of modern living without state-of-the-art garbage disposals. When New York City consumers install these appliances in their homes, they are reducing their carbon footprints. In the United States alone, 21.5 million tons of food-related waste is generated annua</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Garbage Disposal Repair</h3><p class="services-list-desc">The Garbage disposal is a complex appliance with a user-friendly interface. The unit is comprised of sharp blades that grind food waste to a liquid pulp. The pulpy mixture is released into the drainage pipe and flushed out into the municipal or city sewer. A garbage disposal malfunction is more comm</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Issues</h3><p class="services-list-desc">Garbage disposals are connected directly to the plumbing system. One pipe (supply line) delivers water to the unit and another pipe (drain line) allows ground pulpy food waste to leave the unit and enter the sewer system. The setup is fairly simple but any of the plumbing fixtures can malfunction wi</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Garbage Disposal Replacement</h3><p class="services-list-desc">Some internal components are not repairable. In this case, the technician will recommend a replacement. Garbage disposals are the most expensive kitchen appliance but they are also not cheap. The technician will help ensure the customer gets the best deal on a replacement unit. Contrary to belief, a</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Gas Line Installation Repair</h3><p class="services-list-desc">You might be able to repair a leaky water pipe on your own because water isn’t dangerous. However, gas is incredibly dangerous. You should never attempt to fix a leaky gas line because you could get sick. You may even cause an explosion when you attempt to seal the pipe. Precautions must be taken to</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Types Of Gas Line Issues We Can Fix</h3><p class="services-list-desc">We strive to ensure that our technicians can resolve all types of gas line problems. We’re constantly training our workers so they can fix these problems quickly and safely. If you’re dealing with any of the following issues, call us to get help. - You’ve noticed a gas smell in your home. Gas leaks </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Harlem</h3><p class="services-list-desc">Harlem is one of the neighborhoods in Upper Manhattan, New York City, New York. Harlem River roughly borders it on the west; Hudson River on the west, and Harlem River and 155th Street on the north; Harlem River and 155th Street on the north; Fifth Avenue on the east, along with Central Park North o</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Hell’s Kitchen</h3><p class="services-list-desc">Hell’s Kitchen, also known as Clinton, is a neighborhood located on the West Side of Midtown Manhattan in New York City, New York. It is between 34th Street (or 41st Street) to the south, 59th Street to the north, Eighth Avenue to the east, along with eighth avenue to the west, and the Hudson River </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Boundaries</h3><p class="services-list-desc">“Hell’s Kitchen” generally refers to the space between 34th towards the south and 59th Street in the northern part. Zoning regulations in the city generally restrict building heights to six stories, starting at the west end of Eighth Avenue and the north side of 43rd Street. Therefore, the majority </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Culture</h3><p class="services-list-desc">Hell’s Kitchen’s reputation for grit had led to its housing prices being less high than in other areas of Manhattan. Because of the low cost in the past and its proximity to Broadway theaters, the area is a paradise for budding actors. Many famous actors and entertainers have lived there, including </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heaters</h3><p class="services-list-desc">The hot water heater is a staple in commercial and residential settings. A necessity to generate hot water for dishwashing, laundry, and bathing. Like most appliances, the hot water heater is oftentimes ignored until it malfunctions. The mere thought of a cold shower is enough to urge consumers to t</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Quick Response Time</h3><p class="services-list-desc">Our company makes hot water replacement and repair easy. We employ qualified plumbers licensed by the State of New York. Our customer support team will not delay dispatching a licensed plumber to your home. Our response time is between 24 and 48 hours.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heater Repair</h3><p class="services-list-desc">To determine the root of the problem, the plumber conducts a visual inspection of the water heater. The data collected through the inspection is utilized to diagnose and repair. The most common problem that causes a hot water heater to malfunction is a bad element. The culprit could be a broad range</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heater Replacement</h3><p class="services-list-desc">Not all repairs can be completed without disassembling the water heater. Since this is not an option, the unit must be replaced. A technician will assist the customer in choosing a replacement unit. The final say is always in the customer’s hand. The technician is there to offer professional recomme</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heater Installation</h3><p class="services-list-desc">We offer hot water installation for new homes. The installation will be completed before the family moves into the home to ensure the highest level of convenience Our hot water heater repair, replacement, and installation services are cost- and time-efficient. Our service request response time is be</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Locating The Appliance, Power Source, And Water Main</h3><p class="services-list-desc">The difficulty of draining a water heater will ultimately come down to several key factors. The location and provided access will probably be the biggest hurdle, but there is also access to both the water and power supply to consider as well. Locating the appliance is the first hurdle. In the best p</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Connecting Your Garden Hose</h3><p class="services-list-desc">The length of your garden hose will depend on where you are draining the water as well as where the water heater is located. If the appliance is in the garage or stand-up basement, you can simply drain it outside or to a nearby drain. Other installation configurations might require draining in a sin</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Recent Post</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Checking The Chain</h3><p class="services-list-desc">It is common for the chain to get stuck so this could be the reason your toilet is leaking. If it is stuck, the flapper likely isn’t sealing properly. You can fix this issue easily without hiring a professional. Start by turning off the water supply to the toilet. Once you’ve done that, you will nee</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Inspecting The Flapper</h3><p class="services-list-desc">The toilet flapper might be the source of the problem. You can easily find a replacement flapper and replace it within minutes. After you’ve turned off the water supply, remove the lid and look for the red flapper in the tank. Remove the chain. Disconnect the arms that are connected to the fill valv</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Leaking Tank</h3><p class="services-list-desc">It is common for toilet tanks to develop leaks after repeated use. The seals will stop working correctly so water will leak from the bottom of the tank. Ultimately, this issue has to be fixed quickly because it will lead to higher water bills and damaged floors. As long as you’re not dealing with a </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Prepare The New Dishwasher</h3><p class="services-list-desc">Get assistance from a friend or two so you can bring in the new dishwasher without dropping it or damaging your home. Unpack the dishwasher and look at the instruction manual. Although the installation process is similar, there might be a difference or two between each unique model. Keep a piece of </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Connecting The Lines</h3><p class="services-list-desc">Once you’ve finished the steps above, it is time to push the dishwasher into place. You’re going to have limited space so it’ll be hard to connect the lines. Still, you’ll need to connect the water line, drain line, and electric cables. Remember to leave the electricity and water off until these thi</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Jamaica</h3><p class="services-list-desc">Jamaica is a middle-class neighborhood in the New York City, New York borough of Queens. It mainly comprises a large commercial and retail area, though part of the neighborhood is residential. Hollis borders Jamaica to the east; St. Albans, Springfield Gardens, and Rochdale Village to the southeast;</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Park and Recreation</h3><p class="services-list-desc">Baisley Pond Park has over 100 acres (0.40 km2) of outdoor recreational space, including a 30-acre (0.12 km2) pond. Flushing Meadows-Corona Park abuts Jamaica on its far northwestern corner. At 897 acres (363 ha), it is the fourth-largest public park in New York City. The southernmost part of the pa</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Kitchens &amp; Baths</h3><p class="services-list-desc">Remodeling a kitchen and bath is one thing, but when breakdowns occur unexpectedly, it’s something else entirely. These are the exact situations when it pays to have a professional plumber in your phonebook. There are many reasons we are the go-to professional plumbing service provider for New York </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Common Plumbing Problems</h3><p class="services-list-desc">Along with a reputable plumber on hand, it also pays to have a basic understanding of your home’s plumbing system and everything it entails. Although these systems typically get too complex for the average mind to understand, we always encourage basic DIY repair. The trick is, knowing when to step a</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Acting Quickly Is Essential</h3><p class="services-list-desc">Homeowners are surprised when they learn how quickly our techs diagnose problems. While this is not always the case, most of our guys have been doing the job so long that they can pinpoint the problems over the phone. This is assuming that the homeowner accurately depicts the scenario. Even more sur</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Leak Detection</h3><p class="services-list-desc">New York City residents must be aware of the potential plumbing issues they may encounter at any point. Even if you’ve replaced a pipe recently, there is a risk that it’ll begin leaking the next day. Unfortunately, it is sometimes difficult to identify the source of the leak because it could be hidd</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Signs You Have A Leak</h3><p class="services-list-desc">You can never tell when you’re going to encounter a leaky pipe. In many cases, it’ll happen out of the blue without any warning. To prepare for such problems, you need to learn how to identify a problem. Learn more about the signs of a leaky pipe so you can call us as soon as you suspect that you ha</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Dishwasher</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Faucet &amp; Sinks</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Hot Water Heater</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Kitchen &amp; Baths</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Piping Repiping</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Showers &amp; Tub</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Toilet Repair</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Water Filter Purification</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Water Lines</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Water Pressure</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">A&amp;E NYC Plumbing</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Do You Need New Pipes?</h3><p class="services-list-desc">Depending on the condition of your pipes, you may need to replace them shortly. Waiting too long means that you’re likely going to encounter a serious problem. Before you know it, your home will be flooded. Use the tips below to know when your pipes should be replaced. - The water is discolored. If </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Reasons To Call Us</h3><p class="services-list-desc">We always recommend calling our office because we’re one of the top plumbing companies in New York City. - We offer unmatched customer service. - We strive to get plumbing issues taken care of swiftly and efficiently. - Our team members are professional, kind, and knowledgeable. - We’re fully traine</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Privacy Policy</h3><p class="services-list-desc">Last updated: May 21, 2020 A&amp;E NYC Plumbing (“us”, “we”, or “our”) operates the A&amp;E NYC Plumbing website (the “Service”). This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service. We will not use or share your information wit</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Information Collection And Use</h3><p class="services-list-desc">While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information (“Personal Information”) may include, but is not limited to:</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Log Data</h3><p class="services-list-desc">We collect information that your browser sends whenever you visit our Service (“Log Data”). This Log Data may include information such as your computer’s Internet Protocol (“IP”) address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the tim</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Cookies</h3><p class="services-list-desc">Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer’s hard drive. We use “cookies” to collect information. You can instruct your browser to refuse all cookies or to indicate when a</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Service Providers</h3><p class="services-list-desc">We may employ third party companies and individuals to facilitate our Service, to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used. These third parties have access to your Personal Information only to perform these tasks on o</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Security</h3><p class="services-list-desc">The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute sec</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Links To Other Sites</h3><p class="services-list-desc">Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party’s site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over, and assume no responsibility for the co</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Children’s Privacy</h3><p class="services-list-desc">Our Service does not address anyone under the age of 18 (“Children”). We do not knowingly collect personally identifiable information from children under 18. If you are a parent or guardian and you are aware that your child has provided us with Personal Information, please contact us. If we discover</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Compliance With Laws</h3><p class="services-list-desc">We will disclose your Personal Information where required to do so by law or subpoena.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Changes To This Privacy Policy</h3><p class="services-list-desc">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Contact Us</h3><p class="services-list-desc">If you have any questions about this Privacy Policy, please contact us.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Certified And Bonded</h3><p class="services-list-desc">As per New York laws, our plumbers are licensed and plumbing technicians certified. Homeowners will not only get the assurance that our work is above the legal board, but we offer it in a way that offers peace of mind. A written contract binds us through legal obligations to make sure the work is co</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Shower Tubs</h3><p class="services-list-desc">New York City homes and apartments are installed with a shower tub and/or bathtub. The convenience of a shower, to most people, is the ease of getting in and out. In some sense, the shower is no different than the kitchen sink, bathroom vanity, and toilet. All have water coming in and waste going ou</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Common Shower Problems</h3><p class="services-list-desc">The most common shower problem is a water leak. The leak could be anywhere throughout the entire system. It could be visible or invisible, depending on where it is located. A leaky shower head, tub spout, and shower control valve are all visibly obvious. A leaky emergency shutoff, overflow, P trap, </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Diagnostics</h3><p class="services-list-desc">The shower is a complex system of plumbing fixtures and pipes. The visible plumbing fixtures are generally easy to diagnose when they go bad. Unfortunately, the same cannot be said about the concealed plumbing fixtures and pipes. As mentioned previously, shower plumbing is a complex system of pipes </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Shower Repair</h3><p class="services-list-desc">Shower repair is never as easy as it seems. A leaky shower head and hot and cold handles can easily be replaced by the homeowner in a matter of minutes. The tub faucet, water valves, leaky pipes and connections, emergency shutoffs, and P trap are a different story. Our plumbers stock a decent select</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Shower Installation</h3><p class="services-list-desc">A new home would not offer the much-needed amenities without a shower tub or bathtub. Most modern homes are equipped with both a shower and bathtub to meet the needs of each and every occupant. Larger homes tend to have multiple bathrooms with either a tub or shower. This is when the plumbing system</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Plumbing Updates For Bathroom Remodels</h3><p class="services-list-desc">We have helped hundreds of New York City homeowners with the challenges of bathroom remodeling. We work alongside carpenters, painters, home interior designers, and other experts in the process of remodeling a bathroom. Our technicians update the plumbing system before the painters, drywall team, fl</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Green Showers</h3><p class="services-list-desc">People are working to reduce their carbon footprint by reducing their dependence on fossil fuels. A green bathroom is designed to minimize the use of water and electricity. Energy-efficient lighting and shower fixtures are key to building a green bathroom. Solar panels may be installed on the roof. </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Sitemap</h3></li>
+<li class="services-list-item"><h3 class="services-list-name">Pages</h3><p class="services-list-desc">- ATTENTION All Residential Folks &amp; Businesses Seeking Plumbers in NYC… - Gas Line Installation Repair - Residential Plumbing - Water Filtration Purification - American Museum of Natural History - Empire State Building - Grand Central Terminal - Museum of Modern Art - Solomon R. Guggenheim Museum - </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Posts</h3><p class="services-list-desc">- How To Drain A Water Heater - The New Generation Of Water Heaters - How To Install A Dishwasher The Definitive Guide - How To Fix A Leaking Toilet</p></li>
+<li class="services-list-item"><h3 class="services-list-name">SoHo</h3><p class="services-list-desc">SoHo, often called Soho, is a neighborhood in Lower Manhattan in New York City, New York. In the last 20 years, numerous lofts for artists and art galleries have been in the area. It is also well-known for its stores, which range from trendy boutiques that are upscale to chain stores that are intern</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Historic District</h3><p class="services-list-desc">The SoHo-Cast Iron Historic District is part of the zones of the SoHo neighborhood. The district was initially located west at the eastern end of West Broadway and to the east on the western side of Crosby Street; the SoHo-Cast Iron Historic District was expanded in 2010 to encompass most of West Br</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Arts and Culture</h3><p class="services-list-desc">After the dissolution of the highway project, the town was left to rely on an enormous collection of old buildings that were not appealing to business and manufacturing that remained during the 1970s. The upper floors of a lot of these structures were constructed for commercial use. Manhattan lofts </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Terms of Service</h3><p class="services-list-desc">Last updated: May 21, 2020 Please read these Terms of Use (“Terms”, “Terms of Use”) carefully before using the https://www.topplumbernyc.com website (the “Service”) operated by A&amp;E NYC Plumbing (“us”, “we”, or “our”). Your access to and use of the Service is conditioned on your acceptance of and com</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Intellectual Property</h3><p class="services-list-desc">The Service and its original content, features and functionality are and will remain the exclusive property of A&amp;E NYC Plumbing and its licensors.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Links To Other Web Sites</h3><p class="services-list-desc">Our Service may contain links to third-party web sites or services that are not owned or controlled by A&amp;E NYC Plumbing. A&amp;E NYC Plumbing has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowle</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Termination</h3><p class="services-list-desc">We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. All provisions of the Terms which by their nature should survive termination shall survive termination, including, withou</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Disclaimer</h3><p class="services-list-desc">Your use of the Service is at your sole risk. The Service is provided on an “AS IS” and “AS AVAILABLE” basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, no</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Governing Law</h3><p class="services-list-desc">These Terms shall be governed and construed in accordance with the laws of United States without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be inval</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Changes</h3><p class="services-list-desc">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to ac</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Factors To Consider When Shopping For A Modern Water Heater</h3><p class="services-list-desc">- Price – The tankless unit is one of the most expensive types of water heater. The conventional storage water heater costs between $500 and $3,500 for multi-story homes. The tankless solar water heater can cost as much as $13,000 or as little as $1,700. It is easy to see why consumers choose the co</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Toilets</h3><p class="services-list-desc">At first glance, a toilet looks like one of the least complex plumbing fixtures in a home. A deeper look is all it takes to realize it was just a misconception all along. A toilet is a complex fixture when the plumbing system is factored into the equation.</p></li>
+<li class="services-list-item"><h3 class="services-list-name">New Construction Toilet Installation</h3><p class="services-list-desc">Our plumbers and plumbing technicians are experienced in new construction toilet installation. We employ some of the most qualified plumbers in the industry. Our customers can attest the proficiency and professionalism of every member of our New York City plumbing team. New construction plumbing is </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Toilet Diagnostics</h3><p class="services-list-desc">Toilets are designed with various components, including a flush valve seat, flapper, overflow tube, float, handle flush lever, chain, flapper, ballcock locknut, ballcock shank washer, and more. These components sustain minor wear and tear with each flush. With the first year of use, some of the comp</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Toilet Replacement</h3><p class="services-list-desc">Toilet replacement is a DIY plumbing project. However, many homeowners do not have the resources to complete the task on their own. A traditional toilet weighs between 60 and 100 pounds. This is a lot of weight for one person to handle on their own. When the limited space comes into play, the diffic</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Common Toilet Problems</h3><p class="services-list-desc">- Leaky water supply line - Shutoff valve no longer works - Corroded washers and nuts Less common problems include a broken toilet bowl, tank, or lid. It is unfortunate for consumers but replacement toilet lids, bowls, and tanks are rarely available. In most cases, the entire toilet must be replaced</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Water Filtration Purification</h3><p class="services-list-desc">It doesn’t take a professional plumber to recognize a slow drain or a busted water main. These problems are usually so apparent and such a hassle that it’s nearly impossible to ignore them. Water filtration and purification, on the other hand, is something else entirely. Most homeowners have never e</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Professional Water Treatment System Testing And Installations</h3><p class="services-list-desc">Most New York City residents are familiar with the term hard water. Coming from out of state or town, one might only think they know what the term means. The term hard water simply means that the water that comes out of your tap likely contains elevated elements of calcium, magnesium, chlorine, and </p></li>
+<li class="services-list-item"><h3 class="services-list-name">Professional Water Treatment System Repairs And Maintenance</h3><p class="services-list-desc">Once a water treatment system is in place or if you find yourself now living in a home with a treatment system, you’ll need to familiarize yourself with that system. Just like any other mechanical entity, this is a system that will require close attention, routine maintenance, and the eventual under</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Reason To Call Us</h3><p class="services-list-desc">- Our technicians are professional and arrive in uniform. You don’t need to worry about a stranger trying to sneak into your residence. You’ll know the technician is working for us based on their clothing and the van they’re driving. - We only hire the best technicians in New York City. Rest assured</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Troubleshooting And Repair</h3><p class="services-list-desc">Pressures can vary, but a normally functioning plumbing system should operate at around anywhere from 80 PSI (Pounds Per Square-Inch). With that in mind, 80 PSI is considered a bit on the higher end. Most water companies would not set their meters to pump at 80 PSI, unless the lines traveled a great</p></li>
+<li class="services-list-item"><h3 class="services-list-name">New Installations</h3><p class="services-list-desc">Even as a homeowner, you’ve likely noticed that plumbing pipes come in a wide range of sizes and designs. White plastic PVC piping and plastic PEX are becoming more popular, thanks to there diversity and ease of installation. PEX and PVC have long since surpassed copper plumbing pipes for cost-effic</p></li>
+<li class="services-list-item"><h3 class="services-list-name">Symptoms Of Pressure Problems</h3><p class="services-list-desc">When doing business with our plumbing services all a homeowner needs to know is when to pick up the phone and make that crucial call. The earlier the better because the longer these issues fester, the more problems they stand to cause. If you notice an increase in high or low pressure, anywhere in t</p></li>
     </ul>
   </div>
 </section>
@@ -893,6 +1016,22 @@
   </div>
 </section>
 
+<section class="section-about" id="about">
+  <div class="about-inner">
+    <div class="about-image-wrap">
+      <img src="" srcset=" 480w,  1024w" sizes="(min-width: 768px) 40vw, 100vw" width="600" height="800" alt="" loading="lazy">
+    </div>
+    <div class="about-content">
+      <h2 class="about-title">About Us</h2>
+      <p class="about-text">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+      <div class="about-meta">
+        <span class="about-meta-item"><strong>Founded:</strong> <span class="about-meta-value">2026</span></span>
+        <span class="about-meta-item"><strong>License:</strong> <span class="about-meta-value">{{LICENSE_NUMBER}}</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section-gallery-grid" id="gallery">
   <div class="gallery-grid-inner">
     <h2 class="gallery-grid-title">Our Work</h2>
@@ -954,21 +1093,7 @@
       });
     }
   });
-  // Scroll-triggered animation
-(function() {
-  var els = document.querySelectorAll(".animate-on-scroll");
-  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 80) + "ms";
-        entry.target.classList.add("animate-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(function(el) { observer.observe(el); });
-})();
+  
 
   // Phone + email — progressive enhancement
   // Mobile: tel: opens dialer, mailto: opens mail app — browser handles it.
