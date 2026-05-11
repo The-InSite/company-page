@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Balloons Over Atlanta — Atlanta, GA</title>
+  <meta name="description" content="Learn how Balloons Over Atlanta is committed to client care and community health.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=DM+Sans:wght@300;400&display=fallback">
+  
+  
+  
+  <style>
+    /* DESIGN_TOKENS_START */
+:root {
+  --color-primary: #0D1117;
+  --color-accent: #2563EB;
+  --color-background: #FAFAFA;
+  --color-surface: #F4F4F5;
+  --color-text-primary: #0D1117;
+  --color-text-secondary: #71717A;
+  --color-cta-bg: #0D1117;
+  --color-cta-text: #FAFAFA;
+  --color-cta-hover: #1A1A2E;
+  --color-border: #E4E4E7;
+  --font-display: Unbounded;
+  --font-body: "DM Sans";
+  --base-size: 15px;
+  --type-scale-ratio: 1.333;
+  --h1-size: 3.1573rem;
+  --h2-size: 2.3686rem;
+  --h3-size: 1.7769rem;
+  --h4-size: 1.3330rem;
+  --h1-weight: 700;
+  --h2-weight: 400;
+  --body-weight: 300;
+  --letter-spacing-display: 0.02em;
+  --letter-spacing-body: 0.03em;
+  --line-height-display: 1.1;
+  --line-height-body: 1.7;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --section-padding-mobile: 4rem 1.5rem;
+  --section-padding-desktop: 8rem 4rem;
+  --card-gap: 2rem;
+  --heading-margin-bottom: 1.5rem;
+  --paragraph-margin-bottom: 2rem;
+  --border-radius-sm: 12px;
+  --border-radius-md: 20px;
+  --border-radius-lg: 32px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 600ms;
+  --animation-stagger: 150ms;
+  --animation-type: fade_in;
+}
+/* DESIGN_TOKENS_END */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: var(--base-size, 16px); -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body), system-ui, sans-serif;
+      color: var(--color-text-primary);
+      background-color: var(--color-background);
+      line-height: var(--line-height-body, 1.6);
+      overflow-x: hidden;
+      width: 100%;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    button, a { min-height: 44px; }
+    a[href^="tel:"] { cursor: pointer; text-decoration: underline; }
+    a[href^="tel:"]:hover { opacity: 0.75; }
+    a.email-link { cursor: pointer; text-decoration: underline; }
+    a.email-link:hover { opacity: 0.75; }
+    a.email-link[data-e=""] { display: none; }
+    .contact-item:has(a.email-link[data-e=""]) { display: none; }
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-primary);
+      color: var(--color-background);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-nav:focus { top: 0; }
+    :focus-visible {
+      outline: 3px solid var(--color-primary, #000);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeIn 600ms ease-out forwards;
+}
+    .section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.08));
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.nav-logo {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  line-height: 1.2;
+}
+.nav-logo img {
+  max-height: 2.5rem;
+  width: auto;
+}
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3125rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 0.1875rem;
+  background: var(--color-text-primary);
+  border-radius: 0.125rem;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-background);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.1));
+  padding: 1rem;
+}
+.nav-menu[aria-expanded="true"] {
+  display: block;
+}
+.nav-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.nav-cta-desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .nav-inner {
+    padding: 1rem 2rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .nav-menu a {
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+  .nav-cta-desktop {
+    display: inline-flex;
+  }
+  .nav-cta-mobile {
+    display: none;
+  }
+}
+.section-hero-colorblock {
+  display: flex;
+  align-items: center;
+  min-height: 28rem;
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-primary);
+}
+.hero-colorblock-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-colorblock-headline {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h1-size, 2.5rem);
+  font-weight: 700;
+  color: var(--color-background);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hero-colorblock-subheadline {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-background);
+  opacity: 0.9;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-colorblock-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.2s;
+}
+.hero-colorblock-cta:hover {
+  transform: translateY(-2px);
+}
+@media (min-width: 768px) {
+  .section-hero-colorblock {
+    padding: var(--section-padding-desktop, 5rem 2rem);
+    min-height: 32rem;
+  }
+  .hero-colorblock-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.4);
+  }
+  .hero-colorblock-subheadline {
+    font-size: 1.25rem;
+  }
+}
+.section-contact {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-surface);
+}
+.contact-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.contact-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.contact-item {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md, 0.5rem);
+  padding: 1.25rem;
+}
+.contact-item-label {
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.375rem;
+}
+.contact-item-value {
+  font-size: var(--text-base, 1rem);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+.contact-item-value a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-cta {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--text-lg, 1.125rem);
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+}
+@media (min-width: 768px) {
+  .section-contact {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.section-trust-bar {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 1rem;
+}
+.trust-bar-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+.trust-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 6rem;
+}
+.trust-bar-value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+.trust-bar-label {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.125rem;
+}
+.trust-bar-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.trust-bar-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-accent, var(--color-primary));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .section-trust-bar {
+    padding: 1.5rem 2rem;
+  }
+  .trust-bar-inner {
+    gap: 3rem;
+  }
+  .trust-bar-value {
+    font-size: 1.75rem;
+  }
+}
+.section-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  padding: 0.625rem 1rem;
+  padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  gap: 0.625rem;
+  justify-content: center;
+}
+.sticky-cta-btn {
+  flex: 1;
+  max-width: 20rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+.sticky-cta-secondary {
+  flex: 0 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: var(--border-radius-sm, 0.25rem);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .section-sticky-cta {
+    display: none;
+  }
+}
+.section-gallery-masonry {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.gallery-masonry-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.gallery-masonry-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.gallery-masonry-items {
+  columns: 2;
+  column-gap: var(--card-gap, 0.75rem);
+}
+.gallery-masonry-item {
+  break-inside: avoid;
+  margin-bottom: var(--card-gap, 0.75rem);
+  border-radius: var(--border-radius-md, 0.5rem);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+}
+.gallery-masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  .section-gallery-masonry {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+  .gallery-masonry-items {
+    columns: 3;
+    column-gap: var(--card-gap, 1rem);
+  }
+}
+.section-faq {
+  padding: var(--section-padding-mobile, 3rem 1rem);
+  background: var(--color-background);
+}
+.faq-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.faq-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--h2-size, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.faq-list {
+  display: grid;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 0;
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+.faq-question {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.faq-answer {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+@media (min-width: 768px) {
+  .section-faq {
+    padding: var(--section-padding-desktop, 4rem 2rem);
+  }
+}
+.section-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 2.5rem 1rem 1.5rem;
+}
+.footer-inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+}
+.footer-brand {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.footer-heading {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+}
+.footer-contact-list li {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.footer-contact-list a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footer-copyright {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+}
+.footer-legal {
+  display: flex;
+  gap: 1.25rem;
+}
+.footer-legal a {
+  font-size: var(--text-xs, 0.8125rem);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.footer-legal a:hover {
+  color: var(--color-primary);
+}
+.footer-legal-hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .section-footer {
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<main id="main-content">
+<nav class="section-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Balloons Over Atlanta — Home">Balloons Over Atlanta</a>
+    <a href="tel:+14042313090" class="nav-cta nav-cta-desktop">Call Now</a>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-menu" data-nav-menu aria-expanded="false">
+      <a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+      <a href="tel:+14042313090" class="nav-cta nav-cta-mobile">Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-hero-colorblock">
+  <div class="hero-colorblock-content">
+    <h1 class="hero-colorblock-headline">From simple setups to full-scale installations, event design &amp; planning, explore options below.</h1>
+    <p class="hero-colorblock-subheadline">Learn how Balloons Over Atlanta is committed to client care and community health.</p>
+    <a href="tel:+14042313090" class="hero-colorblock-cta">Call Now</a>
+  </div>
+</section>
+
+<section class="section-contact" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-item-label">Phone</div>
+        <div class="contact-item-value"><a href="tel:+14042313090">(404) 231-3090</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value"><a class="email-link" data-e="c2FsZXNAYmFsbG9vbnNvdmVyLmNvbQ==" aria-label="Email us"><span class="email-display"></span></a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Service Area</div>
+        <div class="contact-item-value">serving Metro Atlanta and available for larger installs throughout the Southeast</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Hours</div>
+        <div class="contact-item-value">24 hours</div>
+      </div>
+    </div>
+    <a href="tel:+14042313090" class="contact-cta">Call Now</a>
+  </div>
+</section>
+
+<section class="section-trust-bar" aria-label="Business credentials">
+  <div class="trust-bar-inner">
+    <div class="trust-bar-item">
+      <span class="trust-bar-value"></span>
+      <span class="trust-bar-label"></span>
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-value"></span>
+      <span class="trust-bar-label"></span>
+    </div>
+    <div class="trust-bar-item">
+      <span class="trust-bar-value"></span>
+      <span class="trust-bar-label"></span>
+    </div>
+    <div class="trust-bar-availability">
+      <span class="trust-bar-dot" aria-hidden="true"></span>
+      24 hours
+    </div>
+  </div>
+</section>
+
+<section class="section-gallery-masonry" id="gallery">
+  <div class="gallery-masonry-inner">
+    <h2 class="gallery-masonry-title">Our Work</h2>
+    <div class="gallery-masonry-items">
+      <div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_0.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_0.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_0.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_1.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_1.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_1.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_2.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_2.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_2.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_3.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_4.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_4.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_4.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_5.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_5.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_5.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_6.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_6.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_6.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_7.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_7.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_7.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_8.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_8.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_8.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_9.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_9.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_9.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_10.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_10.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_10.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_11.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_11.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_11.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_12.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_12.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_12.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_13.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_13.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_13.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Wedding Venue" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_16.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_16.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_16.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_17.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_17.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_17.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_18.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_18.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_18.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_19.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_19.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_19.jpg 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="640" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_14.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+<div class="gallery-masonry-item"><img src="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.png 480w, https://storage.googleapis.com/theinsite-scraped-images/1694/gallery_15.png 1024w" sizes="(min-width: 768px) 33vw, 50vw" width="640" height="480" alt="Balloons Over Atlanta work photo" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-faq" id="faq">
+  <div class="faq-inner">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3 class="faq-question">Ready to Book a Balloon Arch?</h3><p class="faq-answer">Classic Arch Organic Arch Get a Quote</p></div>
+<div class="faq-item"><h3 class="faq-question">More room in your budget?</h3><p class="faq-answer">See what a little extra can get you! 2 Fancy Columns $435 + tax incl. delivery\ 12 foot organic $469 + tax incl. delivery\ 4 Bubbles $465 + tax incl. delivery\ ​\Mon-Sat only Delivery before 4pm in our service area, outside service area may include additional fees</p></div>
+<div class="faq-item"><h3 class="faq-question">Have room in your budget?</h3><p class="faq-answer">See what a little extra can get you! Custom rounded or 4 x 8 rectange backdrop with organic $600-800 + tax Medium Room Decor Give us a budget from $800-1100 and we will design your room! Marquee Display $100 / 3 ft letter or number $150 / 5 ft letter or number Add balloons for $180-500 Fancy Organic - double door size or full arch, starts at $600</p></div>
+<div class="faq-item"><h3 class="faq-question">What We Create</h3><p class="faq-answer">CUSTOM BACKDROPS &amp; BRANDED INSTALLS - Step and repeat backdrops - Printed and vinyl backdrops - Custom signage and logos - Branded event walls PHOTO MOMENTS &amp; FEATURE - Grass walls - Shimmer walls - Mylar walls - Marquee letters - Custom Builds EVENT ENVIRONMENTS &amp; INSTALLATIONS - Entry installations and statement pieces - Stage and presentation areas - Full event environments - Custom-built features</p></div>
+<div class="faq-item"><h3 class="faq-question">PLANNING A CUSTOM EVENT OR INSTALLATION?</h3><p class="faq-answer">Our team can help you design and execute a setup tailored to your event, space, and vision. Get A Quote</p></div>
+<div class="faq-item"><h3 class="faq-question">What areas do you service?</h3><p class="faq-answer">We service Atlanta and the entire Metro Atlanta area. For large events we travel all over the Southeast and nationwide.</p></div>
+<div class="faq-item"><h3 class="faq-question">How do I place an order?</h3><p class="faq-answer">Returning and new customers can use the Get a Quote or Book now option on our site, or CALL NOW or EMAIL now</p></div>
+<div class="faq-item"><h3 class="faq-question">How soon do I need to place my order?</h3><p class="faq-answer">We are often able to offer same or next day service, during busy times most orders can be confirmed 72 hours in advance</p></div>
+<div class="faq-item"><h3 class="faq-question">Do you charge a delivery/ Setup Fee?</h3><p class="faq-answer">Yes, this fee varies based on event location and start time</p></div>
+<div class="faq-item"><h3 class="faq-question">How long do balloons last?</h3><p class="faq-answer">Air filled and organic balloons often last a long time indoors. Helium balloons last 8-10 hours, but can be treated to last longer for an additional fee. If you are having a multi--day event, be sure to let us know</p></div>
+<div class="faq-item"><h3 class="faq-question">Do you remove the balloons after my event?</h3><p class="faq-answer">Yes, for an additional fee.</p></div>
+<div class="faq-item"><h3 class="faq-question">Can I meet with someone to help me decide?</h3><p class="faq-answer">Absolutely! We regularly do consultations by appointment.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="section-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Balloons Over Atlanta</div>
+        <p class="footer-tagline">Book Event Now</p>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-contact-list">
+          <li><a href="tel:+14042313090">(404) 231-3090</a></li>
+          <li><a class="email-link" data-e="c2FsZXNAYmFsbG9vbnNvdmVyLmNvbQ==" aria-label="Email us"><span class="email-display"></span></a></li>
+          <li>1231 Collier Rd NW UNIT H, Atlanta, GA 30318</li>
+          <li>serving Metro Atlanta and available for larger installs throughout the Southeast</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Hours</div>
+        <p class="footer-tagline">24 hours</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; 2026 Balloons Over Atlanta. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="[[OPTIONAL_MISSING]]">Privacy Policy</a>
+        <a href="[[OPTIONAL_MISSING]]" class="hidden">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+<div class="section-sticky-cta" role="complementary" aria-label="Quick actions">
+  <a href="tel:+14042313090" class="sticky-cta-btn">Call Now</a>
+  <a href="tel:+14042313090" class="sticky-cta-secondary">(404) 231-3090</a>
+</div>
+<script>
+  // Hamburger menu — vanilla JS, no dependencies
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var menu = document.querySelector('[data-nav-menu]');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function() {
+        var open = menu.getAttribute('aria-expanded') === 'true';
+        menu.setAttribute('aria-expanded', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  });
+  // Scroll-triggered animation
+(function() {
+  var els = document.querySelectorAll(".animate-on-scroll");
+  if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 150) + "ms";
+        entry.target.classList.add("animate-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+
+  // Phone + email — progressive enhancement
+  // Mobile: tel: opens dialer, mailto: opens mail app — browser handles it.
+  // Desktop: copies value to clipboard and shows brief "Copied!" feedback.
+  // Email address is assembled from Base64 at runtime — never in plain HTML source.
+  document.addEventListener('DOMContentLoaded', function() {
+    var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    function addCopyFallback(el, value, displayEl) {
+      if (isMobile || !navigator.clipboard) return;
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(value).then(function() {
+          var orig = displayEl ? displayEl.textContent : el.textContent;
+          if (displayEl) displayEl.textContent = 'Copied!';
+          else el.textContent = 'Copied!';
+          setTimeout(function() {
+            if (displayEl) displayEl.textContent = orig;
+            else el.textContent = orig;
+          }, 1500);
+        });
+      });
+    }
+
+    // Phone links
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+      var value = el.getAttribute('data-phone') || el.textContent.trim();
+      addCopyFallback(el, value, null);
+    });
+
+    // Email links — decode Base64, write href + display text, add copy fallback
+    document.querySelectorAll('a.email-link[data-e]').forEach(function(el) {
+      var encoded = el.getAttribute('data-e');
+      if (!encoded) return;
+      try {
+        var email = atob(encoded);
+        el.href = 'mailto:' + email;
+        var display = el.querySelector('.email-display');
+        if (display) display.textContent = email;
+        addCopyFallback(el, email, display);
+      } catch (err) {}
+    });
+  });
+</script>
+</body>
+</html>
