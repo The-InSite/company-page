@@ -15,16 +15,16 @@
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #003566;
-  --color-accent: #0077B6;
+  --color-primary: #1A1A2E;
+  --color-accent: #E63946;
   --color-background: #FFFFFF;
-  --color-surface: #F0F7FF;
-  --color-text-primary: #003566;
-  --color-text-secondary: #4A4A4A;
-  --color-cta-bg: #0077B6;
+  --color-surface: #F5F5F5;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #555555;
+  --color-cta-bg: #E63946;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #005F8E;
-  --color-border: #CCE5FF;
+  --color-cta-hover: #CC2936;
+  --color-border: #E0E0E0;
   --font-display: "DM Sans";
   --font-body: "DM Sans";
   --base-size: 17px;
@@ -47,19 +47,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 4rem 1.5rem;
-  --section-padding-desktop: 6rem 4rem;
-  --card-gap: 1.5rem;
-  --heading-margin-bottom: 1.25rem;
-  --paragraph-margin-bottom: 1.5rem;
+  --section-padding-mobile: 3rem 1.25rem;
+  --section-padding-desktop: 5rem 3rem;
+  --card-gap: 1.25rem;
+  --heading-margin-bottom: 1rem;
+  --paragraph-margin-bottom: 1.25rem;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --button-radius: 6px;
   --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 500ms;
-  --animation-stagger: 120ms;
-  --animation-type: slide_up;
+  --animation-duration: 300ms;
+  --animation-stagger: 80ms;
+  --animation-type: fade_in;
 }
 /* DESIGN_TOKENS_END */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,13 +103,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes slideUp {
-  from { opacity: 0; transform: translateY(1.5rem); }
-  to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: slideUp 500ms ease-out forwards;
+  animation: fadeIn 300ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -223,67 +223,64 @@
   }
 }
 .nav-link-hidden { display: none; }
-.section-hero-typography {
+.section-hero-colorblock {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   min-height: 28rem;
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
+  background: var(--color-primary);
 }
-.hero-typography-content {
-  max-width: 52rem;
+.hero-colorblock-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
 }
-.hero-typography-headline {
+.hero-colorblock-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text-primary);
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
-  letter-spacing: var(--letter-spacing-display, -0.02em);
+  font-weight: 700;
+  color: var(--color-background);
+  line-height: 1.1;
+  margin-bottom: 1rem;
 }
-.hero-typography-accent {
-  color: var(--color-primary);
-}
-.hero-typography-subheadline {
+.hero-colorblock-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1.125rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+  color: var(--color-background);
+  opacity: 0.9;
+  line-height: 1.5;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-typography-cta {
+.hero-colorblock-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2.25rem;
-  background: var(--color-cta-bg);
-  color: var(--color-cta-text);
+  padding: 1rem 2rem;
+  background: var(--color-background);
+  color: var(--color-primary);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  transition: background 0.2s;
+  box-shadow: var(--shadow, 0 4px 12px rgba(0,0,0,0.2));
+  transition: transform 0.2s;
 }
-.hero-typography-cta:hover {
-  background: var(--color-cta-hover, var(--color-accent));
+.hero-colorblock-cta:hover {
+  transform: translateY(-2px);
 }
 @media (min-width: 768px) {
-  .section-hero-typography {
-    padding: var(--section-padding-desktop, 6rem 2rem);
-    min-height: 36rem;
+  .section-hero-colorblock {
+    padding: var(--section-padding-desktop, 5rem 2rem);
+    min-height: 32rem;
   }
-  .hero-typography-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
+  .hero-colorblock-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.4);
   }
-  .hero-typography-subheadline {
+  .hero-colorblock-subheadline {
     font-size: 1.25rem;
   }
 }
@@ -739,11 +736,11 @@
   </div>
 </nav>
 
-<section class="section-hero-typography">
-  <div class="hero-typography-content">
-    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-typography-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
-    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
+<section class="section-hero-colorblock">
+  <div class="hero-colorblock-content">
+    <h1 class="hero-colorblock-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-colorblock-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-colorblock-cta">Call Now</a>
   </div>
 </section>
 
@@ -867,16 +864,16 @@
     <h2 class="gallery-grid-title">Our Work</h2>
     <div class="gallery-grid-items">
       <div class="gallery-grid-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges." loading="lazy">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_0.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_0.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Plumber fixing white sink pipe with adjustable wrench." loading="lazy">
       </div>
       <div class="gallery-grid-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_1.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="google my business" loading="lazy">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_1.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_1.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_1.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="two workers loading mixed domestic waste in waste collection truck - Moscow, 19/08/2020" loading="lazy">
       </div>
       <div class="gallery-grid-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_2.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="A&amp;E NYC Plumbing — work photo 3" loading="lazy">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_2.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_2.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_2.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Garbage Disposal" loading="lazy">
       </div>
       <div class="gallery-grid-item">
-        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/other_3.png 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="Plumber in Queens" loading="lazy">
+        <img src="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_3.jpg" srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_3.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/gallery_3.jpg 1024w" sizes="(min-width: 768px) 25vw, 50vw" width="640" height="480" alt="repair of urban underground communications and pipes. in a dug trench, the junction of two pipes and an iron branch to shut off the water supply" loading="lazy">
       </div>
     </div>
   </div>
@@ -930,7 +927,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 120) + "ms";
+        entry.target.style.animationDelay = (i * 80) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
