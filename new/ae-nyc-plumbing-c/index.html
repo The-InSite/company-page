@@ -8,38 +8,38 @@
   <meta name="description" content="Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=fallback">
   
   
   
   <style>
     /* DESIGN_TOKENS_START */
 :root {
-  --color-primary: #1C3144;
-  --color-accent: #F4741B;
+  --color-primary: #003566;
+  --color-accent: #0077B6;
   --color-background: #FFFFFF;
-  --color-surface: #FFF8F4;
-  --color-text-primary: #1C3144;
+  --color-surface: #F0F7FF;
+  --color-text-primary: #003566;
   --color-text-secondary: #4A4A4A;
-  --color-cta-bg: #F4741B;
+  --color-cta-bg: #0077B6;
   --color-cta-text: #FFFFFF;
-  --color-cta-hover: #D4611A;
-  --color-border: #FFE0CC;
-  --font-display: Oswald;
-  --font-body: "Source Sans 3";
-  --base-size: 16px;
-  --type-scale-ratio: 1.333;
-  --h1-size: 3.1573rem;
-  --h2-size: 2.3686rem;
-  --h3-size: 1.7769rem;
-  --h4-size: 1.3330rem;
+  --color-cta-hover: #005F8E;
+  --color-border: #CCE5FF;
+  --font-display: "DM Sans";
+  --font-body: "DM Sans";
+  --base-size: 17px;
+  --type-scale-ratio: 1.25;
+  --h1-size: 2.4414rem;
+  --h2-size: 1.9531rem;
+  --h3-size: 1.5625rem;
+  --h4-size: 1.2500rem;
   --h1-weight: 700;
   --h2-weight: 600;
   --body-weight: 400;
-  --letter-spacing-display: 0.05em;
+  --letter-spacing-display: 0.02em;
   --letter-spacing-body: 0.01em;
-  --line-height-display: 1.15;
-  --line-height-body: 1.6;
+  --line-height-display: 1.25;
+  --line-height-body: 1.65;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -47,19 +47,19 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
-  --section-padding-mobile: 4rem 1.5rem;
-  --section-padding-desktop: 6rem 4rem;
-  --card-gap: 1.5rem;
-  --heading-margin-bottom: 1.25rem;
-  --paragraph-margin-bottom: 1.5rem;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --button-radius: 6px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.08);
-  --animation-duration: 300ms;
-  --animation-stagger: 80ms;
-  --animation-type: fade_in;
+  --section-padding-mobile: 2rem 1rem;
+  --section-padding-desktop: 3rem 2rem;
+  --card-gap: 0.75rem;
+  --heading-margin-bottom: 0.75rem;
+  --paragraph-margin-bottom: 1rem;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --button-radius: 100px;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --animation-duration: 500ms;
+  --animation-stagger: 120ms;
+  --animation-type: slide_up;
 }
 /* DESIGN_TOKENS_END */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,13 +103,13 @@
         transition-duration: 0.01ms !important;
       }
     }
-    @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    @keyframes slideUp {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .animate-on-scroll {
   opacity: 0;
-  animation: fadeIn 300ms ease-out forwards;
+  animation: slideUp 500ms ease-out forwards;
 }
     .section-nav {
   position: sticky;
@@ -224,68 +224,87 @@
 }
 /* Higher specificity than .nav-menu a so the hidden class actually wins */
 .nav-menu a.nav-link-hidden, .nav-link-hidden { display: none !important; }
-.section-hero-typography {
+.section-hero-fullbleed {
+  position: relative;
+  min-height: 80svh;
+  min-height: 28rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 28rem;
   padding: var(--section-padding-mobile, 3rem 1rem);
-  background: var(--color-background);
+  overflow: hidden;
+  text-align: center;
 }
-.hero-typography-content {
-  max-width: 52rem;
+.hero-fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-.hero-typography-headline {
+.hero-fullbleed-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.hero-fullbleed-content {
+  position: relative;
+  z-index: 2;
+  max-width: 48rem;
+  padding: 1rem;
+}
+.hero-fullbleed-headline {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: var(--h1-size, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text-primary);
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
-  letter-spacing: var(--letter-spacing-display, -0.02em);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
 }
-.hero-typography-accent {
-  color: var(--color-primary);
-}
-.hero-typography-subheadline {
+.hero-fullbleed-subheadline {
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.125rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
+  font-size: var(--text-lg, 1.125rem);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
   margin-bottom: 2rem;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
 }
-.hero-typography-cta {
+.hero-fullbleed-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2.25rem;
+  padding: 1rem 2rem;
   background: var(--color-cta-bg);
   color: var(--color-cta-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: var(--text-lg, 1.125rem);
   text-decoration: none;
   border-radius: var(--border-radius-sm, 0.25rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.15));
   transition: background 0.2s;
 }
-.hero-typography-cta:hover {
+.hero-fullbleed-cta:hover {
   background: var(--color-cta-hover, var(--color-accent));
 }
+.hero-fullbleed-fallback-bg {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent, var(--color-primary)) 100%);
+}
 @media (min-width: 768px) {
-  .section-hero-typography {
-    padding: var(--section-padding-desktop, 6rem 2rem);
-    min-height: 36rem;
+  .section-hero-fullbleed {
+    padding: var(--section-padding-desktop, 5rem 2rem);
   }
-  .hero-typography-headline {
-    font-size: calc(var(--h1-size, 2.5rem) * 1.6);
+  .hero-fullbleed-headline {
+    font-size: calc(var(--h1-size, 2.5rem) * 1.3);
   }
-  .hero-typography-subheadline {
-    font-size: 1.25rem;
+  .hero-fullbleed-subheadline {
+    font-size: var(--text-xl, 1.25rem);
   }
 }
 .section-services-list {
@@ -882,11 +901,23 @@
   </div>
 </nav>
 
-<section class="section-hero-typography">
-  <div class="hero-typography-content">
-    <h1 class="hero-typography-headline">#1 Licensed Manhattan NY Plumber</h1>
-    <p class="hero-typography-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
-    <a href="tel:+16463927164" class="hero-typography-cta">Call Now</a>
+<section class="section-hero-fullbleed">
+  <div class="hero-fullbleed-bg">
+    <img
+      src="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg"
+      srcset="https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 480w, https://storage.googleapis.com/theinsite-scraped-images/2258/hero_0.jpg 1024w"
+      sizes="100vw"
+      width="1200"
+      height="675"
+      alt="A technician in a red shirt and cap is working on plumbing equipment, adjusting or reading gauges on what appears to be a water heating or boiler system with copper pipes and pressure gauges."
+      loading="eager"
+    >
+    <div class="hero-fullbleed-overlay"></div>
+  </div>
+  <div class="hero-fullbleed-content">
+    <h1 class="hero-fullbleed-headline">#1 Licensed Manhattan NY Plumber</h1>
+    <p class="hero-fullbleed-subheadline">Here’s a list of plumbing, heating, and water damage restoration services that we offer in New York, NY:</p>
+    <a href="tel:+16463927164" class="hero-fullbleed-cta">Call Now</a>
   </div>
 </section>
 
@@ -1101,7 +1132,7 @@
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 80) + "ms";
+        entry.target.style.animationDelay = (i * 120) + "ms";
         entry.target.classList.add("animate-visible");
         observer.unobserve(entry.target);
       }
