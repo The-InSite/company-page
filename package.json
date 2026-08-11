@@ -1,9 +1,5 @@
 {
   "type": "module",
-  "dependencies": {
-    "@neondatabase/serverless": "^1.0.2",
-    "resend": "^6.9.4"
-  },
   "scripts": {
     "dev": "node --experimental-strip-types dev-server.mjs"
   }

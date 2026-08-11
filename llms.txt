@@ -1,0 +1,38 @@
+# The InSite Company
+
+> The InSite Company renovates websites for freelancers, independent professionals, and small businesses using a proprietary, deterministic renovation algorithm. It is not an AI content generator: the algorithm crawls a business's existing website, maps its full page and content structure, and rebuilds it on a modern, fast, mobile-first foundation — carrying over every page, service, and detail from the original site rather than inventing new copy.
+
+## What we do
+
+- We crawl a client's existing website and extract its full content structure (pages, services, posts, images) with our own algorithm — not a generic AI scraper or generator.
+- We rebuild that content on a modern, fast, SEO-optimized site. Nothing from the original site is invented or fabricated; everything that existed is carried over.
+- Optional human-refined copywriting is available, but base renovation output is a faithful, modernized reconstruction of the client's own content, not AI-authored text.
+- We handle ongoing support and refinement of the site after launch.
+
+## Who we serve
+
+Freelancers, independent professionals (lawyers, doctors, therapists, accountants, coaches), and small businesses/studios who need a modern replacement for an outdated website without losing the content and pages they already built.
+
+## Process
+
+1. Discovery — a short call to understand the business and its goals.
+2. Site Analysis — our algorithm audits the existing site and produces a transformation roadmap.
+3. Design & Build — the new site is designed and built, with client approval at each milestone.
+4. Launch & Refine — the site goes live and is continuously refined afterward.
+
+## Key facts
+
+- Renovation output is algorithm-driven and deterministic, not generative-AI output.
+- The original site's content is preserved, not reinvented — page structure, services, and copy are carried over.
+- Sites are modern, mobile-first, and built for search discoverability.
+
+## Pages
+
+- Homepage: https://theinsite.dev/
+- Pricing: https://theinsite.dev/pricing
+
+## Contact
+
+- Sales: pavel@theinsite.dev
+- General inquiries: info@theinsite.dev
+- Support: support@theinsite.dev

@@ -6,7 +6,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.PORT || 3000);
-const { default: previewHandler } = await import('./api/preview.ts');
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -20,67 +19,6 @@ const contentTypes = {
 function sendJson(res, statusCode, body) {
   res.writeHead(statusCode, { 'Content-Type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(body));
-}
-
-function makeVercelResponse(res) {
-  let statusCode = 200;
-  const headers = {};
-
-  return {
-    status(code) {
-      statusCode = code;
-      return this;
-    },
-    setHeader(name, value) {
-      headers[name] = value;
-    },
-    json(body) {
-      res.writeHead(statusCode, {
-        ...headers,
-        'Content-Type': 'application/json; charset=utf-8',
-      });
-      res.end(JSON.stringify(body));
-    },
-    end() {
-      res.writeHead(statusCode, headers);
-      res.end();
-    },
-  };
-}
-
-function queryObject(searchParams) {
-  const query = {};
-
-  for (const [key, value] of searchParams.entries()) {
-    if (query[key] === undefined) {
-      query[key] = value;
-    } else if (Array.isArray(query[key])) {
-      query[key].push(value);
-    } else {
-      query[key] = [query[key], value];
-    }
-  }
-
-  return query;
-}
-
-async function readJsonBody(req) {
-  const chunks = [];
-
-  for await (const chunk of req) {
-    chunks.push(chunk);
-  }
-
-  if (!chunks.length) return undefined;
-
-  const text = Buffer.concat(chunks).toString('utf8');
-  if (!text.trim()) return undefined;
-
-  try {
-    return JSON.parse(text);
-  } catch {
-    return undefined;
-  }
 }
 
 async function fileForPath(pathname) {
@@ -108,18 +46,6 @@ const server = createServer(async (req, res) => {
   }
 
   const url = new URL(req.url, `http://${req.headers.host || `localhost:${port}`}`);
-
-  if (url.pathname === '/api/preview') {
-    await previewHandler(
-      {
-        method: req.method,
-        query: queryObject(url.searchParams),
-        body: await readJsonBody(req),
-      },
-      makeVercelResponse(res),
-    );
-    return;
-  }
 
   const filePath = await fileForPath(url.pathname);
   if (!filePath) {
