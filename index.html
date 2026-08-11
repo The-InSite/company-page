@@ -17,6 +17,7 @@
   <meta name="twitter:description" content="We renovate business websites with a proprietary algorithm. Every page and detail from your original site carries over — nothing invented, nothing lost." />
   <meta name="twitter:image" content="https://theinsite.dev/og-image.png" />
   <meta name="theme-color" content="#08070a" />
+  <meta name="google-site-verification" content="TyXgHdxPd8e2MXajcuP9m_VFZHKgEUzRf4JU00kE_nI" />
   <link rel="canonical" href="https://theinsite.dev/" />
   <title>The InSite Company — Algorithm-Based Website Renovation</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -492,6 +493,18 @@
     .proc-step h3 { font-size: 0.975rem; font-weight: 600; margin-bottom: .6rem; }
     .proc-step p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; font-weight: 300; }
 
+    .guarantee-note {
+      margin-top: 3.5rem; padding: 1.75rem 2rem;
+      border-left: 2px solid var(--gold-dim);
+      background: rgba(212,175,55,0.03);
+    }
+    .guarantee-note p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-style: italic;
+      color: var(--text); line-height: 1.6;
+    }
+    .guarantee-note p em { color: var(--gold); font-style: normal; }
+
     /* ─────────────────────────────────────────
        FOUNDERS
     ───────────────────────────────────────── */
@@ -887,6 +900,10 @@
         <p>We handle launch and handle everything after it — continuously refining performance, content, and design as your business grows.</p>
       </div>
     </div>
+
+    <div class="guarantee-note reveal">
+      <p>Your current site <em>stays live</em> the entire time we build. Nothing goes down, and nothing gets replaced, until you've reviewed the new one and given the go-ahead.</p>
+    </div>
   </div>
 </section>
 
@@ -1032,6 +1049,11 @@
     });
   });
 </script>
+
+<!-- Vercel Web Analytics + Speed Insights — enable "Web Analytics" and "Speed Insights"
+     for this project in the Vercel dashboard for these to start recording. -->
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 
 </body>
 </html>
