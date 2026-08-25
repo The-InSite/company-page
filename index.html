@@ -1989,6 +1989,24 @@
       .slice(0, 80);
   }
 
+  function normalizeWebsiteUrl(rawValue) {
+    const trimmed = String(rawValue || '').trim();
+    if (!trimmed) return '';
+
+    const withProtocol = /^[a-z][a-z\d+\-.]*:\/\//i.test(trimmed)
+      ? trimmed
+      : `https://${trimmed}`;
+
+    try {
+      const parsed = new URL(withProtocol);
+      if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
+      if (!parsed.hostname || /\s/.test(parsed.hostname)) return '';
+      return parsed.toString();
+    } catch {
+      return '';
+    }
+  }
+
   function deriveSlug(urlValue, nameValue) {
     try {
       const hostname = new URL(urlValue).hostname.replace(/^www\./, '');
@@ -2075,9 +2093,16 @@
     if (previewState.step === 0 && !previewState.flavor) return false;
     if (previewState.step === 1 && !previewState.theme) return false;
     if (previewState.step === 2) {
-      previewUrl.value = previewUrl.value.trim();
+      const normalizedUrl = normalizeWebsiteUrl(previewUrl.value);
+      previewUrl.value = normalizedUrl || previewUrl.value.trim();
       previewName.value = previewName.value.trim();
       previewEmail.value = previewEmail.value.trim().toLowerCase();
+
+      if (!normalizedUrl) {
+        previewUrl.setCustomValidity('Enter a valid website URL, like https://example.com or www.example.com');
+      } else {
+        previewUrl.setCustomValidity('');
+      }
 
       if (!previewUrl.reportValidity()) return false;
       if (!previewName.reportValidity()) return false;
@@ -2088,7 +2113,7 @@
 
   function buildPayload() {
     return {
-      url: previewUrl.value.trim(),
+      url: normalizeWebsiteUrl(previewUrl.value) || previewUrl.value.trim(),
       slug: deriveSlug(previewUrl.value.trim(), previewName.value.trim()),
       name: previewName.value.trim(),
       contact_email: previewEmail.value.trim(),
