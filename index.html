@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="insite-preview-api-endpoint" content="" />
+  <meta name="insite-bot-site-key" content="" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The InSite Company renovates business websites with a proprietary algorithm. Every page and detail from your original site carries over, modernized and rebuilt." />
@@ -19,6 +21,8 @@
   <meta name="theme-color" content="#08070a" />
   <meta name="google-site-verification" content="TyXgHdxPd8e2MXajcuP9m_VFZHKgEUzRf4JU00kE_nI" />
   <link rel="canonical" href="https://theinsite.dev/" />
+  <meta name="insite-preview-api-endpoint" content="" />
+  <meta name="insite-bot-site-key" content="" />
   <title>The InSite Company — Algorithm-Based Website Renovation</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -282,6 +286,65 @@
     }
     .btn-outline:hover { border-color: var(--gold-dim); color: var(--gold); }
 
+    .btn-linkish {
+      padding: 1rem 0;
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: color .25s;
+    }
+    .btn-linkish:hover { color: var(--gold); }
+
+    .hero-intake {
+      width: min(760px, 100%);
+      margin-top: 2.5rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: rgba(12,11,16,0.82);
+      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-intake-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: .85rem;
+      align-items: center;
+    }
+
+    .hero-intake-input {
+      width: 100%;
+      min-width: 0;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid var(--border-dim);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.98rem;
+    }
+    .hero-intake-input::placeholder { color: var(--muted2); }
+    .hero-intake-input:focus {
+      outline: none;
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.18);
+    }
+
+    .hero-intake-note {
+      margin-top: .9rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
     .ornament {
       color: var(--gold-dim); font-size: 1.25rem;
       margin-top: 4rem; position: relative; z-index: 1;
@@ -385,6 +448,205 @@
     .quote-attr {
       font-size: 0.7rem; letter-spacing: .18em;
       text-transform: uppercase; color: var(--muted); font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────
+       EXAMPLES
+    ───────────────────────────────────────── */
+    .examples-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .examples-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+
+    .example-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform .22s, border-color .22s, box-shadow .22s;
+    }
+    .example-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212,175,55,0.3);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    }
+
+    .example-visual {
+      aspect-ratio: 1.2 / 1;
+      padding: 1rem;
+      background:
+        radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    }
+
+    .example-browser {
+      height: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0d0b12;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+
+    .example-bar {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .7rem .85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .example-dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+    }
+    .example-dot.gold { background: rgba(212,175,55,0.75); }
+
+    .example-canvas {
+      height: calc(100% - 47px);
+      padding: 1rem;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: .8rem;
+    }
+
+    .example-kicker {
+      font-size: 0.62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .example-title-line {
+      height: 22px;
+      width: 72%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(255,255,255,0.34));
+    }
+
+    .example-copy-lines {
+      display: grid;
+      gap: .45rem;
+      align-content: start;
+    }
+    .example-copy-lines span {
+      display: block;
+      height: 10px;
+      background: rgba(255,255,255,0.12);
+    }
+    .example-copy-lines span:nth-child(1) { width: 100%; }
+    .example-copy-lines span:nth-child(2) { width: 92%; }
+    .example-copy-lines span:nth-child(3) { width: 78%; }
+
+    .example-footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .45rem;
+    }
+    .example-footer span {
+      display: block;
+      height: 58px;
+      background: rgba(212,175,55,0.09);
+      border: 1px solid rgba(212,175,55,0.12);
+    }
+
+    .example-copy {
+      padding: 1.4rem 1.4rem 1.6rem;
+    }
+
+    .example-meta {
+      font-size: 0.66rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+
+    .example-copy h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .55rem;
+    }
+
+    .example-copy p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────
+       PREVIEW FLOW
+    ───────────────────────────────────────── */
+    .preview-section {
+      background: var(--bg);
+    }
+
+    .preview-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 3.5rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .preview-card {
+      background: var(--surface);
+      padding: 2.1rem;
+    }
+
+    .preview-step {
+      font-size: 0.65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .95rem;
+      font-weight: 600;
+    }
+
+    .preview-card h3 {
+      font-size: 1rem;
+      margin-bottom: .7rem;
+    }
+
+    .preview-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .preview-note {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.8;
+      max-width: 740px;
     }
 
     /* ─────────────────────────────────────────
@@ -600,6 +862,322 @@
     .email-col a:hover { color: var(--gold); }
 
     /* ─────────────────────────────────────────
+       MODAL
+    ───────────────────────────────────────── */
+    .modal-shell {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(5,4,8,0.78);
+      backdrop-filter: blur(8px);
+    }
+    .modal-shell.open { display: flex; }
+
+    .modal-panel {
+      width: min(780px, 100%);
+      max-height: calc(100vh - 4rem);
+      overflow: auto;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #0f0c14, #09080c);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 1.5rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-head h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: .35rem;
+    }
+
+    .modal-head p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .modal-close {
+      border: 1px solid var(--border-dim);
+      background: transparent;
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .modal-progress {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .7rem;
+      padding: 1rem 1.5rem 0;
+    }
+
+    .progress-step {
+      height: 2px;
+      background: rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .progress-step.active::after,
+    .progress-step.complete::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+    }
+
+    .modal-body {
+      padding: 1.35rem 1.5rem 1.5rem;
+    }
+
+    .flow-step { display: none; }
+    .flow-step.active { display: block; }
+
+    .flow-label {
+      display: block;
+      margin-bottom: .7rem;
+      font-size: 0.74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .flow-step h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: .7rem;
+    }
+
+    .flow-intro {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 1.6rem;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .9rem;
+    }
+
+    .choice-card {
+      text-align: left;
+      padding: 1.15rem 1.1rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.015);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .choice-card:hover {
+      border-color: rgba(212,175,55,0.3);
+      background: rgba(212,175,55,0.04);
+      transform: translateY(-2px);
+    }
+    .choice-card.selected {
+      border-color: rgba(212,175,55,0.5);
+      background: rgba(212,175,55,0.08);
+    }
+
+    .choice-card strong {
+      display: block;
+      margin-bottom: .35rem;
+      font-size: 0.97rem;
+    }
+
+    .choice-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .flow-fields {
+      display: grid;
+      gap: 1rem;
+      max-width: 620px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: .5rem;
+    }
+
+    .field-group label {
+      font-size: 0.76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      padding: 1rem 1rem;
+      border: 1px solid var(--border-dim);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      font: inherit;
+    }
+    .field-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline: none;
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.18);
+    }
+
+    .helper-copy {
+      color: var(--muted2);
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .summary-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 1.15rem 1.1rem;
+      display: grid;
+      gap: .9rem;
+      max-width: 620px;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      align-items: start;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: .8rem;
+    }
+    .summary-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .summary-label {
+      font-size: 0.68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .summary-value {
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .staged-note {
+      margin-top: 1rem;
+      color: var(--muted2);
+      font-size: 0.76rem;
+      line-height: 1.75;
+    }
+
+    .success-card {
+      border: 1px solid rgba(212,175,55,0.22);
+      background: rgba(212,175,55,0.05);
+      padding: 1.35rem;
+      max-width: 620px;
+    }
+
+    .success-card h5 {
+      font-size: 1rem;
+      margin-bottom: .45rem;
+    }
+
+    .success-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .submit-status {
+      margin-top: 1rem;
+      max-width: 620px;
+      padding: .95rem 1rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+    .submit-status[hidden] { display: none; }
+    .submit-status.error {
+      border-color: rgba(208,96,96,0.35);
+      background: rgba(208,96,96,0.08);
+      color: #f2c4c4;
+    }
+    .submit-status.success {
+      border-color: rgba(212,175,55,0.28);
+      background: rgba(212,175,55,0.06);
+      color: var(--text);
+    }
+
+    .bot-slot {
+      min-height: 36px;
+    }
+
+    .is-loading {
+      opacity: .72;
+      pointer-events: none;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-actions-left,
+    .modal-actions-right {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─────────────────────────────────────────
        FOOTER
     ───────────────────────────────────────── */
     footer {
@@ -646,10 +1224,15 @@
       .hamburger { display: flex; }
 
       .hero h1 { font-size: clamp(3rem, 10vw, 5rem); }
+      .hero-intake-form { grid-template-columns: 1fr; }
 
       .stat-inner { grid-template-columns: 1fr; gap: 2rem; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
       .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+      .examples-grid,
+      .preview-grid,
+      .choice-grid { grid-template-columns: 1fr; }
 
       .services-layout { grid-template-columns: 1fr; gap: 3rem; }
 
@@ -677,8 +1260,16 @@
 
       .hero-ctas { flex-direction: column; align-items: center; }
       .btn-gold, .btn-outline { width: 100%; max-width: 320px; text-align: center; }
+      .btn-linkish { width: 100%; max-width: 320px; text-align: center; }
 
       .cta-buttons { flex-direction: column; align-items: center; }
+
+      .modal-shell { padding: 1rem; }
+      .modal-head, .modal-body, .modal-actions { padding-left: 1rem; padding-right: 1rem; }
+      .modal-progress { padding-left: 1rem; padding-right: 1rem; }
+      .modal-actions { flex-direction: column; }
+      .modal-actions-left, .modal-actions-right { width: 100%; }
+      .summary-row { grid-template-columns: 1fr; gap: .35rem; }
     }
   </style>
 </head>
@@ -691,12 +1282,13 @@
   <a href="#" class="logo">the <span>InSite</span> Co.</a>
 
   <ul class="nav-links">
+    <li><a href="#examples">Examples</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#who-we-serve">Clients</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="/pricing">Pricing</a></li>
-    <li><a href="#contact" class="nav-cta">Begin</a></li>
+    <li><a href="#start" class="nav-cta" data-open-preview>Begin</a></li>
   </ul>
 
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -706,12 +1298,13 @@
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobile-menu">
+  <a href="#examples" class="mobile-link">Examples</a>
   <a href="#services" class="mobile-link">Services</a>
   <a href="#who-we-serve" class="mobile-link">Clients</a>
   <a href="#process" class="mobile-link">Process</a>
   <a href="#team" class="mobile-link">Team</a>
   <a href="/pricing" class="mobile-link">Pricing</a>
-  <a href="#contact" class="mobile-link m-cta">Begin Your Transformation</a>
+  <a href="#start" class="mobile-link m-cta" data-open-preview>Begin Your Transformation</a>
 </div>
 
 <!-- ──────────────────────────────────────────────
@@ -730,8 +1323,26 @@
     Our algorithm reads your existing website and rebuilds it. Every page, service, and detail carried over intact. Nothing invented. No guesswork.
   </p>
 
+  <div class="hero-intake reveal reveal-delay-3" id="start">
+    <form class="hero-intake-form" id="hero-intake-form">
+      <input
+        type="url"
+        id="hero-website-url"
+        class="hero-intake-input"
+        placeholder="Insert your site link"
+        inputmode="url"
+        autocomplete="url"
+      />
+      <button type="submit" class="btn-gold">Start My Preview</button>
+    </form>
+    <p class="hero-intake-note">
+      You’ll answer a few quick questions, then we’ll prepare a preview flow around your site, your positioning, and your preferred visual direction.
+    </p>
+  </div>
+
   <div class="hero-ctas reveal reveal-delay-3">
-    <a href="#services" class="btn-gold">Explore Services</a>
+    <a href="#examples" class="btn-outline">See Output Examples</a>
+    <button type="button" class="btn-linkish" data-open-preview>Open Request Flow</button>
   </div>
 
   <div class="ornament reveal reveal-delay-4">· · ·</div>
@@ -758,6 +1369,84 @@
 </div>
 
 <!-- ──────────────────────────────────────────────
+     EXAMPLES
+─────────────────────────────────────────────── -->
+<section id="examples" class="examples-section">
+  <div class="examples-inner">
+    <div class="section-rule reveal"><span>Examples</span></div>
+    <h2 class="reveal">More examples of the <em>output</em></h2>
+    <p class="section-sub reveal reveal-delay-1">
+      Different industries, different tones, same core promise: preserve what matters, modernize how it lands, and give the business a site that looks current the moment it opens.
+    </p>
+
+    <div class="examples-grid">
+      <a class="example-card reveal" href="/new/adept-plumbing/" target="_blank" rel="noopener noreferrer">
+        <div class="example-visual">
+          <div class="example-browser">
+            <div class="example-bar">
+              <span class="example-dot gold"></span><span class="example-dot"></span><span class="example-dot"></span>
+            </div>
+            <div class="example-canvas">
+              <div class="example-kicker">Trades</div>
+              <div class="example-title-line"></div>
+              <div class="example-copy-lines"><span></span><span></span><span></span></div>
+              <div class="example-footer"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="example-copy">
+          <div class="example-meta">Plumbing Renovation</div>
+          <h3>Adept Plumbing</h3>
+          <p>Fast, trust-heavy service presentation with a cleaner hierarchy, stronger calls to action, and a more current visual system.</p>
+        </div>
+      </a>
+
+      <a class="example-card reveal reveal-delay-1" href="/new/taxes-by-ana/" target="_blank" rel="noopener noreferrer">
+        <div class="example-visual">
+          <div class="example-browser">
+            <div class="example-bar">
+              <span class="example-dot gold"></span><span class="example-dot"></span><span class="example-dot"></span>
+            </div>
+            <div class="example-canvas">
+              <div class="example-kicker">Professional</div>
+              <div class="example-title-line" style="width:68%;"></div>
+              <div class="example-copy-lines"><span></span><span style="width:88%;"></span><span style="width:70%;"></span></div>
+              <div class="example-footer"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="example-copy">
+          <div class="example-meta">Tax Advisory</div>
+          <h3>Taxes by Ana</h3>
+          <p>Authority-first layout with calmer pacing, sharper service framing, and a more premium feel without losing the original business identity.</p>
+        </div>
+      </a>
+
+      <a class="example-card reveal reveal-delay-2" href="/new/ben-and-colleen-wedding-photographers/" target="_blank" rel="noopener noreferrer">
+        <div class="example-visual">
+          <div class="example-browser">
+            <div class="example-bar">
+              <span class="example-dot gold"></span><span class="example-dot"></span><span class="example-dot"></span>
+            </div>
+            <div class="example-canvas">
+              <div class="example-kicker">Creative</div>
+              <div class="example-title-line" style="width:74%;"></div>
+              <div class="example-copy-lines"><span></span><span style="width:80%;"></span><span style="width:62%;"></span></div>
+              <div class="example-footer"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="example-copy">
+          <div class="example-meta">Photography Studio</div>
+          <h3>Ben &amp; Colleen</h3>
+          <p>More editorial composition, stronger emotional pacing, and a cleaner showcase for visual work while keeping the business recognizable.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
      VISION QUOTE
 ─────────────────────────────────────────────── -->
 <section class="vision-section">
@@ -771,6 +1460,46 @@
     </blockquote>
     <div class="quote-rule reveal reveal-delay-2"></div>
     <p class="quote-attr reveal reveal-delay-2">The Vision of The InSite Company</p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────────
+     PREVIEW FLOW
+─────────────────────────────────────────────── -->
+<section class="preview-section">
+  <div class="preview-inner">
+    <div class="section-rule reveal"><span>Preview Flow</span></div>
+    <h2 class="reveal">What happens after<br>you request a <em>preview</em></h2>
+    <p class="section-sub reveal reveal-delay-1">
+      The request flow is designed to move fast: you show us your current site, tell us the direction, and get a short-lived preview window that makes the next decision obvious.
+    </p>
+
+    <div class="preview-grid">
+      <div class="preview-card reveal">
+        <div class="preview-step">Step 01</div>
+        <h3>Drop in your current site</h3>
+        <p>We start from the site you already have. The flow captures the URL, your business name, your contact email, and the positioning you want the new version to emphasize.</p>
+      </div>
+      <div class="preview-card reveal reveal-delay-1">
+        <div class="preview-step">Step 02</div>
+        <h3>Choose the direction</h3>
+        <p>Pick the flavor that matters most to you, choose a theme manually, or simply use my logo colors so the output starts closer to your existing brand.</p>
+      </div>
+      <div class="preview-card reveal reveal-delay-2">
+        <div class="preview-step">Step 03</div>
+        <h3>Get the preview by email</h3>
+        <p>Once it’s ready, you get a link by email and can review the new version without touching your current site or disrupting anything live.</p>
+      </div>
+      <div class="preview-card reveal reveal-delay-3">
+        <div class="preview-step">Step 04</div>
+        <h3>Keep it live for 24 hours</h3>
+        <p>The preview stays up for 24 hours, then gets a reminder, a deletion warning, and an option to extend it for a week before it disappears.</p>
+      </div>
+    </div>
+
+    <p class="preview-note reveal reveal-delay-2">
+      Every email in that sequence should push toward the same decision: if the new version feels right, let’s go live.
+    </p>
   </div>
 </section>
 
@@ -959,7 +1688,7 @@
       Join the professionals who've chosen to invest in a digital presence that truly represents their work and expertise. We'd love to hear about what you do and how we can help the world see it clearly.
     </p>
     <div class="cta-buttons reveal reveal-delay-2">
-      <a href="mailto:pavel@theinsite.dev" class="btn-gold">Contact Sales</a>
+      <button type="button" class="btn-gold" data-open-preview>Request a Preview</button>
       <a href="mailto:info@theinsite.dev" class="btn-outline">General Inquiry</a>
     </div>
 
@@ -1002,6 +1731,155 @@
     © 2026 The InSite Company<br>theinsite.dev
   </div>
 </footer>
+
+<div class="modal-shell" id="preview-modal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="preview-modal-title">
+    <div class="modal-head">
+      <div>
+        <h3 id="preview-modal-title">Start your preview request</h3>
+        <p>Give us the current site, the angle you want to emphasize, and the visual direction you want us to follow.</p>
+      </div>
+      <button type="button" class="modal-close" id="preview-close" aria-label="Close preview flow">✕</button>
+    </div>
+
+    <div class="modal-progress" aria-hidden="true">
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
+
+    <div class="modal-body">
+      <form id="preview-flow-form">
+        <section class="flow-step active" data-step="0">
+          <span class="flow-label">Step 1</span>
+          <h4>What should the new site emphasize?</h4>
+          <p class="flow-intro">Choose the main angle. This gives us the first lens for the redesign, before we get into color and contact details.</p>
+          <div class="choice-grid" data-choice-group="flavor">
+            <button type="button" class="choice-card" data-value="trust-first">
+              <strong>Trust first</strong>
+              <span>Authority, credibility, polish, and “this business looks established.”</span>
+            </button>
+            <button type="button" class="choice-card" data-value="premium">
+              <strong>Premium</strong>
+              <span>Higher-end perception, stronger visual taste, and a more elevated feel.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="friendly">
+              <strong>Warm &amp; approachable</strong>
+              <span>More human, more personal, and easier to connect with at first glance.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="conversion">
+              <strong>Conversion</strong>
+              <span>Sharper calls to action, clearer service framing, and less friction to contact.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="flow-step" data-step="1">
+          <span class="flow-label">Step 2</span>
+          <h4>How should the new site handle color?</h4>
+          <p class="flow-intro">Pick a direction manually, or tell us to simply use your logo colors so the preview begins from your current brand palette.</p>
+          <div class="choice-grid" data-choice-group="theme">
+            <button type="button" class="choice-card" data-value="logo-colors">
+              <strong>Simply use my logo colors</strong>
+              <span>Closest to the current brand identity. Best when the logo already carries the right palette.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="light-editorial">
+              <strong>Light editorial</strong>
+              <span>Bright, clean, spacious, and more premium in a restrained way.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="dark-luxury">
+              <strong>Dark luxury</strong>
+              <span>Higher contrast, moodier, more dramatic, and intentionally premium.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="bold-modern">
+              <strong>Bold modern</strong>
+              <span>Stronger accents, more visual energy, and a more assertive first impression.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="flow-step" data-step="2">
+          <span class="flow-label">Step 3</span>
+          <h4>Tell us where to send it</h4>
+          <p class="flow-intro">This part maps cleanly to the backend we already have: current site URL, business name, and the contact email for preview delivery.</p>
+          <div class="flow-fields">
+            <div class="field-group">
+              <label for="preview-url">Current website</label>
+              <input id="preview-url" name="preview_url" type="url" placeholder="https://your-site.com" required />
+            </div>
+            <div class="field-group">
+              <label for="preview-name">Business name</label>
+              <input id="preview-name" name="preview_name" type="text" placeholder="Your business name" required />
+            </div>
+            <div class="field-group">
+              <label for="preview-email">Email</label>
+              <input id="preview-email" name="preview_email" type="email" placeholder="you@business.com" required />
+            </div>
+            <div class="field-group">
+              <label for="preview-notes">Anything else we should know?</label>
+              <textarea id="preview-notes" name="preview_notes" placeholder="Optional: audience, service focus, tone, what currently feels off, or anything else worth knowing."></textarea>
+            </div>
+            <div class="field-group sr-only" aria-hidden="true">
+              <label for="preview-company-fax">Leave this empty</label>
+              <input id="preview-company-fax" name="company_fax" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input id="preview-bot-token" name="bot_token" type="hidden" value="" />
+            <div class="bot-slot" id="preview-bot-slot" hidden></div>
+            <p class="helper-copy">Current frontend shape for backend hookup: <code>url</code>, <code>slug</code>, <code>name</code>, <code>contact_email</code>, plus a <code>preferences</code> object for flavor and theme.</p>
+          </div>
+        </section>
+
+        <section class="flow-step" data-step="3">
+          <span class="flow-label">Step 4</span>
+          <h4>Review the request</h4>
+          <p class="flow-intro">This is the frontend request shape we’ll hook into the relevant backend systems after the UI is approved.</p>
+          <div class="summary-card">
+            <div class="summary-row">
+              <div class="summary-label">Website</div>
+              <div class="summary-value" data-summary="url"></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label">Business</div>
+              <div class="summary-value" data-summary="name"></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label">Email</div>
+              <div class="summary-value" data-summary="email"></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label">Flavor</div>
+              <div class="summary-value" data-summary="flavor"></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label">Theme</div>
+              <div class="summary-value" data-summary="theme"></div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-label">Preview policy</div>
+              <div class="summary-value">Preview by email, live for 24 hours, reminder before deletion, with a one-week extension path.</div>
+            </div>
+          </div>
+          <p class="staged-note">For now, this button stages the request locally in the browser and confirms the new UI. The real submission endpoint and automation sequence come in the backend/infra pass.</p>
+          <div class="success-card" id="preview-success" hidden>
+            <h5>Request staged</h5>
+            <p>The request UI is complete and the payload is stored locally for testing. Next pass: create the public intake endpoint, insert the lead, trigger generation, and wire the email lifecycle.</p>
+          </div>
+          <div class="submit-status" id="preview-submit-status" hidden></div>
+        </section>
+      </form>
+    </div>
+
+    <div class="modal-actions">
+      <div class="modal-actions-left">
+        <button type="button" class="btn-outline" id="preview-back">Back</button>
+      </div>
+      <div class="modal-actions-right">
+        <button type="button" class="btn-gold" id="preview-next">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ──────────────────────────────────────────────
      JAVASCRIPT
@@ -1048,7 +1926,330 @@
       document.body.style.overflow = '';
     });
   });
+
+  const previewModal = document.getElementById('preview-modal');
+  const previewClose = document.getElementById('preview-close');
+  const previewBack = document.getElementById('preview-back');
+  const previewNext = document.getElementById('preview-next');
+  const heroIntakeForm = document.getElementById('hero-intake-form');
+  const heroWebsiteUrl = document.getElementById('hero-website-url');
+  const previewUrl = document.getElementById('preview-url');
+  const previewName = document.getElementById('preview-name');
+  const previewEmail = document.getElementById('preview-email');
+  const previewNotes = document.getElementById('preview-notes');
+  const previewHoneypot = document.getElementById('preview-company-fax');
+  const previewBotToken = document.getElementById('preview-bot-token');
+  const previewBotSlot = document.getElementById('preview-bot-slot');
+  const previewSuccess = document.getElementById('preview-success');
+  const previewSubmitStatus = document.getElementById('preview-submit-status');
+  const progressSteps = Array.from(document.querySelectorAll('.progress-step'));
+  const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
+  const openPreviewButtons = document.querySelectorAll('[data-open-preview]');
+  const previewApiEndpoint = document.querySelector('meta[name="insite-preview-api-endpoint"]')?.getAttribute('content')?.trim() || '';
+  const previewBotSiteKey = document.querySelector('meta[name="insite-bot-site-key"]')?.getAttribute('content')?.trim() || '';
+  const summaryTargets = {
+    url: document.querySelector('[data-summary="url"]'),
+    name: document.querySelector('[data-summary="name"]'),
+    email: document.querySelector('[data-summary="email"]'),
+    flavor: document.querySelector('[data-summary="flavor"]'),
+    theme: document.querySelector('[data-summary="theme"]'),
+  };
+
+  const flavorLabels = {
+    'trust-first': 'Trust first',
+    premium: 'Premium',
+    friendly: 'Warm & approachable',
+    conversion: 'Conversion',
+  };
+
+  const themeLabels = {
+    'logo-colors': 'Simply use my logo colors',
+    'light-editorial': 'Light editorial',
+    'dark-luxury': 'Dark luxury',
+    'bold-modern': 'Bold modern',
+  };
+
+  const previewState = {
+    step: 0,
+    flavor: '',
+    theme: '',
+    isSubmitting: false,
+  };
+
+  let turnstileWidgetId = null;
+
+  function slugify(value) {
+    return String(value || '')
+      .toLowerCase()
+      .trim()
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 80);
+  }
+
+  function deriveSlug(urlValue, nameValue) {
+    try {
+      const hostname = new URL(urlValue).hostname.replace(/^www\./, '');
+      const labels = hostname.split('.').filter(Boolean);
+      const domainLabel = labels.length > 1 ? labels.slice(0, -1).join('-') : hostname;
+      return slugify(domainLabel);
+    } catch {
+      return slugify(nameValue);
+    }
+  }
+
+  function updateProgress() {
+    progressSteps.forEach((stepEl, index) => {
+      stepEl.classList.toggle('active', index === previewState.step);
+      stepEl.classList.toggle('complete', index < previewState.step);
+    });
+
+    flowSteps.forEach((stepEl, index) => {
+      stepEl.classList.toggle('active', index === previewState.step);
+    });
+
+    previewBack.style.visibility = previewState.step === 0 ? 'hidden' : 'visible';
+    previewNext.textContent = previewState.step === flowSteps.length - 1 ? 'Submit Request' : 'Continue';
+    previewNext.disabled = previewState.isSubmitting;
+    previewBack.disabled = previewState.isSubmitting;
+  }
+
+  function setSubmitStatus(kind, message) {
+    if (!message) {
+      previewSubmitStatus.hidden = true;
+      previewSubmitStatus.textContent = '';
+      previewSubmitStatus.classList.remove('error', 'success');
+      return;
+    }
+
+    previewSubmitStatus.hidden = false;
+    previewSubmitStatus.textContent = message;
+    previewSubmitStatus.classList.toggle('error', kind === 'error');
+    previewSubmitStatus.classList.toggle('success', kind === 'success');
+  }
+
+  function setSubmitting(isSubmitting) {
+    previewState.isSubmitting = isSubmitting;
+    previewNext.disabled = isSubmitting;
+    previewBack.disabled = isSubmitting;
+    previewNext.textContent = isSubmitting ? 'Submitting…' : (previewState.step === flowSteps.length - 1 ? 'Submit Request' : 'Continue');
+    document.querySelector('.modal-panel').classList.toggle('is-loading', isSubmitting);
+  }
+
+  function initBotChallenge() {
+    if (!previewBotSiteKey || !window.turnstile || turnstileWidgetId !== null) return;
+    previewBotSlot.hidden = false;
+    turnstileWidgetId = window.turnstile.render(previewBotSlot, {
+      sitekey: previewBotSiteKey,
+      theme: 'dark',
+      callback: function(token) {
+        previewBotToken.value = token;
+      },
+      'expired-callback': function() {
+        previewBotToken.value = '';
+      },
+      'error-callback': function() {
+        previewBotToken.value = '';
+      }
+    });
+  }
+
+  function openPreviewModal(prefilledUrl) {
+    if (prefilledUrl) previewUrl.value = prefilledUrl;
+    previewModal.classList.add('open');
+    previewModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    initBotChallenge();
+    if (prefilledUrl) previewUrl.focus();
+  }
+
+  function closePreviewModal() {
+    previewModal.classList.remove('open');
+    previewModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function validateCurrentStep() {
+    if (previewState.step === 0 && !previewState.flavor) return false;
+    if (previewState.step === 1 && !previewState.theme) return false;
+    if (previewState.step === 2) {
+      if (!previewUrl.value.trim() || !previewName.value.trim() || !previewEmail.value.trim()) return false;
+      if (!previewUrl.reportValidity()) return false;
+      if (!previewName.reportValidity()) return false;
+      if (!previewEmail.reportValidity()) return false;
+    }
+    return true;
+  }
+
+  function buildPayload() {
+    return {
+      url: previewUrl.value.trim(),
+      slug: deriveSlug(previewUrl.value.trim(), previewName.value.trim()),
+      name: previewName.value.trim(),
+      contact_email: previewEmail.value.trim(),
+      preferences: {
+        flavor: previewState.flavor,
+        theme_choice: previewState.theme,
+        theme_mode: previewState.theme === 'logo-colors' ? 'logo-colors' : 'manual',
+      },
+      notes: previewNotes.value.trim() || null,
+      source: 'theinsite-dev-landing',
+      hp_field: previewHoneypot.value.trim(),
+      bot_token: previewBotToken.value.trim() || null,
+    };
+  }
+
+  function renderSummary() {
+    const payload = buildPayload();
+    summaryTargets.url.textContent = payload.url || '—';
+    summaryTargets.name.textContent = payload.name || '—';
+    summaryTargets.email.textContent = payload.contact_email || '—';
+    summaryTargets.flavor.textContent = flavorLabels[payload.preferences.flavor] || '—';
+    summaryTargets.theme.textContent = themeLabels[payload.preferences.theme_choice] || '—';
+  }
+
+  async function submitPreviewRequest() {
+    const payload = buildPayload();
+
+    if (payload.hp_field) {
+      setSubmitStatus('error', 'Request blocked.');
+      return;
+    }
+
+    if (previewBotSiteKey && !payload.bot_token) {
+      setSubmitStatus('error', 'Please complete the verification step before submitting.');
+      return;
+    }
+
+    if (!previewApiEndpoint) {
+      sessionStorage.setItem('insite-preview-request', JSON.stringify(payload));
+      previewSuccess.hidden = false;
+      previewSuccess.querySelector('h5').textContent = 'Request staged locally';
+      previewSuccess.querySelector('p').textContent = 'No public intake endpoint is configured in this static site yet, so the request was stored locally for testing. Once the backend endpoint exists, this same flow can submit it directly.';
+      setSubmitStatus('success', 'Frontend is ready, but no backend endpoint is configured yet.');
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitStatus(null, '');
+
+    try {
+      const response = await fetch(previewApiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+
+      if (response.ok) {
+        previewSuccess.hidden = false;
+        previewSuccess.querySelector('h5').textContent = 'Request accepted';
+        previewSuccess.querySelector('p').textContent = 'Your preview request was accepted. We will generate the preview and send the link by email when it is ready.';
+        setSubmitStatus('success', 'Preview request submitted successfully.');
+        return;
+      }
+
+      if (response.status === 409) {
+        setSubmitStatus('error', (data && data.message) || 'There is already an active preview request for this site and email.');
+        return;
+      }
+
+      if (response.status === 429) {
+        setSubmitStatus('error', 'Too many requests. Please wait and try again later.');
+        return;
+      }
+
+      if (response.status === 400 || response.status === 422) {
+        setSubmitStatus('error', (data && (data.error || data.message)) || 'Please review the form details and try again.');
+        return;
+      }
+
+      setSubmitStatus('error', (data && (data.error || data.message)) || 'Something went wrong while submitting your request.');
+    } catch (error) {
+      setSubmitStatus('error', 'Network error. Please try again in a moment.');
+    } finally {
+      setSubmitting(false);
+      if (window.turnstile && turnstileWidgetId !== null) {
+        window.turnstile.reset(turnstileWidgetId);
+        previewBotToken.value = '';
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-choice-group]').forEach(group => {
+    group.querySelectorAll('.choice-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const groupName = group.getAttribute('data-choice-group');
+        group.querySelectorAll('.choice-card').forEach(btn => btn.classList.remove('selected'));
+        card.classList.add('selected');
+        previewState[groupName] = card.getAttribute('data-value') || '';
+      });
+    });
+  });
+
+  openPreviewButtons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      openPreviewModal(heroWebsiteUrl.value.trim());
+    });
+  });
+
+  heroIntakeForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const prefilled = heroWebsiteUrl.value.trim();
+    if (prefilled) previewUrl.value = prefilled;
+    openPreviewModal(prefilled);
+  });
+
+  previewBack.addEventListener('click', () => {
+    if (previewState.step === 0) return;
+    previewState.step -= 1;
+    updateProgress();
+  });
+
+  previewNext.addEventListener('click', () => {
+    if (previewState.isSubmitting) return;
+    if (!validateCurrentStep()) return;
+
+    if (previewState.step === 2) {
+      renderSummary();
+    }
+
+    if (previewState.step < flowSteps.length - 1) {
+      previewState.step += 1;
+      updateProgress();
+      return;
+    }
+
+    submitPreviewRequest();
+  });
+
+  previewClose.addEventListener('click', closePreviewModal);
+
+  previewModal.addEventListener('click', (event) => {
+    if (event.target === previewModal) closePreviewModal();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && previewModal.classList.contains('open')) {
+      closePreviewModal();
+    }
+  });
+
+  updateProgress();
 </script>
+<script defer src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
 
 <!-- Vercel Web Analytics + Speed Insights — enable "Web Analytics" and "Speed Insights"
      for this project in the Vercel dashboard for these to start recording. -->
