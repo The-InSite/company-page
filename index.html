@@ -1326,7 +1326,7 @@
   <div class="hero-intake reveal reveal-delay-3" id="start">
     <form class="hero-intake-form" id="hero-intake-form">
       <input
-        type="url"
+        type="text"
         id="hero-website-url"
         class="hero-intake-input"
         placeholder="Insert your site link"
@@ -1806,7 +1806,7 @@
           <div class="flow-fields">
             <div class="field-group">
               <label for="preview-url">Current website</label>
-              <input id="preview-url" name="preview_url" type="url" placeholder="https://your-site.com" required />
+              <input id="preview-url" name="preview_url" type="text" inputmode="url" placeholder="https://your-site.com" required />
             </div>
             <div class="field-group">
               <label for="preview-name">Business name</label>
@@ -2111,6 +2111,20 @@
     return true;
   }
 
+  function attachUrlFieldBehavior(input) {
+    input.addEventListener('input', () => {
+      input.setCustomValidity('');
+    });
+
+    input.addEventListener('blur', () => {
+      const normalizedUrl = normalizeWebsiteUrl(input.value);
+      if (!input.value.trim()) return;
+      if (!normalizedUrl) return;
+      input.value = normalizedUrl;
+      input.setCustomValidity('');
+    });
+  }
+
   function buildPayload() {
     return {
       url: normalizeWebsiteUrl(previewUrl.value) || previewUrl.value.trim(),
@@ -2235,10 +2249,21 @@
 
   heroIntakeForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const prefilled = heroWebsiteUrl.value.trim();
+    const normalizedUrl = normalizeWebsiteUrl(heroWebsiteUrl.value);
+    if (!normalizedUrl) {
+      heroWebsiteUrl.setCustomValidity('Enter a valid website URL, like https://example.com or www.example.com');
+      heroWebsiteUrl.reportValidity();
+      return;
+    }
+    heroWebsiteUrl.setCustomValidity('');
+    heroWebsiteUrl.value = normalizedUrl;
+    const prefilled = normalizedUrl;
     if (prefilled) previewUrl.value = prefilled;
     openPreviewModal(prefilled);
   });
+
+  attachUrlFieldBehavior(heroWebsiteUrl);
+  attachUrlFieldBehavior(previewUrl);
 
   previewBack.addEventListener('click', () => {
     if (previewState.step === 0) return;
