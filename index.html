@@ -2075,7 +2075,10 @@
     if (previewState.step === 0 && !previewState.flavor) return false;
     if (previewState.step === 1 && !previewState.theme) return false;
     if (previewState.step === 2) {
-      if (!previewUrl.value.trim() || !previewName.value.trim() || !previewEmail.value.trim()) return false;
+      previewUrl.value = previewUrl.value.trim();
+      previewName.value = previewName.value.trim();
+      previewEmail.value = previewEmail.value.trim().toLowerCase();
+
       if (!previewUrl.reportValidity()) return false;
       if (!previewName.reportValidity()) return false;
       if (!previewEmail.reportValidity()) return false;
