@@ -923,7 +923,7 @@
 
     .modal-progress {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: .7rem;
       padding: 1rem 1.5rem 0;
     }
@@ -946,6 +946,7 @@
     }
 
     .flow-step { display: none; }
+    .modal-body .flow-step { padding: 0; }
     .flow-step.active { display: block; }
 
     .flow-label {
@@ -1070,48 +1071,75 @@
       border: 0;
     }
 
-    .summary-card {
-      border: 1px solid var(--border);
+    .modal-panel [hidden] { display: none !important; }
+
+    .field-group select {
+      width: 100%;
+      padding: 1rem 1rem;
+      border: 1px solid var(--border-dim);
       background: rgba(255,255,255,0.02);
-      padding: 1.15rem 1.1rem;
-      display: grid;
-      gap: .9rem;
-      max-width: 620px;
+      color: var(--text);
+      font: inherit;
+    }
+    .field-group select option { background: #0f0c14; color: var(--text); }
+    .field-group select:focus {
+      outline: none;
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.18);
     }
 
-    .summary-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 1rem;
-      align-items: start;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding-bottom: .8rem;
-    }
-    .summary-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .summary-label {
-      font-size: 0.68rem;
-      letter-spacing: .16em;
+    .field-label {
+      font-size: 0.76rem;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--muted);
       font-weight: 600;
     }
 
-    .summary-value {
-      color: var(--text);
-      font-size: 0.9rem;
-      line-height: 1.7;
+    .field-hint {
+      color: var(--muted2);
+      font-size: 0.78rem;
+      line-height: 1.6;
     }
 
-    .staged-note {
-      margin-top: 1rem;
-      color: var(--muted2);
-      font-size: 0.76rem;
-      line-height: 1.75;
+    .choice-grid-compact .choice-card { padding: .85rem .95rem; }
+    .choice-grid-compact .choice-card strong { margin-bottom: .2rem; }
+
+    .consent-row {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: .75rem;
+      align-items: start;
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      cursor: pointer;
     }
+    .consent-row input {
+      width: 18px;
+      height: 18px;
+      margin-top: .15rem;
+      accent-color: var(--gold);
+    }
+    .consent-row a, .helper-copy a, .success-card a { color: var(--gold); }
+
+    #preview-fallback { margin-top: 1rem; display: grid; gap: .75rem; }
+    #preview-fallback textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: .8rem;
+      border: 1px solid var(--border-dim);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      font: 0.78rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+      resize: vertical;
+    }
+    #preview-fallback .btn-outline { justify-self: start; }
+
+
+
+
+
 
     .success-card {
       border: 1px solid rgba(212,175,55,0.22);
@@ -1269,7 +1297,6 @@
       .modal-progress { padding-left: 1rem; padding-right: 1rem; }
       .modal-actions { flex-direction: column; }
       .modal-actions-left, .modal-actions-right { width: 100%; }
-      .summary-row { grid-template-columns: 1fr; gap: .35rem; }
     }
   </style>
 </head>
@@ -1336,13 +1363,13 @@
       <button type="submit" class="btn-gold">Start My Preview</button>
     </form>
     <p class="hero-intake-note">
-      You’ll answer a few quick questions, then we’ll prepare a preview flow around your site, your positioning, and your preferred visual direction.
+      Three short steps to join the list. Previews go out in the order requests arrive, each by private link.
     </p>
   </div>
 
   <div class="hero-ctas reveal reveal-delay-3">
     <a href="#examples" class="btn-outline">See Output Examples</a>
-    <button type="button" class="btn-linkish" data-open-preview>Open Request Flow</button>
+    <button type="button" class="btn-linkish" data-open-preview>Request a preview</button>
   </div>
 
   <div class="ornament reveal reveal-delay-4">· · ·</div>
@@ -1471,19 +1498,19 @@
     <div class="section-rule reveal"><span>Preview Flow</span></div>
     <h2 class="reveal">What happens after<br>you request a <em>preview</em></h2>
     <p class="section-sub reveal reveal-delay-1">
-      The request flow is designed to move fast: you show us your current site, tell us the direction, and get a short-lived preview window that makes the next decision obvious.
+      Three short steps: your site, the look, and where to send it. The rest we read from the site itself.
     </p>
 
     <div class="preview-grid">
       <div class="preview-card reveal">
         <div class="preview-step">Step 01</div>
         <h3>Drop in your current site</h3>
-        <p>We start from the site you already have. The flow captures the URL, your business name, your contact email, and the positioning you want the new version to emphasize.</p>
+        <p>We start from the site you already have: its address, your business name, the type of business and where it is.</p>
       </div>
       <div class="preview-card reveal reveal-delay-1">
         <div class="preview-step">Step 02</div>
-        <h3>Choose the direction</h3>
-        <p>Pick the flavor that matters most to you, choose a theme manually, or simply use my logo colors so the output starts closer to your existing brand.</p>
+        <h3>Choose the look</h3>
+        <p>Keep the colours your site uses today, or pick a direction. Your content stays exactly as it is.</p>
       </div>
       <div class="preview-card reveal reveal-delay-2">
         <div class="preview-step">Step 03</div>
@@ -1498,7 +1525,7 @@
     </div>
 
     <p class="preview-note reveal reveal-delay-2">
-      Every email in that sequence should push toward the same decision: if the new version feels right, let’s go live.
+      If the new version feels right, we take it live with you.
     </p>
   </div>
 </section>
@@ -1736,136 +1763,137 @@
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="preview-modal-title">
     <div class="modal-head">
       <div>
-        <h3 id="preview-modal-title">Start your preview request</h3>
-        <p>Give us the current site, the angle you want to emphasize, and the visual direction you want us to follow.</p>
+        <h3 id="preview-modal-title">Request your preview</h3>
+        <p>Three short steps. We rebuild your site from its own content, and send you a private link to the preview.</p>
       </div>
-      <button type="button" class="modal-close" id="preview-close" aria-label="Close preview flow">✕</button>
+      <button type="button" class="modal-close" id="preview-close" aria-label="Close">✕</button>
     </div>
 
     <div class="modal-progress" aria-hidden="true">
       <div class="progress-step active"></div>
       <div class="progress-step"></div>
       <div class="progress-step"></div>
-      <div class="progress-step"></div>
     </div>
 
     <div class="modal-body">
-      <form id="preview-flow-form">
+      <form id="preview-flow-form" novalidate>
         <section class="flow-step active" data-step="0">
-          <span class="flow-label">Step 1</span>
-          <h4>What should the new site emphasize?</h4>
-          <p class="flow-intro">Choose the main angle. This gives us the first lens for the redesign, before we get into color and contact details.</p>
-          <div class="choice-grid" data-choice-group="flavor">
-            <button type="button" class="choice-card" data-value="trust-first">
-              <strong>Trust first</strong>
-              <span>Authority, credibility, polish, and “this business looks established.”</span>
-            </button>
-            <button type="button" class="choice-card" data-value="premium">
-              <strong>Premium</strong>
-              <span>Higher-end perception, stronger visual taste, and a more elevated feel.</span>
-            </button>
-            <button type="button" class="choice-card" data-value="friendly">
-              <strong>Warm &amp; approachable</strong>
-              <span>More human, more personal, and easier to connect with at first glance.</span>
-            </button>
-            <button type="button" class="choice-card" data-value="conversion">
-              <strong>Conversion</strong>
-              <span>Sharper calls to action, clearer service framing, and less friction to contact.</span>
-            </button>
+          <span class="flow-label">Step 1 of 3</span>
+          <h4>Your business</h4>
+          <p class="flow-intro">Everything else we read from your site.</p>
+          <div class="flow-fields">
+            <div class="field-group">
+              <label for="preview-url">Your website</label>
+              <input id="preview-url" name="website_url" type="text" inputmode="url" autocomplete="url" placeholder="https://your-site.com" required />
+            </div>
+            <div class="field-group">
+              <label for="preview-name">Business name</label>
+              <input id="preview-name" name="business_name" type="text" autocomplete="organization" placeholder="As your guests know it" required />
+            </div>
+            <div class="field-group">
+              <span class="field-label" id="preview-type-label">Type of business</span>
+              <div class="choice-grid choice-grid-compact" data-choice-group="businessType" role="group" aria-labelledby="preview-type-label">
+                <button type="button" class="choice-card" data-value="accommodation"><strong>Accommodation</strong><span>Hotel, guest house, cabin, apartments</span></button>
+                <button type="button" class="choice-card" data-value="spa"><strong>Spa</strong><span>Day spa, wellness, treatments</span></button>
+                <button type="button" class="choice-card" data-value="restaurant"><strong>Restaurant</strong><span>Restaurant, café, bar</span></button>
+                <button type="button" class="choice-card" data-value="other"><strong>Something else</strong><span>We will still build your preview</span></button>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="preview-country">Country</label>
+              <select id="preview-country" name="country" autocomplete="country" required>
+                <option value="">Where the business is</option>
+              </select>
+            </div>
+            <p class="helper-copy">No website yet? <a href="mailto:support@theinsite.dev?subject=A%20site%20without%20a%20website">Write to us</a> and we will build one from your photos and texts.</p>
           </div>
         </section>
 
         <section class="flow-step" data-step="1">
-          <span class="flow-label">Step 2</span>
-          <h4>How should the new site handle color?</h4>
-          <p class="flow-intro">Pick a direction manually, or tell us to simply use your logo colors so the preview begins from your current brand palette.</p>
-          <div class="choice-grid" data-choice-group="theme">
-            <button type="button" class="choice-card" data-value="logo-colors">
-              <strong>Simply use my logo colors</strong>
-              <span>Closest to the current brand identity. Best when the logo already carries the right palette.</span>
+          <span class="flow-label">Step 2 of 3</span>
+          <h4>The look</h4>
+          <p class="flow-intro">Your content stays exactly as it is. Choose the colours the preview starts from.</p>
+          <div class="choice-grid" data-choice-group="colors">
+            <button type="button" class="choice-card selected" data-value="keep-mine">
+              <strong>Keep my colours</strong>
+              <span>The colours your site uses today. Best when your brand is already right.</span>
             </button>
             <button type="button" class="choice-card" data-value="light-editorial">
               <strong>Light editorial</strong>
-              <span>Bright, clean, spacious, and more premium in a restrained way.</span>
+              <span>Bright, clean and spacious.</span>
             </button>
             <button type="button" class="choice-card" data-value="dark-luxury">
               <strong>Dark luxury</strong>
-              <span>Higher contrast, moodier, more dramatic, and intentionally premium.</span>
+              <span>High contrast, moody and dramatic.</span>
             </button>
             <button type="button" class="choice-card" data-value="bold-modern">
               <strong>Bold modern</strong>
-              <span>Stronger accents, more visual energy, and a more assertive first impression.</span>
+              <span>Strong accents and more energy.</span>
             </button>
           </div>
         </section>
 
         <section class="flow-step" data-step="2">
-          <span class="flow-label">Step 3</span>
-          <h4>Tell us where to send it</h4>
-          <p class="flow-intro">This part maps cleanly to the backend we already have: current site URL, business name, and the contact email for preview delivery.</p>
+          <span class="flow-label">Step 3 of 3</span>
+          <h4>Where we send your preview</h4>
+          <p class="flow-intro">The preview is private: only people with the link can see it.</p>
           <div class="flow-fields">
             <div class="field-group">
-              <label for="preview-url">Current website</label>
-              <input id="preview-url" name="preview_url" type="text" inputmode="url" placeholder="https://your-site.com" required />
+              <label for="preview-contact-name">Your name</label>
+              <input id="preview-contact-name" name="contact_name" type="text" autocomplete="name" required />
             </div>
             <div class="field-group">
-              <label for="preview-name">Business name</label>
-              <input id="preview-name" name="preview_name" type="text" placeholder="Your business name" required />
+              <label for="preview-email">Email for your preview link</label>
+              <input id="preview-email" name="contact_email" type="email" autocomplete="email" placeholder="you@business.com" required />
             </div>
             <div class="field-group">
-              <label for="preview-email">Email</label>
-              <input id="preview-email" name="preview_email" type="email" placeholder="you@business.com" required />
+              <label for="preview-whatsapp">WhatsApp (optional)</label>
+              <input id="preview-whatsapp" name="contact_whatsapp" type="tel" autocomplete="tel" placeholder="+972 50 123 4567" />
+              <span class="field-hint">Only for questions about this request. Never added to a list.</span>
             </div>
             <div class="field-group">
-              <label for="preview-notes">Anything else we should know?</label>
-              <textarea id="preview-notes" name="preview_notes" placeholder="Optional: audience, service focus, tone, what currently feels off, or anything else worth knowing."></textarea>
+              <label for="preview-role">You are</label>
+              <select id="preview-role" name="contact_role" required>
+                <option value="">Choose one</option>
+                <option value="owner">The owner</option>
+                <option value="manager">A manager</option>
+                <option value="agency-or-developer">Its agency or developer</option>
+                <option value="other">Someone else</option>
+              </select>
             </div>
+            <div class="field-group">
+              <label for="preview-notes">Anything we should know? (optional)</label>
+              <textarea id="preview-notes" name="notes" maxlength="1000"></textarea>
+            </div>
+            <label class="consent-row">
+              <input type="checkbox" id="preview-consent-authority" required />
+              <span>I own or manage this business, or have its permission to ask.</span>
+            </label>
+            <label class="consent-row">
+              <input type="checkbox" id="preview-consent-terms" required />
+              <span>I accept the <a href="/terms" target="_blank" rel="noopener">terms</a> and the <a href="/privacy" target="_blank" rel="noopener">privacy notice</a>.</span>
+            </label>
+            <label class="consent-row">
+              <input type="checkbox" id="preview-consent-marketing" />
+              <span>Send me occasional news from The InSite (optional).</span>
+            </label>
             <div class="field-group sr-only" aria-hidden="true">
               <label for="preview-company-fax">Leave this empty</label>
               <input id="preview-company-fax" name="company_fax" type="text" tabindex="-1" autocomplete="off" />
             </div>
             <input id="preview-bot-token" name="bot_token" type="hidden" value="" />
             <div class="bot-slot" id="preview-bot-slot" hidden></div>
-            <p class="helper-copy">Current frontend shape for backend hookup: <code>url</code>, <code>slug</code>, <code>name</code>, <code>contact_email</code>, plus a <code>preferences</code> object for flavor and theme.</p>
           </div>
-        </section>
-
-        <section class="flow-step" data-step="3">
-          <span class="flow-label">Step 4</span>
-          <h4>Review the request</h4>
-          <p class="flow-intro">This is the frontend request shape we’ll hook into the relevant backend systems after the UI is approved.</p>
-          <div class="summary-card">
-            <div class="summary-row">
-              <div class="summary-label">Website</div>
-              <div class="summary-value" data-summary="url"></div>
-            </div>
-            <div class="summary-row">
-              <div class="summary-label">Business</div>
-              <div class="summary-value" data-summary="name"></div>
-            </div>
-            <div class="summary-row">
-              <div class="summary-label">Email</div>
-              <div class="summary-value" data-summary="email"></div>
-            </div>
-            <div class="summary-row">
-              <div class="summary-label">Flavor</div>
-              <div class="summary-value" data-summary="flavor"></div>
-            </div>
-            <div class="summary-row">
-              <div class="summary-label">Theme</div>
-              <div class="summary-value" data-summary="theme"></div>
-            </div>
-            <div class="summary-row">
-              <div class="summary-label">Preview policy</div>
-              <div class="summary-value">Preview by email, live for 24 hours, reminder before deletion, with a one-week extension path.</div>
-            </div>
-          </div>
-          <p class="staged-note">For now, this button stages the request locally in the browser and confirms the new UI. The real submission endpoint and automation sequence come in the backend/infra pass.</p>
           <div class="success-card" id="preview-success" hidden>
-            <h5>Request staged</h5>
-            <p>The request UI is complete and the payload is stored locally for testing. Next pass: create the public intake endpoint, insert the lead, trigger generation, and wire the email lifecycle.</p>
+            <h5></h5>
+            <p></p>
+            <div id="preview-fallback" hidden>
+              <p class="helper-copy">Email app did not open? Copy the request and send it to <a href="mailto:support@theinsite.dev">support@theinsite.dev</a>.</p>
+              <textarea id="preview-fallback-text" readonly></textarea>
+              <button type="button" class="btn-outline" id="preview-copy">Copy the request</button>
+            </div>
           </div>
-          <div class="submit-status" id="preview-submit-status" hidden></div>
+          <div class="submit-status" id="preview-submit-status" role="status" hidden></div>
         </section>
       </form>
     </div>
@@ -1927,6 +1955,11 @@
     });
   });
 
+  // ── Preview request ──
+  // One request body for every front end (Static-Studio docs/onboarding-flow-schema.md § 3).
+  // Until the intake endpoint exists, the request goes to support@ by email.
+  const REQUEST_EMAIL = 'support@theinsite.dev';
+  const TERMS_VERSION = '2026-03-23';
   const previewModal = document.getElementById('preview-modal');
   const previewClose = document.getElementById('preview-close');
   const previewBack = document.getElementById('preview-back');
@@ -1935,58 +1968,101 @@
   const heroWebsiteUrl = document.getElementById('hero-website-url');
   const previewUrl = document.getElementById('preview-url');
   const previewName = document.getElementById('preview-name');
+  const previewCountry = document.getElementById('preview-country');
+  const previewContactName = document.getElementById('preview-contact-name');
   const previewEmail = document.getElementById('preview-email');
+  const previewWhatsapp = document.getElementById('preview-whatsapp');
+  const previewRole = document.getElementById('preview-role');
   const previewNotes = document.getElementById('preview-notes');
+  const consentAuthority = document.getElementById('preview-consent-authority');
+  const consentTerms = document.getElementById('preview-consent-terms');
+  const consentMarketing = document.getElementById('preview-consent-marketing');
   const previewHoneypot = document.getElementById('preview-company-fax');
   const previewBotToken = document.getElementById('preview-bot-token');
   const previewBotSlot = document.getElementById('preview-bot-slot');
   const previewSuccess = document.getElementById('preview-success');
+  const previewFallback = document.getElementById('preview-fallback');
+  const previewFallbackText = document.getElementById('preview-fallback-text');
+  const previewCopy = document.getElementById('preview-copy');
   const previewSubmitStatus = document.getElementById('preview-submit-status');
+  const typeGroup = document.querySelector('[data-choice-group="businessType"]');
   const progressSteps = Array.from(document.querySelectorAll('.progress-step'));
   const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
   const openPreviewButtons = document.querySelectorAll('[data-open-preview]');
   const previewApiEndpoint = document.querySelector('meta[name="insite-preview-api-endpoint"]')?.getAttribute('content')?.trim() || '';
   const previewBotSiteKey = document.querySelector('meta[name="insite-bot-site-key"]')?.getAttribute('content')?.trim() || '';
-  const summaryTargets = {
-    url: document.querySelector('[data-summary="url"]'),
-    name: document.querySelector('[data-summary="name"]'),
-    email: document.querySelector('[data-summary="email"]'),
-    flavor: document.querySelector('[data-summary="flavor"]'),
-    theme: document.querySelector('[data-summary="theme"]'),
+
+  const typeLabels = {
+    accommodation: 'Accommodation',
+    spa: 'Spa',
+    restaurant: 'Restaurant',
+    other: 'Something else',
   };
 
-  const flavorLabels = {
-    'trust-first': 'Trust first',
-    premium: 'Premium',
-    friendly: 'Warm & approachable',
-    conversion: 'Conversion',
-  };
-
-  const themeLabels = {
-    'logo-colors': 'Simply use my logo colors',
+  const colorLabels = {
+    'keep-mine': 'Keep my colours',
     'light-editorial': 'Light editorial',
     'dark-luxury': 'Dark luxury',
     'bold-modern': 'Bold modern',
   };
 
+  const roleLabels = {
+    owner: 'The owner',
+    manager: 'A manager',
+    'agency-or-developer': 'Its agency or developer',
+    other: 'Someone else',
+  };
+
   const previewState = {
     step: 0,
-    flavor: '',
-    theme: '',
+    businessType: '',
+    colors: 'keep-mine',
     isSubmitting: false,
+    submitted: false,
   };
 
   let turnstileWidgetId = null;
 
-  function slugify(value) {
-    return String(value || '')
-      .toLowerCase()
-      .trim()
-      .replace(/^https?:\/\//, '')
-      .replace(/^www\./, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '')
-      .slice(0, 80);
+  // ISO 3166-1 alpha-2 codes; names come from the browser, so no table to keep.
+  const COUNTRY_CODES = ('AD AE AF AG AI AL AM AO AR AT AU AW AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BW BY BZ '
+    + 'CA CD CF CG CH CI CL CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI FJ FM FR GA GB GD GE GH GI GM GN '
+    + 'GQ GR GT GW GY HK HN HR HT HU ID IE IL IN IQ IR IS IT JM JO JP KE KG KH KI KM KN KR KW KY KZ LA LB LC LI LK LR LS LT '
+    + 'LU LV LY MA MC MD ME MG MH MK ML MM MN MO MR MT MU MV MW MX MY MZ NA NE NG NI NL NO NP NR NZ OM PA PE PG PH PK PL PR '
+    + 'PS PT PW PY QA RO RS RU RW SA SB SC SD SE SG SI SK SL SM SN SO SR SS ST SV SY SZ TD TG TH TJ TL TM TN TO TR TT TV TW '
+    + 'TZ UA UG US UY UZ VA VC VE VN VU WS XK YE ZA ZM ZW').split(' ');
+  // Country domains used as generic names; they say nothing about where a business is.
+  const GENERIC_CCTLDS = new Set(['AI', 'AM', 'CC', 'CO', 'FM', 'GG', 'IO', 'LY', 'ME', 'MS', 'NU', 'SH', 'TO', 'TV', 'WS']);
+
+  function countryName(code) {
+    try {
+      return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code;
+    } catch {
+      return code;
+    }
+  }
+
+  function fillCountries() {
+    COUNTRY_CODES
+      .map(code => ({ code, name: countryName(code) }))
+      .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+      .forEach(({ code, name }) => {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = name;
+        previewCountry.appendChild(option);
+      });
+  }
+
+  // A hint from the address only; the visitor confirms or changes it.
+  function countryFromUrl(urlValue) {
+    try {
+      const label = new URL(urlValue).hostname.split('.').pop().toUpperCase();
+      const code = label === 'UK' ? 'GB' : label;
+      if (GENERIC_CCTLDS.has(code) || !COUNTRY_CODES.includes(code)) return '';
+      return code;
+    } catch {
+      return '';
+    }
   }
 
   function normalizeWebsiteUrl(rawValue) {
@@ -2000,22 +2076,46 @@
     try {
       const parsed = new URL(withProtocol);
       if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
-      if (!parsed.hostname || /\s/.test(parsed.hostname)) return '';
+      if (!parsed.hostname || /\s/.test(parsed.hostname) || !parsed.hostname.includes('.')) return '';
       return parsed.toString();
     } catch {
       return '';
     }
   }
 
-  function deriveSlug(urlValue, nameValue) {
-    try {
-      const hostname = new URL(urlValue).hostname.replace(/^www\./, '');
-      const labels = hostname.split('.').filter(Boolean);
-      const domainLabel = labels.length > 1 ? labels.slice(0, -1).join('-') : hostname;
-      return slugify(domainLabel);
-    } catch {
-      return slugify(nameValue);
-    }
+  // E.164: a plus sign and 8 to 15 digits; spaces, dashes and brackets are dropped.
+  function normalizeWhatsapp(rawValue) {
+    const compact = String(rawValue || '').replace(/[\s\-().]/g, '');
+    if (!compact) return '';
+    const withPlus = compact.startsWith('00') ? `+${compact.slice(2)}` : compact;
+    return /^\+[1-9]\d{7,14}$/.test(withPlus) ? withPlus : null;
+  }
+
+  function readAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    const attribution = { source: 'theinsite-site' };
+    ['campaign', 'offer_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(key => {
+      const value = params.get(key === 'offer_id' ? 'offer' : key);
+      if (value) attribution[key] = value.slice(0, 200);
+    });
+    const trade = params.get('trade');
+    if (trade && ['accommodation', 'spa', 'restaurant'].includes(trade)) attribution.trade = trade;
+    return attribution;
+  }
+
+  const attribution = readAttribution();
+
+  function selectChoice(group, value) {
+    group.querySelectorAll('.choice-card').forEach(card => {
+      const selected = card.getAttribute('data-value') === value;
+      card.classList.toggle('selected', selected);
+      card.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
+    previewState[group.getAttribute('data-choice-group')] = value;
+  }
+
+  function submitLabel() {
+    return previewState.step === flowSteps.length - 1 ? 'Send my request' : 'Continue';
   }
 
   function updateProgress() {
@@ -2028,8 +2128,8 @@
       stepEl.classList.toggle('active', index === previewState.step);
     });
 
-    previewBack.style.visibility = previewState.step === 0 ? 'hidden' : 'visible';
-    previewNext.textContent = previewState.step === flowSteps.length - 1 ? 'Submit Request' : 'Continue';
+    previewBack.style.visibility = previewState.step === 0 || previewState.submitted ? 'hidden' : 'visible';
+    previewNext.textContent = previewState.submitted ? 'Close' : submitLabel();
     previewNext.disabled = previewState.isSubmitting;
     previewBack.disabled = previewState.isSubmitting;
   }
@@ -2052,7 +2152,7 @@
     previewState.isSubmitting = isSubmitting;
     previewNext.disabled = isSubmitting;
     previewBack.disabled = isSubmitting;
-    previewNext.textContent = isSubmitting ? 'Submitting…' : (previewState.step === flowSteps.length - 1 ? 'Submit Request' : 'Continue');
+    previewNext.textContent = isSubmitting ? 'Sending…' : submitLabel();
     document.querySelector('.modal-panel').classList.toggle('is-loading', isSubmitting);
   }
 
@@ -2074,13 +2174,20 @@
     });
   }
 
+  function setWebsite(urlValue) {
+    if (!urlValue) return;
+    previewUrl.value = urlValue;
+    const hint = countryFromUrl(urlValue);
+    if (hint && !previewCountry.value) previewCountry.value = hint;
+  }
+
   function openPreviewModal(prefilledUrl) {
-    if (prefilledUrl) previewUrl.value = prefilledUrl;
+    setWebsite(prefilledUrl);
     previewModal.classList.add('open');
     previewModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     initBotChallenge();
-    if (prefilledUrl) previewUrl.focus();
+    (prefilledUrl ? previewName : previewUrl).focus();
   }
 
   function closePreviewModal() {
@@ -2089,67 +2196,115 @@
     document.body.style.overflow = '';
   }
 
+  function failField(input, message) {
+    input.setCustomValidity(message);
+    input.reportValidity();
+    return false;
+  }
+
   function validateCurrentStep() {
-    if (previewState.step === 0 && !previewState.flavor) return false;
-    if (previewState.step === 1 && !previewState.theme) return false;
-    if (previewState.step === 2) {
+    setSubmitStatus(null, '');
+    if (previewState.step === 0) {
       const normalizedUrl = normalizeWebsiteUrl(previewUrl.value);
-      previewUrl.value = normalizedUrl || previewUrl.value.trim();
+      if (!normalizedUrl) return failField(previewUrl, 'Enter your website, like example.com');
+      previewUrl.value = normalizedUrl;
       previewName.value = previewName.value.trim();
-      previewEmail.value = previewEmail.value.trim().toLowerCase();
-
-      if (!normalizedUrl) {
-        previewUrl.setCustomValidity('Enter a valid website URL, like https://example.com or www.example.com');
-      } else {
-        previewUrl.setCustomValidity('');
-      }
-
-      if (!previewUrl.reportValidity()) return false;
       if (!previewName.reportValidity()) return false;
-      if (!previewEmail.reportValidity()) return false;
+      if (!previewState.businessType) {
+        setSubmitStatus('error', 'Choose the type of business.');
+        return false;
+      }
+      if (!previewCountry.reportValidity()) return false;
+    }
+    if (previewState.step === 2) {
+      previewContactName.value = previewContactName.value.trim();
+      previewEmail.value = previewEmail.value.trim().toLowerCase();
+      if (!previewContactName.reportValidity()) return false;
+      if (!previewEmail.value || !previewEmail.checkValidity()) return failField(previewEmail, 'Enter the email where we send your preview link.');
+      if (normalizeWhatsapp(previewWhatsapp.value) === null) return failField(previewWhatsapp, 'Enter the number with its country code, like +972 50 123 4567.');
+      if (!previewRole.reportValidity()) return false;
+      if (!consentAuthority.reportValidity()) return false;
+      if (!consentTerms.reportValidity()) return false;
     }
     return true;
   }
 
-  function attachUrlFieldBehavior(input) {
-    input.addEventListener('input', () => {
-      input.setCustomValidity('');
-    });
-
-    input.addEventListener('blur', () => {
-      const normalizedUrl = normalizeWebsiteUrl(input.value);
-      if (!input.value.trim()) return;
-      if (!normalizedUrl) return;
-      input.value = normalizedUrl;
-      input.setCustomValidity('');
-    });
-  }
-
   function buildPayload() {
     return {
-      url: normalizeWebsiteUrl(previewUrl.value) || previewUrl.value.trim(),
-      slug: deriveSlug(previewUrl.value.trim(), previewName.value.trim()),
-      name: previewName.value.trim(),
-      contact_email: previewEmail.value.trim(),
-      preferences: {
-        flavor: previewState.flavor,
-        theme_choice: previewState.theme,
-        theme_mode: previewState.theme === 'logo-colors' ? 'logo-colors' : 'manual',
+      website_url: normalizeWebsiteUrl(previewUrl.value),
+      has_website: true,
+      business_name: previewName.value.trim(),
+      business_type: previewState.businessType,
+      country: previewCountry.value,
+      look: { colors: previewState.colors },
+      contact: {
+        name: previewContactName.value.trim(),
+        email: previewEmail.value.trim().toLowerCase(),
+        whatsapp: normalizeWhatsapp(previewWhatsapp.value) || null,
+        role: previewRole.value,
       },
-      notes: previewNotes.value.trim() || null,
-      source: 'theinsite-dev-landing',
+      consent: {
+        authority: consentAuthority.checked,
+        terms: consentTerms.checked,
+        terms_version: TERMS_VERSION,
+        marketing: consentMarketing.checked,
+      },
+      notes: previewNotes.value.trim().slice(0, 1000) || null,
+      attribution,
+      ui_language: 'en',
       hp_field: previewHoneypot.value.trim(),
       bot_token: previewBotToken.value.trim() || null,
     };
   }
 
-  function renderSummary() {
-    const payload = buildPayload();
-    summaryTargets.url.textContent = payload.url || '—';
-    summaryTargets.name.textContent = payload.name || '—';
-    summaryTargets.email.textContent = payload.contact_email || '—';
-    summaryTargets.flavor.textContent = flavorLabels[payload.preferences.flavor] || '—';
-    summaryTargets.theme.textContent = themeLabels[payload.preferences.theme_choice] || '—';
+  function requestEmailBody(payload) {
+    const yesNo = value => (value ? 'yes' : 'no');
+    const lines = [
+      'Please add me to the preview list.',
+      '',
+      `Website: ${payload.website_url}`,
+      `Business: ${payload.business_name}`,
+      `Type: ${typeLabels[payload.business_type]} (${payload.business_type})`,
+      `Country: ${countryName(payload.country)} (${payload.country})`,
+      `Colours: ${colorLabels[payload.look.colors]} (${payload.look.colors})`,
+      '',
+      `Name: ${payload.contact.name}`,
+      `Email: ${payload.contact.email}`,
+      `WhatsApp: ${payload.contact.whatsapp || '-'}`,
+      `Role: ${roleLabels[payload.contact.role]} (${payload.contact.role})`,
+      `Notes: ${payload.notes || '-'}`,
+      '',
+      `I own or manage this business, or have its permission to ask: ${yesNo(payload.consent.authority)}`,
+      `Terms and privacy notice (${payload.consent.terms_version}) accepted: ${yesNo(payload.consent.terms)}`,
+      `News from The InSite: ${yesNo(payload.consent.marketing)}`,
+      '',
+      `Source: ${Object.entries(payload.attribution).map(([key, value]) => `${key}=${value}`).join('; ')}`,
+      `Sent: ${new Date().toISOString()}`,
+    ];
+    return lines.join('\n');
+  }
+
+  function showSuccess(title, message) {
+    previewState.submitted = true;
+    flowSteps[previewState.step].querySelectorAll('.flow-fields, .flow-intro, h4').forEach(el => { el.hidden = true; });
+    previewSuccess.hidden = false;
+    previewSuccess.querySelector('h5').textContent = title;
+    previewSuccess.querySelector(':scope > p').textContent = message;
+    progressSteps.forEach(stepEl => stepEl.classList.add('complete'));
+    updateProgress();
+  }
+
+  function sendByEmail(payload) {
+    const host = new URL(payload.website_url).hostname.replace(/^www\./, '');
+    const subject = `Preview request: ${payload.business_name} (${host})`;
+    const body = requestEmailBody(payload);
+    previewFallbackText.value = `To: ${REQUEST_EMAIL}\nSubject: ${subject}\n\n${body}`;
+    previewFallback.hidden = false;
+    showSuccess(
+      'One last step: send the email',
+      'Your email app opens with the request written out. Send it, and you are on the list. We email your preview link as soon as it is ready.'
+    );
+    window.location.href = `mailto:${REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   async function submitPreviewRequest() {
@@ -2160,17 +2315,13 @@
       return;
     }
 
-    if (previewBotSiteKey && !payload.bot_token) {
-      setSubmitStatus('error', 'Please complete the verification step before submitting.');
+    if (!previewApiEndpoint) {
+      sendByEmail(payload);
       return;
     }
 
-    if (!previewApiEndpoint) {
-      sessionStorage.setItem('insite-preview-request', JSON.stringify(payload));
-      previewSuccess.hidden = false;
-      previewSuccess.querySelector('h5').textContent = 'Request staged locally';
-      previewSuccess.querySelector('p').textContent = 'No public intake endpoint is configured in this static site yet, so the request was stored locally for testing. Once the backend endpoint exists, this same flow can submit it directly.';
-      setSubmitStatus('success', 'Frontend is ready, but no backend endpoint is configured yet.');
+    if (previewBotSiteKey && !payload.bot_token) {
+      setSubmitStatus('error', 'Please complete the check above before sending.');
       return;
     }
 
@@ -2195,31 +2346,28 @@
       }
 
       if (response.ok) {
-        previewSuccess.hidden = false;
-        previewSuccess.querySelector('h5').textContent = 'Request accepted';
-        previewSuccess.querySelector('p').textContent = 'Your preview request was accepted. We will generate the preview and send the link by email when it is ready.';
-        setSubmitStatus('success', 'Preview request submitted successfully.');
+        showSuccess('You are on the list', (data && data.message) || 'We email your preview link as soon as it is ready.');
         return;
       }
 
       if (response.status === 409) {
-        setSubmitStatus('error', (data && data.message) || 'There is already an active preview request for this site and email.');
+        setSubmitStatus('error', (data && data.message) || 'We already have a request for this site from this email.');
         return;
       }
 
       if (response.status === 429) {
-        setSubmitStatus('error', 'Too many requests. Please wait and try again later.');
+        setSubmitStatus('error', 'Too many requests. Please wait a few minutes and try again.');
         return;
       }
 
       if (response.status === 400 || response.status === 422) {
-        setSubmitStatus('error', (data && (data.error || data.message)) || 'Please review the form details and try again.');
+        setSubmitStatus('error', (data && (data.error || data.message)) || 'Please check the details and try again.');
         return;
       }
 
-      setSubmitStatus('error', (data && (data.error || data.message)) || 'Something went wrong while submitting your request.');
+      setSubmitStatus('error', `Something went wrong on our side. Please try again, or email ${REQUEST_EMAIL}.`);
     } catch (error) {
-      setSubmitStatus('error', 'Network error. Please try again in a moment.');
+      setSubmitStatus('error', `We could not reach our server. Please try again, or email ${REQUEST_EMAIL}.`);
     } finally {
       setSubmitting(false);
       if (window.turnstile && turnstileWidgetId !== null) {
@@ -2232,18 +2380,20 @@
   document.querySelectorAll('[data-choice-group]').forEach(group => {
     group.querySelectorAll('.choice-card').forEach(card => {
       card.addEventListener('click', () => {
-        const groupName = group.getAttribute('data-choice-group');
-        group.querySelectorAll('.choice-card').forEach(btn => btn.classList.remove('selected'));
-        card.classList.add('selected');
-        previewState[groupName] = card.getAttribute('data-value') || '';
+        selectChoice(group, card.getAttribute('data-value') || '');
+        if (group === typeGroup) setSubmitStatus(null, '');
       });
     });
   });
 
+  if (attribution.trade) selectChoice(typeGroup, attribution.trade);
+  selectChoice(document.querySelector('[data-choice-group="colors"]'), previewState.colors);
+  fillCountries();
+
   openPreviewButtons.forEach(btn => {
     btn.addEventListener('click', (event) => {
       event.preventDefault();
-      openPreviewModal(heroWebsiteUrl.value.trim());
+      openPreviewModal(normalizeWebsiteUrl(heroWebsiteUrl.value));
     });
   });
 
@@ -2251,33 +2401,54 @@
     event.preventDefault();
     const normalizedUrl = normalizeWebsiteUrl(heroWebsiteUrl.value);
     if (!normalizedUrl) {
-      heroWebsiteUrl.setCustomValidity('Enter a valid website URL, like https://example.com or www.example.com');
+      heroWebsiteUrl.setCustomValidity('Enter your website, like example.com');
       heroWebsiteUrl.reportValidity();
       return;
     }
     heroWebsiteUrl.setCustomValidity('');
     heroWebsiteUrl.value = normalizedUrl;
-    const prefilled = normalizedUrl;
-    if (prefilled) previewUrl.value = prefilled;
-    openPreviewModal(prefilled);
+    openPreviewModal(normalizedUrl);
   });
 
-  attachUrlFieldBehavior(heroWebsiteUrl);
-  attachUrlFieldBehavior(previewUrl);
+  [heroWebsiteUrl, previewUrl, previewEmail, previewWhatsapp].forEach(input => {
+    input.addEventListener('input', () => input.setCustomValidity(''));
+  });
+
+  [heroWebsiteUrl, previewUrl].forEach(input => {
+    input.addEventListener('blur', () => {
+      const normalizedUrl = normalizeWebsiteUrl(input.value);
+      if (normalizedUrl) input.value = normalizedUrl;
+    });
+  });
+
+  previewUrl.addEventListener('change', () => {
+    const hint = countryFromUrl(normalizeWebsiteUrl(previewUrl.value));
+    if (hint && !previewCountry.value) previewCountry.value = hint;
+  });
+
+  previewCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(previewFallbackText.value);
+      previewCopy.textContent = 'Copied';
+    } catch {
+      previewFallbackText.select();
+    }
+  });
 
   previewBack.addEventListener('click', () => {
     if (previewState.step === 0) return;
+    setSubmitStatus(null, '');
     previewState.step -= 1;
     updateProgress();
   });
 
   previewNext.addEventListener('click', () => {
+    if (previewState.submitted) {
+      closePreviewModal();
+      return;
+    }
     if (previewState.isSubmitting) return;
     if (!validateCurrentStep()) return;
-
-    if (previewState.step === 2) {
-      renderSummary();
-    }
 
     if (previewState.step < flowSteps.length - 1) {
       previewState.step += 1;
