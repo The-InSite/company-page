@@ -29,6 +29,7 @@ Freelancers, independent professionals (lawyers, doctors, therapists, accountant
 ## Pages
 
 - Homepage: https://theinsite.dev/
+- Our crawler (StaticStudio): https://theinsite.dev/crawler
 
 ## Contact
 
