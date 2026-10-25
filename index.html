@@ -1771,7 +1771,7 @@
     </div>
 
     <div class="modal-body">
-      <form id="preview-flow-form" novalidate>
+      <form id="preview-flow-form" method="post" action="javascript:void(0)" novalidate>
         <section class="flow-step active" data-step="0">
           <span class="flow-label">Step 1 of 3</span>
           <h4>Your business</h4>
@@ -2451,6 +2451,13 @@
     }
 
     submitPreviewRequest();
+  });
+
+  // Autofill extensions and the Enter key submit the form itself. Without this the browser
+  // reloads the page with the fields in the address, and the request never reaches us.
+  document.getElementById('preview-flow-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    previewNext.click();
   });
 
   previewClose.addEventListener('click', closePreviewModal);
