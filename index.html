@@ -2344,8 +2344,12 @@
         return;
       }
 
+      // Already asked: good news, not an error. The same confirmation as a new request.
       if (response.status === 409) {
-        setSubmitStatus('error', (data && data.message) || 'We already have a request for this site from this email.');
+        showSuccess(
+          'You are already on the list',
+          'We have your request for this site from this email. We email your preview link as soon as it is ready, so there is nothing more to do.'
+        );
         return;
       }
 
