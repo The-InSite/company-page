@@ -1873,8 +1873,10 @@
               <span>Send me occasional news from The InSite (optional).</span>
             </label>
             <div class="field-group sr-only" aria-hidden="true">
-              <label for="preview-company-fax">Leave this empty</label>
-              <input id="preview-company-fax" name="company_fax" type="text" tabindex="-1" autocomplete="off" />
+              <!-- A trap for bots. Its name must not look like anything browsers autofill: "company_fax"
+                   was filled with the organization's name by Chrome, and real people were refused. -->
+              <label for="preview-zx-check">Leave this empty</label>
+              <input id="preview-zx-check" name="zx_check" type="text" tabindex="-1" autocomplete="off" data-1p-ignore data-lpignore="true" />
             </div>
             <input id="preview-bot-token" name="bot_token" type="hidden" value="" />
             <div class="bot-slot" id="preview-bot-slot" hidden></div>
@@ -1972,7 +1974,7 @@
   const consentAuthority = document.getElementById('preview-consent-authority');
   const consentTerms = document.getElementById('preview-consent-terms');
   const consentMarketing = document.getElementById('preview-consent-marketing');
-  const previewHoneypot = document.getElementById('preview-company-fax');
+  const previewHoneypot = document.getElementById('preview-zx-check');
   const previewBotToken = document.getElementById('preview-bot-token');
   const previewBotSlot = document.getElementById('preview-bot-slot');
   const previewSuccess = document.getElementById('preview-success');
@@ -2305,11 +2307,8 @@
   async function submitPreviewRequest() {
     const payload = buildPayload();
 
-    if (payload.hp_field) {
-      setSubmitStatus('error', 'Request blocked.');
-      return;
-    }
-
+    // A filled trap field is left to the server, which answers like a success and stores
+    // nothing; refusing here only ever stopped people whose browser filled it.
     if (!previewApiEndpoint) {
       sendByEmail(payload);
       return;
