@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="insite-preview-api-endpoint" content="" />
-  <meta name="insite-bot-site-key" content="" />
+  <meta name="insite-preview-api-endpoint" content="https://cms-prod-onboarding-5rvi24bima-ey.a.run.app/api/onboarding-requests" />
+  <meta name="insite-bot-site-key" content="0x4AAAAAAFleRAc0kYyKMzwA" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The InSite Company renovates business websites with a proprietary algorithm. Every page and detail from your original site carries over, modernized and rebuilt." />
@@ -21,8 +21,6 @@
   <meta name="theme-color" content="#08070a" />
   <meta name="google-site-verification" content="TyXgHdxPd8e2MXajcuP9m_VFZHKgEUzRf4JU00kE_nI" />
   <link rel="canonical" href="https://theinsite.dev/" />
-  <meta name="insite-preview-api-endpoint" content="" />
-  <meta name="insite-bot-site-key" content="" />
   <title>The InSite Company — Algorithm-Based Website Renovation</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -2358,7 +2356,7 @@
       }
 
       if (response.status === 400 || response.status === 422) {
-        setSubmitStatus('error', (data && (data.error || data.message)) || 'Please check the details and try again.');
+        setSubmitStatus('error', (data && (data.message || data.error)) || 'Please check the details and try again.');
         return;
       }
 
